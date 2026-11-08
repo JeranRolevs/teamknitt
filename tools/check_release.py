@@ -9,12 +9,13 @@ ROOT = Path(__file__).resolve().parents[1]
 PRIVATE_PARTS = {"local-reference", "archive", "setup", "trials", "results", "runs", "plans",
                  "comparisons", "data", "__pycache__", ".venv", "node_modules", ".git"}
 PRIVATE_FILES = {"CODE_PROVENANCE_AUDIT.md", "provenance_audit.json", "RELATED_WORK_REVIEW.md",
-                 "REVIEW.md", "PLAN.md", "idea_flow.md", "private_splits.json"}
+                 "REVIEW.md", "PLAN.md", "idea_flow.md", "private_splits.json", "TEAMKNITT_FOUNDATIONS.md"}
 
 
 def private_path(name):
     path = Path(name)
     return (bool(PRIVATE_PARTS.intersection(path.parts)) or path.name in PRIVATE_FILES
+            or any(part.casefold().startswith(("foundations", "fundations")) for part in path.parts)
             or path.name.startswith(".env") and path.name != ".env.example"
             or path.suffix in {".pyc", ".pyo", ".bundle"})
 

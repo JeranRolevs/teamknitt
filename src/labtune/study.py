@@ -285,7 +285,7 @@ Do not invent evidence IDs. State uncertainty. Wisdom omits identities, rankings
 
 class TextStudy:
     def __init__(self, project, workspace, config, plan, variant, key, *, trial_root=None,
-                 shared_limits=None, event_sink=None):
+                 shared_limits=None, event_sink=None, generation_client=None):
         self.project, self.workspace, self.config, self.plan, self.key = project, workspace, config, plan, key
         self.shared_limits, self.event_sink = shared_limits, event_sink
         self.inter_lab_context = {}
@@ -336,7 +336,7 @@ Confirmation is withheld from agents and runs once after search; never request i
 Generalization to external datasets and unimplemented analysis methods is untested by this
 initial tool, so do not claim those capabilities solved.
 """
-        self.client = client_for(config, key, reserve=self.reserve, on_event=self.event,
+        self.client = generation_client if generation_client is not None else client_for(config, key, reserve=self.reserve, on_event=self.event,
                                  shared_semaphore=shared_limits.llm_semaphore if shared_limits else None,
                                  max_parallel=min(config["provider"]["max_parallel_requests"], plan["resources"]["max_llm_requests"]))
         if plan["decision_service"]["mode"] != "llm_only":
@@ -460,11 +460,14 @@ initial tool, so do not claim those capabilities solved.
         if self.specialist_client is not None and self.specialist_client is not self.client:
             self.specialist_client.timeout = min(self.decision_settings["timeout_seconds"], remaining)
 
+    def visible_peer_rows(self, actor, team):
+        return [row for row in self.outputs if row["team"] != team]
+
     def peer_view(self, actor, team):
         policy = self.plan["communication"]
         if not policy["research_exchange"]:
             return {}
-        peers = [row for row in self.outputs if row["team"] != team]
+        peers = self.visible_peer_rows(actor, team)
         valid = (ref for ref, entry in self.research.receipts.items()
                  if entry["result"].get("status") == "valid") if self.research is not None else ()
         view, low_count = filtered_view(peers, policy, valid)
@@ -704,6 +707,12 @@ initial tool, so do not claim those capabilities solved.
                                                     time_allowance_seconds=time_allowance)
         return {}  # Successful passes were retained individually, including before a later failure.
 
+    async def before_wave(self, nodes):
+        """Optional local extension boundary; ordinary Labtune has no extra behavior."""
+
+    async def after_wave(self, nodes, outputs):
+        """Publish optional local extension state only at the dependency-wave barrier."""
+
     async def run_graph(self):
         nodes=self.plan["work_graph"]
         pending={node["id"]:node for node in nodes}
@@ -724,6 +733,7 @@ initial tool, so do not claim those capabilities solved.
             ready=[node for node in pending.values() if set(node["depends_on"])<=completed]
             if not ready:
                 raise StudyError("Workflow contains a dependency cycle.")
+            await self.before_wave(ready)
             jobs=[]
             for node in ready:
                 if node["kind"] in {"qualification","verification"}:
@@ -759,6 +769,7 @@ initial tool, so do not claim those capabilities solved.
                     if "output" in result:
                         wave_outputs.append(result)
             # A dependency wave sees one prior snapshot, regardless of finish order or resource width.
+            await self.after_wave(ready, wave_outputs)
             self.outputs.extend(wave_outputs)
             for node in ready:
                 self.event({"kind":"phase_completed","node":node["id"],"actors":node["actors"]})

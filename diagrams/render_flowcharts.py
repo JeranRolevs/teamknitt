@@ -13,7 +13,7 @@ OUT = Path(__file__).resolve().parent
 
 
 def mermaid(g):
-    lines = [f"%% Generated from specs.py; {DATE}. Current runtime; gray nodes are planned.",
+    lines = [f"%% Generated from specs.py; {g.get('date', DATE)}. Current runtime; gray nodes are planned.",
              "flowchart " + g["direction"]]
     for n in g["nodes"]:
         label = escape(n["title"] + ("\n" + n["body"] if n["body"] else ""), quote=True).replace("\n", "<br/>")
@@ -42,8 +42,8 @@ def render(g):
     fig,ax=plt.subplots(figsize=(width,height),facecolor=STYLE["background"])
     fig.subplots_adjust(left=0,right=1,bottom=0,top=1)
     ax.set(xlim=(0,width),ylim=(height,0));ax.axis("off")
-    ax.text(.6,.45,"LABTUNE / "+g["stem"][:2],fontsize=11,color=STYLE["accent"],weight="bold",fontfamily=STYLE["display_font"],va="center")
-    ax.text(width-.6,.45,DATE+" · CURRENT BOUNDED RUNTIME",fontsize=10,color=STYLE["secondary"],ha="right",va="center")
+    ax.text(.6,.45,g.get("brand", "LABTUNE")+" / "+g["stem"][:2],fontsize=11,color=STYLE["accent"],weight="bold",fontfamily=STYLE["display_font"],va="center")
+    ax.text(width-.6,.45,g.get("date", DATE)+" · CURRENT BOUNDED RUNTIME",fontsize=10,color=STYLE["secondary"],ha="right",va="center")
     for y in (.7,.75):
         ax.plot([.6,width-.6],[y,y],color=STYLE["accent"],linewidth=.5)
     ax.text(.6,1.15,g["title"],fontsize=24,color=STYLE["ink"],weight="bold",fontfamily=STYLE["display_font"],va="center")
@@ -83,8 +83,13 @@ def render(g):
     ax.plot([.6,width-.6],[height-.9,height-.9],color=STYLE["fine_rule"],linewidth=1)
     ax.text(.6,height-.47,g["footer"],fontsize=10.5,color=STYLE["secondary"],va="center")
     for suffix in ("svg","png","pdf"):
-        fig.savefig(OUT/(g["stem"]+"."+suffix),dpi=130,facecolor=STYLE["background"],
+        target = OUT/(g["stem"]+"."+suffix)
+        fig.savefig(target,dpi=130,facecolor=STYLE["background"],
                     metadata={"Creator":"Labtune diagram renderer"})
+        if suffix == "svg":
+            # Matplotlib pads multiline path attributes; keep generated text Git-clean.
+            lines = target.read_text(encoding="utf-8").splitlines()
+            target.write_text("\n".join(line.rstrip() for line in lines) + "\n",encoding="utf-8")
     plt.close(fig)
 
 

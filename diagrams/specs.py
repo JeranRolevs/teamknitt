@@ -302,4 +302,79 @@ def diagrams():
     edge(g,"confirm","out","bottom","bottom",via=((17,12),(3,12)))
     g["footer"]="Meetings are operational only when research sharing is disabled. No automatic lab winner, redesign or extra sequence."
     result.append(g)
+    g=graph("13-teamknitt-system", "teamknitt — your task, your team, observable work", "User-selected tasks, ideas and goals; distributed cognition as the framework; dynamical dimensions as optional tools.",width=24,height=13)
+    g.update(brand="TEAMKNITT", date="2026-11-08")
+    for args in [
+        ("baseline",3,3.2,"User-directed team configuration","Task / brainstorm / goal / research\nTopology, members and communication","artifact",4.8,1.65),
+        ("backbone",10,3.2,"Distributed cognition framework","Members, representations, work and context\nMcNeese / Salas / Endsley, eds.","artifact",5.0,1.65),
+        ("temporal",17,3.2,"Optional observation dimensions","Local/global, coupling, perturbations\nGorman et al. (2017); no total score","optional",5.0,1.65),
+        ("roles",3,6.8,"Chosen members and connections","Complementary responsibilities and inputs\nExplicit directed routes; no implied authority","llm",4.8,1.65),
+        ("reps",10,6.8,"External representations","Complementary sources; shared workspaces\nExplicit readers, writers and provenance","evidence",5.0,1.65),
+        ("work",17,6.8,"Work and coordination","Task structure, handoffs and timework\nCapability-conditioned action opportunities","code",5.0,1.65),
+        ("authority",3,10.3,"Labtune engine and aesthetics","Bounded execution, tools and accounting\nExplicit models, delegation and budgets","artifact",4.8,1.65),
+        ("runtime",10,10.3,"Task execution and monitoring","Scoped frames and versioned contributions\nRead-only metadata; explicit draft application","code",5.0,1.65),
+        ("record",17,10.3,"Contributions for user review","Visible process is not goal achievement\nNo automatic winner or organization change","evidence",5.0,1.65),
+    ]:
+        node(g,*args)
+    edge(g,"baseline","backbone");edge(g,"backbone","temporal",optional=True)
+    for key,x in [("roles",3),("reps",10),("work",17)]:
+        edge(g,"backbone",key,"bottom","top",via=((10,4.9),(x,4.9)) if key!="reps" else ())
+    edge(g,"temporal","work","bottom","right",via=((20.5,4.6),(20.5,6.8)),optional=True)
+    for key,x in [("roles",3),("reps",10),("work",17)]:
+        edge(g,key,"runtime","bottom","top",via=((x,8.6),(10,8.6)) if key!="reps" else ())
+    edge(g,"authority","runtime");edge(g,"runtime","record")
+    g["footer"]="Built on Goran Mitevski's Labtune engine. Broader task capability does not expand the unchanged Labtune license permission."
+    result.append(g)
+
+    g=graph("14-teamknitt-protocol", "From a user brief to observable team contributions", "Configure or draft explicitly; route information by topology and sharing; keep completion separate from user-goal achievement.",width=24,height=14)
+    g.update(brand="TEAMKNITT", date="2026-11-08")
+    for args in [
+        ("sources",3,3.3,"User brief and task context","Task, brainstorming prompt or goal\nComplementary inputs are optional","artifact",4.8,1.65),
+        ("actor",10,3.3,"Actor's permitted observation","Own responsibilities and representations\nCapabilities + available action opportunities","llm",5.0,1.65),
+        ("produce",17,3.3,"Externalize a contribution","Bounded notes with input provenance\nNo unrestricted code or external execution","code",5.0,1.65),
+        ("control",3,7,"Team choices + engine bounds","Topology and sharing filter exposure\nModels, tools and budgets stay explicit","artifact",4.8,1.65),
+        ("barrier",10,7,"Dependency-wave barrier","Validate all publications before commit\nImmutable representation versions","code",5.0,1.65),
+        ("consumer",17,7,"Another role's later observation","Permitted representation exposure\nVersion-specific handoff acknowledgement","llm",5.0,1.65),
+        ("viewer",3,11,"Configure, monitor and review","Draft previews do not write or run models\nPrivate deliverable; user reviews the result","artifact",4.8,1.65),
+        ("record",10,11,"Distinct process observations","Available / exposed / published / acknowledged\nExplicit reports, freshness and missingness","evidence",5.0,1.65),
+        ("timework",17,11,"Additional observation tools","Selected dynamical-system dimensions\nAttractors / synchrony / fractals not estimated","optional",5.0,1.65),
+    ]:
+        node(g,*args)
+    edge(g,"sources","actor");edge(g,"actor","produce")
+    edge(g,"produce","barrier","bottom","top",via=((17,5.4),(10,5.4)))
+    edge(g,"control","barrier");edge(g,"barrier","consumer")
+    edge(g,"consumer","timework","bottom","top")
+    edge(g,"barrier","record","bottom","top")
+    edge(g,"timework","record","left","right",optional=True)
+    edge(g,"record","viewer","left","right")
+    edge(g,"consumer","actor","right","top",via=((21,7),(21,2.3),(10,2.3)),label="next research phase",at=(21,5.7))
+    g["footer"]="Availability is not comprehension. Acknowledgement is not agreement. Similarity is not accuracy. Human-team constructs require validation."
+    result.append(g)
+    return result
+
+
+def team_topology_layout(kind, count):
+    """Runtime topology positions exported to the package by tools/sync_starter.py.
+
+    Normalized logical routing diagram, not inferred influence or decision authority.
+    """
+    import math
+    if not 1 <= count <= 16 or kind not in {"fully_connected", "hub_and_spoke", "ring", "hierarchical", "custom"}:
+        raise ValueError("Unsupported topology layout")
+    result = []
+    for i in range(count):
+        if count == 1:
+            x, y = .5, .5
+        elif kind == "hub_and_spoke" and i == 0:
+            x, y = .5, .5
+        elif kind == "hierarchical":
+            level = (i + 1).bit_length() - 1
+            offset = i - (2**level - 1)
+            levels = count.bit_length()
+            x, y = (offset + 1) / (2**level + 1), .12 + .76 * level / max(1, levels - 1)
+        else:
+            index, n = (i - 1, count - 1) if kind == "hub_and_spoke" else (i, count)
+            angle = 2 * math.pi * index / max(1, n) - math.pi / 2
+            x, y = .5 + .36 * math.cos(angle), .5 + .36 * math.sin(angle)
+        result.append({"id": f"member.{i+1}", "x": round(x, 6), "y": round(y, 6)})
     return result

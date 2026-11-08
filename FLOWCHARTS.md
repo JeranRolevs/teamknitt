@@ -51,3 +51,22 @@ Use --mermaid-only to export Mermaid without image dependencies.
 Use --diagram 12-multi-lab to regenerate one specification and update the contact sheet.
 The older render_integrated_lab.py and render_horizontal_lab.py commands delegate to the
 same renderer. [Overview contact sheet](diagrams/overview.png).
+
+
+## teamknitt: task teams on the Labtune engine
+
+The user chooses purpose, member count, topology and communication. Distributed cognition
+organizes work across members and artifacts; dynamical-systems dimensions are optional
+observation tools. Labtune is the bounded execution engine and aesthetic foundation.
+
+- [13 · user task, team configuration, engine and observation](diagrams/13-teamknitt-system.svg)
+- [14 · brief to observable contributions and user review](diagrams/14-teamknitt-protocol.svg)
+
+Each also has Mermaid, PNG and PDF exports from the same `diagrams/specs.py` definition.
+Runtime topology positions for every supported topology and 1–16 members are likewise
+defined in `team_topology_layout` in that file and exported by `tools/sync_starter.py`.
+The installed viewer uses those packaged positions; no development checkout is needed.
+
+```bash
+python diagrams/render_flowcharts.py --diagram 13-teamknitt-system --diagram 14-teamknitt-protocol
+```

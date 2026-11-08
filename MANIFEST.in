@@ -1,6 +1,7 @@
-include README.md AGENTS.md LICENSE LICENSING.md
+include README.md LABTUNE.md AGENTS.md LICENSE LICENSING.md
 recursive-include src/labtune/resources *.yaml *.json *.md *.py *.html *.css *.js
 recursive-include src/labtune/schemas *.json
+recursive-include src/teamknitt/resources *.yaml *.json *.md *.html *.js
 recursive-include lab_designs *.md
 recursive-include configs *.yaml *.md
 recursive-include prompts *.md
@@ -10,6 +11,7 @@ recursive-include tools *.py
 recursive-include diagrams *.py *.mmd *.svg
 recursive-include docs *.md *.json
 global-exclude __pycache__ *.py[cod] private_splits.json .env .env.*
+global-exclude TEAMKNITT_FOUNDATIONS.md [Ff]oundations* [Ff]undations*
 prune setup
 prune trials
 prune results

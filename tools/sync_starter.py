@@ -18,7 +18,7 @@ def desired():
                 if folder == "configs" and source.name != "lab.yaml":
                     continue
                 output["project/" + source.relative_to(PROJECT).as_posix()] = source.read_bytes()
-    for name in ("SINGLE_SCIENTIST.md", "MULTI_LAB.md", "PROVIDERS.md", "DECISION_PROVIDERS.md", "BAYESIAN_PRIORS.md", "MIGRATION.md"):
+    for name in ("SINGLE_SCIENTIST.md", "MULTI_LAB.md", "PROVIDERS.md", "DECISION_PROVIDERS.md", "BAYESIAN_PRIORS.md", "MIGRATION.md", "TEAMKNITT.md"):
         guide = PROJECT / "docs" / name
         if guide.is_file():
             output["project/docs/" + name] = guide.read_bytes()
@@ -52,7 +52,47 @@ def main():
             target = TARGET / relative
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(data)
-    print(f"Starter resources: {len(expected)} files; synchronized.")
+    # Export runtime topology positions from the canonical diagram specification.
+    import importlib.util
+    import json
+    spec = importlib.util.spec_from_file_location("teamknitt_diagrams", PROJECT / "diagrams/specs.py")
+    diagram_specs = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(diagram_specs)
+    layouts = {kind: {str(n): diagram_specs.team_topology_layout(kind, n) for n in range(1, 17)}
+               for kind in ("fully_connected", "hub_and_spoke", "ring", "hierarchical", "custom")}
+    geometry = (json.dumps(layouts, indent=2) + "\n").encode()
+    geometry_path = PROJECT / "src/teamknitt/resources/topology-layouts.json"
+    if args.check and (not geometry_path.is_file() or geometry_path.read_bytes() != geometry):
+        print("Topology layouts need synchronization from diagrams/specs.py", file=sys.stderr)
+        return 1
+    if not args.check:
+        geometry_path.write_bytes(geometry)
+    # Teamknitt task and advanced research starters are authoritative public examples.
+    team_target = PROJECT / "src/teamknitt/resources"
+    team_sources = {"team.yaml": PROJECT / "examples/task_team/team.yaml",
+                    "WORKSPACE.md": PROJECT / "examples/task_team/README.md",
+                    "research-team.yaml": PROJECT / "examples/research_cognition/team.yaml",
+                    "RESEARCH_WORKSPACE.md": PROJECT / "examples/research_cognition/README.md",
+                    "probe.yaml": PROJECT / "examples/teammate_probes/team.yaml",
+                    "PROBES_WORKSPACE.md": PROJECT / "examples/teammate_probes/README.md"}
+    for folder, example in (("task-starter", "task_team"), ("research-starter", "research_cognition")):
+        for source in (PROJECT / "examples" / example).rglob("*"):
+            if source.is_file() and source.name not in {"README.md", "team.yaml"} and source.suffix in {".md", ".yaml"}:
+                team_sources[folder + "/" + source.relative_to(PROJECT / "examples" / example).as_posix()] = source
+    if not args.check:
+        for folder in ("task-starter", "research-starter", "cognition-starter"):
+            if (team_target / folder).exists():
+                shutil.rmtree(team_target / folder)
+    for name, source in team_sources.items():
+        target = team_target / name
+        data = source.read_bytes()
+        if args.check and (not target.is_file() or target.read_bytes() != data):
+            print("Teamknitt starter needs synchronization: " + name, file=sys.stderr)
+            return 1
+        if not args.check:
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(data)
+    print(f"Starter resources: {len(expected)} Labtune files + {len(team_sources)} Teamknitt files; synchronized.")
     return 0
 
 

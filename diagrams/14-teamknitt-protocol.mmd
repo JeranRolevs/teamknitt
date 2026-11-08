@@ -1,0 +1,33 @@
+%% Generated from specs.py; 2026-11-08. Current runtime; gray nodes are planned.
+flowchart LR
+    sources["User brief and task context<br/>Task, brainstorming prompt or goal<br/>Complementary inputs are optional"]
+    actor["Actor&#x27;s permitted observation<br/>Own responsibilities and representations<br/>Capabilities + available action opportunities"]
+    produce["Externalize a contribution<br/>Bounded notes with input provenance<br/>No unrestricted code or external execution"]
+    control["Team choices + engine bounds<br/>Topology and sharing filter exposure<br/>Models, tools and budgets stay explicit"]
+    barrier["Dependency-wave barrier<br/>Validate all publications before commit<br/>Immutable representation versions"]
+    consumer["Another role&#x27;s later observation<br/>Permitted representation exposure<br/>Version-specific handoff acknowledgement"]
+    viewer["Configure, monitor and review<br/>Draft previews do not write or run models<br/>Private deliverable; user reviews the result"]
+    record["Distinct process observations<br/>Available / exposed / published / acknowledged<br/>Explicit reports, freshness and missingness"]
+    timework["Additional observation tools<br/>Selected dynamical-system dimensions<br/>Attractors / synchrony / fractals not estimated"]
+    sources --> actor
+    actor --> produce
+    produce --> barrier
+    control --> barrier
+    barrier --> consumer
+    consumer --> timework
+    barrier --> record
+    timework -.-> record
+    record --> viewer
+    consumer -->|next research phase| actor
+    classDef artifact fill:#FCFAF4,stroke:#99876F,color:#342F28;
+    class sources,control,viewer artifact;
+    classDef llm fill:#E9EEEE,stroke:#5B7580,color:#342F28;
+    class actor,consumer llm;
+    classDef code fill:#EDF0E6,stroke:#697957,color:#342F28;
+    class produce,barrier code;
+    classDef evidence fill:#F1EADD,stroke:#93805D,color:#342F28;
+    class record evidence;
+    classDef optional fill:#F6EDDC,stroke:#9A7440,color:#342F28;
+    class timework optional;
+    classDef future fill:#EEEDE8,stroke:#999389,color:#342F28;
+    linkStyle default stroke:#887E6B,stroke-width:1.5px;

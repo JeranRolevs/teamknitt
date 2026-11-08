@@ -1,4 +1,4 @@
-name: Labtune offline checks
+name: teamknitt and Labtune engine offline checks
 on: [push, pull_request, workflow_dispatch]
 permissions:
   contents: read
@@ -61,3 +61,34 @@ jobs:
               if path.name in {"stderr.log", "result.json", "sandbox.sb"} and path.is_file():
                   print(f"{path.relative_to(root)}:\n{path.read_text()[-8000:]}")
           PY
+
+      - name: Portable teamknitt task-team wheel smoke test (offline)
+        run: |
+          cd "${{ runner.temp }}"
+          "${{ runner.temp }}/labtune-wheel-venv/bin/python" -m teamknitt init portable-team --members 4 --topology ring --purpose brainstorm --goal "Explore welcoming workshop formats."
+          "${{ runner.temp }}/labtune-wheel-venv/bin/python" -m teamknitt check --workspace portable-team
+          "${{ runner.temp }}/labtune-wheel-venv/bin/python" -m teamknitt configure --workspace portable-team --members 5 --topology hub_and_spoke --communication intermediate
+          "${{ runner.temp }}/labtune-wheel-venv/bin/python" -m teamknitt prepare --workspace portable-team
+          "${{ runner.temp }}/labtune-wheel-venv/bin/python" -m teamknitt view --workspace portable-team --output portable-team-plan.html
+          "${{ runner.temp }}/labtune-wheel-venv/bin/python" -m teamknitt demo --workspace portable-team --policy connected
+          "${{ runner.temp }}/labtune-wheel-venv/bin/python" -m teamknitt demo --workspace portable-team --policy fragmented
+          "${{ runner.temp }}/labtune-wheel-venv/bin/python" - <<'PY'
+          from pathlib import Path
+          from teamknitt.reporting import build_report
+          from teamknitt.observatory import snapshot
+          records = sorted(Path("portable-team/trials").iterdir())
+          assert len(records) == 2
+          summaries = [build_report(p) for p in records]
+          agreement = [s["snapshots"][-1]["reported_plan_pair_agreement"] for s in summaries]
+          assert max(agreement) == 1 and min(agreement) < 1
+          assert all(s["usage"]["provider_requests"] == 0 and s["goal_achieved"] is None for s in summaries)
+          assert all(s["observations"]["aggregate_score"] is None for s in summaries)
+          snapshot(summaries[0], Path("portable-team-process.html"))
+          PY
+      - name: Advanced and optional starter compatibility (offline)
+        run: |
+          cd "${{ runner.temp }}"
+          "${{ runner.temp }}/labtune-wheel-venv/bin/python" -m teamknitt init portable-research --template research
+          "${{ runner.temp }}/labtune-wheel-venv/bin/python" -m teamknitt check --workspace portable-research
+          "${{ runner.temp }}/labtune-wheel-venv/bin/python" -m teamknitt probes init portable-probes
+          "${{ runner.temp }}/labtune-wheel-venv/bin/python" -m teamknitt probes check --workspace portable-probes

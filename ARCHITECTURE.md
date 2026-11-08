@@ -1,4 +1,44 @@
-# Architecture and implementation scope
+# teamknitt and its Labtune engine
+
+## User-directed teams, not research-only lab tuning
+
+teamknitt exposes task/brainstorm/goal purpose, member count, topology and sharing as explicit
+user controls in schema-3 `team.yaml`. `builder.py` mechanically creates starter bindings only
+from those choices; a draft is never applied automatically. `topology.py` defines directed
+routes. `config.py` compiles the choices into a selected Labtune task-team design, leaving
+provider/model, statistics, delegation, tool and budget choices in the engine's `study.yaml`.
+
+The retained `TextStudy` scheduler is the actual execution engine, with no-op/default wave
+and peer-row hooks plus fixture-client injection. teamknitt's subclass adds scoped representations,
+route-filtered peer views, versioned publication, handoffs and explicit temporal reports. Its
+user-task contract does not require every brief to be scientific research. Generic low-sharing
+blockers are labelled member reports, not falsely relabelled as measured research failures.
+
+Distributed team cognition is the organizing framework across people/roles, representations,
+technology, work and context. `cognition.py` validates opportunities/provenance and publishes
+atomically at dependency-wave barriers. Source/own and cross-member grants remain distinct;
+a topology cannot be bypassed by a generated shared note. Previously seen material is not erased.
+
+`observations.py` is an additional, optional descriptive tool informed by Gorman et al.:
+local/global activity, disturbance response, exposure coupling and cross-level records.
+Attractor, synchronization and fractal dimensions are explicit not-estimated states. No overall
+cognition score, topology ranking, user-goal success or automatic organizational improvement
+is inferred. A private `deliverable.md` preserves actual contributions for user review.
+
+The local viewer shares Labtune's warm neutral/brass/ink aesthetic. Its GET-only draft builder
+changes no files or budgets. Metadata polling follows matching execution/checkpoints without
+calling models; telemetry/heartbeat and completion/goal achievement are distinguished. Applying
+configuration needs explicit CLI confirmation and preserves a private backup, task text and
+engine settings. The shared engine lock prevents application during execution.
+
+Canonical flowcharts and topology geometry originate in `diagrams/specs.py`, exported by the
+starter synchronizer; the installed viewer does not need the development checkout. The advanced
+schema-2 research template and secondary teammate probes remain separate, not defaults.
+[Configuration](docs/TEAMKNITT.md) · [Framework and sources](docs/TEAMKNITT.md#research-framework-and-observation-sources).
+
+![teamknitt system](diagrams/13-teamknitt-system.svg)
+
+## Original Labtune core
 
 The optional multi-lab coordinator composes existing study variants as separate
 labs with their own histories and research backends. Shared request/time and

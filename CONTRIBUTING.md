@@ -31,3 +31,17 @@ For a release, build wheels and a source distribution and run
 python3 tools/check_release.py --artifacts dist. Keep ignored local archives and audit/review
 records out of both Git and artifacts. Preserve dependency licence obligations. All starter
 provider URLs and model IDs remain placeholders; live service selection belongs to the user.
+
+
+## teamknitt product layer
+
+Use teamknitt for user-directed task/idea/goal configuration and monitoring, with Labtune as
+the engine and aesthetic foundation. Preserve explicit count/topology/sharing, model, tool,
+statistics, delegation and budget choices; no automated organization improvement or hidden
+allowance. The distributed-cognition framework and optional dynamical-systems observation
+lenses must retain their interpretation limits. Drafting is not application; running is not
+goal achievement. Test topology permissions at runtime, private artifacts and backups,
+non-mutating viewer APIs, live metadata, the renamed wheel outside the checkout and retained
+engine/advanced/probe compatibility. Synchronize public starters and canonical layouts with
+tools/sync_starter.py; architecture diagrams use diagrams/specs.py. Preserve both legal texts
+and credits; wider task capability does not widen licensing permission.

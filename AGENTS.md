@@ -27,3 +27,20 @@ Company donations must be unrestricted, without control or privileged research/I
 Preserve LICENSE and LICENSING.md in distributions and starter workspaces, including the
 Pioneertown B.V. copyright/licensor notice and Goran Mitevski author credit. Do not change
 licensing terms, commit, push or publish without user authorization.
+
+
+# teamknitt product on the Labtune engine
+
+teamknitt configures and monitors teams for user-set tasks, brainstorming, goals and research.
+Labtune is the engine and aesthetic foundation, not a requirement to make every task a lab.
+Keep model/provider, domain/tool, statistics, delegation and budget choices explicit. User-
+selected topology/count/sharing translate into engine settings; do not optimize or change them
+silently. Distributed team cognition remains the configuration framework. Teams As Dynamical
+Systems informs temporal process and an optional additional observation tool; do not fabricate
+attractor, synchrony, fractal, causal or psychological claims. Separate availability/exposure/
+understanding, reported agreement/reference conformity/perceived alignment and user task success.
+Draft previews do not write configs or start paid work. Applying a reviewed draft is explicit,
+backed up and blocked by the shared run lock. Monitoring makes no model calls. The optional
+teammate probes remain secondary. Rename code/docs/resources consistently; preserve original
+Labtune credit and unchanged legal terms, whose eligibility is not broadened by general tasks.
+Keep starters and canonical diagram/layout resources synchronized. Publication needs user authorization.

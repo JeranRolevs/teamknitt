@@ -1,0 +1,140 @@
+schema_version: 2
+name: Distributed research cognition
+labtune:
+  variant: team  # Organization, model, sharing, delegation, statistics and budgets stay in study.yaml.
+cognition:
+  perspectives: [distributed_cognition, information_processing, transactive_memory, shared_mental_models, coaction, interactive_dynamics]
+  context:
+    setting: A research team develops an evidence-grounded study proposal; no scientific result is assumed.
+    tools: [versioned_research_notes, explicit_handoffs, expertise_directory]
+    constraints:
+      - User-provided source notes are inputs, not independently verified findings.
+      - Role labels and capability assignments do not establish actual expertise.
+  task:
+    structure: divisible
+    interaction: deliberative
+    goal: Combine a mechanistic explanation with a measurement plan while preserving unresolved disagreement.
+    success_criteria:
+      - Trace a proposal to the source representations each contributor actually encountered.
+      - Distinguish a shared plan from a correct or validated plan.
+      - Record missing handoffs and conflicting temporal expectations rather than forcing consensus.
+  roles:
+    - actor: mechanism_lead.1
+      responsibilities: [Develop explanatory hypotheses and expose assumptions.]
+      expertise: [mechanism_design, falsification]
+      perspective: Prefer explicit mechanisms and discriminating explanations, without treating elegance as evidence.
+      capabilities: [interpret, synthesize, acknowledge]
+    - actor: measurement_lead.1
+      responsibilities: [Develop a bounded measurement plan and challenge untested claims.]
+      expertise: [measurement_design, uncertainty]
+      perspective: Prefer measured receipts and explicit uncertainty, without treating a numerical claim as verified.
+      capabilities: [interpret, synthesize, acknowledge]
+  representations:
+    - id: mechanism-source
+      kind: source
+      purpose: Role-local explanatory background supplied by the researcher.
+      format: markdown
+      path: mission/cognition/mechanism.md
+      readers: [mechanism_lead.1]
+      writers: []
+    - id: measurement-source
+      kind: source
+      purpose: Complementary measurement constraints supplied by the researcher.
+      format: markdown
+      path: mission/cognition/measurement.md
+      readers: [measurement_lead.1]
+      writers: []
+    - id: mechanism-note
+      kind: workspace
+      purpose: Externalize the explanation with source/version provenance for the other role.
+      format: structured_note
+      readers: [mechanism_lead.1, measurement_lead.1]
+      writers: [mechanism_lead.1]
+    - id: measurement-note
+      kind: workspace
+      purpose: Externalize measurement constraints and uncertainty rather than rely on shared private memory.
+      format: structured_note
+      readers: [mechanism_lead.1, measurement_lead.1]
+      writers: [measurement_lead.1]
+  work:
+    - id: explain
+      phase: independent_positions
+      actors: [mechanism_lead.1]
+      goal: Form a falsifiable explanatory proposal using the mechanism source.
+      inputs: [mechanism-source]
+      outputs: [mechanism-note]
+      depends_on: []
+    - id: measure
+      phase: independent_positions
+      actors: [measurement_lead.1]
+      goal: Form a measurement proposal using the measurement source.
+      inputs: [measurement-source]
+      outputs: [measurement-note]
+      depends_on: []
+    - id: joint-challenge
+      phase: paired_challenge
+      actors: [mechanism_lead.1, measurement_lead.1]
+      goal: Contrast the two externalized representations and acknowledge the exact version used.
+      inputs: [mechanism-note, measurement-note]
+      outputs: []
+      depends_on: [explain, measure]
+  handoffs:
+    - id: explanation-to-measurement
+      representation: mechanism-note
+      producer: mechanism_lead.1
+      consumer: measurement_lead.1
+      due_phase: paired_challenge
+      ack_required: true
+    - id: measurement-to-explanation
+      representation: measurement-note
+      producer: measurement_lead.1
+      consumer: mechanism_lead.1
+      due_phase: paired_challenge
+      ack_required: true
+  expertise_directory:
+    - topic: Explanatory assumptions
+      holders: [mechanism_lead.1]
+      basis: Researcher-assigned responsibility, not measured competence.
+    - topic: Measurement validity
+      holders: [measurement_lead.1]
+      basis: Researcher-assigned responsibility, not measured competence.
+  temporal_reference:
+    order: [independent_positions, parallel_episodes, paired_challenge, discriminating_test, verification]
+    deadline_wave: 6
+  affordances:
+    - id: externalize-explanation
+      actors: [mechanism_lead.1]
+      capability: synthesize
+      requires: [mechanism-source]
+      operation: publish
+      target: mechanism-note
+      purpose: Make an explanation available for another role's work.
+    - id: externalize-measurement
+      actors: [measurement_lead.1]
+      capability: synthesize
+      requires: [measurement-source]
+      operation: publish
+      target: measurement-note
+      purpose: Make measurement constraints available for another role's work.
+    - id: acknowledge-explanation
+      actors: [measurement_lead.1]
+      capability: acknowledge
+      requires: [mechanism-note]
+      operation: acknowledge
+      target: explanation-to-measurement
+      purpose: Ground the handoff in a representation version actually exposed to the recipient.
+    - id: acknowledge-measurement
+      actors: [mechanism_lead.1]
+      capability: acknowledge
+      requires: [measurement-note]
+      operation: acknowledge
+      target: measurement-to-explanation
+      purpose: Separate delivered information from acknowledged use.
+  memory:
+    max_words_per_representation: 160
+dynamics:
+  stable_waves: 2
+  perturbations: []  # Optional, researcher-chosen interruptions; not mandatory teammate challenges.
+  # - {id: unavailable-note, kind: representation_unavailable, representation: mechanism-note, at_wave: 3, duration: 1}
+  # - {id: absent-role, kind: actor_unavailable, actor: measurement_lead.1, at_wave: 3, duration: 1}
+  # - {id: broken-link, kind: link_dropout, source: mechanism_lead.1, target: measurement_lead.1, at_wave: 3, duration: 1}

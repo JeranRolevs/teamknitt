@@ -1,0 +1,34 @@
+%% Generated from specs.py; 2026-11-08. Current runtime; gray nodes are planned.
+flowchart LR
+    baseline["User-directed team configuration<br/>Task / brainstorm / goal / research<br/>Topology, members and communication"]
+    backbone["Distributed cognition framework<br/>Members, representations, work and context<br/>McNeese / Salas / Endsley, eds."]
+    temporal["Optional observation dimensions<br/>Local/global, coupling, perturbations<br/>Gorman et al. (2017); no total score"]
+    roles["Chosen members and connections<br/>Complementary responsibilities and inputs<br/>Explicit directed routes; no implied authority"]
+    reps["External representations<br/>Complementary sources; shared workspaces<br/>Explicit readers, writers and provenance"]
+    work["Work and coordination<br/>Task structure, handoffs and timework<br/>Capability-conditioned action opportunities"]
+    authority["Labtune engine and aesthetics<br/>Bounded execution, tools and accounting<br/>Explicit models, delegation and budgets"]
+    runtime["Task execution and monitoring<br/>Scoped frames and versioned contributions<br/>Read-only metadata; explicit draft application"]
+    record["Contributions for user review<br/>Visible process is not goal achievement<br/>No automatic winner or organization change"]
+    baseline --> backbone
+    backbone -.-> temporal
+    backbone --> roles
+    backbone --> reps
+    backbone --> work
+    temporal -.-> work
+    roles --> runtime
+    reps --> runtime
+    work --> runtime
+    authority --> runtime
+    runtime --> record
+    classDef artifact fill:#FCFAF4,stroke:#99876F,color:#342F28;
+    class baseline,backbone,authority artifact;
+    classDef llm fill:#E9EEEE,stroke:#5B7580,color:#342F28;
+    class roles llm;
+    classDef code fill:#EDF0E6,stroke:#697957,color:#342F28;
+    class work,runtime code;
+    classDef evidence fill:#F1EADD,stroke:#93805D,color:#342F28;
+    class reps,record evidence;
+    classDef optional fill:#F6EDDC,stroke:#9A7440,color:#342F28;
+    class temporal optional;
+    classDef future fill:#EEEDE8,stroke:#999389,color:#342F28;
+    linkStyle default stroke:#887E6B,stroke-width:1.5px;
