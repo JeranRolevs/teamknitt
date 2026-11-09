@@ -1,0 +1,29 @@
+%% Generated from specs.py; 2026-11-09. Current runtime; gray nodes are planned.
+flowchart LR
+    user["Your task and chosen configuration<br/>Explicit topology, membership, sharing, models and budgets"]
+    standard["STANDARD — individual / component-centered<br/>Member attributes, behavior, reports and decomposed relationships<br/>Interaction can still be studied; not a claim that every model is linear"]
+    complexity["COMPLEXITY — interaction / system-centered<br/>Problem-solving across agents, artifacts, tools and time<br/>Complex adaptive systems / Santa Fe tradition; no inferred emergence"]
+    behavior["Collaborative intelligence<br/>Wu et al.; alone/baseline/challenge<br/>Optional separate saved protocol<br/>Not an official CIB score"]
+    models["Shared models + reports<br/>Explicit plans and perceived alignment<br/>Similarity is not correctness<br/>No latent mental-model inference"]
+    distributed["Distributed problem-solving<br/>Complementary inputs and artifacts<br/>Work dependencies + transformations<br/>Expertise directory + handoffs"]
+    dynamics["Teams as dynamical systems<br/>Temporal activity + disturbance windows<br/>Gorman et al. is one reference<br/>Attractors/synchrony/fractals not estimated"]
+    coordination["Interactions + coordination<br/>Recorded exposure + receipt metadata<br/>Permissions are not actual exposure<br/>Counts do not establish causal coupling"]
+    engine["teamknitt standalone engine<br/>Own runtime, adapters, schemas and resources · No upstream package or CLI dependency<br/>Changing groups/views never changes configuration, runs an evaluation or grants permission"]
+    user --> standard
+    user --> complexity
+    standard --> behavior
+    standard --> models
+    complexity --> distributed
+    complexity --> dynamics
+    complexity --> coordination
+    classDef artifact fill:#FCFAF4,stroke:#99876F,color:#342F28;
+    class user,standard,complexity artifact;
+    classDef llm fill:#E9EEEE,stroke:#5B7580,color:#342F28;
+    classDef code fill:#EDF0E6,stroke:#697957,color:#342F28;
+    class engine code;
+    classDef evidence fill:#F1EADD,stroke:#93805D,color:#342F28;
+    class models,distributed,coordination evidence;
+    classDef optional fill:#F6EDDC,stroke:#9A7440,color:#342F28;
+    class behavior,dynamics optional;
+    classDef future fill:#EEEDE8,stroke:#999389,color:#342F28;
+    linkStyle default stroke:#887E6B,stroke-width:1.5px;

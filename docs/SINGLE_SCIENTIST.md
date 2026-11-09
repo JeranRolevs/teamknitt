@@ -7,9 +7,9 @@ Their generation model and persona remain user choices.
 ## Create a workspace
 
 ```bash
-labtune init ../scientist-lab --template scientist
+teamknitt engine init ../scientist-lab --template scientist
 cd ../scientist-lab
-python3 lab.py prepare
+python3 engine.py prepare
 ```
 
 Initialization and prepare need no account and make no provider calls. Replace
@@ -32,9 +32,9 @@ it does not certify the mission solved. Higher persistence does not guarantee be
 ## One sequence or several, continuing the same context
 
 ```bash
-python3 lab.py run --variant scientist-low --sequences 1
-python3 lab.py run --variant scientist-medium --sequences 3
-python3 lab.py run --variant scientist-persistent --sequences 2
+python3 engine.py run --variant scientist-low --sequences 1
+python3 engine.py run --variant scientist-medium --sequences 3
+python3 engine.py run --variant scientist-persistent --sequences 2
 ```
 
 These are separate explicit run choices, not a batch to execute automatically. Three medium
@@ -65,7 +65,7 @@ They do not make reused development cases statistically independent.
 ## Persistent work until the budget allowance
 
 ```bash
-python3 lab.py run --variant scientist-persistent --sequences 3 --effort-mode budget
+python3 engine.py run --variant scientist-persistent --sequences 3 --effort-mode budget
 ```
 
 Budget mode is available for the persistent level. It continues passes until the current
@@ -93,8 +93,8 @@ mode requires at least one request per selected sequence.
 ## Preview the chosen setup
 
 ```bash
-python3 lab.py visualize --variant scientist-medium --sequences 3
-python3 lab.py visualize --variant scientist-persistent --sequences 3 --effort-mode budget
+python3 engine.py visualize --variant scientist-medium --sequences 3
+python3 engine.py visualize --variant scientist-persistent --sequences 3 --effort-mode budget
 ```
 
 No model calls occur. The process monitor shows the persistence level, sequence count, effort
@@ -109,7 +109,7 @@ different CLI overrides therefore keeps the actual settings visible; no automati
 From a checkout, inspect a structural plan directly:
 
 ```bash
-labtune --project . plan --design lab_designs/F-single-scientist.md \
+teamknitt engine --project . plan --design lab_designs/F-single-scientist.md \
   --persistence medium --sequences 3
 ```
 

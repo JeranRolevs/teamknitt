@@ -1,9 +1,9 @@
-"""Portable team workspace, retaining the original Labtune research tools and license."""
+"""Portable team workspace, using the shipped tools and unchanged legal terms."""
 from __future__ import annotations
 
 from pathlib import Path
 
-from labtune.scaffold import init_workspace
+from teamknitt.engine.scaffold import init_workspace
 from .config import resource
 
 

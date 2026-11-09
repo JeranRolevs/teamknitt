@@ -1,6 +1,6 @@
 # Implemented components and remaining boundaries
 
-Labtune now includes an opt-in bounded runner as well as the original nonexecuting structural
+teamknitt now includes an opt-in bounded runner as well as the original nonexecuting structural
 core. Designs, check and plan do not call models. init creates an independent workspace from
 wheel resources; prepare writes plans without a key.
 

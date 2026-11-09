@@ -8,7 +8,7 @@ Calibration maxima cover the complete scored horizon of independent benign runs.
 ceil((n+1)*(1-alpha)) in ascending order. An unavailable finite rank is reported as insufficient
 calibration. Under exchangeability this gives a marginal exceedance bound; it is not a
 conditional or arbitrary-drift guarantee. Exact CP95 summaries accompany independent-run
-counts. Bayesian mode adds Beta posterior summaries only with an explicit positive prior.
+counts. Bayesian analysis is not supported by teamknitt; no prior/posterior option is exposed.
 
 The synthetic family includes both nuisance changes and faults with known mechanisms. Benign
 recurrence locations and fault locations are defined by generation, not inferred from ESA
@@ -38,7 +38,7 @@ a baseline does not establish novelty. Diagnostic failure and duplicate compute 
 The first smoke does not execute confirmation cases. Proper organization comparisons use the
 full profile, repeated lab runs, matched task instances and one runtime version. Differences
 in communication, decision-endpoint availability, thinking settings or resource accounting are explicit
-experimental variables, not unrecorded changes. Choose frequentist or Bayesian comparison
+experimental variables, not unrecorded changes. Choose an applicable supported comparison
 analysis before examining held-out style differences.
 
 Files:

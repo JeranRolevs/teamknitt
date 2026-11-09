@@ -1,13 +1,9 @@
 # Statistical protocol templates
 
-Use [frequentist.yaml](frequentist.yaml) or [bayesian.yaml](bayesian.yaml) to draft the applicable
-domain protocol. These are marked templates with unset methods/parameters. They are not
-executable analyses or validated protocols. No fixed test, prior, significance threshold,
-posterior threshold, or numeric backend is mandated by the skeleton.
+Use [frequentist.yaml](frequentist.yaml) when an applicable domain needs an explicit analysis
+protocol. Otherwise keep descriptive records or state why analysis was not required/run.
+No p-value threshold, automatic statistical test or team-quality score is mandated.
 
-The domain adapter will bind an actual protocol and result artifacts to an evaluation receipt.
-The optional [prior elicitation draft](prior-elicitation.yaml) and
-[reviewed prior workflow](../../docs/BAYESIAN_PRIORS.md) support executable Beta/binomial checks,
-explicit review, and runtime sensitivity analysis. Fill the draft with actual evidence before use.
-Keep sample/replicate identities, data provenance, effect definitions, assumptions, stopping
-rules, and analysis changes traceable. See [the statistical contract](https://github.com/JeranRolevs/labtune/blob/main/statistical_analysis.md).
+Bayesian/probabilistic analysis and prior elicitation are not supported by teamknitt. Do not
+silently convert an existing protocol. Keep observation units, counts, assumptions,
+uncertainty, missingness and analysis changes traceable. See the project's statistical contract.

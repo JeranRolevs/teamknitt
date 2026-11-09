@@ -1,6 +1,6 @@
-"""Distributed-cognition controls layered on an actual Labtune study variant.
+"""Distributed-problem-solving controls layered on an actual teamknitt study variant.
 
-Labtune remains authoritative for organization, generation/decision models, sharing,
+teamknitt remains authoritative for organization, generation/decision models, sharing,
 delegation, statistics and budgets. This module never reads credentials or calls models.
 """
 from __future__ import annotations
@@ -12,17 +12,18 @@ import json
 from pathlib import Path
 
 from jsonschema import Draft202012Validator
-from labtune.config import ConfigurationError, parse_yaml, project_file, merge
+from teamknitt.engine.config import ConfigurationError, parse_yaml, project_file, merge
 from .topology import links as topology_links, TOPOLOGIES
-from labtune.study import load_study, plans
+from .compat import normalize_team_config
+from teamknitt.engine.study import load_study, plans
 
 PERSPECTIVES = {
-    "distributed_cognition": {"chapter": 1, "focus": "People, representations, technology, work and context as the unit of analysis."},
-    "information_processing": {"chapter": 4, "focus": "Task type, information distribution, interaction and coordination requirements."},
-    "shared_mental_models": {"chapter": 7, "focus": "Taskwork, teamwork and timework; reported similarity is not accuracy or perceived alignment."},
-    "transactive_memory": {"chapter": 4, "focus": "Complementary knowledge and an explicit directory of who is assigned relevant expertise."},
-    "coaction": {"chapter": 6, "focus": "Action opportunities depend on actor capacities and available informational structures."},
-    "interactive_dynamics": {"chapter": 1, "focus": "Interaction processes through time; extended by Gorman et al. (2017)."},
+    "distributed_problem_solving": {"tradition": "Distributed problem-solving", "sources": ["hutchins_1995", "mcneese_2021"], "focus": "People, representations, technology, work and context as the unit of analysis."},
+    "information_processing": {"tradition": "Team information processing", "sources": ["mcneese_2021"], "focus": "Task type, information distribution, interaction and coordination requirements."},
+    "shared_mental_models": {"tradition": "Shared mental models", "sources": ["cannon_bowers_1993", "mcneese_2021"], "focus": "Taskwork, teamwork and timework; explicit reported-plan agreement is not latent mental-model similarity, accuracy or perceived alignment."},
+    "transactive_memory": {"tradition": "Transactive memory", "sources": ["wegner_1987", "mcneese_2021"], "focus": "Complementary knowledge and an explicit directory of who is assigned relevant expertise."},
+    "coaction": {"tradition": "Coaction and affordances", "sources": ["mcneese_2021"], "focus": "Action opportunities depend on actor capacities and available informational structures."},
+    "interactive_dynamics": {"tradition": "Complexity science and team dynamics", "sources": ["holland_1995", "mitchell_2009", "gorman_2017"], "focus": "Interdependence, feedback and interaction through time; team-focused dynamical work is one part of a broader complexity-science tradition."},
 }
 
 
@@ -35,6 +36,7 @@ def digest(value):
 
 
 def validate(value):
+    value = normalize_team_config(value)
     try:
         json.dumps(value, allow_nan=False)
     except (TypeError, ValueError) as error:
@@ -66,12 +68,12 @@ def load(workspace: Path):
 def waves(graph):
     pending = {n["id"]: n for n in graph}
     if len(pending) != len(graph):
-        raise ConfigurationError("Duplicate Labtune workflow node.")
+        raise ConfigurationError("Duplicate teamknitt workflow node.")
     complete, result = set(), []
     while pending:
         ready = [n for n in pending.values() if set(n["depends_on"]) <= complete]
         if not ready:
-            raise ConfigurationError("Invalid Labtune dependency graph.")
+            raise ConfigurationError("Invalid teamknitt dependency graph.")
         result.append(ready)
         for n in ready:
             complete.add(n["id"])
@@ -80,10 +82,10 @@ def waves(graph):
 
 
 def engine_study(workspace, config):
-    """Translate explicit teamknitt task/count/sharing settings into the Labtune engine; never alter models or budgets."""
+    """Translate explicit teamknitt task/count/sharing settings into the teamknitt engine; never alter models or budgets."""
     study = load_study(workspace)
     if config["schema_version"] == 2:
-        return study, config["labtune"]["variant"]
+        return study, config["engine"]["variant"]
     selected = config["engine"]["variant"]
     variant = next((v for v in study["variants"] if v["id"] == selected), None)
     if variant is None:
@@ -103,13 +105,13 @@ def engine_study(workspace, config):
 
 
 def compile_plan(workspace: Path, config=None):
-    """Resolve explicit cognitive controls against—not alongside—a Labtune plan."""
+    """Resolve explicit cognitive controls against—not alongside—a teamknitt plan."""
     root = workspace.resolve()
     c = validate(config) if config is not None else load(root)
     study, selected = engine_study(root, c)
     resolved = plans(root, study, workspace=root)
     if selected not in resolved:
-        raise ConfigurationError("labtune.variant must name a variant in study.yaml.")
+        raise ConfigurationError("teamknitt.engine.variant must name a variant in study.yaml.")
     base = resolved[selected]
     actors = {p["instance_id"] for p in base["personas"]}
     routes = set(topology_links(c["team"])) if c["schema_version"] == 3 else {(a, b) for a in actors for b in actors if a != b}
@@ -117,7 +119,7 @@ def compile_plan(workspace: Path, config=None):
         raise ConfigurationError("Topology links must resolve to the engine's configured team members.")
     roles = {r["actor"]: r for r in c["cognition"]["roles"]}
     if set(roles) != actors:
-        raise ConfigurationError("Cognition role bindings must match the resolved Labtune persona instance IDs exactly; edit bindings explicitly after changing a design/count.")
+        raise ConfigurationError("Cognition role bindings must match the resolved teamknitt persona instance IDs exactly; edit bindings explicitly after changing a design/count.")
     reps = {r["id"]: r for r in c["cognition"]["representations"]}
     work = {w["id"]: w for w in c["cognition"]["work"]}
     handoffs = {h["id"]: h for h in c["cognition"]["handoffs"]}
@@ -126,17 +128,17 @@ def compile_plan(workspace: Path, config=None):
     mode = c["cognition"]["task"]["interaction"]
     sharing = base["communication"]
     if mode == "independent" and sharing["research_exchange"]:
-        raise ConfigurationError("Independent interaction requires explicitly disabled Labtune peer research exchange.")
+        raise ConfigurationError("Independent interaction requires explicitly disabled teamknitt peer research exchange.")
     if mode == "limited_exchange" and sharing["detail"] == "high":
-        raise ConfigurationError("Limited exchange cannot silently coexist with Labtune high-detail sharing; choose controls explicitly.")
+        raise ConfigurationError("Limited exchange cannot silently coexist with teamknitt high-detail sharing; choose controls explicitly.")
     if mode == "deliberative" and not sharing["research_exchange"]:
-        raise ConfigurationError("Deliberative interaction requires an explicitly enabled Labtune sharing channel.")
+        raise ConfigurationError("Deliberative interaction requires an explicitly enabled teamknitt sharing channel.")
     if not set(c["cognition"]["temporal_reference"]["order"]) <= phases:
-        raise ConfigurationError("Temporal reference must name phases in the selected Labtune design.")
+        raise ConfigurationError("Temporal reference must name phases in the selected teamknitt design.")
     source_bindings = {}
     for r in reps.values():
         if not set(r["readers"]) <= actors or not set(r["writers"]) <= actors:
-            raise ConfigurationError("Representation readers/writers must be resolved Labtune actors.")
+            raise ConfigurationError("Representation readers/writers must be resolved teamknitt actors.")
         if not set(r["writers"]) <= set(r["readers"]):
             raise ConfigurationError("Representation writers must also be readers.")
         if r["kind"] == "source":
@@ -152,10 +154,10 @@ def compile_plan(workspace: Path, config=None):
         elif "path" in r or not r["writers"]:
             raise ConfigurationError("Workspace representations are append-only run records with writers, not arbitrary filesystem paths.")
         if r["kind"] == "workspace" and len(set(r["readers"]) | set(r["writers"])) > 1 and base["communication"]["detail"] != "high":
-            raise ConfigurationError("Shared writable representations require Labtune high-detail sharing; a cognition overlay cannot widen the lab's communication policy.")
+            raise ConfigurationError("Shared writable representations require teamknitt high-detail sharing; a cognition overlay cannot widen the lab's communication policy.")
     for w in work.values():
         if w["phase"] not in phases or not set(w["actors"]) <= phase_actors[w["phase"]]:
-            raise ConfigurationError("Work must bind explicitly to an existing Labtune phase and its participating actors.")
+            raise ConfigurationError("Work must bind explicitly to an existing teamknitt phase and its participating actors.")
         if not set(w["inputs"] + w["outputs"]) <= reps.keys() or not set(w["depends_on"]) <= work.keys():
             raise ConfigurationError("Work references unknown representations or predecessors.")
         for actor in w["actors"]:
@@ -167,7 +169,7 @@ def compile_plan(workspace: Path, config=None):
     phase_wave = {n["id"].split(":")[1]: i for i, wave in enumerate(base_waves, 1) for n in wave if ":" in n["id"]}
     for w in work.values():
         if any(phase_wave[work[p]["phase"]] >= phase_wave[w["phase"]] for p in w["depends_on"]):
-            raise ConfigurationError("Work prerequisites must precede the consuming phase in the selected Labtune graph.")
+            raise ConfigurationError("Work prerequisites must precede the consuming phase in the selected teamknitt graph.")
     for h in handoffs.values():
         if h["producer"] not in actors or h["consumer"] not in actors or h["producer"] == h["consumer"] or h["representation"] not in reps:
             raise ConfigurationError("Handoffs need distinct declared actors and a representation.")
@@ -195,10 +197,10 @@ def compile_plan(workspace: Path, config=None):
                 raise ConfigurationError("An acknowledgement affordance belongs to the declared handoff consumer.")
     horizon = len(base_waves)
     if c["cognition"]["temporal_reference"]["deadline_wave"] > horizon or c["dynamics"]["stable_waves"] > horizon:
-        raise ConfigurationError("Temporal reference and stability span must fit the actual Labtune wave horizon.")
+        raise ConfigurationError("Temporal reference and stability span must fit the actual teamknitt wave horizon.")
     for p in c["dynamics"]["perturbations"]:
         if p["at_wave"] + p["duration"] - 1 > horizon:
-            raise ConfigurationError("A perturbation must end within the resolved Labtune workflow.")
+            raise ConfigurationError("A perturbation must end within the resolved teamknitt workflow.")
         if p["kind"] == "representation_unavailable" and (p.get("representation") not in reps or set(p) != {"id", "kind", "at_wave", "duration", "representation"}):
             raise ConfigurationError("Representation interruption needs exactly one declared representation.")
         if p["kind"] == "actor_unavailable" and (p.get("actor") not in actors or set(p) != {"id", "kind", "at_wave", "duration", "actor"}):
@@ -208,19 +210,19 @@ def compile_plan(workspace: Path, config=None):
         if p["kind"] == "link_dropout" and (p["source"], p["target"]) not in routes:
             raise ConfigurationError("A link interruption must refer to a configured topology link.")
     mission_binding = {"path": study["problem_file"], "sha256": hashlib.sha256(project_file(root, study["problem_file"]).read_bytes()).hexdigest()}
-    bound = {"labtune_sha256": base["configuration_snapshot"]["sha256"], "cognition": c, "sources": source_bindings, "mission": mission_binding}
+    bound = {"engine_sha256": base["configuration_snapshot"]["sha256"], "cognition": c, "sources": source_bindings, "mission": mission_binding}
     combined = digest(bound)
     compiled = deepcopy(base)
     compiled["configuration_snapshot"].update(id="team-" + combined[:20], sha256=combined,
-                                               labtune_sha256=bound["labtune_sha256"], cognition_binding=bound)
+                                               engine_sha256=bound["engine_sha256"], cognition_binding=bound)
     compiled["cognition"] = c["cognition"]
     compiled["teamknitt_dynamics"] = c["dynamics"]
     main_episodes = sum(len(n["actors"]) for n in base["work_graph"]
                         if n["kind"] not in {"qualification", "verification"} and n["research_activity"] != "operational_only")
-    return {"schema_version": c["schema_version"], "name": c["name"], "status": "team_task_plan" if c["schema_version"] == 3 else "distributed_cognition_plan",
-            "configuration_sha256": combined, "labtune_variant": selected,
-            "labtune_configuration_sha256": bound["labtune_sha256"], "configuration": c,
-            "labtune_plan": compiled, "source_bindings": source_bindings, "mission_binding": mission_binding,
+    return {"schema_version": c["schema_version"], "name": c["name"], "status": "team_task_plan" if c["schema_version"] == 3 else "distributed_problem_solving_plan",
+            "configuration_sha256": combined, "engine_variant": selected,
+            "engine_configuration_sha256": bound["engine_sha256"], "configuration": c,
+            "engine_plan": compiled, "source_bindings": source_bindings, "mission_binding": mission_binding,
             "engine_configuration": study,
             "topology": {"kind": c["team"]["topology"] if c["schema_version"] == 3 else "fully_connected",
                 "members": sorted(actors), "links": [{"source": a, "target": b} for a, b in sorted(routes)],

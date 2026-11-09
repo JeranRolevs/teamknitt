@@ -8,13 +8,13 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from labtune.cli import main
-from labtune.config import ConfigurationError, load_config, validate_config
-from labtune.planning import compile_plan
-from labtune.providers.http import ProviderError
-from labtune.scaffold import init_workspace
-from labtune.study import load_study, plans, prepare, save, TextStudy, run_variant, timestamp, compare
-from labtune.visualization import RuntimeObserverAgent, SetupVisualizationAgent, VisualizationSession
+from teamknitt.engine.cli import main
+from teamknitt.engine.config import ConfigurationError, load_config, validate_config
+from teamknitt.engine.planning import compile_plan
+from teamknitt.engine.providers.http import ProviderError
+from teamknitt.engine.scaffold import init_workspace
+from teamknitt.engine.study import load_study, plans, prepare, save, TextStudy, run_variant, timestamp, compare
+from teamknitt.engine.visualization import RuntimeObserverAgent, SetupVisualizationAgent, VisualizationSession
 
 PROJECT = Path(__file__).resolve().parents[1]
 DESIGN = "lab_designs/F-single-scientist.md"
@@ -66,7 +66,7 @@ class PlanningTests(unittest.TestCase):
     def test_new_template_and_plan_and_visualization_work_without_credentials(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory) / "scientist"
-            with patch("labtune.study.ChatCompletionsClient", side_effect=AssertionError("No model calls")):
+            with patch("teamknitt.engine.study.ChatCompletionsClient", side_effect=AssertionError("No model calls")):
                 init_workspace(root, "scientist")
                 self.assertEqual(prepare(root, root)["variants"], ["scientist-low", "scientist-medium", "scientist-persistent"])
                 self.assertEqual(compile_plan(root)["design"]["id"], "single_scientist")

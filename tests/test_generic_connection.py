@@ -9,11 +9,11 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from labtune.cli import main
-from labtune.scaffold import init_workspace
-from labtune.providers.chat import ChatCompletionsClient
-from labtune.providers.http import ProviderError
-from labtune.study import TextStudy, doctor, plans, load_study, compare
+from teamknitt.engine.cli import main
+from teamknitt.engine.scaffold import init_workspace
+from teamknitt.engine.providers.chat import ChatCompletionsClient
+from teamknitt.engine.providers.http import ProviderError
+from teamknitt.engine.study import TextStudy, doctor, plans, load_study, compare
 import test_providers as fixtures
 
 
@@ -50,7 +50,7 @@ class GenericConnectionTests(unittest.TestCase):
         def transport(client, method, path, body):
             calls.append((method, path))
             return {"choices": [{"message": {"content": "OK"}}], "usage": {}}
-        with patch.dict("os.environ", {"LABTUNE_API_KEY": fixtures.FAKE_KEY}), patch.object(ChatCompletionsClient, "_http", transport):
+        with patch.dict("os.environ", {"TEAMKNITT_API_KEY": fixtures.FAKE_KEY}), patch.object(ChatCompletionsClient, "_http", transport):
             result = asyncio.run(doctor(fixtures.PROJECT, self.root, live=True))
         self.assertEqual(result["status"], "connected")
         self.assertEqual(calls, [("POST", "/chat/completions")])
@@ -66,7 +66,7 @@ class GenericConnectionTests(unittest.TestCase):
                 seen.append(request)
                 return Response()
         client = ChatCompletionsClient(None, model="local-model", base_url="http://127.0.0.1:8000/v1")
-        with patch("labtune.providers.http.urllib.request.build_opener", return_value=Opener()):
+        with patch("teamknitt.engine.providers.http.urllib.request.build_opener", return_value=Opener()):
             asyncio.run(client.generate([], budget_ref="fixture"))
         self.assertIsNone(seen[0].get_header("Authorization"))
 
@@ -75,8 +75,8 @@ class GenericConnectionTests(unittest.TestCase):
             workspace = Path(directory) / "lab"
             init_workspace(workspace)
             (workspace / "mission/problem.md").write_text("Offline fixture mission.")
-            with patch("labtune.study.api_key", side_effect=AssertionError("No credential read")), \
-                    patch("labtune.providers.http.JSONClient._http", side_effect=AssertionError("No provider call")), \
+            with patch("teamknitt.engine.study.api_key", side_effect=AssertionError("No credential read")), \
+                    patch("teamknitt.engine.providers.http.JSONClient._http", side_effect=AssertionError("No provider call")), \
                     redirect_stdout(StringIO()), redirect_stderr(StringIO()):
                 self.assertEqual(main(["--project", str(workspace), "study", "run", "--workspace", str(workspace), "--variant", "single"]), 2)
             self.assertFalse((workspace / "trials").exists())
@@ -87,7 +87,7 @@ class GenericConnectionTests(unittest.TestCase):
         config["base_overrides"]["decisions"].update(mode="selected_active", specialist="judge")
         config["decision_providers"] = {"judge": {**fixtures.DECISION_FIXTURE, "adapter": "chat_completions", "endpoint": "/judge"}}
         plan = plans(fixtures.PROJECT, config)["a-none"]
-        with patch("labtune.study.api_key", return_value="offline-separate-key"):
+        with patch("teamknitt.engine.study.api_key", return_value="offline-separate-key"):
             study = TextStudy(fixtures.PROJECT, self.root, config, plan, "a-none", fixtures.FAKE_KEY)
         self.assertNotEqual(study.client._key, study.specialist_client._key)
         calls = []

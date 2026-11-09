@@ -43,7 +43,7 @@
           "type": "array",
           "items": {
             "enum": [
-              "distributed_cognition",
+              "distributed_problem_solving",
               "information_processing",
               "shared_mental_models",
               "transactive_memory",
@@ -659,6 +659,15 @@
             "hub_and_spoke",
             "ring",
             "hierarchical",
+            "chain",
+            "directed_chain",
+            "directed_ring",
+            "wheel",
+            "grid",
+            "clustered",
+            "bipartite",
+            "broadcast",
+            "gather",
             "custom"
           ]
         },

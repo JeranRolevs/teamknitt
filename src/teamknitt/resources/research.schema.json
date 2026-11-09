@@ -5,7 +5,7 @@
   "required": [
     "schema_version",
     "name",
-    "labtune",
+    "engine",
     "cognition",
     "dynamics"
   ],
@@ -18,7 +18,7 @@
       "minLength": 1,
       "maxLength": 200
     },
-    "labtune": {
+    "engine": {
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -52,7 +52,7 @@
           "type": "array",
           "items": {
             "enum": [
-              "distributed_cognition",
+              "distributed_problem_solving",
               "information_processing",
               "shared_mental_models",
               "transactive_memory",

@@ -1,8 +1,8 @@
-"""Create a user-task team workspace with Labtune as the engine, not the product UI."""
+"""Create a user-task team workspace with teamknitt as the engine, not the product UI."""
 from pathlib import Path
 import json
-from labtune.config import ConfigurationError
-from labtune.scaffold import init_workspace
+from teamknitt.engine.config import ConfigurationError
+from teamknitt.engine.scaffold import init_workspace
 from .config import resource
 from .builder import make_configuration
 

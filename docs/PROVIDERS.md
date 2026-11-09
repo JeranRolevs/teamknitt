@@ -1,6 +1,6 @@
 # Configure a provider
 
-Labtune connects to services by a declared JSON protocol. It includes a chat-completions
+teamknitt connects to services by a declared JSON protocol. It includes a chat-completions
 adapter for generation and chat-completions or typed-JSON adapters for optional decisions.
 The user chooses the service, account, model and request options; there are no bundled accounts,
 service defaults or automatic model choices. Other protocols require a registered adapter.
@@ -16,7 +16,7 @@ provider:
   endpoint: /chat/completions
   models_endpoint: null
   model: your-model-id
-  api_key_env: LABTUNE_API_KEY
+  api_key_env: TEAMKNITT_API_KEY
   env_file: .env
   timeout_seconds: 90
   max_output_tokens: 8192
@@ -38,7 +38,7 @@ explicit loopback URLs such as http://127.0.0.1:8000/v1. Redirects are not follo
 Set the named environment variable or put it in the workspace's ignored .env file:
 
 ```text
-LABTUNE_API_KEY=replace-with-your-private-key
+TEAMKNITT_API_KEY=replace-with-your-private-key
 ```
 
 Never put raw keys in study.yaml. For an endpoint that explicitly needs no authentication,
@@ -54,10 +54,10 @@ live check directly probes the chosen generation model without assuming a listin
 
 ## Prepare, check and run
 
-python3 lab.py prepare validates settings and compiles variants without reading a key or
-calling a provider. python3 lab.py doctor reads local credential presence only.
-python3 lab.py doctor --live explicitly makes metered probes of the chosen generation and
-selected decision models. python3 lab.py run --variant single explicitly starts a workflow
+python3 engine.py prepare validates settings and compiles variants without reading a key or
+calling a provider. python3 engine.py doctor reads local credential presence only.
+python3 engine.py doctor --live explicitly makes metered probes of the chosen generation and
+selected decision models. python3 engine.py run --variant single explicitly starts a workflow
 once you have supplied the mission. No setup, test, diagram or package build makes these calls.
 
 All dispatched requests, including failed requests with uncertain billing, decisions, fallbacks

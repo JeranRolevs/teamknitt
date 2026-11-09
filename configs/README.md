@@ -1,9 +1,9 @@
 # Skeleton configuration
 
 `lab.yaml` is a small user override file. The loader merges it into the packaged
-[defaults.yaml](../src/labtune/resources/defaults.yaml), validates the
-[configuration schema](../src/labtune/schemas/lab_config.schema.json), and reads the selected
-design's front matter under the [preset schema](../src/labtune/schemas/lab_design.schema.json).
+[defaults.yaml](../src/teamknitt/engine/resources/defaults.yaml), validates the
+[configuration schema](../src/teamknitt/engine/schemas/lab_config.schema.json), and reads the selected
+design's front matter under the [preset schema](../src/teamknitt/engine/schemas/lab_design.schema.json).
 
 Effective priority is explicit CLI/user values, preset suggestions for unset design-specific
 settings, then base defaults. Hard structural constraints remain enforced. Unknown fields,
@@ -25,7 +25,7 @@ Supported sections:
 | `communication` | Preset/none/low/intermediate/high/wisdom-only and wisdom override |
 | `meetings` | Preset or explicit enablement, round/word limits |
 | `decisions` | LLM-only/shadow/selected-active, specialist name, specs, local-call access/limit |
-| `statistics` | User-selected `frequentist` (p-values) or `bayesian` approach when statistical analysis is needed |
+| `statistics` | User-selected supported `frequentist` approach when statistical analysis is needed |
 | `domain` | Declared adapter and optional mission file; no evaluation is executed |
 
 For example, a high-sharing style can be inspected with strict isolation:
@@ -62,8 +62,8 @@ identifies recorded choices without locking them or requiring a promotion gate. 
 runtime will record user changes at explicit effective boundaries and preserve prior exposure.
 The skeleton has no automatic lab-optimization or self-improvement settings.
 
-Choose `statistics.approach: frequentist` or `statistics.approach: bayesian`. The example/default
+Use `statistics.approach: frequentist` when applicable; Bayesian analysis is not supported. The example/default
 is frequentist; no particular test, prior, or decision threshold is imposed. `plan --statistics
-bayesian` overrides the file for inspection. The plan remains nonexecuting. Domain adapters
+frequentist` overrides the file for inspection. The plan remains nonexecuting. Domain adapters
 will provide the appropriate protocol and actual results under the
 [statistical contract](../statistical_analysis.md).

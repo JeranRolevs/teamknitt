@@ -8,7 +8,7 @@ import os
 from pathlib import Path
 from uuid import uuid4
 
-from labtune.config import ConfigurationError
+from teamknitt.engine.config import ConfigurationError
 from .topology import links, members
 
 PURPOSES = {
@@ -66,7 +66,7 @@ def make_configuration(*, topology="fully_connected", count=3, communication="hi
             "review": "user_review"},
         "team": team,
         "communication": {"profile": communication, "wisdom": communication == "wisdom_only", "max_read_words": max_read_words},
-        "cognition": {"perspectives": ["distributed_cognition", "information_processing", "transactive_memory", "shared_mental_models", "coaction", "interactive_dynamics"],
+        "cognition": {"perspectives": ["distributed_problem_solving", "information_processing", "transactive_memory", "shared_mental_models", "coaction", "interactive_dynamics"],
             "context": {"setting": "A user-directed team working on a task, brainstorming ideas or pursuing a chosen goal.",
                 "tools": ["versioned_notes", "scoped_information_sharing", "explicit_handoffs"],
                 "constraints": ["A role emphasis is not proof of expertise.", "A contribution or acknowledgement is not proof that the user's goal has been achieved."]},
@@ -101,7 +101,7 @@ def draft_configuration(current, **choices):
 def apply_configuration(workspace: Path, config, *, reset_cognition=False):
     """Explicit application only. Keep the previous config privately; never alter task text or engine budgets."""
     if not reset_cognition:
-        raise ConfigurationError("Applying the builder requires --reset-cognition: it regenerates role/representation/work bindings. Your previous team.yaml is backed up; task text and engine settings are not changed.")
+        raise ConfigurationError("Applying the builder requires --reset-bindings: it regenerates role/representation/work bindings. Your previous team.yaml is backed up; task text and engine settings are not changed.")
     from .config import compile_plan
     compiled = compile_plan(workspace, config)
     path = workspace / "team.yaml"

@@ -1,10 +1,13 @@
 """Optional descriptive observation through the dynamical-systems lens.
 
-The Gorman et al. concepts are observation lenses, not a psychometric checklist or
-an automatic quality score. Oscillatory/fractal/attractor inference is not fabricated.
+Complexity science and complex adaptive systems inform the observation lens;
+Gorman et al. is one team-focused reference, not a psychometric checklist or score. Oscillatory/fractal/attractor inference is not fabricated.
 """
+from copy import deepcopy
 from collections import Counter
 import statistics
+
+from .views import COMPLEXITY_TRADITION, COMPLEXITY_SOURCES, SOURCES
 
 DIMENSIONS = {
     "local_global": {"label": "Local variability / global stability", "kind": "descriptive", "meaning": "Member contribution activity alongside explicit handoff-state continuity; not a universal variability–performance law."},
@@ -19,7 +22,7 @@ DIMENSIONS = {
 
 def observe(report):
     settings = report["observation_settings"]
-    result = {"enabled": settings["enabled"], "source": "Gorman, Dunbar, Grimm & Gipson (2017), Teams As Dynamical Systems", "dimensions": [], "aggregate_score": None}
+    result = {"enabled": settings["enabled"], "source": COMPLEXITY_TRADITION, "representative_sources": deepcopy([SOURCES[k] for k in COMPLEXITY_SOURCES]), "dimensions": [], "aggregate_score": None}
     if not settings["enabled"]:
         return result
     events, snapshots = report["events"], report["snapshots"]

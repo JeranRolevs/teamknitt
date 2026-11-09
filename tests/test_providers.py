@@ -12,20 +12,20 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from labtune.contracts import CallerContext, DecisionRequest, DecisionStatus
-from labtune.providers.chat import ChatCompletionsClient, ChatDecisionClient
-from labtune.providers.typed import TypedDecisionClient, TypedDecisionBackend
-from labtune.providers.http import ProviderError
-from labtune.providers.questions import validate_question
-from labtune.study import StudyError, TextStudy, api_key, compare, doctor, load_study, plans, run_variant
-from labtune.planning import compile_plan
+from teamknitt.engine.contracts import CallerContext, DecisionRequest, DecisionStatus
+from teamknitt.engine.providers.chat import ChatCompletionsClient, ChatDecisionClient
+from teamknitt.engine.providers.typed import TypedDecisionClient, TypedDecisionBackend
+from teamknitt.engine.providers.http import ProviderError
+from teamknitt.engine.providers.questions import validate_question
+from teamknitt.engine.study import StudyError, TextStudy, api_key, compare, doctor, load_study, plans, run_variant
+from teamknitt.engine.planning import compile_plan
 
 PROJECT = Path(__file__).resolve().parents[1]
 FAKE_KEY = "offline-test-key-not-a-credential"
 
 
 DECISION_FIXTURE = {"adapter": "typed", "base_url": "https://decisions.example.test/v1",
-    "model": "fixture-decision", "endpoint": "/assess", "api_key_env": "LABTUNE_DECISION_API_KEY",
+    "model": "fixture-decision", "endpoint": "/assess", "api_key_env": "TEAMKNITT_DECISION_API_KEY",
     "env_file": ".env", "timeout_seconds": 10, "max_parallel_requests": 2}
 
 
@@ -34,7 +34,7 @@ def fixture_config():
         "schema_version": 1, "name": "offline-fixture", "problem_file": "mission/problem.md",
         "provider": {"base_url": "https://generation.example.test/v1", "model": "fixture-chat",
                      "endpoint": "/chat/completions", "models_endpoint": "/models",
-                     "api_key_env": "LABTUNE_API_KEY", "env_file": ".env", "timeout_seconds": 10,
+                     "api_key_env": "TEAMKNITT_API_KEY", "env_file": ".env", "timeout_seconds": 10,
                      "max_output_tokens": 500, "max_parallel_requests": 2, "request_options": {}},
         "decision_providers": {"specialist": dict(DECISION_FIXTURE)},
         "runtime": {"mode": "text_only", "max_actions_per_episode": 3,
@@ -119,7 +119,7 @@ class StudyTests(unittest.TestCase):
         self.temp.cleanup()
 
     def test_private_dotenv_is_read_without_putting_key_in_public_settings(self):
-        (self.root / ".env").write_text("LABTUNE_API_KEY='" + FAKE_KEY + "'\n")
+        (self.root / ".env").write_text("TEAMKNITT_API_KEY='" + FAKE_KEY + "'\n")
         config = load_study(self.root)
         with patch.dict(os.environ, {}, clear=True):
             self.assertEqual(api_key(self.root, config["provider"]), FAKE_KEY)
@@ -145,7 +145,7 @@ class StudyTests(unittest.TestCase):
             if path == "/chat/completions":
                 return {"choices": [{"message": {"content": "OK"}, "finish_reason": "stop"}], "usage": {}}
             return {"model":"fixture-decision", "answers": {"connection": {"noul": .95}}, "usage": {"input_tokens": 8}}
-        with patch.dict(os.environ, {"LABTUNE_API_KEY": FAKE_KEY, "LABTUNE_DECISION_API_KEY": FAKE_KEY}), patch.object(ChatCompletionsClient, "_http", transport), patch.object(TypedDecisionClient, "_http", transport):
+        with patch.dict(os.environ, {"TEAMKNITT_API_KEY": FAKE_KEY, "TEAMKNITT_DECISION_API_KEY": FAKE_KEY}), patch.object(ChatCompletionsClient, "_http", transport), patch.object(TypedDecisionClient, "_http", transport):
             result = asyncio.run(doctor(PROJECT, self.root, live=True))
         self.assertEqual(result["status"], "connected")
         self.assertEqual(calls, ["/models", "/chat/completions", "/assess"])
@@ -158,7 +158,7 @@ class StudyTests(unittest.TestCase):
                       "wisdom": [], "candidate_output": "Proposed experiment, not executed."}
             return {"choices": [{"message": {"content": json.dumps(output)}, "finish_reason": "stop"}],
                     "usage": {"prompt_tokens": 10, "completion_tokens": 20}}
-        with patch.dict(os.environ, {"LABTUNE_API_KEY": FAKE_KEY}), patch.object(ChatCompletionsClient, "_http", transport):
+        with patch.dict(os.environ, {"TEAMKNITT_API_KEY": FAKE_KEY}), patch.object(ChatCompletionsClient, "_http", transport):
             result = asyncio.run(run_variant(PROJECT, self.root, "a-none"))
         self.assertEqual(result["status"], "completed_text_workflow")
         self.assertEqual(result["verification_status"], "not_evaluated")
@@ -176,7 +176,7 @@ class StudyTests(unittest.TestCase):
         overrides = deepcopy(config["base_overrides"])
         overrides["decisions"].update(mode="shadow", specialist="specialist")
         plan = compile_plan(PROJECT, config_overrides=overrides)
-        with patch("labtune.study.api_key",return_value=FAKE_KEY):
+        with patch("teamknitt.engine.study.api_key",return_value=FAKE_KEY):
             study = TextStudy(PROJECT, self.root, config, plan, "shadow", FAKE_KEY)
         def transport(method, path, body):
             if path == "/assess":

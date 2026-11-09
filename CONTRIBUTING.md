@@ -1,6 +1,6 @@
 # Contributing
 
-Work from this repository root, the independent Labtune Python package. Python 3.11+ is required.
+Work from this repository root, the independent teamknitt Python package. Python 3.11+ is required.
 
 ```bash
 python3 -m pip install -e '.[memory,diagrams]'
@@ -12,7 +12,7 @@ python3 tools/check_release.py
 ```
 
 Edit canonical examples and templates, then run sync_starter.py without --check. Its output
-under src/labtune/resources/starter/ is generated package data. Test a built wheel from outside
+under src/teamknitt/engine/resources/starter/ is generated package data. Test a built wheel from outside
 the checkout; editable-install success alone does not establish a portable release.
 
 Do not copy the legacy parent implementation, upstream source/prompts/templates, or local
@@ -35,10 +35,10 @@ provider URLs and model IDs remain placeholders; live service selection belongs 
 
 ## teamknitt product layer
 
-Use teamknitt for user-directed task/idea/goal configuration and monitoring, with Labtune as
+Use teamknitt for user-directed task/idea/goal configuration and monitoring, with teamknitt as
 the engine and aesthetic foundation. Preserve explicit count/topology/sharing, model, tool,
 statistics, delegation and budget choices; no automated organization improvement or hidden
-allowance. The distributed-cognition framework and optional dynamical-systems observation
+allowance. The distributed-problem-solving framework and optional dynamical-systems observation
 lenses must retain their interpretation limits. Drafting is not application; running is not
 goal achievement. Test topology permissions at runtime, private artifacts and backups,
 non-mutating viewer APIs, live metadata, the renamed wheel outside the checkout and retained

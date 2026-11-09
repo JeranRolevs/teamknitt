@@ -22,7 +22,7 @@ import urllib.request
 from unittest.mock import patch
 from http.server import ThreadingHTTPServer
 
-from labtune.config import ConfigurationError, parse_yaml
+from teamknitt.engine.config import ConfigurationError, parse_yaml
 from teamknitt import __version__
 from teamknitt.builder import make_configuration, draft_configuration, apply_configuration
 from teamknitt.cli import main
@@ -31,7 +31,7 @@ from teamknitt.observatory import ViewerService, handler, html
 from teamknitt.reporting import build_report, plan_report
 from teamknitt.runtime import run, CognitiveStudy
 from teamknitt.scaffold import init
-from teamknitt.topology import links, members
+from teamknitt.topology import links, members, TOPOLOGIES
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -62,15 +62,15 @@ class TaskAndTopologyTests(TaskCase):
         self.assertEqual(p["name"], "teamknitt")
         self.assertEqual(p["scripts"]["teamknitt"], "teamknitt.cli:main")
         self.assertNotIn("teamthill", p["scripts"])
-        self.assertEqual(__version__, "0.3.0")
+        self.assertEqual(__version__, "0.5.0")
         self.assertTrue((self.root / "mission/task.md").is_file())
         self.assertNotIn("scientist", self.c["mission"]["deliverable"])
 
     def test_default_task_team_has_explicit_user_controls_not_a_fixed_research_lab(self):
         p = self.plan()
         self.assertEqual(p["schema_version"], 3)
-        self.assertEqual(len(p["labtune_plan"]["personas"]), 3)
-        self.assertEqual(p["labtune_plan"]["design"]["id"], "teamknitt_task_team")
+        self.assertEqual(len(p["engine_plan"]["personas"]), 3)
+        self.assertEqual(p["engine_plan"]["design"]["id"], "teamknitt_task_team")
         self.assertEqual(self.c["mission"]["purpose"], "brainstorm")
         self.assertEqual(p["provider_request_cap"], 24)
         self.assertEqual(p["api_calls"], 0)
@@ -112,14 +112,14 @@ class TaskAndTopologyTests(TaskCase):
         c=make_configuration(count=16,communication="intermediate")
         p=self.plan(c)
         self.assertEqual(p["provider_request_cap"],24)
-        self.assertEqual(p["labtune_plan"]["resources"]["max_active_agents"],6)
+        self.assertEqual(p["engine_plan"]["resources"]["max_active_agents"],6)
         self.assertFalse(p["reference_request_case"]["cap_covers_that_case"])
 
     def test_all_sharing_profiles_translate_to_explicit_engine_controls(self):
         for profile in ("none","low","intermediate","high","wisdom_only"):
             c=make_configuration(communication=profile)
             p=self.plan(c)
-            self.assertEqual(p["labtune_plan"]["communication"]["effective_profile"],profile)
+            self.assertEqual(p["engine_plan"]["communication"]["effective_profile"],profile)
             shared=[r for r in c["cognition"]["representations"] if r["kind"]=="workspace" and len(r["readers"])>1]
             self.assertEqual(bool(shared),profile=="high")
 
@@ -207,7 +207,7 @@ class TaskExecutionAndMonitoringTests(TaskCase):
         self.assertIn('user', {v['author'] for v in r['versions']})
 
     def test_every_topology_filters_artifact_exposure_at_runtime(self):
-        for kind in ("fully_connected","hub_and_spoke","ring","hierarchical"):
+        for kind in (k for k in TOPOLOGIES if k != "custom"):
             c=make_configuration(count=4,topology=kind)
             _,r=self.execute(c)
             allowed=set(links(c['team']))
@@ -285,7 +285,7 @@ class TaskExecutionAndMonitoringTests(TaskCase):
                     if 'peer_views' in frame:frames.append(frame)
             return {'choices':[{'message':{'content':json.dumps({'action':'final','summary':'Contribution','candidate_output':'Idea','findings':[{'kind':'blocker','text':'A reported access constraint needs user review.'}],'wisdom':[]})}}]}
         _,r=self.execute(c,live=True,approve_requests=24,transport=transport)
-        views=[f['peer_views']['labtune'].get('low.md','') for f in frames]
+        views=[f['peer_views']['engine'].get('low.md','') for f in frames]
         self.assertTrue(any('member_report_not_independently_verified' in v for v in views))
         self.assertFalse(any('measured_development_evidence' in v for v in views))
 
@@ -306,7 +306,7 @@ class ObserverHTTPAndPackagingTests(TaskCase):
             with urllib.request.urlopen(url+path,timeout=5) as r:return r.status,json.loads(r.read())
         self.assertEqual(get('/api/state')[1]['mode'],'configuration')
         self.assertEqual(len(get('/api/draft?members=4&topology=ring')[1]['cognition']['roles']),4)
-        for path,code in (('/api/draft?members=0',400),('/api/draft?unknown=x',400),('/etc/passwd',404),('/api/run',404)):
+        for path,code in (('/api/draft?members=0',400),('/api/draft?unknown=x',400),('/api/draft?probe_run=/etc/passwd',400),('/api/state?probe_run=/etc/passwd',400),('/etc/passwd',404),('/api/run',404)):
             with self.assertRaises(urllib.error.HTTPError) as caught:get(path)
             self.assertEqual(caught.exception.code,code)
             caught.exception.close()

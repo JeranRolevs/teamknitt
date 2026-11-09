@@ -1,0 +1,414 @@
+schema_version: 1
+name: memory-retention-smoke
+problem_file: mission/memory/problem.md
+provider:
+  adapter: chat_completions
+  base_url: https://provider.example.invalid/v1
+  endpoint: /chat/completions
+  models_endpoint: null
+  model: YOUR_MODEL_ID
+  api_key_env: TEAMKNITT_API_KEY
+  env_file: .env
+  timeout_seconds: 90
+  max_output_tokens: 8192
+  max_parallel_requests: 3
+  request_options: {}
+runtime:
+  mode: research
+  domain_config: mission/memory/evaluation-smoke.yaml
+  max_actions_per_episode: 6
+  max_findings: 6
+  comparison_metrics:
+  - confirmation_run_false_alarm_rate
+  - confirmation_fault_recall
+  - confirmation_calibration_error
+  - confirmation_peak_memory_bytes
+  - confirmation_benign_recurrence_alarm_rate
+base_overrides:
+  budget:
+    max_llm_calls: 32
+    max_evaluations: 5
+    confirmation_evaluations_reserved: 1
+    max_wall_seconds: 900
+  resources:
+    max_active_agents: 4
+    max_llm_requests: 3
+    max_experiments: 2
+  teams:
+    max_depth: 1
+    max_children_per_agent: 1
+    max_active_descendants: 1
+  statistics:
+    approach: frequentist
+  communication:
+    profile: high
+    wisdom: true
+    max_read_words: 700
+  decisions:
+    mode: llm_only
+    specialist: null
+    allowed_specs:
+    - semantic_choice.v1
+    agent_access: true
+    max_calls_per_episode: 2
+  domain:
+    adapter: memory_policy
+variants:
+- id: a-none
+  overrides:
+    lab:
+      design_file: lab_designs/A-multidisciplinary-silos.md
+    communication:
+      profile: none
+      wisdom: false
+- id: a-low
+  overrides:
+    lab:
+      design_file: lab_designs/A-multidisciplinary-silos.md
+    communication:
+      profile: low
+      wisdom: false
+- id: a-low-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/A-multidisciplinary-silos.md
+    communication:
+      profile: low
+      wisdom: true
+- id: a-intermediate
+  overrides:
+    lab:
+      design_file: lab_designs/A-multidisciplinary-silos.md
+    communication:
+      profile: intermediate
+      wisdom: false
+- id: a-intermediate-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/A-multidisciplinary-silos.md
+    communication:
+      profile: intermediate
+      wisdom: true
+- id: a-high
+  overrides:
+    lab:
+      design_file: lab_designs/A-multidisciplinary-silos.md
+    communication:
+      profile: high
+      wisdom: false
+- id: a-high-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/A-multidisciplinary-silos.md
+    communication:
+      profile: high
+      wisdom: true
+- id: a-wisdom-only
+  overrides:
+    lab:
+      design_file: lab_designs/A-multidisciplinary-silos.md
+    communication:
+      profile: wisdom_only
+      wisdom: true
+- id: b-none
+  overrides:
+    lab:
+      design_file: lab_designs/B-transdisciplinary-integration.md
+    communication:
+      profile: none
+      wisdom: false
+- id: b-low
+  overrides:
+    lab:
+      design_file: lab_designs/B-transdisciplinary-integration.md
+    communication:
+      profile: low
+      wisdom: false
+- id: b-low-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/B-transdisciplinary-integration.md
+    communication:
+      profile: low
+      wisdom: true
+- id: b-intermediate
+  overrides:
+    lab:
+      design_file: lab_designs/B-transdisciplinary-integration.md
+    communication:
+      profile: intermediate
+      wisdom: false
+- id: b-intermediate-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/B-transdisciplinary-integration.md
+    communication:
+      profile: intermediate
+      wisdom: true
+- id: b-high
+  overrides:
+    lab:
+      design_file: lab_designs/B-transdisciplinary-integration.md
+    communication:
+      profile: high
+      wisdom: false
+- id: b-high-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/B-transdisciplinary-integration.md
+    communication:
+      profile: high
+      wisdom: true
+- id: b-wisdom-only
+  overrides:
+    lab:
+      design_file: lab_designs/B-transdisciplinary-integration.md
+    communication:
+      profile: wisdom_only
+      wisdom: true
+- id: c-none
+  overrides:
+    lab:
+      design_file: lab_designs/C-complementary-co-leaders.md
+    communication:
+      profile: none
+      wisdom: false
+- id: c-low
+  overrides:
+    lab:
+      design_file: lab_designs/C-complementary-co-leaders.md
+    communication:
+      profile: low
+      wisdom: false
+- id: c-low-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/C-complementary-co-leaders.md
+    communication:
+      profile: low
+      wisdom: true
+- id: c-intermediate
+  overrides:
+    lab:
+      design_file: lab_designs/C-complementary-co-leaders.md
+    communication:
+      profile: intermediate
+      wisdom: false
+- id: c-intermediate-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/C-complementary-co-leaders.md
+    communication:
+      profile: intermediate
+      wisdom: true
+- id: c-high
+  overrides:
+    lab:
+      design_file: lab_designs/C-complementary-co-leaders.md
+    communication:
+      profile: high
+      wisdom: false
+- id: c-high-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/C-complementary-co-leaders.md
+    communication:
+      profile: high
+      wisdom: true
+- id: c-wisdom-only
+  overrides:
+    lab:
+      design_file: lab_designs/C-complementary-co-leaders.md
+    communication:
+      profile: wisdom_only
+      wisdom: true
+- id: d-none
+  overrides:
+    lab:
+      design_file: lab_designs/D-hub-and-spoke-matrix.md
+    communication:
+      profile: none
+      wisdom: false
+- id: d-low
+  overrides:
+    lab:
+      design_file: lab_designs/D-hub-and-spoke-matrix.md
+    communication:
+      profile: low
+      wisdom: false
+- id: d-low-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/D-hub-and-spoke-matrix.md
+    communication:
+      profile: low
+      wisdom: true
+- id: d-intermediate
+  overrides:
+    lab:
+      design_file: lab_designs/D-hub-and-spoke-matrix.md
+    communication:
+      profile: intermediate
+      wisdom: false
+- id: d-intermediate-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/D-hub-and-spoke-matrix.md
+    communication:
+      profile: intermediate
+      wisdom: true
+- id: d-high
+  overrides:
+    lab:
+      design_file: lab_designs/D-hub-and-spoke-matrix.md
+    communication:
+      profile: high
+      wisdom: false
+- id: d-high-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/D-hub-and-spoke-matrix.md
+    communication:
+      profile: high
+      wisdom: true
+- id: d-wisdom-only
+  overrides:
+    lab:
+      design_file: lab_designs/D-hub-and-spoke-matrix.md
+    communication:
+      profile: wisdom_only
+      wisdom: true
+- id: e-none
+  overrides:
+    lab:
+      design_file: lab_designs/E-flat-holacratic-colab.md
+    communication:
+      profile: none
+      wisdom: false
+- id: e-low
+  overrides:
+    lab:
+      design_file: lab_designs/E-flat-holacratic-colab.md
+    communication:
+      profile: low
+      wisdom: false
+- id: e-low-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/E-flat-holacratic-colab.md
+    communication:
+      profile: low
+      wisdom: true
+- id: e-intermediate
+  overrides:
+    lab:
+      design_file: lab_designs/E-flat-holacratic-colab.md
+    communication:
+      profile: intermediate
+      wisdom: false
+- id: e-intermediate-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/E-flat-holacratic-colab.md
+    communication:
+      profile: intermediate
+      wisdom: true
+- id: e-high
+  overrides:
+    lab:
+      design_file: lab_designs/E-flat-holacratic-colab.md
+    communication:
+      profile: high
+      wisdom: false
+- id: e-high-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/E-flat-holacratic-colab.md
+    communication:
+      profile: high
+      wisdom: true
+- id: e-wisdom-only
+  overrides:
+    lab:
+      design_file: lab_designs/E-flat-holacratic-colab.md
+    communication:
+      profile: wisdom_only
+      wisdom: true
+- id: a-low-wisdom-chat-shadow
+  overrides:
+    lab:
+      design_file: lab_designs/A-multidisciplinary-silos.md
+    communication:
+      profile: low
+      wisdom: true
+    decisions:
+      mode: shadow
+      specialist: chat_judge
+- id: a-low-wisdom-llm-only
+  overrides:
+    lab:
+      design_file: lab_designs/A-multidisciplinary-silos.md
+    communication:
+      profile: low
+      wisdom: true
+    decisions:
+      mode: llm_only
+      specialist: null
+- id: memory-single
+  overrides:
+    lab:
+      design_file: lab_designs/A-multidisciplinary-silos.md
+    teams:
+      role_instances:
+        formal_specialist: 0
+        empirical_specialist: 1
+        implementation_specialist: 0
+      max_depth: 0
+      max_children_per_agent: 0
+      max_active_descendants: 0
+    communication:
+      profile: none
+      wisdom: false
+    resources:
+      max_active_agents: 1
+      max_llm_requests: 1
+      max_experiments: 1
+- id: a-low-wisdom-typed-active
+  overrides:
+    lab:
+      design_file: lab_designs/A-multidisciplinary-silos.md
+    communication:
+      profile: low
+      wisdom: true
+    decisions:
+      mode: selected_active
+      specialist: typed_judge
+- id: a-low-wisdom-typed-shadow
+  overrides:
+    lab:
+      design_file: lab_designs/A-multidisciplinary-silos.md
+    communication:
+      profile: low
+      wisdom: true
+    decisions:
+      mode: shadow
+      specialist: typed_judge
+decision_providers:
+  chat_judge:
+    adapter: chat_completions
+    base_url: https://decisions.example.invalid/v1
+    endpoint: /chat/completions
+    model: YOUR_DECISION_MODEL_ID
+    api_key_env: TEAMKNITT_DECISION_API_KEY
+    env_file: .env
+    timeout_seconds: 90
+    max_parallel_requests: 2
+  typed_judge:
+    adapter: typed
+    base_url: https://decisions.example.invalid/v1
+    endpoint: /assess
+    model: YOUR_DECISION_MODEL_ID
+    api_key_env: TEAMKNITT_DECISION_API_KEY
+    env_file: .env
+    timeout_seconds: 90
+    max_parallel_requests: 2

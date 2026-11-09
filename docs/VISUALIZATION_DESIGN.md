@@ -3,13 +3,13 @@
 The monitor supports four questions: which configuration is being observed, where work is
 occurring, whether the observation is current, and which conditions need investigation.
 The user's requested direction is a restrained process-control module, grounded in cognitive
-ergonomics. The implementation remains a local, read-only Labtune observer.
+ergonomics. The implementation remains a local, read-only teamknitt observer.
 
 ## Display principles
 
 Group information by task, keep labels and actor positions stable, use legible body text,
 and pair color with words and symbols. Execution status, freshness and evidence status are
-separate observations. These are Labtune display choices, not a claim of conformance to a
+separate observations. These are teamknitt display choices, not a claim of conformance to a
 third-party control-room standard.
 
 ## Information order
@@ -64,7 +64,7 @@ the visual design.
 
 ## Subtle western detailing
 
-Labtune's display takes a small cue from survey-office instruments and printed field ledgers:
+teamknitt's display takes a small cue from survey-office instruments and printed field ledgers:
 warm ivory surfaces, walnut text, muted brass rules, a slab-serif wordmark and restrained
 serif section labels. Body copy, controls, state labels and measurements retain their existing
 sans-serif or monospaced type. Clipped diagram corners and inset hairlines echo engraved

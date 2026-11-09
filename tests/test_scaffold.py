@@ -8,17 +8,17 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from labtune.config import ConfigurationError
-from labtune.planning import catalogue, compile_plan
-from labtune.scaffold import init_workspace
-from labtune.study import load_study, plans, prepare, run_variant
+from teamknitt.engine.config import ConfigurationError
+from teamknitt.engine.planning import catalogue, compile_plan
+from teamknitt.engine.scaffold import init_workspace
+from teamknitt.engine.study import load_study, plans, prepare, run_variant
 
 
 class ScaffoldTests(unittest.TestCase):
     def test_new_text_workspace_is_complete_and_prepare_needs_no_provider(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp) / "lab"
-            with patch("labtune.study.ChatCompletionsClient", side_effect=AssertionError("No provider call")):
+            with patch("teamknitt.engine.study.ChatCompletionsClient", side_effect=AssertionError("No provider call")):
                 result = init_workspace(root)
                 self.assertEqual(result["api_calls"], 0)
                 self.assertEqual(len(catalogue(root)), 6)
@@ -62,19 +62,19 @@ class ScaffoldTests(unittest.TestCase):
             self.assertIsNone(load_study(a)["base_overrides"]["decisions"]["specialist"])
             self.assertEqual(compile_plan(a)["statistics"]["approach"], "frequentist")
             matrix = a / "configs/memory-matrix.yaml"
-            from labtune.config import parse_yaml
+            from teamknitt.engine.config import parse_yaml
             self.assertEqual(len(plans(a, parse_yaml(matrix.read_text()))), 45)
 
     def test_specialist_can_be_selected_during_init_without_any_account_or_request(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp) / "typed-lab"
-            with patch("labtune.study.ChatCompletionsClient", side_effect=AssertionError("No provider call")):
+            with patch("teamknitt.engine.study.ChatCompletionsClient", side_effect=AssertionError("No provider call")):
                 result = init_workspace(root, "memory", "typed")
                 self.assertEqual(result["api_calls"], 0)
                 prepared = prepare(root, root)
             self.assertEqual(prepared["status"], "prepared")
             self.assertEqual(load_study(root)["base_overrides"]["decisions"]["specialist"], "specialist")
-            self.assertIn("LABTUNE_DECISION_API_KEY=replace-me", (root / ".env.example").read_text())
+            self.assertIn("TEAMKNITT_DECISION_API_KEY=replace-me", (root / ".env.example").read_text())
 
     def test_wheel_starter_has_no_private_seed_or_machine_path(self):
         def walk(root):
@@ -83,7 +83,7 @@ class ScaffoldTests(unittest.TestCase):
                     yield from walk(child)
                 else:
                     yield child
-        for resource in walk(files("labtune.resources").joinpath("starter")):
+        for resource in walk(files("teamknitt.engine.resources").joinpath("starter")):
             self.assertNotEqual(resource.name, "private_splits.json")
             self.assertNotEqual(resource.name, ".env")
             if resource.name.endswith((".py", ".yaml", ".md", ".json")):

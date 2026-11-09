@@ -12,7 +12,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from labtune.config import ConfigurationError, parse_yaml
+from teamknitt.engine.config import ConfigurationError, parse_yaml
 from teamknitt.probes.actions import InvalidAction, parse_action
 from teamknitt.probes.cli import main
 from teamknitt.probes.config import digest, links, load, plan, resource, validate
@@ -327,7 +327,7 @@ class TeamRuntimeTests(unittest.TestCase):
         self.assertIsNone(report(result)["scores"]["overall_score"])
 
     def test_provider_errors_are_not_behavioral_zero_and_do_not_fallback(self):
-        from labtune.providers.http import ProviderError
+        from teamknitt.engine.providers.http import ProviderError
         def failed(*args):
             raise ProviderError("authentication", "fixture failure")
         result, calls = self.mock_live(smaller(), failed)

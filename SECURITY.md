@@ -45,5 +45,13 @@ Raw trials, deliverables, source/generated text, keys, config backups and resear
 private ignored data. Metadata itself can be sensitive. Polling shows saved checkpoints and
 producer heartbeat; stale telemetry is not proof of continued execution. No automatic recovery
 or cryptographic audit guarantee is claimed. Observation dimensions do not certify latent
-cognition, synchrony, fractals, attractors or goal achievement. The unchanged Labtune license
+cognition, synchrony, fractals, attractors or goal achievement. The unchanged teamknitt license
 eligibility is not broadened by support for generic tasks or brainstorming.
+
+The three overview lenses are presentation-only. The optional CLI `--probe-run` reads one
+explicitly selected saved protocol and exports allowlisted summary metadata, never messages,
+private facts or episodes. The browser has no probe-path selector or evaluation endpoint.
+Attached evidence remains a separate context, not a capability claim about the current
+roster. Unknown measurements and fixture-only values are labelled accordingly. These
+summaries can still be sensitive; keep them and snapshots private. Delayed monitor polls
+cannot replace a newer user draft or record selection.

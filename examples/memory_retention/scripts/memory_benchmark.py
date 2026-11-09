@@ -25,13 +25,9 @@ def interval(k,n):
                               1.0 if k==n else float(beta.ppf(.975,k+1,n-k))]
 
 
-def proportion(k,n,prior=None):
+def proportion(k,n):
     row={"k":int(k),"n":int(n),"rate":float(k/n) if n else None,"cp95":interval(k,n),
          "unit":"one independent generated run; one fault per fault run"}
-    if prior is not None and n:
-        a,b=prior
-        row["bayesian"]={"prior_beta":[a,b],"mean":(a+k)/(a+b+n),
-                         "credible95":[float(beta.ppf(.025,a+k,b+n-k)),float(beta.ppf(.975,a+k,b+n-k))]}
     return row
 
 
@@ -190,7 +186,7 @@ class PolicyProcess:
     def __exit__(self,*args): self.close()
 
 
-def evaluate(source,protocol,seeds,split,job,prior=None,capacity=None):
+def evaluate(source,protocol,seeds,split,job,capacity=None):
     capacity=capacity or protocol["capacity"]
     warm=protocol["warmup"]
     groups={}
@@ -230,12 +226,12 @@ def evaluate(source,protocol,seeds,split,job,prior=None,capacity=None):
         for family in FAMILIES:
             negatives=[r for r in null if r["family"]==family]
             positives=[r for r in fault if r["family"]==family]
-            by_family[family]={"run_false_alarms":proportion(sum(r["maximum"]>h for r in negatives),len(negatives),prior),
-                  "fault_recall":proportion(sum(bool(np.any(r["scores"][r["case"]["fault"]]>h)) for r in positives),len(positives),prior)}
+            by_family[family]={"run_false_alarms":proportion(sum(r["maximum"]>h for r in negatives),len(negatives)),
+                  "fault_recall":proportion(sum(bool(np.any(r["scores"][r["case"]["fault"]]>h)) for r in positives),len(positives))}
         results.append({"alpha":alpha,"status":"measured","threshold":fitted,
-               "run_false_alarms":proportion(alarm,len(null),prior),
-               "fault_recall":proportion(hit,len(fault),prior),
-               "benign_recurrence_alarm_runs":proportion(rare_alarm,len(recurrence),prior),
+               "run_false_alarms":proportion(alarm,len(null)),
+               "fault_recall":proportion(hit,len(fault)),
+               "benign_recurrence_alarm_runs":proportion(rare_alarm,len(recurrence)),
                "median_detected_delay_ticks":float(np.median(delays)) if delays else None,
                "by_family":by_family})
     main=next(r for r in results if r["alpha"]==.1)

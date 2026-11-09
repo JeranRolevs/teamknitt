@@ -1,4 +1,4 @@
-# Labtune flowcharts
+# teamknitt flowcharts
 
 Updated 2026-10-31. These graphs show the implemented bounded study workflow,
 memory-policy example and optional local lab observatory. Gray dashed nodes mark planned general asset services.
@@ -53,11 +53,11 @@ The older render_integrated_lab.py and render_horizontal_lab.py commands delegat
 same renderer. [Overview contact sheet](diagrams/overview.png).
 
 
-## teamknitt: task teams on the Labtune engine
+## teamknitt: task teams on the teamknitt engine
 
-The user chooses purpose, member count, topology and communication. Distributed cognition
-organizes work across members and artifacts; dynamical-systems dimensions are optional
-observation tools. Labtune is the bounded execution engine and aesthetic foundation.
+The user chooses purpose, member count, topology and communication. Distributed problem-solving
+organizes work across members and artifacts; complexity/dynamics dimensions are optional
+observation tools. teamknitt is the bounded execution engine and aesthetic foundation.
 
 - [13 · user task, team configuration, engine and observation](diagrams/13-teamknitt-system.svg)
 - [14 · brief to observable contributions and user review](diagrams/14-teamknitt-protocol.svg)
@@ -70,3 +70,16 @@ The installed viewer uses those packaged positions; no development checkout is n
 ```bash
 python diagrams/render_flowcharts.py --diagram 13-teamknitt-system --diagram 14-teamknitt-protocol
 ```
+
+
+## Grouped team views and standalone engine
+
+![Two approaches, one team](diagrams/15-teamknitt-views.svg)
+
+Standard groups collaborative intelligence and shared-model/member reports. Complexity groups
+distributed problem-solving, teams as dynamical systems, and interaction/coordination. These
+are explanatory orientations, not statistical methods or automatic execution choices. The
+engine is self-contained; provenance acknowledges Labtune without an upstream dependency.
+
+All diagrams, labels and routing geometry originate in `diagrams/specs.py`. Regenerate with
+`python diagrams/render_flowcharts.py`, then synchronize resources with `tools/sync_starter.py`.

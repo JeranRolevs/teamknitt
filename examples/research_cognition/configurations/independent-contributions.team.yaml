@@ -1,11 +1,11 @@
 # Explicit alternative, not an automatically selected or preferred team.
 schema_version: 2
 name: Independent contributions to a unitary research judgement
-labtune:
+engine:
   variant: independent
 cognition:
   perspectives:
-  - distributed_cognition
+  - distributed_problem_solving
   - information_processing
   context:
     setting: A research team develops an evidence-grounded study proposal; no scientific result is assumed.

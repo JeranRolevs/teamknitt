@@ -1,12 +1,12 @@
-# Labtune implementation boundary
+# teamknitt implementation boundary
 
-Implement Labtune independently from the user's requirements and the code in this repository.
+Implement teamknitt independently from the user's requirements and the code in this repository.
 Do not copy, adapt, vendor or import implementation code, prompts, skills or templates from
 unrelated projects or the surrounding historical workspace. Do not delegate execution to a
 parent project, its CLI, modules or containers. If provenance is uncertain, retain the evidence
 locally and resolve the specific overlap; renaming is not evidence of independence.
 
-Build from this repository's pyproject.toml. Keep Labtune installable outside its development
+Build from this repository's pyproject.toml. Keep teamknitt installable outside its development
 workspace. Use declared general-purpose dependencies and preserve their required notices.
 
 The user chooses lab styles, models, communication, statistics, delegation and budgets.
@@ -18,7 +18,7 @@ Keep starter resources synchronized with tools/sync_starter.py. All diagrams use
 diagrams/specs.py; regenerate with diagrams/render_flowcharts.py. Local archives, historical
 reviews and audit records are intentionally ignored and must not enter a public export.
 
-Labtune uses the Labtune Academic Research License 2.0. Free use is limited to qualifying
+teamknitt uses the Labtune Academic Research License 2.0. Free use is limited to qualifying
 academic institutions in World Bank low-income or lower-middle-income economies and their
 authorized users for independent noncommercial research. Other use requires separate written
 permission through Goran Mitevski, goran@pioneertown.ai, on behalf of Pioneertown B.V.
@@ -29,18 +29,30 @@ Pioneertown B.V. copyright/licensor notice and Goran Mitevski author credit. Do 
 licensing terms, commit, push or publish without user authorization.
 
 
-# teamknitt product on the Labtune engine
+# Standalone teamknitt
 
-teamknitt configures and monitors teams for user-set tasks, brainstorming, goals and research.
-Labtune is the engine and aesthetic foundation, not a requirement to make every task a lab.
-Keep model/provider, domain/tool, statistics, delegation and budget choices explicit. User-
-selected topology/count/sharing translate into engine settings; do not optimize or change them
-silently. Distributed team cognition remains the configuration framework. Teams As Dynamical
-Systems informs temporal process and an optional additional observation tool; do not fabricate
-attractor, synchrony, fractal, causal or psychological claims. Separate availability/exposure/
-understanding, reported agreement/reference conformity/perceived alignment and user task success.
-Draft previews do not write configs or start paid work. Applying a reviewed draft is explicit,
-backed up and blocked by the shared run lock. Monitoring makes no model calls. The optional
-teammate probes remain secondary. Rename code/docs/resources consistently; preserve original
-Labtune credit and unchanged legal terms, whose eligibility is not broadened by general tasks.
-Keep starters and canonical diagram/layout resources synchronized. Publication needs user authorization.
+teamknitt is based on Labtune, with its own runtime under teamknitt.engine and one console
+command. No upstream package import, CLI delegation or parent checkout is allowed. Preserve
+PROVENANCE.md, Goran Mitevski's authorship, Pioneertown B.V. and the unchanged legal texts.
+
+The user sets tasks, brainstorming, goals or research, and explicitly chooses topologies,
+models, communication, tools, delegation and budgets. Keep all 14 routing presets and
+1–16-member bounds. Views never optimize, change or evaluate the team automatically.
+
+Group team views into Standard (collaborative intelligence; shared models/member reports)
+and Complexity (distributed problem-solving; teams as dynamical systems; interactions and
+coordination). This is explanatory emphasis, not an exclusive partition of team research.
+Use distributed problem-solving as the product term; retain original scholarly titles and
+read legacy serialization names without rewriting history. Shared-plan agreement, reference
+conformity, perceived alignment, understanding and task correctness remain distinct.
+
+Complexity science is broader than Gorman et al. or one tradition; Santa Fe is not an
+endorsement or a validated team model. Never fabricate emergence, adaptation, causal,
+psychological, attractor, synchrony or fractal findings. Optional saved teammate probes remain
+separate-context evidence, not an official CIB score or capabilities attributed to this team.
+
+Bayesian/probabilistic analysis and prior workflows are not available in teamknitt; reject
+legacy selected methods, never silently convert them. Original upstream functionality is not
+modified. Preserve explicit credentials/model bindings and budgets during migration. Drafts
+and migrations require explicit application, private backups and the shared run lock.
+Keep resources and canonical diagrams synchronized. Publication needs user authorization.

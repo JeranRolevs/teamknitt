@@ -31,7 +31,7 @@ paused views and missing telemetry are explicitly distinguished from current obs
 
 [Display design notes](VISUALIZATION_DESIGN.md) record the rationale and reference guidance.
 
-The yellow (`#FFDA00`) Labtune wordmark uses Noir Pro Medium (weight 500) when installed on
+The yellow (`#FFDA00`) teamknitt wordmark uses Noir Pro Medium (weight 500) when installed on
 the viewing computer. Noir Medium and system sans-serif fonts provide fallbacks. Font loading
 stays local, including in exported snapshots.
 
@@ -42,10 +42,10 @@ or one budget loop per sequence; it does not imply additional scientists were la
 
 ## Open the selected design
 
-From a checkout, after installing Labtune:
+From a checkout, after installing teamknitt:
 
 ```bash
-labtune --project . visualize
+teamknitt engine --project . visualize
 ```
 
 Open the printed `http://127.0.0.1:8765/.../` URL. Leave the command running while viewing;
@@ -55,9 +55,9 @@ Use `--port 0` to choose an available port or `--port 8766` if the default is oc
 Select another design or communication/statistical choice for a structural preview:
 
 ```bash
-labtune --project . visualize \
+teamknitt engine --project . visualize \
   --design lab_designs/C-complementary-co-leaders.md \
-  --profile wisdom_only --statistics bayesian
+  --profile wisdom_only --statistics frequentist
 ```
 
 Previewing does not write these choices into the configuration. The diagram reflects the
@@ -70,19 +70,19 @@ it does not invent team reporting relationships absent from the plan.
 In an initialized workspace:
 
 ```bash
-python3 lab.py visualize --variant single
+python3 engine.py visualize --variant single
 # For the memory example instead:
-python3 lab.py visualize --variant memory-single
+python3 engine.py visualize --variant memory-single
 ```
 
 The equivalent generic command is:
 
 ```bash
-labtune --project ../my-lab visualize --workspace ../my-lab --variant single
+teamknitt engine --project ../my-lab visualize --workspace ../my-lab --variant single
 ```
 
 The page begins with the chosen setup. In another terminal, explicitly start a run using the
-normal `lab.py run --variant ...` command. Research calls still consume the budgets selected
+normal `engine.py run --variant ...` command. Research calls still consume the budgets selected
 in that workspace. Opening the viewer does not launch or qualify a research run.
 
 “Latest matching run” attaches only to a trial with the same configuration snapshot identity.
@@ -91,7 +91,7 @@ inspect saved trials; those views always use the trial's recorded plan. Setup-on
 pausing updates are available. Choosing a saved trial from the command line is explicit:
 
 ```bash
-python3 lab.py visualize --trial YOUR_SAVED_TRIAL_ID
+python3 engine.py visualize --trial YOUR_SAVED_TRIAL_ID
 ```
 
 The map distinguishes planned, ready, active, completed, deferred, skipped, failed and unknown
@@ -108,15 +108,15 @@ request and the enclosing failed operation. Missing usage receipts do not imply 
 ## Save an offline page
 
 ```bash
-labtune --project ../my-lab visualize --workspace ../my-lab \
-  --variant single --output /tmp/labtune-process.html
+teamknitt engine --project ../my-lab visualize --workspace ../my-lab \
+  --variant single --output /tmp/teamknitt-process.html
 ```
 
 Or click **Save snapshot** in the live page. Each saved page contains its data, CSS and
 JavaScript, with no CDN or external assets. It opens offline and retains inspection, zoom and
 map switching. It is labeled as a snapshot and does not show stale observations as live work.
 The CLI refuses to overwrite an existing output file. Keep exports with local results if
-they include private run metadata; nothing is hosted or published by Labtune.
+they include private run metadata; nothing is hosted or published by teamknitt.
 
 ## Runtime integration and data boundary
 
@@ -136,7 +136,7 @@ If the observer is still reading a backlog, the page marks activity as catching 
 than presenting older requests as current computation.
 
 For another runtime, supply the same resolved `plan.json` and summary convention, emit the
-following metadata through `labtune.visualization.activity_metadata`, and update the heartbeat:
+following metadata through `teamknitt.visualization.activity_metadata`, and update the heartbeat:
 
 | Signal | Required identity | Meaning |
 |---|---|---|
@@ -148,5 +148,5 @@ following metadata through `labtune.visualization.activity_metadata`, and update
 
 This is an observer interface; it grants no execution capability. The local HTTP server exposes
 only the rendered page and filtered state, with no arbitrary filesystem routes or write API.
-The viewer ships in the wheel and works on platforms where Labtune's planning works; a domain
+The viewer ships in the wheel and works on platforms where teamknitt's planning works; a domain
 adapter's candidate-execution restrictions still apply to that domain's research runs.

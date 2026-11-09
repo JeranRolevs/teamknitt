@@ -1,4 +1,4 @@
-"""Distributed-cognition configuration and execution. All inference is mocked or absent."""
+"""Distributed-problem-solving configuration and execution. All inference is mocked or absent."""
 from __future__ import annotations
 
 import asyncio
@@ -15,8 +15,8 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from labtune.config import ConfigurationError, parse_yaml
-from labtune.study import StudyError
+from teamknitt.engine.config import ConfigurationError, parse_yaml
+from teamknitt.engine.study import StudyError
 from teamknitt.cli import main
 from teamknitt.cognition import CognitiveWorkspace
 from teamknitt.config import compile_plan, digest, load, resource
@@ -51,11 +51,11 @@ class WorkspaceCase(unittest.TestCase):
 
 
 class CognitionConfigurationTests(WorkspaceCase):
-    def test_baseline_is_actual_labtune_variant_not_parallel_roster_or_providers(self):
-        with patch("labtune.study.ChatCompletionsClient", side_effect=AssertionError("No provider construction")):
+    def test_baseline_is_actual_engine_variant_not_parallel_roster_or_providers(self):
+        with patch("teamknitt.engine.study.ChatCompletionsClient", side_effect=AssertionError("No provider construction")):
             p = self.plan()
-        self.assertEqual(p["labtune_variant"], "team")
-        self.assertEqual(p["labtune_plan"]["design"]["id"], "complementary_co_leaders")
+        self.assertEqual(p["engine_variant"], "team")
+        self.assertEqual(p["engine_plan"]["design"]["id"], "complementary_co_leaders")
         self.assertEqual(p["provider_request_cap"], 16)
         self.assertEqual(len(p["waves"]), 6)
         self.assertEqual(len(p["configuration"]["cognition"]["roles"]), 2)
@@ -69,19 +69,19 @@ class CognitionConfigurationTests(WorkspaceCase):
         s["provider"]["model"] = "user-selected-model"
         s["base_overrides"]["budget"]["max_llm_calls"] = 9
         s["base_overrides"]["teams"]["max_depth"] = 1
-        s["base_overrides"]["statistics"] = {"approach": "bayesian"}
+        s["base_overrides"]["statistics"] = {"approach": "frequentist"}
         self.write_study(s)
         p = self.plan()
         self.assertEqual(p["provider_request_cap"], 9)
-        self.assertEqual(p["labtune_plan"]["generation_provider"]["model"], "user-selected-model")
-        self.assertEqual(p["labtune_plan"]["statistics"]["approach"], "bayesian")
-        self.assertEqual(p["labtune_plan"]["delegation"]["max_depth"], 1)
+        self.assertEqual(p["engine_plan"]["generation_provider"]["model"], "user-selected-model")
+        self.assertEqual(p["engine_plan"]["statistics"]["approach"], "frequentist")
+        self.assertEqual(p["engine_plan"]["delegation"]["max_depth"], 1)
 
     def test_independent_alternative_is_explicit_and_has_no_peer_workspace_channel(self):
         alternate = parse_yaml((self.root / "configurations/independent-contributions.team.yaml").read_text())
         p = self.plan(alternate)
-        self.assertEqual(p["labtune_variant"], "independent")
-        self.assertEqual(p["labtune_plan"]["communication"]["effective_profile"], "none")
+        self.assertEqual(p["engine_variant"], "independent")
+        self.assertEqual(p["engine_plan"]["communication"]["effective_profile"], "none")
         self.assertEqual(p["configuration"]["cognition"]["task"]["structure"], "unitary")
         self.assertEqual(p["configuration"]["cognition"]["handoffs"], [])
         _, report = self.execute(alternate)
@@ -97,7 +97,7 @@ class CognitionConfigurationTests(WorkspaceCase):
         with self.assertRaisesRegex(ConfigurationError, "role bindings"):
             self.plan()
 
-    def test_cognition_cannot_escalate_labtune_sharing(self):
+    def test_cognition_cannot_escalate_teamknitt_sharing(self):
         s = self.study()
         s["variants"][0]["overrides"]["communication"]["profile"] = "intermediate"
         self.write_study(s)
@@ -189,7 +189,7 @@ class CognitiveStateTests(WorkspaceCase):
 
     def observe_wave(self, state, p, number):
         node_ids = p["waves"][number-1]["nodes"]
-        nodes = [n for n in p["labtune_plan"]["work_graph"] if n["id"] in node_ids]
+        nodes = [n for n in p["engine_plan"]["work_graph"] if n["id"] in node_ids]
         state.begin_wave(nodes)
 
     def test_complementary_source_access_and_capability_conditioned_opportunities(self):
@@ -270,8 +270,8 @@ class CognitiveStateTests(WorkspaceCase):
 
 
 class CognitionExecutionTests(WorkspaceCase):
-    def test_connected_fixture_uses_actual_labtune_graph_without_model_calls_or_scores(self):
-        with patch("labtune.study.client_for", side_effect=AssertionError("No provider construction")):
+    def test_connected_fixture_uses_actual_teamknitt_graph_without_model_calls_or_scores(self):
+        with patch("teamknitt.engine.study.client_for", side_effect=AssertionError("No provider construction")):
             info, report = self.execute()
         self.assertEqual(info["status"], "completed_text_workflow")
         self.assertEqual(info["provider_requests"], 0)
@@ -300,7 +300,7 @@ class CognitionExecutionTests(WorkspaceCase):
         self.assertEqual(h["status"], "acknowledged_late")
         self.assertFalse(h["acknowledged_on_time"])
         self.assertTrue(report["skipped_episodes"])
-        self.assertEqual(report["personas"], self.plan()["labtune_plan"]["personas"])
+        self.assertEqual(report["personas"], self.plan()["engine_plan"]["personas"])
 
     def test_partial_exposure_and_no_second_cross_role_sharing_budget(self):
         s = self.study()
@@ -335,7 +335,7 @@ class CognitionExecutionTests(WorkspaceCase):
         self.assertTrue(all(h["status"] == "missing_at_deadline" for h in report["handoffs"]))
         self.assertIsNone(report["scientific_quality_score"])
 
-    def test_workspace_lock_remains_shared_with_original_labtune(self):
+    def test_workspace_lock_remains_shared_with_original_teamknitt(self):
         import fcntl
         with (self.root / ".run.lock").open("a") as lock:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -343,7 +343,7 @@ class CognitionExecutionTests(WorkspaceCase):
                 asyncio.run(run(self.root, self.c))
         self.assertFalse(any((self.root / "trials").iterdir()))
 
-    def test_blank_live_mission_retains_original_labtune_precondition(self):
+    def test_blank_live_mission_retains_original_teamknitt_precondition(self):
         s = self.study()
         s["provider"].update(model="local-mock", base_url="http://127.0.0.1:1", api_key_env=None)
         self.write_study(s)
@@ -443,7 +443,8 @@ class CognitionReportingAndPortabilityTests(WorkspaceCase):
         self.assertEqual((self.root / "study.yaml").read_bytes(), (ROOT / "examples/research_cognition/study.yaml").read_bytes())
         self.assertEqual((self.root / "LICENSE").read_bytes(), (ROOT / "LICENSE").read_bytes())
         self.assertEqual((self.root / "LICENSING.md").read_bytes(), (ROOT / "LICENSING.md").read_bytes())
-        self.assertNotIn("TEAMKNITT_API_KEY", (self.root / ".env.example").read_text())
+        self.assertIn("TEAMKNITT_API_KEY", (self.root / ".env.example").read_text())
+        self.assertNotIn("LABTUNE_API_KEY", (self.root / ".env.example").read_text())
         self.assertTrue((self.root / "mission/cognition/mechanism.md").is_file())
         with self.assertRaises(ConfigurationError):
             init(self.root, template="research")
@@ -460,7 +461,7 @@ class CognitionReportingAndPortabilityTests(WorkspaceCase):
             self.assertEqual(result.returncode, 0, result.stderr)
 
     def test_cli_preparation_is_offline_and_live_run_is_opt_in(self):
-        with patch("labtune.study.ChatCompletionsClient", side_effect=AssertionError("No provider")), redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+        with patch("teamknitt.engine.study.ChatCompletionsClient", side_effect=AssertionError("No provider")), redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
             self.assertEqual(main(["check", "--workspace", str(self.root)]), 0)
             self.assertEqual(main(["prepare", "--workspace", str(self.root)]), 0)
             self.assertEqual(main(["run", "--workspace", str(self.root)]), 2)

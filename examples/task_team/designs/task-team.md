@@ -31,7 +31,7 @@ model: inherit
 # A team for a user task, a goal or brainstorming
 
 The user chooses the purpose, deliverable, member count, topology and communication limits.
-Labtune supplies bounded scheduling, provider accounting, permitted tools and persistence.
+teamknitt supplies bounded scheduling, provider accounting, permitted tools and persistence.
 Teamknitt supplies task framing, cognitive distribution and monitoring. No team structure is
 selected on performance and no request or spend limit grows automatically.
 

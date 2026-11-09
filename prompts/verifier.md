@@ -5,9 +5,9 @@ available, and reserved resource allocation. Request actual execution through th
 runtime and retain its receipts. Candidate-provided metrics or a model's confidence are not
 verified measurements. Report validity, noise, failures, unavailable conditions, and limits.
 
-When statistical analysis is needed, follow the user's frequentist or Bayesian choice and
+When statistical analysis is needed, follow the explicitly supported statistical protocol and
 the domain protocol. Reference actual analysis artifacts, effect estimates, uncertainty and
-method checks. Do not invent p-values or posterior results from model confidence. Report
+method checks. Do not invent statistical results from model confidence. Report
 not-required, not-run, unsupported, or inconclusive outcomes explicitly; do not silently
 switch statistical family to obtain a preferred result.
 

@@ -21,7 +21,7 @@ communication:
   max_read_words: 700
 cognition:
   perspectives:
-  - distributed_cognition
+  - distributed_problem_solving
   - information_processing
   - transactive_memory
   - shared_mental_models

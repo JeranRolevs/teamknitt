@@ -7,7 +7,7 @@ communication:
   profile: preset
   wisdom: null
 statistics:
-  approach: frequentist  # frequentist (p-values) | bayesian; used when analysis is needed
+  approach: frequentist  # supported count/interval analysis when needed; no analysis is inferred from model confidence
 model:
   provider: unconfigured
   name: unconfigured

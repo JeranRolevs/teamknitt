@@ -1,54 +1,51 @@
-# Move an existing workspace to Labtune
+# Migration to standalone teamknitt 0.5
 
-The product formerly named Labton is now **Labtune**. From version 0.5.0, the Python
-distribution, import namespace and command are all `labtune`. The repository is
-[JeranRolevs/labtune](https://github.com/JeranRolevs/labtune).
+teamknitt now ships its own engine under `teamknitt.engine`. Only the `teamknitt` package
+namespace and command are installed. Based on Labtune; see [provenance](../PROVENANCE.md).
+Do not rely on the former `labtune` command/import alias or co-install overlapping old builds.
 
-## Install and use the renamed package
+## Existing team workspaces
 
-From a checkout of the renamed repository:
-
-```bash
-python3 -m pip install -e .
-labtune --help
-```
-
-Or install a built wheel, adding the research extras when needed. Imports in application
-code use `labtune` in place of `labton`. The previous command and import namespace are
-not provided by this distribution; an independently installed old package is separate.
-
-Existing workspace folders can keep their current names. To use one directly:
+Preview first:
 
 ```bash
-labtune --project /path/to/my-lab study prepare --workspace /path/to/my-lab
-labtune --project /path/to/my-lab study visualize --workspace /path/to/my-lab --variant YOUR_VARIANT
+teamknitt migrate --workspace PATH
+teamknitt migrate --workspace PATH --apply
+teamknitt check --workspace PATH
 ```
 
-In an existing workspace's `lab.py`, update the import to:
+Without `--apply`, no files change. Applying privately backs up original files under ignored
+`setup/teamknitt-migrations/`, respects the run lock, and converts legacy engine/perspective
+names. A recognized generated `lab.py` launcher becomes `engine.py` using the local engine.
+An existing destination or symlink fails closed. Custom launchers/adapters need explicit
+manual import updates; migration does not rewrite arbitrary user code.
 
-```python
-from labtune.cli import main
-```
+Briefs, provider/model selections, budget settings and credential files are unchanged. Old
+explicit environment-variable names such as `LABTUNE_API_KEY` still work when declared in
+that workspace. New workspaces use `TEAMKNITT_API_KEY` / `TEAMKNITT_DECISION_API_KEY`.
 
-Newly initialized workspaces already contain this import. Preparation and visualization
-make no model requests. Configurations, private seed panels, results and approvals belong
-to the workspace; reinitializing the directory is unnecessary.
+Bayesian/probabilistic studies and selected prior workflows are unsupported in teamknitt.
+They are rejected before model initialization, not silently changed. Keep originals and
+explicitly review any new analysis configuration; the original Labtune project is unaffected.
 
-## Credentials and recorded research
+## Historical records and views
 
-New starter configurations name `LABTUNE_API_KEY` and `LABTUNE_DECISION_API_KEY`.
-An existing study still reads exactly the variable named by each provider's `api_key_env`,
-including custom or previous names. Update both the configuration and private `.env` only
-if you choose to rename them; no fallback key or provider is selected automatically.
+`teamknitt view PATH/trials/ID` verifies original saved bindings before normalizing display
+names. It does not rewrite or rerun historical records, infer equivalence with a new
+configuration, or change the recorded statistical method. Use explicit paths for legacy
+records rather than expecting them to join a new configuration's latest-run cohort.
 
-Saved trials and exported snapshots retain the names and configuration identities they
-recorded. New package code produces a new configuration identity. Regenerate structural
-plans with `prepare`. For the memory adapter, repeat the offline `qualify` step because
-the trusted evaluator's source hash changed. Prior approvals are checked against their
-recorded protocol and evidence as usual; changed evidence requires a new review.
+The previous flat views are reorganized:
 
-When updating licence/notices in an existing workspace, copy `LICENSE` and `LICENSING.md`
-from the current checkout or a newly initialized temporary workspace. The custom licence
-identifier is now `LicenseRef-Labtune-Academic-Research-2.0`; the geographic and institutional
-eligibility conditions, ownership and author credit remain in the full terms. Updating
-copies does not rewrite permissions previously granted for older material.
+- Collaborative intelligence → **Standard / collaborative intelligence**.
+- Shared-plan comparisons → **Standard / shared models & member reports**.
+- Representations, work distribution and handoffs → **Complexity / distributed problem-solving**.
+- Dynamics → **Complexity / teams as dynamical systems**.
+- Recorded artifact exposure and cross-level records → **Complexity / interactions & coordination**.
+
+Use `--group standard|complexity` and optionally `--section NAME`. The old `--lens` flag is
+accepted with a mapping notice; the former cognition view was split, not declared identical
+to one new view. Offline old snapshots remain their original, self-contained presentations.
+
+Requalify any research adapter whose evaluator/worker source changed. No migration makes
+provider calls, raises budgets, selects models or certifies task success.

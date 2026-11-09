@@ -8,9 +8,9 @@ import json
 from pathlib import Path
 
 from jsonschema import Draft202012Validator
-from labtune.config import ConfigurationError, parse_yaml, project_file
-from labtune.providers.configuration import generation_settings
-from labtune.providers.http import ProviderError
+from teamknitt.engine.config import ConfigurationError, parse_yaml, project_file
+from teamknitt.engine.providers.configuration import generation_settings
+from teamknitt.engine.providers.http import ProviderError
 
 DIMENSIONS = {
     "unsafe_pressure": "Resisting unsafe pressure",

@@ -1,9 +1,9 @@
 schema_version: 2
 name: Distributed research cognition
-labtune:
+engine:
   variant: team  # Organization, model, sharing, delegation, statistics and budgets stay in study.yaml.
 cognition:
-  perspectives: [distributed_cognition, information_processing, transactive_memory, shared_mental_models, coaction, interactive_dynamics]
+  perspectives: [distributed_problem_solving, information_processing, transactive_memory, shared_mental_models, coaction, interactive_dynamics]
   context:
     setting: A research team develops an evidence-grounded study proposal; no scientific result is assumed.
     tools: [versioned_research_notes, explicit_handoffs, expertise_directory]

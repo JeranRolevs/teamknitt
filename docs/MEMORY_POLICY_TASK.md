@@ -1,7 +1,7 @@
 # Authored memory-policy research adapter
 
 memory_policy.v1 adds executable retention policies to the configurable orchestration.
-Create a self-contained task with labtune init /new/workspace --template memory.
+Create a self-contained task with teamknitt init /new/workspace --template memory.
 The generator, evaluator, sandbox worker, baseline sources and public protocols ship in the
 [example](../examples/memory_retention/README.md). Private seed panels are generated locally.
 

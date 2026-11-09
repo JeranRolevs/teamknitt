@@ -7,7 +7,7 @@ provider:
   endpoint: /chat/completions
   models_endpoint: null
   model: YOUR_MODEL_ID
-  api_key_env: LABTUNE_API_KEY
+  api_key_env: TEAMKNITT_API_KEY
   env_file: .env
   timeout_seconds: 90
   max_output_tokens: 8192
@@ -63,7 +63,7 @@ decision_providers:
     base_url: https://decisions.example.invalid/v1
     endpoint: /chat/completions
     model: YOUR_DECISION_MODEL_ID
-    api_key_env: LABTUNE_DECISION_API_KEY
+    api_key_env: TEAMKNITT_DECISION_API_KEY
     env_file: .env
     timeout_seconds: 90
     max_parallel_requests: 2

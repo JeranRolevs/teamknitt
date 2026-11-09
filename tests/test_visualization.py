@@ -9,12 +9,12 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from labtune.cli import main
-from labtune.config import ConfigurationError
-from labtune.planning import catalogue, compile_plan
-from labtune.scaffold import init_workspace
-from labtune.study import load_study, plans, save, TextStudy
-from labtune.visualization import (CONFIRMATION_NODE, SetupVisualizationAgent, RuntimeObserverAgent,
+from teamknitt.engine.cli import main
+from teamknitt.engine.config import ConfigurationError
+from teamknitt.engine.planning import catalogue, compile_plan
+from teamknitt.engine.scaffold import init_workspace
+from teamknitt.engine.study import load_study, plans, save, TextStudy
+from teamknitt.engine.visualization import (CONFIRMATION_NODE, SetupVisualizationAgent, RuntimeObserverAgent,
                                  VisualizationSession, VisualizationServer, activity_metadata, render_page)
 
 PROJECT = Path(__file__).resolve().parents[1]
@@ -48,11 +48,11 @@ class VisualizationTests(unittest.TestCase):
     def test_all_six_designs_and_user_restrictions_are_projected_without_research_content(self):
         graphs = set()
         for design in catalogue(PROJECT):
-            plan = compile_plan(PROJECT, design_file=design["file"], profile="none", statistical_approach="bayesian")
+            plan = compile_plan(PROJECT, design_file=design["file"], profile="none", statistical_approach="frequentist")
             setup = SetupVisualizationAgent().visualize(plan)
             self.assertEqual(setup["design"]["id"], plan["design"]["id"])
             self.assertEqual(setup["communication"], "none")
-            self.assertEqual(setup["statistics"], "bayesian")
+            self.assertEqual(setup["statistics"], "frequentist")
             self.assertEqual({a["id"] for a in setup["actors"]}, {p["instance_id"] for p in plan["personas"]})
             self.assertNotIn("resolved_config", json.dumps(setup))
             graphs.add(json.dumps(setup["nodes"]))
@@ -191,7 +191,7 @@ class VisualizationTests(unittest.TestCase):
         state["setup"]["design"]["name"] = '</script><script>alert("XSS")</script>'
         page = render_page(state)
         self.assertNotIn('</script><script>alert', page)
-        self.assertNotIn("/* Labtune_", page)
+        self.assertNotIn("/* teamknitt_", page)
         self.assertIn('"api_url": null', page)
         self.assertNotIn("https://", page)
         self.assertIn("Runtime observer", page)
@@ -226,7 +226,7 @@ class VisualizationTests(unittest.TestCase):
         workspace = self.root / "lab"
         init_workspace(workspace)
         target = self.root / "view.html"
-        with patch("labtune.study.ChatCompletionsClient", side_effect=AssertionError("No model calls")), redirect_stdout(StringIO()):
+        with patch("teamknitt.engine.study.ChatCompletionsClient", side_effect=AssertionError("No model calls")), redirect_stdout(StringIO()):
             code = main(["--project", str(workspace), "study", "visualize", "--workspace", str(workspace),
                          "--variant", "single", "--output", str(target)])
         self.assertEqual(code, 0)

@@ -6,9 +6,9 @@ Python 3.11+ is required. From the repository root:
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install -e .
-labtune init ../my-lab
+teamknitt engine init ../my-lab
 cd ../my-lab
-python3 lab.py prepare
+python3 engine.py prepare
 ```
 
 Windows users can activate .venv with .venv\Scripts\activate. Planning and text workflows
@@ -26,9 +26,9 @@ Replace AWAITING_USER_PROBLEM in mission/problem.md with the research task and c
 Choose variants, sharing, delegation and statistics in study.yaml, then explicitly run:
 
 ```bash
-python3 lab.py doctor
-python3 lab.py run --variant single
-python3 lab.py compare
+python3 engine.py doctor
+python3 engine.py run --variant single
+python3 engine.py compare
 ```
 
 The text starter variants are single, silos-high-wisdom and co-leaders-high-wisdom. Their
@@ -38,7 +38,7 @@ connectivity check. [Decision endpoints](DECISION_PROVIDERS.md) are optional and
 ## Single-scientist workspace
 
 ```bash
-labtune init ../scientist-lab --template scientist
+teamknitt engine init ../scientist-lab --template scientist
 ```
 
 Choose scientist-low, scientist-medium or scientist-persistent. The user selects the number
@@ -50,11 +50,11 @@ budget-driven work. [Single-scientist controls](SINGLE_SCIENTIST.md).
 From the checkout, install python3 -m pip install -e '.[memory]', then:
 
 ```bash
-labtune init ../memory-lab --template memory
+teamknitt engine init ../memory-lab --template memory
 cd ../memory-lab
-python3 lab.py prepare
+python3 engine.py prepare
 # Configure the chosen provider and budgets in study.yaml before qualification.
-python3 lab.py qualify
+python3 engine.py qualify
 ```
 
 The synthetic task includes a generator, public baselines, calibration/development/confirmation
@@ -74,5 +74,5 @@ prepare writes plans/. A run writes trials/<id>/ with its inputs, configuration,
 outputs, permitted sharing and evaluator receipts. compare writes comparisons/ without
 inventing scores or choosing a winner. These folders and credentials stay outside Git.
 
-python3 lab.py visualize --variant single opens a local process viewer using two read-only
+python3 engine.py visualize --variant single opens a local process viewer using two read-only
 agents. It makes no model calls. [Visualization and snapshots](VISUALIZATION.md).

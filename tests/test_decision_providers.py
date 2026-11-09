@@ -13,13 +13,13 @@ from unittest.mock import patch
 import urllib.error
 import test_providers as fixtures
 
-from labtune.config import ConfigurationError
-from labtune.contracts import CallerContext, DecisionRequest, DecisionStatus
-from labtune.decisions import resolve_specialist
+from teamknitt.engine.config import ConfigurationError
+from teamknitt.engine.contracts import CallerContext, DecisionRequest, DecisionStatus
+from teamknitt.engine.decisions import resolve_specialist
 DECISION_FIXTURE = fixtures.DECISION_FIXTURE
-from labtune.providers.http import ProviderError
-from labtune.providers.typed import TypedDecisionClient, TypedDecisionBackend
-from labtune.study import StudyError, TextStudy, doctor, load_study, plans, prepare
+from teamknitt.engine.providers.http import ProviderError
+from teamknitt.engine.providers.typed import TypedDecisionClient, TypedDecisionBackend
+from teamknitt.engine.study import StudyError, TextStudy, doctor, load_study, plans, prepare
 
 DECISION_KEY = "offline-specialist-test-not-a-credential"
 CUSTOM_KEY = "offline-custom-test-not-a-credential"
@@ -97,14 +97,14 @@ class TypedProviderTests(unittest.TestCase):
             def open(self, request, timeout):
                 seen.append(request)
                 return Response()
-        with patch("labtune.providers.http.urllib.request.build_opener", return_value=Opener()):
+        with patch("teamknitt.engine.providers.http.urllib.request.build_opener", return_value=Opener()):
             client = decision_client(CUSTOM_KEY, base_url="https://decision.example.invalid/api",
                                      endpoint="/judge", model="custom-model", provider_id="custom/test")
             asyncio.run(client.assess_text("fixture", {"semantic_choice.v1": QUESTION}))
         self.assertEqual(seen[0].full_url, "https://decision.example.invalid/api/judge")
         self.assertEqual(seen[0].get_header("Authorization"), "Bearer " + CUSTOM_KEY)
         self.assertEqual(json.loads(seen[0].data)["model"], "custom-model")
-        from labtune.providers.http import _NoRedirect
+        from teamknitt.engine.providers.http import _NoRedirect
         self.assertIsNone(_NoRedirect().redirect_request(None, None, 302, "", {}, "https://other.invalid"))
 
     def test_http_failures_do_not_retry_or_expose_the_error_body(self):
@@ -114,7 +114,7 @@ class TypedProviderTests(unittest.TestCase):
                 calls.append(request)
                 raise urllib.error.HTTPError(request.full_url, 401, "Denied", {},
                                                io.BytesIO(DECISION_KEY.encode()))
-        with patch("labtune.providers.http.urllib.request.build_opener", return_value=Opener()):
+        with patch("teamknitt.engine.providers.http.urllib.request.build_opener", return_value=Opener()):
             client = decision_client(DECISION_KEY)
             with self.assertRaises(ProviderError) as error:
                 asyncio.run(client.assess_text("fixture", {"q": QUESTION}))
@@ -166,7 +166,7 @@ class RoutingTests(unittest.TestCase):
                 action = final
             return {"choices": [{"message": {"content": json.dumps(action)}, "finish_reason": "stop"}],
                     "usage": {"prompt_tokens": 5, "completion_tokens": 3}}
-        with patch.dict(os.environ, {"LABTUNE_DECISION_API_KEY": DECISION_KEY, "OTHER_DECISION_KEY": CUSTOM_KEY}), \
+        with patch.dict(os.environ, {"TEAMKNITT_DECISION_API_KEY": DECISION_KEY, "OTHER_DECISION_KEY": CUSTOM_KEY}), \
                 patch.object(TypedDecisionClient, "_http", specialist):
             study = self.make_study(config)
             study.client._transport = chat
@@ -196,7 +196,7 @@ class RoutingTests(unittest.TestCase):
     def test_selected_credentials_are_redacted_before_requests_and_saved_publications(self):
         config = self.config()
         (self.root / "mission/problem.md").write_text("Fixture accidentally includes " + DECISION_KEY + fixtures.FAKE_KEY)
-        with patch.dict(os.environ, {"LABTUNE_DECISION_API_KEY": DECISION_KEY}):
+        with patch.dict(os.environ, {"TEAMKNITT_DECISION_API_KEY": DECISION_KEY}):
             study = self.make_study(config)
         seen = []
         final = {"action": "final", "summary": DECISION_KEY, "findings": [], "wisdom": [],
@@ -218,7 +218,7 @@ class RoutingTests(unittest.TestCase):
                     self.assertNotIn(key, path.read_text())
 
     def test_shadow_specialist_is_not_supplied_to_the_acting_context(self):
-        with patch.dict(os.environ, {"LABTUNE_DECISION_API_KEY": DECISION_KEY}):
+        with patch.dict(os.environ, {"TEAMKNITT_DECISION_API_KEY": DECISION_KEY}):
             study = self.make_study(self.config(mode="shadow"))
         study.client._transport = lambda *args: {
             "choices": [{"message": {"content": '{"noul":0.1}'}, "finish_reason": "stop"}],
@@ -244,7 +244,7 @@ class RoutingTests(unittest.TestCase):
         self.assertIn("missing_key", (study.root / "events.jsonl").read_text())
 
     def test_uncertain_specialist_transport_is_counted_and_falls_back_once(self):
-        with patch.dict(os.environ, {"LABTUNE_DECISION_API_KEY": DECISION_KEY}):
+        with patch.dict(os.environ, {"TEAMKNITT_DECISION_API_KEY": DECISION_KEY}):
             study = self.make_study(self.config())
         attempts = []
         def failed(method, path, body):
@@ -266,7 +266,7 @@ class RoutingTests(unittest.TestCase):
     def test_shared_request_limit_covers_generation_and_specialist(self):
         config = self.config()
         config["base_overrides"]["resources"] = {"max_llm_requests": 1}
-        with patch.dict(os.environ, {"LABTUNE_DECISION_API_KEY": DECISION_KEY}):
+        with patch.dict(os.environ, {"TEAMKNITT_DECISION_API_KEY": DECISION_KEY}):
             study = self.make_study(config)
         active = maximum = 0
         lock = threading.Lock()
@@ -292,7 +292,7 @@ class RoutingTests(unittest.TestCase):
     def test_budget_exhaustion_does_not_dispatch_a_specialist_or_an_extra_fallback(self):
         config = self.config()
         config["base_overrides"]["budget"] = {"max_llm_calls": 1}
-        with patch.dict(os.environ, {"LABTUNE_DECISION_API_KEY": DECISION_KEY}):
+        with patch.dict(os.environ, {"TEAMKNITT_DECISION_API_KEY": DECISION_KEY}):
             study = self.make_study(config)
         study.calls = 1
         study.specialist_client._transport = lambda *args: self.fail("No specialist request remains")
@@ -328,9 +328,9 @@ class RoutingTests(unittest.TestCase):
             paths.append(path)
             if path == "/models": return {"data": [{"id": "fixture-chat"}]}
             return {"choices": [{"message": {"content": "OK"}, "finish_reason": "stop"}], "usage": {}}
-        with patch.dict(os.environ, {"LABTUNE_API_KEY": fixtures.FAKE_KEY}), \
+        with patch.dict(os.environ, {"TEAMKNITT_API_KEY": fixtures.FAKE_KEY}), \
                 patch.object(TypedDecisionClient, "_http", side_effect=AssertionError("No specialist probe")), \
-                patch("labtune.study.ChatCompletionsClient._http", chat):
+                patch("teamknitt.engine.study.ChatCompletionsClient._http", chat):
             result = asyncio.run(doctor(fixtures.PROJECT, self.root, live=True))
         self.assertEqual(result["status"], "connected")
         self.assertEqual(paths, ["/models", "/chat/completions"])
@@ -349,8 +349,8 @@ class RoutingTests(unittest.TestCase):
             self.assertEqual(client._key, DECISION_KEY)
             return {"model": "resolved-decision-test", "answers": {"connection": {"noul": .9}},
                     "usage": {"input_tokens": 3, "output_tokens": 1}}
-        with patch.dict(os.environ, {"LABTUNE_API_KEY": fixtures.FAKE_KEY, "LABTUNE_DECISION_API_KEY": DECISION_KEY}), \
-                patch("labtune.study.ChatCompletionsClient._http", chat), patch.object(TypedDecisionClient, "_http", typed):
+        with patch.dict(os.environ, {"TEAMKNITT_API_KEY": fixtures.FAKE_KEY, "TEAMKNITT_DECISION_API_KEY": DECISION_KEY}), \
+                patch("teamknitt.engine.study.ChatCompletionsClient._http", chat), patch.object(TypedDecisionClient, "_http", typed):
             result = asyncio.run(doctor(fixtures.PROJECT, self.root, live=True, variant="a-none"))
         self.assertEqual(result["status"], "connected")
         self.assertEqual(result["decision_providers"]["decision/specialist"]["model"], "resolved-decision-test")

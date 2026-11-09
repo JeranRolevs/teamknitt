@@ -5,24 +5,31 @@ from copy import deepcopy
 import json
 from pathlib import Path
 
-from labtune.config import ConfigurationError
+from teamknitt.engine.config import ConfigurationError
 from .config import PERSPECTIVES, digest, resource
+from .views import with_views
+from .topology import TOPOLOGY_CATALOG
+from .compat import plan_for_display, original_engine_plan
 
 
 def plan_report(plan):
-    base, c = plan["labtune_plan"], plan["configuration"]["cognition"]
+    legacy = "labtune_plan" in plan
+    plan = plan_for_display(plan)
+    base, c = plan["engine_plan"], plan["configuration"]["cognition"]
     topology = deepcopy(plan["topology"])
     if plan["schema_version"] == 3:
         topology["positions"] = json.loads(resource("topology-layouts.json").read_text())[topology["kind"]][str(len(topology["members"]))]
     else:
         topology["positions"] = []
-    record = {"schema_version": 3, "name": plan["name"], "mode": "configuration", "status": "planned_not_executed",
+    record = {"schema_version": 3, "name": plan["name"],
+            "compatibility": {"legacy_names": legacy, "statistics_supported_for_new_runs": base["statistics"]["approach"] == "frequentist",
+                "notice": "Historical bindings and settings are preserved; presentation names may be normalized. No analysis is rerun." if legacy else None}, "mode": "configuration", "status": "planned_not_executed",
             "evidence_label": "Configuration only — no members, model calls or task execution started",
             "configuration_sha256": plan["configuration_sha256"],
-            "labtune_configuration_sha256": plan["labtune_configuration_sha256"],
-            "labtune_variant": plan["labtune_variant"], "design": base["design"],
+            "engine_configuration_sha256": plan["engine_configuration_sha256"],
+            "engine_variant": plan["engine_variant"], "design": base["design"],
             "team_schema_version": plan["schema_version"], "mission": plan["configuration"].get("mission", {"purpose": "research", "brief_file": plan["mission_binding"]["path"], "deliverable": "Research contributions for review", "review": "user_review"}),
-            "topology": topology, "observation_settings": plan["observations"],
+            "topology": topology, "topology_catalog": deepcopy(TOPOLOGY_CATALOG), "observation_settings": plan["observations"],
             "goal_achieved": None, "task_review": "not_started",
             "personas": base["personas"], "communication": base["communication"],
             "budget": base["budget"], "resources": base["resources"], "delegation": base["delegation"],
@@ -38,7 +45,7 @@ def plan_report(plan):
 
     from .observations import observe
     record["observations"] = observe(record)
-    return record
+    return with_views(record)
 
 
 def coordination_stability(snapshots, dynamics):
@@ -107,7 +114,7 @@ def build_report(run_directory: Path):
         summary = _read(root / "summary.json")
         telemetry = _read(root / "team-telemetry.json") if (root / "team-telemetry.json").is_file() else {}
         heartbeat = _read(root / "activity-heartbeat.json") if (root / "activity-heartbeat.json").is_file() else {}
-        binding = plan["labtune_plan"]["configuration_snapshot"]["cognition_binding"]
+        binding = original_engine_plan(plan)["configuration_snapshot"]["cognition_binding"]
         if digest(binding) != identity["configuration_sha256"] or plan["configuration_sha256"] != identity["configuration_sha256"]:
             raise ConfigurationError("Saved cognition configuration identity does not match its binding.")
         if binding["cognition"] != plan["configuration"]:
@@ -132,14 +139,14 @@ def build_report(run_directory: Path):
         if report["observation_settings"]["enabled"] and "perturbation" in report["observation_settings"]["dimensions"]:
             report["coordination_stability"] = coordination_stability(state["snapshots"], report["dynamics"])
         report["limitations"] = [
-            "The handbook provides multiple perspectives, not a single universal prescription or an agent benchmark.",
+            "Standard and Complexity are explanatory orientations, not an exhaustive division of research. Distributed problem-solving and dynamical systems are related perspectives, not interchangeable scores.",
             "Configured roles/capabilities are assignments, not validated human-like expertise or diversity.",
             "Exposure, acknowledgement and citation do not establish comprehension, agreement or truth.",
             "Pairwise agreement compares explicit temporal reports, not latent mental models; matching each other differs from matching the reference.",
             "Perceived alignment is self-report, recorded separately from reported-plan agreement and task outcomes.",
             "Observed interaction and perturbation traces do not establish causal coupling, attractors, power laws or improved science.",
             "No automated model choice, team redesign, statistical approach switch or budget increase is performed."]
-        return report
+        return with_views(report)
     except (KeyError, TypeError, ValueError) as error:
         if isinstance(error, ConfigurationError):
             raise

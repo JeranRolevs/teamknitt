@@ -5,8 +5,8 @@ import unittest
 from unittest.mock import patch
 import test_providers as fixtures
 
-from labtune.planning import compile_plan
-from labtune.study import TextStudy, load_study
+from teamknitt.engine.planning import compile_plan
+from teamknitt.engine.study import TextStudy, load_study
 
 
 class ActiveRoutingTests(unittest.TestCase):
@@ -19,7 +19,7 @@ class ActiveRoutingTests(unittest.TestCase):
         overrides["decisions"]={"mode":"selected_active","specialist":"specialist",
                                 "allowed_specs":["semantic_choice.v1"]}
         plan=compile_plan(fixtures.PROJECT,config_overrides=overrides)
-        with patch("labtune.study.api_key",return_value=fixtures.FAKE_KEY):
+        with patch("teamknitt.engine.study.api_key",return_value=fixtures.FAKE_KEY):
             study=TextStudy(fixtures.PROJECT,self.root,config,plan,"routing",fixtures.FAKE_KEY)
         paths=[]; chat_count=0
         question={"action":"decision.assess","spec_id":"semantic_choice.v1",
@@ -63,7 +63,7 @@ class ActiveRoutingTests(unittest.TestCase):
 
 
     def test_nonobject_question_is_rejected_with_a_typed_error(self):
-        from labtune.providers.chat import ProviderError,validate_question
+        from teamknitt.engine.providers.chat import ProviderError,validate_question
         for question in ("Which check?",None,["raw","causality"]):
             with self.subTest(question=question),self.assertRaises(ProviderError) as error:
                 validate_question(question)

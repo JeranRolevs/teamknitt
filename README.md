@@ -2,19 +2,14 @@
 
 ### Configure the team. Set the task. Follow the work.
 
-**teamknitt** is for configuring and monitoring agent teams that work on **user-set tasks,
-brainstorm new ideas, explore goals, or conduct research**. You choose the team topology,
-member count and how much members can communicate—not just a research-lab preset.
+**teamknitt** is a standalone product and execution engine for agent teams working on
+user-defined **tasks, brainstorming, goals and research**. Choose the members, their
+connections, information sharing, models, tools and finite budgets; inspect the process
+without assuming that any topology is best or that execution proves success.
 
-**Labtune is the engine**, supplying bounded execution, model/decision adapters, tool
-boundaries, accounting and persistence. teamknitt builds on **Goran Mitevski’s original
-Labtune work and idea**, and uses its warm instrument-panel aesthetics. Its organizing
-framework remains **distributed team cognition**: work distributed across members,
-representations, technology and context. **Teams as dynamical systems** informs change
-over time and supplies an **additional, optional observation tool**, not a universal score.
-
-**Author:** Goran Mitevski. **Copyright holder/licensor:** Pioneertown B.V.
-[Framework and sources](docs/TEAMKNITT.md#research-framework-and-observation-sources) · [Original Labtune engine](LABTUNE.md).
+Based on **Labtune**, Goran Mitevski's original work. **Author: Goran Mitevski. Copyright
+holder/licensor: Pioneertown B.V.** [Provenance](PROVENANCE.md). The runtime is shipped under
+`teamknitt.engine`: no separate Labtune installation, import namespace or CLI is required.
 
 ## Start with your own direction
 
@@ -23,101 +18,109 @@ Python 3.11+:
 ```bash
 python -m pip install -e .
 teamknitt init ../my-team --purpose brainstorm --members 4 --topology ring \
-  --communication high --goal "Brainstorm welcoming formats for a community workshop."
+  --communication high --goal "Brainstorm welcoming workshop formats."
 teamknitt check --workspace ../my-team
 teamknitt view --workspace ../my-team
 ```
 
-The local workspace provides a topology/membership/sharing draft builder and a process
-monitor. **Opening it, previewing a draft, planning and observing make no model calls.**
-No draft is automatically applied and there is no browser API for starting paid execution.
-The user brief is in `mission/task.md`; add background in `mission/context.md`.
+Edit `mission/task.md` for your brief and `mission/context.md` for background. Opening the
+viewer, previewing a draft, planning and observing make **no provider calls**. There is no
+browser API for applying configurations, changing budgets or starting model execution.
 
-## Your team choices
+## Your choices
 
-| Control | Choices |
+| Control | Options |
 |---|---|
-| **Purpose** | Complete a task · brainstorm ideas · work toward a goal · research a question |
-| **Members** | 1–16 explicitly selected members; customize their responsibilities and perspectives |
-| **Topology** | Fully connected · hub-and-spoke · ring · hierarchical routing · custom directed links |
-| **Communication amount** | None · low reported blockers · intermediate summaries · high detailed notes · conditional wisdom only |
-| **Communication boundaries** | Directed routes, per-episode read allowance, representation reader/writer grants, optional interruptions |
-| **Distributed cognition** | Shared/complementary inputs, externalized work, expertise directory, dependencies, handoffs, explicit plans and available actions |
-| **Observation tools** | Select or disable dynamical-systems dimensions without changing the team or running a judge |
+| Purpose | Task · brainstorm · goal · research |
+| Members | 1–16, with explicit responsibilities and perspectives |
+| Routing | Fully connected · hub-and-spoke · two-way/one-way rings and chains · hierarchy · wheel · grid · clustered pods · bipartite · broadcast · gather · custom |
+| Sharing | None · low reported blockers · intermediate summaries · high detailed notes · conditional wisdom only |
+| Problem-solving structure | Complementary inputs, scoped representations, expertise directory, work dependencies, handoffs and action opportunities |
+| Team views | Standard or Complexity, with focused subviews; presentation-only |
+| Execution | Explicit provider/model, domain tools, delegation, concurrency and budgets |
 
-Topology restricts **both filtered peer output and generated representation exposure**.
-Custom links do not imply reverse links. A hub or hierarchy routes communication; it does
-not automatically grant a veto or decision authority. Previously encountered information
-is not erased by a later interruption. No topology is ranked or optimized automatically.
+Topology filters both peer views and generated-note exposure. Directed routes do not imply
+replies. Hubs and hierarchies do not grant decision authority. Changing a route does not erase
+previous exposure, and relay requires later permitted work rather than instant delivery.
 
 ```bash
-# Draft only; no files change:
-teamknitt configure --workspace ../my-team --members 5 \
-  --topology hub_and_spoke --communication intermediate --purpose goal
-# After review, explicitly apply and regenerate the starter cognition bindings:
-teamknitt configure --workspace ../my-team --members 5 \
-  --topology hub_and_spoke --communication intermediate --purpose goal \
+# Draft only: no files, model choices or budgets change.
+teamknitt configure --workspace ../my-team --members 6 --topology clustered
+# After review, explicitly apply and acknowledge regenerated starter bindings:
+teamknitt configure --workspace ../my-team --members 6 --topology clustered \
   --apply --reset-cognition
 ```
 
-Applying privately backs up the previous `team.yaml`. It does **not** edit your brief,
-model/provider settings or engine budgets, and cannot apply while a run owns the workspace.
-For custom cognitive arrangements, edit the bindings directly rather than reset them.
-[Complete starter](examples/task_team/team.yaml) · [Configuration guide](docs/TEAMKNITT.md).
+Application keeps a private backup and respects the shared run lock. For customized bindings,
+edit the configuration directly rather than resetting it. [Configuration guide](docs/TEAMKNITT.md).
+
+## Two approaches to viewing teams
+
+This is an organizing distinction, not an exhaustive or mutually exclusive taxonomy of research.
+The difference is explanatory emphasis—not whether an approach ever studies interactions.
+
+| Group | Focused views | Explanatory focus |
+|---|---|---|
+| **Standard** | Collaborative intelligence · shared models & member reports | Individual members, their behavior and reports, and decomposed relationships |
+| **Complexity** | Distributed problem-solving · teams as dynamical systems · interactions & coordination | Problem-solving across interacting agents, artifacts, tools and time |
+
+*Measuring AI Agents as Teammates with Collaborative Intelligence* informs the **Standard**
+behavioral view. Its eight questions are **not evaluated** by ordinary task telemetry. Optional
+saved synthetic-probe summaries remain clearly labelled separate-context evidence—not an
+official CIB score or a capability claim about the current team. Missing cells remain unknown.
+
+**Distributed problem-solving** is the product terminology for inspecting work across members
+and representations. Original scholarly titles retain their wording. Shared-model report
+comparisons are under Standard; representation transformations and handoffs are under Complexity.
+Agreement, reference conformity, perceived alignment, understanding and correctness stay distinct.
+
+Complexity science and complex adaptive systems are the wider umbrella, including the Santa Fe
+tradition. Gorman et al. is one team-focused reference, alongside broader work such as Holland
+and Mitchell. Santa Fe is not an endorsement or a validated model. Attractors, synchronization,
+fractals, emergence and adaptation are **not inferred** from short uneven execution traces.
+
+```bash
+teamknitt views
+teamknitt view --workspace ../my-team --group standard --section collaborative_intelligence
+teamknitt view --workspace ../my-team --group complexity --section distributed_problem_solving
+teamknitt view --workspace ../my-team --group complexity --section team_dynamics
+# Optional, already-saved separate protocol; this starts no evaluation:
+teamknitt view --workspace ../my-team --group standard --probe-run PROBE_RUN
+```
+
+**Bayesian/probabilistic analysis is not an option in teamknitt.** Statistical methods are not
+a third theory of teams. Descriptive records and supported frequentist count/interval analysis
+remain available when applicable. Unsupported legacy choices are rejected, never silently
+converted. This does not change the original Labtune project.
 
 ## Try the process offline, then choose whether to run models
 
 ```bash
 teamknitt demo --workspace ../my-team --policy connected
 teamknitt demo --workspace ../my-team --policy fragmented
-```
-
-These deterministic fixtures exercise the engine and demonstrate contribution flow,
-handoffs and explicit-plan mismatch. **They do not evaluate a model or solve your task.**
-The monitor follows the latest execution matching your configuration and brief; saved
-runs can also be inspected with `teamknitt view ../my-team/trials/RUN_ID`.
-
-For actual model execution, explicitly select your provider/model and finite limits in
-`study.yaml` (engine settings), supply its private environment key locally, and review:
-
-```bash
 teamknitt plan --workspace ../my-team
+# Explicitly authorize your chosen settings. Replace 24 with your resolved request cap:
 teamknitt run --workspace ../my-team --live --approve-requests 24
 ```
 
-Replace `24` with **your own resolved engine request cap**. It is not a recommendation or
-currency budget. Larger teams do not raise that limit automatically. Engine decisions,
-correction and delegation consume the same cap when explicitly configured.
-`trials/RUN_ID/deliverable.md` contains private team contributions for **your review**.
-A completed workflow is not proof that the task is correct or that your goal was achieved.
+Demos are deterministic software fixtures, not model evaluations or solutions to your task.
+The cap is not a currency estimate. Larger teams do not raise it automatically; tools,
+decisions, corrections and delegation share the same limits. Private contributions are in
+`trials/ID/deliverable.md` for your review. No overall team-quality score or automatic
+organizational improvement is produced. The default is bounded text work, not unrestricted
+shell or real-world action execution.
 
-The default is bounded text work. Qualified engine domain tools remain optional; this
-release does not add arbitrary shell, external action execution or a human chat platform.
+## Standalone engine and compatibility
 
-## Distributed cognition first; observations as an additional tool
+`teamknitt engine` exposes advanced execution, provider connection, research adapters, engine
+workspaces and multi-lab workflows. Task users normally use the main commands above. Optional
+teammate experiments remain under `teamknitt probes`; neither approach group starts them.
 
-The configuration framework is informed by *Foundations and Theoretical Perspectives of
-Distributed Team Cognition* (McNeese, Salas & Endsley, eds.): role responsibilities,
-complementary knowledge, shared representations, who holds relevant expertise, work
-interdependencies, handoffs, temporal expectations and action opportunities.
-
-The additional dynamical-systems tool is informed by Gorman et al. (2017):
-
-- **Local/global:** contribution activity alongside handoff-state continuity.
-- **Perturbation:** user-scheduled interruptions, response windows and censoring.
-- **Coupling:** directed representation exposure/provenance—not inferred causal influence.
-- **Cross-level:** member, artifact and coordination observations—not neural effects.
-- **Attractors, synchronization, fractals:** explicit **not estimated** states; short,
-  uneven workflow waves do not support these inferences, and no such estimator is implemented.
-
-Select dimensions or set `observations.enabled: false` in `team.yaml`.
-`teamknitt observations` explains their scope. No aggregate intelligence/quality score,
-paid judge, forced consensus or automatic organizational improvement is introduced.
-Exposure, understanding, acknowledgement, agreement and correctness remain distinct.
-
-An advanced research-specific template is available with `teamknitt init PATH --template research`.
-The older teammate-behavior probes remain isolated behind `teamknitt probes`; they are
-not the configuration backbone or the default workflow.
+Existing workspace model bindings and environment-variable names remain explicit. New
+workspaces use `TEAMKNITT_API_KEY` and, if selected, `TEAMKNITT_DECISION_API_KEY`. Preview a
+legacy-name migration with `teamknitt migrate --workspace PATH`; only `--apply` writes changes
+and creates a private backup. Historical records remain immutable and can be viewed by explicit
+run path. [Migration](docs/MIGRATION.md) · [Architecture](ARCHITECTURE.md) · [Security](SECURITY.md).
 
 ## Development and portability — offline
 
@@ -126,18 +129,13 @@ python -m pip install -e '.[memory,diagrams]'
 python tools/sync_starter.py --check
 python -m unittest discover -s tests -v
 python -m unittest discover -s examples/memory_retention/tests -v
-python diagrams/render_flowcharts.py --diagram 13-teamknitt-system --diagram 14-teamknitt-protocol
+python diagrams/render_flowcharts.py
 python -m pip wheel --no-deps . --wheel-dir dist
 python tools/check_release.py --artifacts dist
 ```
 
-One installable distribution includes teamknitt, its Labtune engine, portable starters and
-local viewer. Do not co-install another distribution owning these package namespaces.
-Diagram geometry and flowcharts use `diagrams/specs.py`; starters/resources are synchronized.
-The product/package/CLI has been renamed from the unpublished Teamthill prototype.
-Repository: <https://github.com/JeranRolevs/teamknitt>. Foundations reference material and
-local foundation notes are ignored and excluded from starter/package exports.
-[Architecture](ARCHITECTURE.md) · [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md).
+All diagrams/catalogs/layouts originate in `diagrams/specs.py`. Starters are synchronized;
+credentials, source books, Foundation notes, trials and results stay out of Git and packages.
 
 ## License — unchanged; task scope does not widen permission
 

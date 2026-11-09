@@ -14,9 +14,9 @@ import sys
 import tempfile
 import unittest
 
-from labtune.config import ConfigurationError, load_config, parse_yaml, project_file, validate
-from labtune.cli import main
-from labtune.planning import catalogue, compile_plan
+from teamknitt.engine.config import ConfigurationError, load_config, parse_yaml, project_file, validate
+from teamknitt.engine.cli import main
+from teamknitt.engine.planning import catalogue, compile_plan
 
 PROJECT = Path(__file__).resolve().parents[1]
 
@@ -28,7 +28,7 @@ class SkeletonContracts(unittest.TestCase):
         self.assertEqual(len({p["design"]["governance"] for p in plans}), 6)
         self.assertEqual(len({p["design"]["procedure"] for p in plans}), 6)
         for plan in plans:
-            self.assertEqual(plan["runtime_execution"], "not_implemented")
+            self.assertEqual(plan["runtime_execution"], "not_started")
             self.assertEqual(plan["configuration_snapshot"]["purpose"], "audit_only")
             self.assertEqual(plan["configuration_control"]["authority"], "user")
             seen = set()
@@ -127,31 +127,24 @@ class SkeletonContracts(unittest.TestCase):
             self.assertNotIn("learning", plan)
             self.assertFalse(any("promotion" in path for path in plan["planned_run_layout"]))
 
-    def test_statistical_approach_changes_policy_and_configuration_identity(self):
-        frequentist = compile_plan(PROJECT, statistical_approach="frequentist")
-        bayesian = compile_plan(PROJECT, statistical_approach="bayesian")
-        for approach, plan in (("frequentist", frequentist), ("bayesian", bayesian)):
-            self.assertEqual(plan["statistics"]["approach"], approach)
-            self.assertEqual(plan["statistics"]["application"], "when_needed")
-            self.assertEqual(plan["statistics"]["status"], "interface_only")
-            self.assertFalse(plan["statistics"]["silent_approach_switch_allowed"])
-            self.assertEqual(plan["configuration_snapshot"]["resolved_config"]["statistics"]["approach"], approach)
-        self.assertEqual(frequentist["design"], bayesian["design"])
-        self.assertEqual(frequentist["communication"], bayesian["communication"])
-        self.assertNotEqual(frequentist["configuration_snapshot"]["id"], bayesian["configuration_snapshot"]["id"])
-        with self.assertRaises(ConfigurationError):
-            compile_plan(PROJECT, statistical_approach="unrecognized")
+    def test_supported_statistics_and_removed_options_are_explicit(self):
+        p = compile_plan(PROJECT, statistical_approach="frequentist")
+        self.assertEqual(p["statistics"]["approach"], "frequentist")
+        self.assertFalse(p["statistics"]["silent_approach_switch_allowed"])
+        for choice in ("bayesian", "probabilistic", "unrecognized"):
+            with self.assertRaises(ConfigurationError):
+                compile_plan(PROJECT, statistical_approach=choice)
 
-    def test_statistics_cli_override_takes_precedence_over_configuration(self):
-        output, errors = io.StringIO(), io.StringIO()
-        with redirect_stdout(output), redirect_stderr(errors):
-            status = main(["--project", str(PROJECT), "plan", "--statistics", "bayesian"])
-        self.assertEqual(status, 0, errors.getvalue())
-        self.assertEqual(json.loads(output.getvalue())["statistics"]["approach"], "bayesian")
+    def test_removed_statistics_cli_option_is_rejected_not_reinterpreted(self):
+        with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+            for choice in ("bayesian", "probabilistic"):
+                with self.assertRaises(SystemExit) as caught:
+                    main(["--project", str(PROJECT), "plan", "--statistics", choice])
+                self.assertEqual(caught.exception.code, 2)
 
     def test_statistical_analysis_needs_results_or_an_explicit_reason(self):
         base = json.loads((PROJECT / "templates/records/evaluation_receipt.json").read_text())
-        for approach in ("frequentist", "bayesian"):
+        for approach in ("frequentist",):
             for status in ("completed", "inconclusive"):
                 record = deepcopy(base)
                 assessment = record["payload"]["statistics"]
@@ -177,7 +170,7 @@ class SkeletonContracts(unittest.TestCase):
                 "private_splits.json", "local-reference", "archive", "CODE_PROVENANCE_AUDIT.md",
                 "provenance_audit.json", "RELATED_WORK_REVIEW.md", "REVIEW.md", "PLAN.md", "idea_flow.md"))
             env = dict(os.environ, PYTHONPATH=str(copy / "src"), PYTHONDONTWRITEBYTECODE="1")
-            result = subprocess.run([sys.executable, "-m", "labtune", "--project", str(copy), "check"],
+            result = subprocess.run([sys.executable, "-m", "teamknitt", "engine", "--project", str(copy), "check"],
                                     cwd=directory, env=env, capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertEqual(json.loads(result.stdout)["presets"], 6)

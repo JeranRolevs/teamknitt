@@ -1,4 +1,4 @@
-# Labtune engine settings. Team topology/count/sharing live in team.yaml.
+# teamknitt engine settings. Team topology/count/sharing live in team.yaml.
 schema_version: 1
 name: teamknitt-workspace
 problem_file: mission/task.md
@@ -8,7 +8,7 @@ provider:
   endpoint: /chat/completions
   models_endpoint: null
   model: YOUR_MODEL_ID
-  api_key_env: LABTUNE_API_KEY
+  api_key_env: TEAMKNITT_API_KEY
   env_file: .env
   timeout_seconds: 30
   max_output_tokens: 2048

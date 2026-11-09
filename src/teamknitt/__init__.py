@@ -1,7 +1,8 @@
-"""Teamknitt: distributed-cognition configuration and temporal team processes on Labtune.
+"""teamknitt: standalone agent teams and grouped system views.
 
-Original Labtune author: Goran Mitevski. Copyright/licensor: Pioneertown B.V.
-See LICENSE and LICENSING.md; this package does not change those terms.
+Based on Labtune, the original work of Goran Mitevski.
+Copyright holder/licensor: Pioneertown B.V. See PROVENANCE.md and the unchanged
+LICENSE and LICENSING.md; the product name does not change their terms.
 """
 
-__version__ = "0.3.0"
+__version__ = "0.5.0"

@@ -7,9 +7,9 @@ import json
 from pathlib import Path
 import sys
 
-from labtune.config import ConfigurationError
-from labtune.providers.http import ProviderError
-from labtune.study import StudyError
+from teamknitt.engine.config import ConfigurationError
+from teamknitt.engine.providers.http import ProviderError
+from teamknitt.engine.study import StudyError
 
 from teamknitt import __version__
 from .config import load, plan
@@ -21,7 +21,7 @@ from .scenarios import catalogue
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(prog="teamknitt probes", description="Optional synthetic teammate probes; separate from the distributed-cognition configuration layer.")
+    parser = argparse.ArgumentParser(prog="teamknitt probes", description="Optional synthetic teammate probes; separate from the distributed-problem-solving configuration layer.")
     parser.add_argument("--version", action="version", version=__version__)
     commands = parser.add_subparsers(dest="command", required=True)
     start = commands.add_parser("init", help="Create a standalone team workspace with no model calls")

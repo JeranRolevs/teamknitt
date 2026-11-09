@@ -1,6 +1,6 @@
 """Frozen-round team execution with evidence scopes, explicit interventions and budgets.
 
-Labtune's provider transport is reused from this distribution, not a remote/parent runtime.
+teamknitt's provider transport is reused from this distribution, not a remote/parent runtime.
 The symbolic world never executes model-authored code or changes team organization.
 """
 from __future__ import annotations
@@ -17,11 +17,11 @@ from pathlib import Path
 import time
 from uuid import uuid4
 
-from labtune.config import ConfigurationError
-from labtune.providers.chat import ChatCompletionsClient
-from labtune.providers.configuration import require_configured
-from labtune.providers.http import ProviderError
-from labtune.study import api_key
+from teamknitt.engine.config import ConfigurationError
+from teamknitt.engine.providers.chat import ChatCompletionsClient
+from teamknitt.engine.providers.configuration import require_configured
+from teamknitt.engine.providers.http import ProviderError
+from teamknitt.engine.study import api_key
 
 from teamknitt import __version__
 from .actions import InvalidAction, SYSTEM, parse_action

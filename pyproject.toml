@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "teamknitt"
-version = "0.3.0"
-description = "Configure and monitor task, goal and brainstorming teams powered by Labtune"
+version = "0.5.0"
+description = "Standalone configurable agent teams for tasks, brainstorming, goals and research"
 authors = [{name = "Goran Mitevski"}]
 readme = "README.md"
 requires-python = ">=3.11"
@@ -24,25 +24,23 @@ Issues = "https://github.com/JeranRolevs/teamknitt/issues"
 License = "https://github.com/JeranRolevs/teamknitt/blob/main/LICENSE"
 
 [project.optional-dependencies]
-bayesian = ["scipy>=1.10"]
 memory = ["numpy>=1.24", "scipy>=1.10", "psutil>=5.9"]
 diagrams = ["matplotlib>=3.6", "Pillow>=9"]
 
 [project.scripts]
 teamknitt = "teamknitt.cli:main"
-labtune = "labtune.cli:main"
 
 [tool.setuptools]
 include-package-data = false
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["labtune*", "teamknitt*"]
+include = ["teamknitt*"]
 namespaces = false
 
 [tool.setuptools.package-data]
-"labtune.schemas" = ["*.json"]
-"labtune.resources" = ["*.yaml", "starter/**/*", "visualization/*"]
+"teamknitt.engine.schemas" = ["*.json"]
+"teamknitt.engine.resources" = ["*.yaml", "starter/**/*", "visualization/*"]
 
 "teamknitt.resources" = ["*.json", "*.yaml", "*.md", "*.html", "*.js", "task-starter/**/*", "research-starter/**/*"]
 

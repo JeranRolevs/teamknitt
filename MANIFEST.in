@@ -1,6 +1,8 @@
-include README.md LABTUNE.md AGENTS.md LICENSE LICENSING.md
-recursive-include src/labtune/resources *.yaml *.json *.md *.py *.html *.css *.js
-recursive-include src/labtune/schemas *.json
+include README.md PROVENANCE.md AGENTS.md LICENSE LICENSING.md
+include ARCHITECTURE.md SECURITY.md CONTRIBUTING.md FLOWCHARTS.md statistical_analysis.md
+include agent_communication.md decision_tools.md researcher_process.md
+recursive-include src/teamknitt/engine/resources *.yaml *.json *.md *.py *.html *.css *.js
+recursive-include src/teamknitt/engine/schemas *.json
 recursive-include src/teamknitt/resources *.yaml *.json *.md *.html *.js
 recursive-include lab_designs *.md
 recursive-include configs *.yaml *.md

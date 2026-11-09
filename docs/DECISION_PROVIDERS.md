@@ -7,7 +7,7 @@ not empirical verification or permission to change the lab configuration.
 ## Account-free setup
 
 ```bash
-labtune init ../my-lab --decision-backend chat_completions
+teamknitt engine init ../my-lab --decision-backend chat_completions
 ```
 
 Use --decision-backend typed for a typed JSON endpoint, or llm_only for the default same-model
@@ -23,7 +23,7 @@ decision_providers:
     base_url: https://your-decision-provider.example/v1
     endpoint: /chat/completions
     model: your-decision-model-id
-    api_key_env: LABTUNE_DECISION_API_KEY
+    api_key_env: TEAMKNITT_DECISION_API_KEY
     env_file: .env
     timeout_seconds: 90
     max_parallel_requests: 2

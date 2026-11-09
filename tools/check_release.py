@@ -9,7 +9,9 @@ ROOT = Path(__file__).resolve().parents[1]
 PRIVATE_PARTS = {"local-reference", "archive", "setup", "trials", "results", "runs", "plans",
                  "comparisons", "data", "__pycache__", ".venv", "node_modules", ".git"}
 PRIVATE_FILES = {"CODE_PROVENANCE_AUDIT.md", "provenance_audit.json", "RELATED_WORK_REVIEW.md",
-                 "REVIEW.md", "PLAN.md", "idea_flow.md", "private_splits.json", "TEAMKNITT_FOUNDATIONS.md"}
+                 "REVIEW.md", "PLAN.md", "idea_flow.md", "private_splits.json", "TEAMKNITT_FOUNDATIONS.md",
+                 "priors.py", "prior_math.py", "prior_protocol.schema.json", "BAYESIAN_PRIORS.md",
+                 "bayesian.yaml", "prior-elicitation.yaml"}
 
 
 def private_path(name):
@@ -39,6 +41,8 @@ def check_artifact(path):
                 # Reject every unexpected package namespace, including stale pre-rename files.
                 if "/" in name and not name.split("/", 1)[0].endswith(".dist-info") and not name.endswith("/"):
                     source = ROOT / "src" / name
+                    if name.split("/", 1)[0] != "teamknitt":
+                        violations.append(name + ": foreign package namespace")
                     if not source.is_file() or source.is_symlink():
                         violations.append(name + ": not in current package source")
                     elif source.read_bytes() != archive.read(name):

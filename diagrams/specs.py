@@ -111,9 +111,9 @@ def diagrams():
     g["footer"]="Confirmation never fits thresholds on scored cases or returns feedback to the acting agents."
     result.append(g)
 
-    g=graph("05-standalone-components", "Standalone repository and workspace", "The independent Labtune package owns its implementation and ships wheel-ready starter resources.")
+    g=graph("05-standalone-components", "Standalone repository and workspace", "The independent teamknitt package owns its implementation and ships wheel-ready starter resources.")
     for args in [
-        ("package",3,3,"Labtune Python package","CLI + schemas + study runner","code",4.2),
+        ("package",3,3,"teamknitt Python package","CLI + schemas + study runner","code",4.2),
         ("init",10,3,"Workspace initializer","Bundled presets + examples","code",4.2),
         ("workspace",17,3,"User workspace","Editable designs, study and mission","artifact",4.2),
         ("provider",3,6.4,"Generation + decision adapters","Configured generation and decisions","optional",4.2),
@@ -189,7 +189,7 @@ def diagrams():
     g["footer"]="Only this episode yields; other ready tasks continue. An unavailable answer remains explicit."
     result.append(g)
 
-    g=graph("08-horizontal-lab", "Labtune lab — mission to measured output", "User-selected organization; parallel research; local measurements; protected confirmation.",width=30,height=10)
+    g=graph("08-horizontal-lab", "teamknitt lab — mission to measured output", "User-selected organization; parallel research; local measurements; protected confirmation.",width=30,height=10)
     for args in [
         ("setup",2.5,3.4,"Choose mission + lab","Six editable Markdown styles","artifact",4.15),
         ("control",7.5,3.4,"Orchestrate","Dependencies + global budgets","code",4.15),
@@ -201,7 +201,7 @@ def diagrams():
         ("settings",7.5,6.9,"Recorded configuration","Models, counts, depth and budgets\nNo automatic redesign","evidence",4.15,1.6),
         ("sharing",12.5,6.9,"Horizontal Markdown","none / low / intermediate / high\nwisdom alone or with detail","evidence",4.15,1.6),
         ("decision",17.5,6.9,"Optional local decisions","LLM → decision endpoint → LLM\nShared budgets and per-backend usage","optional",4.15,1.6),
-        ("stats",22.5,6.9,"User-selected statistics","CP95 counts; explicit-prior Bayes\nDomain-owned analysis","code",4.15,1.6),
+        ("stats",22.5,6.9,"User-selected statistics","CP95 counts; explicit-prior intervals\nDomain-owned analysis","code",4.15,1.6),
         ("future",27.5,6.9,"General asset lifecycle","Integration and registry planned","future",4.15,1.6)]:
         node(g,*args)
     for a,b in [("setup","control"),("control","teams"),("teams","run"),("run","confirm"),("confirm","out")]:edge(g,a,b)
@@ -219,7 +219,7 @@ def diagrams():
         ("worker",21,3.2,"OS-sandboxed policy","Causal x,t; retained indices + aux\nNo labels, seeds or future","code",4.8,1.65),
         ("chat_judge",3,7,"Optional decision backend","Configured chat or typed endpoint","optional",4.5),
         ("panels",9,7,"Private scenario panels","Clean calibration / benign / fault\nDevelopment separate from confirmation","evidence",4.8,1.65),
-        ("metrics",15,7,"Independent-run evaluation","Any-alarm rate, fault recall, recurrence\nCP95 / optional explicit-prior Bayes","code",4.8,1.65),
+        ("metrics",15,7,"Independent-run evaluation","Any-alarm rate, fault recall, recurrence\nCP95 / supported count intervals","code",4.8,1.65),
         ("receipts",21,7,"Actual experiment receipts","Source hash, counts, state, RSS and time","evidence",4.8),
         ("feedback",3,10.5,"Development feedback","Within declared research budget","evidence",4.5),
         ("output",15,10.5,"Source + evidence + limits","Include failed / inconclusive outcomes","artifact",4.8),
@@ -243,7 +243,7 @@ def diagrams():
         ("plan",3,3.2,"User-selected lab plan","Design, personas, sharing and budgets","artifact",4.8),
         ("setup",10,3.2,"Agent 1: setup visualizer","Resolve process and team maps","code",5.0),
         ("page",20,5.7,"Local web observatory","Workflow / team / activity / inspect\nLive updates or offline HTML snapshot","artifact",5.0,1.7),
-        ("runner",3,7.2,"Labtune research runtime","User-authorized study execution","code",4.8),
+        ("runner",3,7.2,"teamknitt research runtime","User-authorized study execution","code",4.8),
         ("activity",10,7.2,"Metadata + heartbeat","Nodes, actors, request/evaluation bounds","evidence",5.0),
         ("observer",10,10.0,"Agent 2: runtime observer","Correlate activity; mark stale/failed work","code",5.0),
     ]:
@@ -302,16 +302,16 @@ def diagrams():
     edge(g,"confirm","out","bottom","bottom",via=((17,12),(3,12)))
     g["footer"]="Meetings are operational only when research sharing is disabled. No automatic lab winner, redesign or extra sequence."
     result.append(g)
-    g=graph("13-teamknitt-system", "teamknitt — your task, your team, observable work", "User-selected tasks, ideas and goals; distributed cognition as the framework; dynamical dimensions as optional tools.",width=24,height=13)
+    g=graph("13-teamknitt-system", "teamknitt — standalone teams, explicit control, observable work", "User-selected tasks and topology; own bounded engine; Standard and Complexity offer different explanatory orientations.",width=24,height=13)
     g.update(brand="TEAMKNITT", date="2026-11-08")
     for args in [
         ("baseline",3,3.2,"User-directed team configuration","Task / brainstorm / goal / research\nTopology, members and communication","artifact",4.8,1.65),
-        ("backbone",10,3.2,"Distributed cognition framework","Members, representations, work and context\nMcNeese / Salas / Endsley, eds.","artifact",5.0,1.65),
-        ("temporal",17,3.2,"Optional observation dimensions","Local/global, coupling, perturbations\nGorman et al. (2017); no total score","optional",5.0,1.65),
+        ("backbone",10,3.2,"Standalone teamknitt engine","Own scheduler, adapters and resources\nExplicit models, tools and finite budgets","artifact",5.0,1.65),
+        ("temporal",17,3.2,"Standard / Complexity views","Member reports + behavior / interaction system\nPresentation only; no evaluation starts","optional",5.0,1.65),
         ("roles",3,6.8,"Chosen members and connections","Complementary responsibilities and inputs\nExplicit directed routes; no implied authority","llm",4.8,1.65),
         ("reps",10,6.8,"External representations","Complementary sources; shared workspaces\nExplicit readers, writers and provenance","evidence",5.0,1.65),
         ("work",17,6.8,"Work and coordination","Task structure, handoffs and timework\nCapability-conditioned action opportunities","code",5.0,1.65),
-        ("authority",3,10.3,"Labtune engine and aesthetics","Bounded execution, tools and accounting\nExplicit models, delegation and budgets","artifact",4.8,1.65),
+        ("authority",3,10.3,"Explicit execution authority","User-selected tools, providers and limits\nNo automatic changes or budget increases","artifact",4.8,1.65),
         ("runtime",10,10.3,"Task execution and monitoring","Scoped frames and versioned contributions\nRead-only metadata; explicit draft application","code",5.0,1.65),
         ("record",17,10.3,"Contributions for user review","Visible process is not goal achievement\nNo automatic winner or organization change","evidence",5.0,1.65),
     ]:
@@ -323,7 +323,7 @@ def diagrams():
     for key,x in [("roles",3),("reps",10),("work",17)]:
         edge(g,key,"runtime","bottom","top",via=((x,8.6),(10,8.6)) if key!="reps" else ())
     edge(g,"authority","runtime");edge(g,"runtime","record")
-    g["footer"]="Built on Goran Mitevski's Labtune engine. Broader task capability does not expand the unchanged Labtune license permission."
+    g["footer"]="Based on Labtune by Goran Mitevski / Pioneertown B.V. Standalone runtime; unchanged legal texts and eligibility."
     result.append(g)
 
     g=graph("14-teamknitt-protocol", "From a user brief to observable team contributions", "Configure or draft explicitly; route information by topology and sharing; keep completion separate from user-goal achievement.",width=24,height=14)
@@ -337,7 +337,7 @@ def diagrams():
         ("consumer",17,7,"Another role's later observation","Permitted representation exposure\nVersion-specific handoff acknowledgement","llm",5.0,1.65),
         ("viewer",3,11,"Configure, monitor and review","Draft previews do not write or run models\nPrivate deliverable; user reviews the result","artifact",4.8,1.65),
         ("record",10,11,"Distinct process observations","Available / exposed / published / acknowledged\nExplicit reports, freshness and missingness","evidence",5.0,1.65),
-        ("timework",17,11,"Additional observation tools","Selected dynamical-system dimensions\nAttractors / synchrony / fractals not estimated","optional",5.0,1.65),
+        ("timework",17,11,"Additional observation tools","Complexity science + team dynamics\nAttractors / synchrony / fractals not estimated","optional",5.0,1.65),
     ]:
         node(g,*args)
     edge(g,"sources","actor");edge(g,"actor","produce")
@@ -347,33 +347,91 @@ def diagrams():
     edge(g,"barrier","record","bottom","top")
     edge(g,"timework","record","left","right",optional=True)
     edge(g,"record","viewer","left","right")
-    edge(g,"consumer","actor","right","top",via=((21,7),(21,2.3),(10,2.3)),label="next research phase",at=(21,5.7))
+    edge(g,"consumer","actor","right","top",via=((21,7),(21,2.3),(10,2.3)),label="next work phase",at=(21,5.7))
     g["footer"]="Availability is not comprehension. Acknowledgement is not agreement. Similarity is not accuracy. Human-team constructs require validation."
+    result.append(g)
+    g=graph("15-teamknitt-views", "Two approaches — one user-directed team", "Explanatory orientations, not mutually exclusive scientific camps, model choices or statistical methods.",width=30,height=15)
+    g.update(brand="TEAMKNITT", date="2026-11-09")
+    node(g,"user",15,3,"Your task and chosen configuration","Explicit topology, membership, sharing, models and budgets","artifact",13,1.5)
+    node(g,"standard",7,6,"STANDARD — individual / component-centered","Member attributes, behavior, reports and decomposed relationships\nInteraction can still be studied; not a claim that every model is linear","artifact",12.7,1.7)
+    node(g,"complexity",22.5,6,"COMPLEXITY — interaction / system-centered","Problem-solving across agents, artifacts, tools and time\nComplex adaptive systems / Santa Fe tradition; no inferred emergence","artifact",13.2,1.7)
+    node(g,"behavior",4,9.2,"Collaborative intelligence","Wu et al.; alone/baseline/challenge\nOptional separate saved protocol\nNot an official CIB score","optional",5.5,1.95)
+    node(g,"models",10,9.2,"Shared models + reports","Explicit plans and perceived alignment\nSimilarity is not correctness\nNo latent mental-model inference","evidence",5.5,1.95)
+    node(g,"distributed",17.2,9.2,"Distributed problem-solving","Complementary inputs and artifacts\nWork dependencies + transformations\nExpertise directory + handoffs","evidence",4.9,1.95)
+    node(g,"dynamics",22.5,9.2,"Teams as dynamical systems","Temporal activity + disturbance windows\nGorman et al. is one reference\nAttractors/synchrony/fractals not estimated","optional",4.9,1.95)
+    node(g,"coordination",27.3,9.2,"Interactions + coordination","Recorded exposure + receipt metadata\nPermissions are not actual exposure\nCounts do not establish causal coupling","evidence",4.9,1.95)
+    node(g,"engine",15,12.4,"teamknitt standalone engine","Own runtime, adapters, schemas and resources · No upstream package or CLI dependency\nChanging groups/views never changes configuration, runs an evaluation or grants permission","code",28,1.65)
+    edge(g,"user","standard","bottom","top",via=((15,4.6),(7,4.6)))
+    edge(g,"user","complexity","bottom","top",via=((15,4.6),(22.5,4.6)))
+    for key,x in [("behavior",4),("models",10)]:edge(g,"standard",key,"bottom","top",via=((7,7.5),(x,7.5)))
+    for key,x in [("distributed",17.2),("dynamics",22.5),("coordination",27.3)]:edge(g,"complexity",key,"bottom","top",via=((22.5,7.5),(x,7.5)) if x!=22.5 else ())
+    g["footer"]="Based on Labtune by Goran Mitevski / Pioneertown B.V. Bayesian analysis is not an option; legacy methods are never silently converted."
     result.append(g)
     return result
 
 
-def team_topology_layout(kind, count):
-    """Runtime topology positions exported to the package by tools/sync_starter.py.
+# Canonical labels, captions and layout geometry for the runtime topology diagrams.
+TEAM_TOPOLOGIES = {
+    "fully_connected": {"label": "Fully connected", "description": "Every member can send permitted information to every other member."},
+    "hub_and_spoke": {"label": "Hub and spoke", "description": "Member 1 is the two-way communication hub; spokes exchange through it."},
+    "ring": {"label": "Ring · two-way", "description": "Each member connects to its two neighbors in a bidirectional ring."},
+    "hierarchical": {"label": "Hierarchical routing", "description": "A bidirectional binary-tree communication layout; it does not grant decision authority."},
+    "chain": {"label": "Chain · two-way", "description": "Adjacent member IDs exchange in both directions along a path, without a closing loop."},
+    "directed_chain": {"label": "Chain · one-way", "description": "Information can flow from member 1 toward the last member, one adjacent hop at a time; no reverse links."},
+    "directed_ring": {"label": "Ring · one-way", "description": "Each member sends to the next member, with the last sending to member 1; reverse links are not implied."},
+    "wheel": {"label": "Wheel", "description": "Member 1 is a two-way hub; the remaining members also form a bidirectional outer ring."},
+    "grid": {"label": "Grid", "description": "A row-major near-square grid with two-way horizontal and vertical neighbors, no diagonals or wraparound."},
+    "clustered": {"label": "Clustered pods", "description": "Consecutive groups of up to three members are fully connected; each pod's first member links bidirectionally to the next pod's first member."},
+    "bipartite": {"label": "Bipartite", "description": "The first ceil(N/2) members connect bidirectionally to all remaining members; no within-partition links."},
+    "broadcast": {"label": "Broadcast · one-to-many", "description": "Member 1 can send to every other member; no replies or spoke-to-spoke routes are implied."},
+    "gather": {"label": "Gather · many-to-one", "description": "Every other member can send to member 1; no return or spoke-to-spoke routes are implied."},
+    "custom": {"label": "Custom directed links", "description": "Only the explicitly declared directed links exist; reverse links are not implied."},
+}
 
-    Normalized logical routing diagram, not inferred influence or decision authority.
-    """
+
+def team_topology_layout(kind, count):
+    """Normalized routing positions, not inferred influence or decision authority."""
     import math
-    if not 1 <= count <= 16 or kind not in {"fully_connected", "hub_and_spoke", "ring", "hierarchical", "custom"}:
+    if type(count) is not int or not 1 <= count <= 16 or kind not in TEAM_TOPOLOGIES:
         raise ValueError("Unsupported topology layout")
     result = []
     for i in range(count):
         if count == 1:
             x, y = .5, .5
-        elif kind == "hub_and_spoke" and i == 0:
+        elif kind in {"hub_and_spoke", "wheel", "broadcast", "gather"} and i == 0:
             x, y = .5, .5
         elif kind == "hierarchical":
             level = (i + 1).bit_length() - 1
             offset = i - (2**level - 1)
             levels = count.bit_length()
             x, y = (offset + 1) / (2**level + 1), .12 + .76 * level / max(1, levels - 1)
+        elif kind in {"grid", "chain", "directed_chain"}:
+            cols = math.ceil(math.sqrt(count)) if kind == "grid" else min(4, count)
+            rows = math.ceil(count / cols)
+            row, col = divmod(i, cols)
+            if kind != "grid" and row % 2:
+                col = cols - 1 - col
+            x = .12 + .76 * col / (cols - 1) if cols > 1 else .5
+            y = .14 + .70 * row / (rows - 1) if rows > 1 else .5
+        elif kind == "bipartite":
+            split = (count + 1) // 2
+            left = i < split
+            size, offset = (split, i) if left else (count - split, i - split)
+            x = .25 if left else .75
+            y = .12 + .76 * offset / (size - 1) if size > 1 else .5
+        elif kind == "clustered" and count > 3:
+            pods = math.ceil(count / 3)
+            cols = min(3, pods)
+            rows = math.ceil(pods / cols)
+            pod, offset = divmod(i, 3)
+            cx = .17 + .66 * (pod % cols) / (cols - 1) if cols > 1 else .5
+            cy = .24 + .48 * (pod // cols) / (rows - 1) if rows > 1 else .5
+            size = min(3, count - pod * 3)
+            angle = 2 * math.pi * offset / size - math.pi / 2
+            x, y = (cx, cy) if size == 1 else (cx + .09 * math.cos(angle), cy + .13 * math.sin(angle))
         else:
-            index, n = (i - 1, count - 1) if kind == "hub_and_spoke" else (i, count)
+            hub = kind in {"hub_and_spoke", "wheel", "broadcast", "gather"}
+            index, n = (i - 1, count - 1) if hub else (i, count)
             angle = 2 * math.pi * index / max(1, n) - math.pi / 2
             x, y = .5 + .36 * math.cos(angle), .5 + .36 * math.sin(angle)
         result.append({"id": f"member.{i+1}", "x": round(x, 6), "y": round(y, 6)})

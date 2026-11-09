@@ -9,7 +9,7 @@ from pathlib import Path
 import random
 import statistics
 
-from labtune.config import ConfigurationError
+from teamknitt.engine.config import ConfigurationError
 
 from .config import DIMENSIONS, digest, validate
 from .metrics import dynamics

@@ -9,14 +9,14 @@ import time
 import unittest
 from unittest.mock import patch
 
-from labtune.cli import main
-from labtune.config import ConfigurationError
-from labtune.multi_lab import CombinedSemaphore, MultiLabStudy, compile_multi_lab, run_multi_lab
-from labtune.providers.http import ProviderError
-from labtune.research import ResearchError
-from labtune.scaffold import init_workspace
-from labtune.study import StudyError, compare, load_study
-from labtune.visualization import VisualizationSession
+from teamknitt.engine.cli import main
+from teamknitt.engine.config import ConfigurationError
+from teamknitt.engine.multi_lab import CombinedSemaphore, MultiLabStudy, compile_multi_lab, run_multi_lab
+from teamknitt.engine.providers.http import ProviderError
+from teamknitt.engine.research import ResearchError
+from teamknitt.engine.scaffold import init_workspace
+from teamknitt.engine.study import StudyError, compare, load_study
+from teamknitt.engine.visualization import VisualizationSession
 import test_providers as fixtures
 
 PROJECT = fixtures.PROJECT
@@ -106,7 +106,7 @@ class MultiLabTests(unittest.TestCase):
             variants.append(config)
         for config in variants:
             (self.root / "study.yaml").write_text(json.dumps(config))
-            with self.subTest(config=config["multi_lab"]), patch("labtune.multi_lab.api_key", side_effect=AssertionError("No key lookup")):
+            with self.subTest(config=config["multi_lab"]), patch("teamknitt.engine.multi_lab.api_key", side_effect=AssertionError("No key lookup")):
                 with self.assertRaises((StudyError, ConfigurationError)):
                     asyncio.run(run_multi_lab(PROJECT, self.root))
         self.assertFalse((self.root / "trials").exists())
@@ -255,7 +255,7 @@ class MultiLabTests(unittest.TestCase):
 
     def test_prepare_and_visualize_new_starter_need_no_provider_and_package_the_guide(self):
         root = self.root / "portable"
-        with patch("labtune.study.ChatCompletionsClient", side_effect=AssertionError("No provider")):
+        with patch("teamknitt.engine.study.ChatCompletionsClient", side_effect=AssertionError("No provider")):
             init_workspace(root, "multi-lab")
             self.assertEqual(main(["--project", str(root), "study", "prepare", "--workspace", str(root), "--multi-lab"]), 0)
             self.assertEqual(main(["--project", str(root), "visualize", "--workspace", str(root), "--multi-lab", "--output", str(self.root / "labs.html")]), 0)
@@ -267,7 +267,7 @@ class MultiLabTests(unittest.TestCase):
         self.config["provider"]["base_url"] = "https://provider.example.invalid/v1"
         self.config["provider"]["model"] = "YOUR_MODEL_ID"
         self.save_config()
-        with patch("labtune.multi_lab.api_key", side_effect=AssertionError("No credentials")):
+        with patch("teamknitt.engine.multi_lab.api_key", side_effect=AssertionError("No credentials")):
             with self.assertRaises(ProviderError):
                 asyncio.run(run_multi_lab(PROJECT, self.root))
         self.assertFalse((self.root / "trials").exists())
@@ -346,7 +346,7 @@ class MultiLabTests(unittest.TestCase):
                 backend.receipts["protected-confirmation"] = {"result": {"status": "valid", "private_confirmation": "NEVER_TO_AGENTS"}}
             def finalize(backend):
                 return {"confirmation_metrics": {"fixture": 1} if backend.confirmed else {}}
-        with patch("labtune.study.create_backend", side_effect=Backend):
+        with patch("teamknitt.engine.study.create_backend", side_effect=Backend):
             study = self.study(meeting="conference", profile="low")
         calls = self.transports(study)
         a, b = study.labs.values()
@@ -400,10 +400,10 @@ class MultiLabTests(unittest.TestCase):
         self.assertEqual(result["labs"]["beta"]["verification_status"], "confirmation_evaluated_exploratory")
 
     def test_queued_experiments_recheck_deadlines_before_starting_either_evaluator(self):
-        from labtune.memory import MemoryResearchBackend
-        from labtune.research import ResearchBackend
-        cases = [(MemoryResearchBackend, "labtune.memory.execute", {"name": "fixture", "source": "fixture"}),
-                 (ResearchBackend, "labtune.research.execute_job", {"statistic": "damp_raw", "reference": "growing",
+        from teamknitt.engine.memory import MemoryResearchBackend
+        from teamknitt.engine.research import ResearchBackend
+        cases = [(MemoryResearchBackend, "teamknitt.engine.memory.execute", {"name": "fixture", "source": "fixture"}),
+                 (ResearchBackend, "teamknitt.engine.research.execute_job", {"statistic": "damp_raw", "reference": "growing",
                      "window": 2000, "threshold": "age_matched_rank", "gamma": 0})]
         async def exercise(kind, execute, candidate):
             backend = object.__new__(kind)
@@ -446,7 +446,7 @@ class MultiLabTests(unittest.TestCase):
     def test_specialist_account_caps_and_per_lab_aggregate_request_caps_apply(self):
         self.config["base_overrides"]["decisions"].update(mode="selected_active", specialist="specialist")
         self.config["decision_providers"]["specialist"]["max_parallel_requests"] = 1
-        with patch("labtune.study.api_key", return_value=fixtures.FAKE_KEY):
+        with patch("teamknitt.engine.study.api_key", return_value=fixtures.FAKE_KEY):
             study = self.study(sequences=1)
         active = peak = 0
         lock = threading.Lock()
@@ -472,7 +472,7 @@ class MultiLabTests(unittest.TestCase):
             await asyncio.gather(lab.client.generate([{"role": "user", "content": "fixture"}], budget_ref="fixture"),
                                  lab.specialist_client.assess_text("fixture", {"q": {"type": "noul", "instructions": "Fixture?"}}))
         # A fresh group avoids reusing contended semaphores across event loops.
-        with patch("labtune.study.api_key", return_value=fixtures.FAKE_KEY):
+        with patch("teamknitt.engine.study.api_key", return_value=fixtures.FAKE_KEY):
             second = self.study(sequences=1)
         lab = second.labs["alpha"]
         lab.client._transport = lab.specialist_client._transport = transport

@@ -49,13 +49,8 @@ def main():
     protocol=request["protocol"]
     started=time.monotonic()
     operation=request["operation"]
-    prior=None
-    # Reviewed priors are applied by Labtune to the measured counts, with a sensitivity report.
-    # The legacy, explicitly configured manual prior remains a separate mode.
-    if request.get("statistical_approach")=="bayesian" and not request.get("reviewed_prior_analysis"):
-        prior=protocol.get("bayesian_prior")
-        if not isinstance(prior,list) or len(prior)!=2 or not all(isinstance(v,(int,float)) and not isinstance(v,bool) and math.isfinite(v) and v>0 for v in prior):
-            raise ValueError("Bayesian mode requires an explicit positive [a,b] prior.")
+    if request.get("statistical_approach", "frequentist") != "frequentist" or protocol.get("bayesian_prior") is not None:
+        raise ValueError("Bayesian/probabilistic analysis is not supported by teamknitt.")
     if operation=="qualification":
         result=qualification(protocol,job)
     elif operation in ("evaluate","baselines"):
@@ -69,7 +64,7 @@ def main():
             candidate=request["candidate"]
             try:
                 compile_policy(candidate["source"])
-                result=evaluate(candidate["source"],protocol,seeds,split,job,prior)
+                result=evaluate(candidate["source"],protocol,seeds,split,job)
                 result["candidate"]={"name":candidate["name"],"source_sha256":hashlib.sha256(candidate["source"].encode()).hexdigest()}
             except (ValueError,RuntimeError,BrokenPipeError) as error:
                 result={"status":"invalid_candidate","reason":str(error)[:600]}
@@ -79,7 +74,7 @@ def main():
                                          ("reservoir",RESERVOIR_SOURCE,protocol["capacity"]),
                                          ("growing_unbounded",FIFO_SOURCE,protocol["steps"])):
                 place=job/name;place.mkdir()
-                row=evaluate(source,protocol,seeds,"development",place,prior,capacity=capacity)
+                row=evaluate(source,protocol,seeds,"development",place,capacity=capacity)
                 row["within_primary_memory_budget"]=name!="growing_unbounded"
                 result["comparators"][name]=row
     else: raise ValueError("Unsupported operation.")

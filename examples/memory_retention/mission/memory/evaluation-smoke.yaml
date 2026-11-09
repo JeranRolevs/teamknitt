@@ -14,7 +14,6 @@
     "fault_runs": 12,
     "alpha_targets": [
       0.1
-    ],
-    "bayesian_prior": null
+    ]
   }
 }

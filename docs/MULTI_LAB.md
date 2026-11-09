@@ -9,10 +9,10 @@ There is no automatic lab selection, redesign, ranking or extra sequence.
 ## Start and inspect
 
 ```sh
-labtune init my-labs --template multi-lab
+teamknitt engine init my-labs --template multi-lab
 cd my-labs
-python3 lab.py prepare --multi-lab
-python3 lab.py visualize --multi-lab
+python3 engine.py prepare --multi-lab
+python3 engine.py visualize --multi-lab
 ```
 
 Open the printed local URL. The process view shows lab research, presentations,
@@ -24,7 +24,7 @@ Edit study.yaml to configure a generation service and replace AWAITING_USER_PROB
 in mission/problem.md. Then explicitly run:
 
 ```sh
-python3 lab.py run --multi-lab --sequences 2
+python3 engine.py run --multi-lab --sequences 2
 ```
 
 The sequence override enters the saved configuration identity without rewriting

@@ -4,9 +4,9 @@ from pathlib import Path
 import json
 import unittest
 import test_providers as fixtures
-from labtune.memory import MemoryResearchBackend,ACTION_CONTRACT
-from labtune.planning import compile_plan
-from labtune.study import TextStudy,compare,load_study
+from teamknitt.engine.memory import MemoryResearchBackend,ACTION_CONTRACT
+from teamknitt.engine.planning import compile_plan
+from teamknitt.engine.study import TextStudy,compare,load_study
 
 
 class MemoryBridgeTests(unittest.TestCase):

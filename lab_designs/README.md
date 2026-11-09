@@ -1,5 +1,5 @@
 > Current runtime update — 2026-10-28: bounded live workflows, local decisions and a bundled
-> authored-policy memory example are implemented. See [the current scope](https://github.com/JeranRolevs/labtune/blob/main/docs/SKELETON.md). Historical design text below may describe earlier stages.
+> authored-policy memory example are implemented. See [the current scope](https://github.com/JeranRolevs/teamknitt/blob/main/docs/SKELETON.md). Historical design text below may describe earlier stages.
 
 # Selectable lab designs
 
@@ -7,10 +7,10 @@ Updated 2026-10-30: all six presets are available. Design F adds a single scient
 low, medium and persistent effort, continued contexts and user-selected sequential runs.
 See [single-scientist setup](../docs/SINGLE_SCIENTIST.md) for fixed and budget-driven modes.
 
-Date: 2026-10-26. These are ready-made **design Markdown presets** for Labtune. The plan-only
+Date: 2026-10-26. These are ready-made **design Markdown presets** for teamknitt. The plan-only
 loader validates and resolves their roles, structural work phases, coordination rules, and
 suggested communication settings. Activating those roles in a running lab is a later stage.
-See the [skeleton map](https://github.com/JeranRolevs/labtune/blob/main/docs/SKELETON.md) for the implementation boundary.
+See the [skeleton map](https://github.com/JeranRolevs/teamknitt/blob/main/docs/SKELETON.md) for the implementation boundary.
 
 ## Choose a design
 
@@ -29,7 +29,7 @@ They do not require publication, different model providers, or a specialist deci
 All styles are available in the skeleton; comparisons come later. A preset's labels do not establish different
 methods or superior organization. Its resolved task dependencies, output contracts, information
 routes, stop rules, and costs must be compared with the executed graph. The
-[evidence/comparison notes](https://github.com/JeranRolevs/labtune/blob/main/learning_and_evaluation.md) make this distinction explicit.
+[evidence/comparison notes](https://github.com/JeranRolevs/teamknitt/blob/main/learning_and_evaluation.md) make this distinction explicit.
 
 Design C uses two complementary investigators with different research approaches.
 It defines functional reasoning roles, without attempting to reproduce historical personalities.
@@ -93,9 +93,9 @@ decisions:
   mode: llm_only
 ```
 
-Use `labtune --project . plan --design lab_designs/B-transdisciplinary-integration.md
---profile low --wisdom on` from the installed Labtune checkout (on one line). See
-[configuration instructions](https://github.com/JeranRolevs/labtune/blob/main/configs/README.md). Planning does not call a model.
+Use `teamknitt engine --project . plan --design lab_designs/B-transdisciplinary-integration.md
+--profile low --wisdom on` from the installed teamknitt checkout (on one line). See
+[configuration instructions](https://github.com/JeranRolevs/teamknitt/blob/main/configs/README.md). Planning does not call a model.
 
 Prime count, persona-to-agent assignment, role composition, child count/depth, model, budgets,
 communication, meeting cadence, and procedures remain adjustable. If an override removes a
@@ -163,7 +163,7 @@ unsupported. Record minority views and unresolved issues rather than forcing agr
 
 Decisions about work allocation can use the declared governance procedure. Scientific validity
 and asset acceptance remain evidence-based; a vote or a persuasive leader cannot certify them.
-One configured LLM can perform all turns. Each agent may use [decision.assess](https://github.com/JeranRolevs/labtune/blob/main/decision_tools.md)
+One configured LLM can perform all turns. Each agent may use [decision.assess](https://github.com/JeranRolevs/teamknitt/blob/main/decision_tools.md)
 for an eligible local question, under its existing context permissions and budget. Configured decision-model judgments remain optional and cannot read another attendee's hidden source record.
 
 ## Controller and leader are different roles

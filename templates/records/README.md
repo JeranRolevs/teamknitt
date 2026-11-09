@@ -22,4 +22,4 @@ shape; a future store/runtime checks source existence, authority, permissions, a
 Configuration snapshots do not freeze editable settings. No lab-version acceptance or automatic
 improvement records exist. The future runtime records when a user's change takes effect and
 retains earlier exposure history. An independent comparison can use fresh contexts if the user
-chooses. See [the architecture](https://github.com/JeranRolevs/labtune/blob/main/ARCHITECTURE.md) and [schema](https://github.com/JeranRolevs/labtune/blob/main/src/labtune/schemas/records.schema.json).
+chooses. See [the architecture](https://github.com/JeranRolevs/teamknitt/blob/main/ARCHITECTURE.md) and [schema](https://github.com/JeranRolevs/teamknitt/blob/main/src/teamknitt/engine/schemas/records.schema.json).

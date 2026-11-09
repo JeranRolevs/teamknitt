@@ -7,15 +7,15 @@ optional decision endpoints and budgets. No model account or live call is part o
 
 ```bash
 python3 -m pip install -e '.[memory]'
-labtune init ../memory-lab --template memory
+teamknitt engine init ../memory-lab --template memory
 cd ../memory-lab
-python3 lab.py prepare
-python3 lab.py qualify
+python3 engine.py prepare
+python3 engine.py qualify
 ```
 
 Candidate execution requires native macOS sandbox qualification. Configure the generic
 provider section of study.yaml and the private .env key before an explicit run, for example
-python3 lab.py run --variant memory-single. The default uses LLM-only judgments; separate
+python3 engine.py run --variant memory-single. The default uses LLM-only judgments; separate
 chat or typed decision endpoints can be selected explicitly. No service or model is bundled.
 
 The task ships public generators, baselines, evaluator scripts and protocols. Fresh private

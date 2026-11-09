@@ -1,7 +1,7 @@
-"""Execute the actual Labtune workflow with a distributed-cognition workspace.
+"""Execute the actual teamknitt workflow with a distributed-problem-solving workspace.
 
 No separate agent roster, mandatory adversarial teammate, task triplet, model picker,
-statistical protocol or budget authority replaces Labtune's selected configuration.
+statistical protocol or budget authority replaces teamknitt's selected configuration.
 """
 from __future__ import annotations
 
@@ -13,9 +13,9 @@ import json
 from pathlib import Path
 import time
 
-from labtune.config import ConfigurationError, project_file
-from labtune.providers.configuration import require_configured
-from labtune.study import TextStudy, StudyError, api_key, load_study, save
+from teamknitt.engine.config import ConfigurationError, project_file
+from teamknitt.engine.providers.configuration import require_configured
+from teamknitt.engine.study import TextStudy, StudyError, api_key, load_study, save
 
 from . import __version__
 from .cognition import CONTRACT, CognitiveWorkspace
@@ -23,9 +23,9 @@ from .config import compile_plan, digest
 
 
 def implementation_identity():
-    names = ("builder.py", "topology.py", "observations.py", "cognition.py", "config.py", "runtime.py", "reporting.py")
+    names = ("builder.py", "topology.py", "resources/topology-catalog.json", "views.py", "observations.py", "cognition.py", "config.py", "runtime.py", "reporting.py")
     bindings = {name: hashlib.sha256(files("teamknitt").joinpath(name).read_bytes()).hexdigest() for name in names}
-    bindings["labtune/study.py"] = hashlib.sha256(files("labtune").joinpath("study.py").read_bytes()).hexdigest()
+    bindings["engine/study.py"] = hashlib.sha256(files("teamknitt.engine").joinpath("study.py").read_bytes()).hexdigest()
     return digest(bindings)
 
 
@@ -85,7 +85,7 @@ class FixtureClient:
 class CognitiveStudy(TextStudy):
     def __init__(self, workspace, study, compiled, key, *, fixture_client=None):
         self.compiled = compiled
-        super().__init__(workspace, workspace, study, compiled["labtune_plan"], compiled["labtune_variant"], key,
+        super().__init__(workspace, workspace, study, compiled["engine_plan"], compiled["engine_variant"], key,
                          generation_client=fixture_client)
         self.root.chmod(0o700)
         self.cognitive = CognitiveWorkspace(workspace, compiled, self.event)
@@ -133,7 +133,7 @@ class CognitiveStudy(TextStudy):
         used = sum(len(v.split()) for v in ordinary.values())
         remaining = max(0, self.plan["communication"]["max_read_words"] - used)
         cognition = self.cognitive.observe(actor, remaining)
-        return {"labtune": ordinary, "cognition": cognition}
+        return {"engine": ordinary, "cognition": cognition}
 
     async def before_wave(self, nodes):
         self.cognitive.begin_wave(nodes)
@@ -165,14 +165,14 @@ async def run(workspace: Path, config=None, *, live=False, approve_requests=None
     study = compiled["engine_configuration"]
     cap = compiled["provider_request_cap"]
     if live and (type(approve_requests) is not int or approve_requests != cap):
-        raise ConfigurationError("A live run requires approval equal to the selected Labtune budget.max_llm_calls.")
+        raise ConfigurationError("A live run requires approval equal to the selected teamknitt budget.max_llm_calls.")
     if live:
         require_configured(study["provider"])
         problem = project_file(root, study["problem_file"]).read_text()
         if not problem.strip() or any(marker in problem for marker in ("AWAITING_USER_PROBLEM", "AWAITING_USER_TASK")):
             raise ConfigurationError("Replace the starter placeholder with your own task, brainstorming prompt, goal or research brief before a live run.")
-        if compiled["labtune_plan"]["decision_service"]["mode"] != "llm_only":
-            require_configured(compiled["labtune_plan"]["decision_service"]["provider"])
+        if compiled["engine_plan"]["decision_service"]["mode"] != "llm_only":
+            require_configured(compiled["engine_plan"]["decision_service"]["provider"])
         key = api_key(root, study["provider"])
     else:
         key = None
@@ -182,7 +182,7 @@ async def run(workspace: Path, config=None, *, live=False, approve_requests=None
     if trials.is_symlink() or trials.exists() and not trials.is_dir():
         raise ConfigurationError("trials must be a local directory, not a symlink.")
     trials.mkdir(mode=0o700, exist_ok=True)
-    # Keep Labtune's workspace-wide run exclusion; an overlay must not create a second concurrent allowance.
+    # Keep teamknitt's workspace-wide run exclusion; an overlay must not create a second concurrent allowance.
     import fcntl
     import os
     lock_path = root / ".run.lock"
@@ -193,7 +193,7 @@ async def run(workspace: Path, config=None, *, live=False, approve_requests=None
         try:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
-            raise StudyError("Another run owns this Labtune workspace.") from None
+            raise StudyError("Another run owns this teamknitt workspace.") from None
         fixture_client = FixtureClient(policy) if not live else None
         runner = CognitiveStudy(root, study, compiled, key, fixture_client=fixture_client)
         if live and transport is not None:
@@ -217,7 +217,7 @@ async def run(workspace: Path, config=None, *, live=False, approve_requests=None
         result = build_report(runner.root)
         save(runner.root / "team-report.json", result)
         return {"status": summary["status"], "mode": identity["mode"], "run_directory": str(runner.root),
-                "provider_requests": summary["provider_post_requests"], "labtune_variant": compiled["labtune_variant"],
+                "provider_requests": summary["provider_post_requests"], "engine_variant": compiled["engine_variant"],
                 "configuration_sha256": compiled["configuration_sha256"], "report": str(runner.root / "team-report.json"),
                 "scientific_quality_score": None, "goal_achieved": None, "task_review": "awaiting_user_review",
                 "deliverable": str(runner.root / "deliverable.md"), "evidence_label": result["evidence_label"]}
