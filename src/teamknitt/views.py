@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from teamknitt.engine.config import ConfigurationError
+from .human_teams import ADDITIONAL_SOURCES, catalogue as theory_catalogue, project as theory_project
 
 SOURCES = {
     "hutchins_1995": {"citation": "Hutchins, E. (1995). Cognition in the Wild.", "tradition": "Distributed problem-solving"},
@@ -19,49 +20,59 @@ SOURCES = {
     "mitchell_2009": {"citation": "Mitchell, M. (2009). Complexity: A Guided Tour.", "tradition": "Complexity science"},
     "gorman_2017": {"citation": "Gorman, J. C., Dunbar, T. A., Grimm, D., & Gipson, C. L. (2017). Understanding and Modeling Teams As Dynamical Systems.", "tradition": "Team dynamics", "url": "https://doi.org/10.3389/fpsyg.2017.01053"},
 }
-COMPLEXITY_SOURCES = ("holland_1995", "mitchell_2009", "gorman_2017")
+SOURCES.update(ADDITIONAL_SOURCES)
+COMPLEXITY_SOURCES = ("kelso_1995", "schmidt_richardson_2008", "gorman_2017", "cooke_2013", "holland_1995", "mitchell_2009")
 COMPLEXITY_TRADITION = "Complexity science, complex adaptive systems and team dynamics"
 
 GROUPS = {
-    "standard": {
-        "label": "Standard", "subtitle": "Individual / component-centered",
-        "question": "What do members bring, report and contribute as teammates?",
-        "scope": "Member attributes, reported knowledge and behavior, and decomposed member-to-member relationships. Standard approaches can also study interactions; this is an explanatory emphasis, not a claim that all their models are linear.",
+    "non_system": {
+        "label": "Non-system", "subtitle": "Member / component-centered explanations",
+        "question": "What do members bring, report and contribute?",
+        "scope": "Locates a phenomenon in member attributes, knowledge, skills or aggregates. Collaborative Intelligence is a member-focused behavioral evaluation view; shared-model comparisons inspect member reports. Conventional IPO/IMOI work also includes feedback, interaction and contingencies—not simply a linear pipeline.",
         "views": ["collaborative_intelligence", "shared_models"],
     },
-    "complexity": {
-        "label": "Complexity", "subtitle": "Interaction / system-centered",
-        "question": "How is problem-solving produced across interacting agents, artifacts and time?",
-        "scope": "Interaction, interdependence and system-level organization. Distributed problem-solving, team dynamics and coordination ask related questions here; not every distributed problem-solving account assumes nonlinear dynamics.",
-        "views": ["distributed_problem_solving", "team_dynamics", "interaction_coordination"],
+    "system": {
+        "label": "System", "subtitle": "Interaction / configuration-centered explanations",
+        "question": "How is work organized across members, artifacts and time?",
+        "scope": "Locates a phenomenon in situated interaction and differentiated organization. Distributed problem-solving, interactive team cognition, transactive memory and dynamics offer distinct accounts. This is not synonymous with complexity science or a demonstration that emergence occurred.",
+        "views": ["distributed_problem_solving", "transactive_memory", "interaction_coordination", "team_dynamics"],
     },
 }
+# Presentation compatibility only; no saved team configuration or historical record is rewritten.
+GROUP_ALIASES = {"standard": "non_system", "complexity": "system"}
 
 VIEWS = {
     "collaborative_intelligence": {
-        "group": "standard", "label": "Collaborative intelligence", "question": "What does a member contribute as a teammate, beyond being able to solve the task alone?",
-        "scope": "The Standard group's behavioral view is informed by Measuring AI Agents as Teammates with Collaborative Intelligence. Optional, explicitly selected saved probe evidence remains a separate protocol context.",
+        "group": "non_system", "label": "Collaborative intelligence", "question": "What does a member contribute as a teammate, beyond being able to solve the task alone?",
+        "scope": "The Non-system group's behavioral view is informed by Measuring AI Agents as Teammates with Collaborative Intelligence. Optional, explicitly selected saved probe evidence remains a separate protocol context.",
         "sources": ["wu_2026"], "boundary": "No official CIB score or automatic evaluation. Task telemetry cannot establish a member's teammate capabilities, emotional traits or ethical competence.",
     },
     "shared_models": {
-        "group": "standard", "label": "Shared models & member reports", "question": "How do members' explicit plans and perceived alignment compare?",
-        "scope": "Member-centered reports and similarities provide one Standard perspective. Reported-plan agreement, reference conformity and perceived alignment are separate observables, not the whole problem-solving system.",
-        "sources": ["cannon_bowers_1993", "mcneese_2021"], "boundary": "No inferred latent mental model, validated expertise or correctness. Agreeing with each other differs from agreeing with a declared reference; either can be wrong.",
+        "group": "non_system", "label": "Shared models & member reports", "question": "How do members' explicit plans and perceived alignment compare?",
+        "scope": "Member-centered reports and similarities provide one member-centered perspective. Reported-plan agreement, reference conformity and perceived alignment are separate observables, not the whole problem-solving system.",
+        "sources": ["cannon_bowers_1993", "mathieu_2000", "dechurch_2010", "mcneese_2021"], "boundary": "No inferred latent mental model, validated expertise or correctness. Agreeing with each other differs from agreeing with a declared reference; either can be wrong.",
     },
     "distributed_problem_solving": {
-        "group": "complexity", "label": "Distributed problem-solving", "question": "How do agents, representations, tools and work dependencies jointly support problem-solving?",
+        "group": "system", "label": "Distributed problem-solving", "question": "How do agents, representations, tools and work dependencies jointly support problem-solving?",
         "scope": "Inspect complementary inputs, externalized work, expertise directories, transformations and handoffs across the configured system. This is teamknitt's product term for this perspective; original scholarly publication titles are retained.",
         "sources": ["hutchins_1995", "mcneese_2021", "wegner_1987"], "boundary": "Permissions are not exposure; exposure is not understanding. Work distribution, tool availability and handoff receipts do not establish a solved task or an emergent cognitive capacity.",
     },
+    "transactive_memory": {
+        "group": "system", "label": "Transactive memory & differentiated expertise",
+        "question": "Who is assigned to know what, and how can that knowledge be located and used?",
+        "scope": "A differentiated, compilational account: complementary knowledge, a directory of who knows what, and coordinated encoding, storage and retrieval. It is not shared overlap or a mean of expertise labels.",
+        "sources": ["wegner_1987", "lewis_2003", "kozlowski_klein_2000", "dechurch_2010"],
+        "boundary": "The configured directory and routes are scaffolds only. No validated expertise, credibility, specialization or transactive-memory effectiveness score is inferred.",
+    },
     "team_dynamics": {
-        "group": "complexity", "label": "Teams as dynamical systems", "question": "How do interaction and coordination change through time and around disturbances?",
+        "group": "system", "label": "Teams as dynamical systems", "question": "How do interaction and coordination change through time and around disturbances?",
         "scope": "Complexity science and complex adaptive systems, including the Santa Fe tradition, motivate temporal trajectories, feedback, stability and adaptation questions. Gorman et al. is one team-focused reference, not the umbrella theory.",
         "sources": list(COMPLEXITY_SOURCES), "boundary": "Santa Fe is a research tradition, not an endorsement or a validated team model. Short, uneven traces do not establish emergence, adaptation, attractors, synchrony or fractals.",
     },
     "interaction_coordination": {
-        "group": "complexity", "label": "Interactions & coordination", "question": "Which contributions are encountered, transformed and acknowledged across members and artifacts?",
-        "scope": "Observe directed artifact exposure, version-specific handoffs and cross-level records. Separate configured routes from recorded information flow; coordination is a process across the system.",
-        "sources": ["hutchins_1995", "mcneese_2021", "gorman_2017"], "boundary": "Artifact exposure counts are not causal coupling or every message. Acknowledgement is not understanding or agreement, and missing observations are not zeros.",
+        "group": "system", "label": "Interactive team cognition & coordination", "question": "Which contributions are encountered, transformed and acknowledged across members and artifacts?",
+        "scope": "Interactive team cognition treats cognition as situated activity across a team, not an aggregate of individual mental contents. Inspect directed artifact exposure, version-specific handoffs and cross-level records. Separate configured routes from recorded information flow; coordination is a process across the system.",
+        "sources": ["cooke_2013", "marks_2001", "hutchins_1995", "mcneese_2021", "gorman_2017"], "boundary": "Artifact exposure counts are not causal coupling or every message. Acknowledgement is not understanding or agreement, and missing observations are not zeros.",
     },
 }
 
@@ -72,12 +83,15 @@ LEGACY_VIEWS = {
 
 def resolve_view(group=None, section=None, legacy=None):
     notice = None
+    if group in GROUP_ALIASES:
+        group = GROUP_ALIASES[group]
+        notice = "Legacy approach-group name mapped to Non-system/System for display only; no configuration or historical record changed."
     if legacy is not None:
         if group is not None or section is not None:
             raise ConfigurationError("Choose --group/--section or the legacy --lens flag, not both.")
         section = LEGACY_VIEWS.get(legacy, legacy)
         if legacy == "cognition":
-            notice = "The former cognition overview is split: distributed problem-solving is under Complexity; shared-plan reports are under Standard. No team setting changed."
+            notice = "The former cognition overview is split: distributed problem-solving is under System; shared-plan reports are under Non-system. No team setting changed."
         else:
             notice = "Legacy --lens selection mapped to the grouped team views; use --group and --section."
     if section is not None:
@@ -89,7 +103,7 @@ def resolve_view(group=None, section=None, legacy=None):
         group = expected
     if group is not None:
         if group not in GROUPS:
-            raise ConfigurationError("Choose Standard or Complexity.")
+            raise ConfigurationError("Choose Non-system or System.")
         section = section or GROUPS[group]["views"][0]
     return group, section, notice
 
@@ -108,7 +122,8 @@ TEAMWORK = {
 
 def catalogue():
     return {"groups": deepcopy(GROUPS), "views": deepcopy(VIEWS), "representative_sources": deepcopy(SOURCES),
-            "classification_note": "Two explanatory orientations, not an exhaustive or mutually exclusive partition of team research. Statistical methods are not theories of teams.",
+            "classification_note": "Explanatory locus differs from compositional/compilational emergence and process/state/outcome distinctions. These orientations are not an exhaustive, mutually exclusive partition. Statistical methods are not theories of teams.",
+            "research_background": theory_catalogue(SOURCES), "group_aliases": deepcopy(GROUP_ALIASES),
             "switching_changes_configuration": False, "automatic_evaluation": False, "api_calls": 0}
 
 
@@ -166,6 +181,9 @@ def build_views(report, probe_summary=None):
         "artifact_versions": len(report["versions"]) if last else None,
         "acknowledged_due_handoffs": last["acknowledged_due_handoffs"] if last else None,
     })
+    result["transactive_memory"].update(status="configuration_only", directory=deepcopy(c["expertise_directory"]),
+        signals={"configured_directory_topics": len(c["expertise_directory"]), "assigned_holder_slots": sum(len(d["holders"]) for d in c["expertise_directory"]),
+                 "configured_source_inputs": sum(r["kind"] == "source" for r in c["representations"]), "retrieval_effectiveness": None})
     result["collaborative_intelligence"].update(
         status="not_evaluated" if probe_summary is None else "separate_protocol_attached", dimensions=dimensions,
         probe_summary=deepcopy(probe_summary), team_capability_score=None,
@@ -174,6 +192,9 @@ def build_views(report, probe_summary=None):
                          "note": "Activity counts supply context only; they do not score information sharing or other teammate capabilities."})
     result["team_dynamics"].update(status="disabled" if not report["observations"]["enabled"] else "descriptive_only" if last else "not_observed",
         observations=deepcopy(report["observations"]), conceptual_questions=[
+            {"concept": "Local–global stability", "question": "How do local contribution changes coexist with global handoff-state continuity? No general variability/performance or resilience diagnosis follows.", "status": "descriptive_only" if last else "not_observed"},
+            {"concept": "Substrate independence", "question": "Which task-specific coupling variables might generalize across substrates? Similar software traces are not proof of human/AI equivalence.", "status": "design_hypothesis_not_tested"},
+            {"concept": "Cross-level effects", "question": "What member, artifact and system records would a cross-level causal study require? Co-recorded events do not identify direction or causation.", "status": "descriptive_records_only" if last else "not_observed"},
             {"concept": "Feedback and interdependence", "question": "Which permitted contributions are encountered in later waves?", "status": "exposure_metadata_only"},
             {"concept": "Emergence and adaptation", "question": "Would repeated, independently evaluated trajectories support a system-level explanation?", "status": "not_estimated"},
             {"concept": "History and path dependence", "question": "How do prior exposures and interruptions relate to later recorded coordination?", "status": "descriptive_only" if last else "not_observed"},
@@ -188,4 +209,4 @@ def build_views(report, probe_summary=None):
 
 
 def with_views(report, probe_summary=None):
-    return {**report, "team_views": build_views(report, probe_summary), "view_groups": deepcopy(GROUPS), "view_sources": deepcopy(SOURCES)}
+    return {**report, "team_views": build_views(report, probe_summary), "view_groups": deepcopy(GROUPS), "view_sources": deepcopy(SOURCES), "research_background": theory_project(report)}

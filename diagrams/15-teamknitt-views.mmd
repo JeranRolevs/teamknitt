@@ -1,28 +1,30 @@
 %% Generated from specs.py; 2026-11-09. Current runtime; gray nodes are planned.
 flowchart LR
-    user["Your task and chosen configuration<br/>Explicit topology, membership, sharing, models and budgets"]
-    standard["STANDARD — individual / component-centered<br/>Member attributes, behavior, reports and decomposed relationships<br/>Interaction can still be studied; not a claim that every model is linear"]
-    complexity["COMPLEXITY — interaction / system-centered<br/>Problem-solving across agents, artifacts, tools and time<br/>Complex adaptive systems / Santa Fe tradition; no inferred emergence"]
-    behavior["Collaborative intelligence<br/>Wu et al.; alone/baseline/challenge<br/>Optional separate saved protocol<br/>Not an official CIB score"]
-    models["Shared models + reports<br/>Explicit plans and perceived alignment<br/>Similarity is not correctness<br/>No latent mental-model inference"]
-    distributed["Distributed problem-solving<br/>Complementary inputs and artifacts<br/>Work dependencies + transformations<br/>Expertise directory + handoffs"]
-    dynamics["Teams as dynamical systems<br/>Temporal activity + disturbance windows<br/>Gorman et al. is one reference<br/>Attractors/synchrony/fractals not estimated"]
-    coordination["Interactions + coordination<br/>Recorded exposure + receipt metadata<br/>Permissions are not actual exposure<br/>Counts do not establish causal coupling"]
-    engine["teamknitt standalone engine<br/>Own runtime, adapters, schemas and resources · No upstream package or CLI dependency<br/>Changing groups/views never changes configuration, runs an evaluation or grants permission"]
-    user --> standard
-    user --> complexity
-    standard --> behavior
-    standard --> models
-    complexity --> distributed
-    complexity --> dynamics
-    complexity --> coordination
+    user["Your task and chosen configuration<br/>Explicit membership, roles, topology, sharing, models, tools and budgets"]
+    non_system["NON-SYSTEM — member/component-centered<br/>Attributes, behavior, knowledge, reports and aggregates<br/>IPO/IMOI also includes interaction, feedback and conditional relations"]
+    system["SYSTEM — situated interaction/configuration<br/>Work across members, artifacts, tools and time<br/>Not synonymous with complexity science or demonstrated emergence"]
+    behavior["Collaborative intelligence<br/>Member-focused behavioral evaluation<br/>Optional separate saved protocol<br/>Not an official CIB score"]
+    models["Shared models + reports<br/>Explicit plans and perceived alignment<br/>Similarity is not accuracy<br/>No latent mental-model inference"]
+    distributed["Distributed problem-solving<br/>Complementary inputs and representations<br/>Work dependencies + transformations<br/>Hutchins / McNeese, Salas &amp; Endsley"]
+    transactive["Transactive memory<br/>Differentiated/compilational knowledge<br/>Configured directory: who is assigned what<br/>Not measured retrieval effectiveness"]
+    coordination["Interactive cognition + coordination<br/>Situated interaction, not aggregated minds<br/>Exposure and version-specific handoffs<br/>Cooke et al.; no understanding inferred"]
+    dynamics["Teams as dynamical systems<br/>Local–global / substrate / cross-level<br/>Task-specific temporal research questions<br/>Recurrence/entropy/synchrony not estimated"]
+    engine["Configure → set tasks → follow work → intervene<br/>Standalone bounded engine; human-directed interventions, not automatic organizational improvement<br/>Human-team constructs and effects require validation for AI teams; psychological states are not measured"]
+    user --> non_system
+    user --> system
+    non_system --> behavior
+    non_system --> models
+    system --> distributed
+    system --> transactive
+    system --> coordination
+    system --> dynamics
     classDef artifact fill:#FCFAF4,stroke:#99876F,color:#342F28;
-    class user,standard,complexity artifact;
+    class user,non_system,system artifact;
     classDef llm fill:#E9EEEE,stroke:#5B7580,color:#342F28;
     classDef code fill:#EDF0E6,stroke:#697957,color:#342F28;
     class engine code;
     classDef evidence fill:#F1EADD,stroke:#93805D,color:#342F28;
-    class models,distributed,coordination evidence;
+    class models,distributed,transactive,coordination evidence;
     classDef optional fill:#F6EDDC,stroke:#9A7440,color:#342F28;
     class behavior,dynamics optional;
     classDef future fill:#EEEDE8,stroke:#999389,color:#342F28;

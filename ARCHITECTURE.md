@@ -28,16 +28,16 @@ workspaces; the product term is **distributed problem-solving**. Compatibility n
 legacy names in memory, never historical files. Raw saved configuration bindings are verified
 before display normalization. New identities are not conflated with old execution cohorts.
 
-## Standard and Complexity views
+## Research-informed views
 
 `views.py` projects two approach families over the same configuration/record:
 
-- **Standard:** collaborative intelligence; shared models and member reports.
-- **Complexity:** distributed problem-solving; teams as dynamical systems; interactions
-  and coordination.
+- **Non-system:** collaborative intelligence; shared models and member reports.
+- **System:** distributed problem-solving; differentiated transactive memory; interactive team
+  cognition/coordination; teams as dynamical systems.
 
 These are explanatory orientations, not exclusive scientific camps or execution presets.
-Shared-plan comparisons live under Standard. Complementary information, representations,
+Shared-plan comparisons live under Non-system. Complementary information, representations,
 work dependencies and handoffs live under distributed problem-solving. Recorded exposure,
 cross-level metadata and handoff receipts support the interaction/coordination view.
 
@@ -48,6 +48,30 @@ model evidence; incomplete and ineligible cells remain visible. No official CIB 
 `observations.py` supplies optional complexity-science process descriptions: local/global
 activity, disturbance response, artifact exposure and cross-level records. Attractors,
 synchronization and fractals are not estimated; emergence/adaptation are not inferred.
+
+`human_teams.py` holds the integrated background, source additions, independent explanatory /
+emergence / process-state-outcome axes, construct boundaries, configured phase annotations
+and intervention rationale. Configured patterns are not estimated emergence; psychological
+states remain unmeasured. See [the background](docs/TEAM_RESEARCH.md).
+
+## Operator controls
+
+`interventions.py` owns an explicit private, run/configuration-bound file queue. CLI requests
+are drafts unless `--apply` is supplied. The main runtime checks the queue **before** beginning
+a dependency wave, outside any publication transaction. Pause keeps the shared run lock and
+original deadline; resume uses the same counters. Stop raises the engine's typed `ControlledStop`,
+preserves partial output and cannot take the completed-confirmation path. Current-wave work
+may finish. `finally` records terminal state and unapplied late requests; it does not recover
+or restart a process. Advanced engine workflows do not gain these hooks implicitly.
+
+Feedback is bounded private task context for chosen future main-member frames. It changes no
+configuration, providers, tool/source grants, statistics or budgets. Receipts contain metadata,
+not message bodies. Context-assembly events do not establish provider delivery or understanding.
+A bounded per-request/member aggregate keeps the live metadata state finite; individual
+assembly events remain in private append-only engine events. No multi-user or cryptographic
+audit guarantee is claimed. The browser prepares commands and reads receipts only; it cannot
+write the queue. Planned disturbances use the existing compiler, backup and shared apply lock,
+preserving all non-schedule choices.
 
 ## Boundaries and migration
 

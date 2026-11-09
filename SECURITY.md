@@ -48,10 +48,31 @@ or cryptographic audit guarantee is claimed. Observation dimensions do not certi
 cognition, synchrony, fractals, attractors or goal achievement. The unchanged teamknitt license
 eligibility is not broadened by support for generic tasks or brainstorming.
 
-The three overview lenses are presentation-only. The optional CLI `--probe-run` reads one
+The six focused views in two explanatory groups are presentation-only. The optional CLI `--probe-run` reads one
 explicitly selected saved protocol and exports allowlisted summary metadata, never messages,
 private facts or episodes. The browser has no probe-path selector or evaluation endpoint.
 Attached evidence remains a separate context, not a capability claim about the current
 roster. Unknown measurements and fixture-only values are labelled accordingly. These
 summaries can still be sensitive; keep them and snapshots private. Delayed monitor polls
 cannot replace a newer user draft or record selection.
+
+## Explicit operator control, not a new browser execution API
+
+`teamknitt intervene RUN --action ...` previews by default. Only explicit CLI `--apply` queues
+one run/configuration-bound pause, resume, stop or feedback request. Requests are bounded,
+private regular files; feedback input is bounded workspace-relative UTF-8 .md/.txt, excluding
+credential/runtime paths and symlinks. Unknown privilege/configuration fields and foreign-run
+bindings are rejected. Queueing performs no provider calls or model/configuration writes.
+
+The runtime acknowledges at the next dependency-wave boundary. Already-approved current-wave
+work may finish. Pause holds the shared lock while the original wall deadline elapses; resume
+never resets counters or limits. Stop is terminal, preserves partial output and cannot use
+completed-study confirmation. Feedback context is not an engine-permission grant; delegated
+children acquire no new source access. Requests at run end may remain unapplied with receipts.
+
+Audit metadata excludes message text. Frame assembly does not prove provider delivery or
+understanding; receipts do not establish causal improvement. The queue assumes a trusted local
+operator and OS filesystem permissions, not multi-user authorization or tamper-proof auditing.
+A terminated/stale producer cannot acknowledge requests; no automatic retry/restart/recovery
+is implied. The HTTP API remains read-only and never queues an intervention or schedules a
+condition. Main-run controls do not implicitly govern advanced engine or multi-lab execution.

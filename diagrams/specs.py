@@ -302,17 +302,17 @@ def diagrams():
     edge(g,"confirm","out","bottom","bottom",via=((17,12),(3,12)))
     g["footer"]="Meetings are operational only when research sharing is disabled. No automatic lab winner, redesign or extra sequence."
     result.append(g)
-    g=graph("13-teamknitt-system", "teamknitt — standalone teams, explicit control, observable work", "User-selected tasks and topology; own bounded engine; Standard and Complexity offer different explanatory orientations.",width=24,height=13)
-    g.update(brand="TEAMKNITT", date="2026-11-08")
+    g=graph("13-teamknitt-system", "teamknitt — standalone teams, explicit control, observable work", "User-selected tasks and topology; own bounded engine; Non-system/System explanations differ from emergence forms and process/state/outcome evidence.",width=24,height=13)
+    g.update(brand="TEAMKNITT", date="2026-11-09")
     for args in [
         ("baseline",3,3.2,"User-directed team configuration","Task / brainstorm / goal / research\nTopology, members and communication","artifact",4.8,1.65),
         ("backbone",10,3.2,"Standalone teamknitt engine","Own scheduler, adapters and resources\nExplicit models, tools and finite budgets","artifact",5.0,1.65),
-        ("temporal",17,3.2,"Standard / Complexity views","Member reports + behavior / interaction system\nPresentation only; no evaluation starts","optional",5.0,1.65),
+        ("temporal",17,3.2,"Non-system / System views","Member reports / differentiated interaction\nSeparate emergence and process/state axes","optional",5.0,1.65),
         ("roles",3,6.8,"Chosen members and connections","Complementary responsibilities and inputs\nExplicit directed routes; no implied authority","llm",4.8,1.65),
         ("reps",10,6.8,"External representations","Complementary sources; shared workspaces\nExplicit readers, writers and provenance","evidence",5.0,1.65),
         ("work",17,6.8,"Work and coordination","Task structure, handoffs and timework\nCapability-conditioned action opportunities","code",5.0,1.65),
         ("authority",3,10.3,"Explicit execution authority","User-selected tools, providers and limits\nNo automatic changes or budget increases","artifact",4.8,1.65),
-        ("runtime",10,10.3,"Task execution and monitoring","Scoped frames and versioned contributions\nRead-only metadata; explicit draft application","code",5.0,1.65),
+        ("runtime",10,10.3,"Task execution and monitoring","Scoped frames and versioned contributions\nRead-only metadata; explicit operator commands","code",5.0,1.65),
         ("record",17,10.3,"Contributions for user review","Visible process is not goal achievement\nNo automatic winner or organization change","evidence",5.0,1.65),
     ]:
         node(g,*args)
@@ -327,7 +327,7 @@ def diagrams():
     result.append(g)
 
     g=graph("14-teamknitt-protocol", "From a user brief to observable team contributions", "Configure or draft explicitly; route information by topology and sharing; keep completion separate from user-goal achievement.",width=24,height=14)
-    g.update(brand="TEAMKNITT", date="2026-11-08")
+    g.update(brand="TEAMKNITT", date="2026-11-09")
     for args in [
         ("sources",3,3.3,"User brief and task context","Task, brainstorming prompt or goal\nComplementary inputs are optional","artifact",4.8,1.65),
         ("actor",10,3.3,"Actor's permitted observation","Own responsibilities and representations\nCapabilities + available action opportunities","llm",5.0,1.65),
@@ -350,22 +350,48 @@ def diagrams():
     edge(g,"consumer","actor","right","top",via=((21,7),(21,2.3),(10,2.3)),label="next work phase",at=(21,5.7))
     g["footer"]="Availability is not comprehension. Acknowledgement is not agreement. Similarity is not accuracy. Human-team constructs require validation."
     result.append(g)
-    g=graph("15-teamknitt-views", "Two approaches — one user-directed team", "Explanatory orientations, not mutually exclusive scientific camps, model choices or statistical methods.",width=30,height=15)
+    g=graph("15-teamknitt-views", "Different explanations — one user-directed team", "Explanatory locus is not the same axis as compositional/compilational emergence or process/state/outcome evidence.",width=30,height=18)
     g.update(brand="TEAMKNITT", date="2026-11-09")
-    node(g,"user",15,3,"Your task and chosen configuration","Explicit topology, membership, sharing, models and budgets","artifact",13,1.5)
-    node(g,"standard",7,6,"STANDARD — individual / component-centered","Member attributes, behavior, reports and decomposed relationships\nInteraction can still be studied; not a claim that every model is linear","artifact",12.7,1.7)
-    node(g,"complexity",22.5,6,"COMPLEXITY — interaction / system-centered","Problem-solving across agents, artifacts, tools and time\nComplex adaptive systems / Santa Fe tradition; no inferred emergence","artifact",13.2,1.7)
-    node(g,"behavior",4,9.2,"Collaborative intelligence","Wu et al.; alone/baseline/challenge\nOptional separate saved protocol\nNot an official CIB score","optional",5.5,1.95)
-    node(g,"models",10,9.2,"Shared models + reports","Explicit plans and perceived alignment\nSimilarity is not correctness\nNo latent mental-model inference","evidence",5.5,1.95)
-    node(g,"distributed",17.2,9.2,"Distributed problem-solving","Complementary inputs and artifacts\nWork dependencies + transformations\nExpertise directory + handoffs","evidence",4.9,1.95)
-    node(g,"dynamics",22.5,9.2,"Teams as dynamical systems","Temporal activity + disturbance windows\nGorman et al. is one reference\nAttractors/synchrony/fractals not estimated","optional",4.9,1.95)
-    node(g,"coordination",27.3,9.2,"Interactions + coordination","Recorded exposure + receipt metadata\nPermissions are not actual exposure\nCounts do not establish causal coupling","evidence",4.9,1.95)
-    node(g,"engine",15,12.4,"teamknitt standalone engine","Own runtime, adapters, schemas and resources · No upstream package or CLI dependency\nChanging groups/views never changes configuration, runs an evaluation or grants permission","code",28,1.65)
-    edge(g,"user","standard","bottom","top",via=((15,4.6),(7,4.6)))
-    edge(g,"user","complexity","bottom","top",via=((15,4.6),(22.5,4.6)))
-    for key,x in [("behavior",4),("models",10)]:edge(g,"standard",key,"bottom","top",via=((7,7.5),(x,7.5)))
-    for key,x in [("distributed",17.2),("dynamics",22.5),("coordination",27.3)]:edge(g,"complexity",key,"bottom","top",via=((22.5,7.5),(x,7.5)) if x!=22.5 else ())
-    g["footer"]="Based on Labtune by Goran Mitevski / Pioneertown B.V. Bayesian analysis is not an option; legacy methods are never silently converted."
+    node(g,"user",15,3,"Your task and chosen configuration","Explicit membership, roles, topology, sharing, models, tools and budgets","artifact",23,1.5)
+    node(g,"non_system",7,6,"NON-SYSTEM — member/component-centered","Attributes, behavior, knowledge, reports and aggregates\nIPO/IMOI also includes interaction, feedback and conditional relations","artifact",12.7,1.7)
+    node(g,"system",22.5,6,"SYSTEM — situated interaction/configuration","Work across members, artifacts, tools and time\nNot synonymous with complexity science or demonstrated emergence","artifact",13.2,1.7)
+    node(g,"behavior",4,9.2,"Collaborative intelligence","Member-focused behavioral evaluation\nOptional separate saved protocol\nNot an official CIB score","optional",5.5,1.95)
+    node(g,"models",10,9.2,"Shared models + reports","Explicit plans and perceived alignment\nSimilarity is not accuracy\nNo latent mental-model inference","evidence",5.5,1.95)
+    node(g,"distributed",19,9.2,"Distributed problem-solving","Complementary inputs and representations\nWork dependencies + transformations\nHutchins / McNeese, Salas & Endsley","evidence",6.3,1.95)
+    node(g,"transactive",26,9.2,"Transactive memory","Differentiated/compilational knowledge\nConfigured directory: who is assigned what\nNot measured retrieval effectiveness","evidence",6.3,1.95)
+    node(g,"coordination",19,12.3,"Interactive cognition + coordination","Situated interaction, not aggregated minds\nExposure and version-specific handoffs\nCooke et al.; no understanding inferred","evidence",6.3,1.95)
+    node(g,"dynamics",26,12.3,"Teams as dynamical systems","Local–global / substrate / cross-level\nTask-specific temporal research questions\nRecurrence/entropy/synchrony not estimated","optional",6.3,1.95)
+    node(g,"engine",15,15.5,"Configure → set tasks → follow work → intervene","Standalone bounded engine; human-directed interventions, not automatic organizational improvement\nHuman-team constructs and effects require validation for AI teams; psychological states are not measured","code",28,1.65)
+    edge(g,"user","non_system","bottom","top",via=((15,4.6),(7,4.6)))
+    edge(g,"user","system","bottom","top",via=((15,4.6),(22.5,4.6)))
+    for key,x in [("behavior",4),("models",10)]:edge(g,"non_system",key,"bottom","top",via=((7,7.5),(x,7.5)))
+    for key,x in [("distributed",19),("transactive",26)]:edge(g,"system",key,"bottom","top",via=((22.5,7.5),(x,7.5)))
+    edge(g,"system","coordination","left","left",via=((15.1,6),(15.1,12.3)))
+    edge(g,"system","dynamics","right","right",via=((29.5,6),(29.5,12.3)))
+    g["footer"]="Background: Research and Theory on Human Teams · 9 Nov 2026 · @Goran. Based on Labtune / Pioneertown B.V.; unchanged license."
+    result.append(g)
+
+    g=graph("16-teamknitt-intervention", "Configure → set tasks → follow work → intervene", "Human-team research informs the design; user choice, operational records and independently reviewed outcomes remain distinct.",width=28,height=14)
+    g.update(brand="TEAMKNITT", date="2026-11-09")
+    for args in [
+        ("configure",3.5,3.4,"01 / Configure","Members, roles, topology and sharing\nExplicit models, tools, delegation and bounds","artifact",5.8,1.8),
+        ("tasks",10.5,3.4,"02 / Set tasks","Brief, sources and useful deliverable\nSuccess criteria and review boundary","artifact",5.8,1.8),
+        ("follow",17.5,3.4,"03 / Follow work","Member reports + system organization\nProcesses are not psychological states","evidence",5.8,1.8),
+        ("intervene",24.5,3.4,"04 / Intervene","Human selects intended scope\nPreview first; explicit CLI --apply","artifact",5.8,1.8),
+        ("conditions",3.5,7.3,"Between runs / conditions","Reviewed role/task/procedure changes\nBackup + shared run lock; no auto redesign","code",5.8,1.8),
+        ("planned",10.5,7.3,"Before run / planned gap","Actor, representation or directed link\nChosen wave + duration; not weight training","optional",5.8,1.8),
+        ("control",17.5,7.3,"During run / safe boundary","Private feedback; pause / resume / stop\nCurrent-wave work may finish","code",5.8,1.8),
+        ("review",24.5,7.3,"After / human outcome review","Partial or complete contributions\nInput/process change is not improved outcome","evidence",5.8,1.8),
+        ("basis",7,11.1,"Research basis ≠ validated AI-team effect","Hackman / shared knowledge / Gorman training / Salas synthesis\nDistinct mechanisms and levels; no inferred causal improvement","optional",12,1.8),
+        ("bounds",21,11.1,"Limits and audit remain explicit","Pause keeps deadline and counters; stop is terminal\nQueued ≠ applied ≠ context assembled ≠ understood ≠ improved","code",12,1.8),
+    ]:node(g,*args)
+    for source,target in [("configure","tasks"),("tasks","follow"),("follow","intervene")]:edge(g,source,target)
+    for source,target in [("configure","conditions"),("tasks","planned"),("follow","control"),("intervene","review")]:edge(g,source,target,"bottom","top")
+    edge(g,"conditions","basis","bottom","top",via=((3.5,9.3),(7,9.3)))
+    edge(g,"planned","basis","bottom","top",via=((10.5,9.3),(7,9.3)))
+    edge(g,"control","bounds","bottom","top",via=((17.5,9.3),(21,9.3)))
+    edge(g,"review","bounds","bottom","top",via=((24.5,9.3),(21,9.3)))
+    g["footer"]="Browser: read-only metadata + command preparation. No model, permission, statistics or budget changes; no automatic recovery or team improvement."
     result.append(g)
     return result
 

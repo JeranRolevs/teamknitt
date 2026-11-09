@@ -20,8 +20,8 @@ from teamknitt.engine.study import load_study, plans
 PERSPECTIVES = {
     "distributed_problem_solving": {"tradition": "Distributed problem-solving", "sources": ["hutchins_1995", "mcneese_2021"], "focus": "People, representations, technology, work and context as the unit of analysis."},
     "information_processing": {"tradition": "Team information processing", "sources": ["mcneese_2021"], "focus": "Task type, information distribution, interaction and coordination requirements."},
-    "shared_mental_models": {"tradition": "Shared mental models", "sources": ["cannon_bowers_1993", "mcneese_2021"], "focus": "Taskwork, teamwork and timework; explicit reported-plan agreement is not latent mental-model similarity, accuracy or perceived alignment."},
-    "transactive_memory": {"tradition": "Transactive memory", "sources": ["wegner_1987", "mcneese_2021"], "focus": "Complementary knowledge and an explicit directory of who is assigned relevant expertise."},
+    "shared_mental_models": {"tradition": "Shared mental models", "sources": ["cannon_bowers_1993", "mathieu_2000", "mcneese_2021"], "focus": "Taskwork, teamwork and timework; explicit reported-plan agreement is not latent mental-model similarity, accuracy or perceived alignment."},
+    "transactive_memory": {"tradition": "Transactive memory", "sources": ["wegner_1987", "lewis_2003", "kozlowski_klein_2000", "mcneese_2021"], "focus": "Differentiated/compilational organization: complementary knowledge and an explicit directory of assigned holders, not measured expertise or an effectiveness score."},
     "coaction": {"tradition": "Coaction and affordances", "sources": ["mcneese_2021"], "focus": "Action opportunities depend on actor capacities and available informational structures."},
     "interactive_dynamics": {"tradition": "Complexity science and team dynamics", "sources": ["holland_1995", "mitchell_2009", "gorman_2017"], "focus": "Interdependence, feedback and interaction through time; team-focused dynamical work is one part of a broader complexity-science tradition."},
 }

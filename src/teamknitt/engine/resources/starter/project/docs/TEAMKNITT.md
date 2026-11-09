@@ -98,13 +98,13 @@ starter bindings, privately backs up the previous configuration and is blocked b
 run lock. Customized bindings should be edited directly rather than reset without review.
 The legacy `--reset-cognition` spelling is accepted. Larger teams never raise budgets.
 
-## Two groups of team views
+## Research-informed team views
 
 Open **Team views**, or use `teamknitt views` and `teamknitt view --group … --section …`.
-These are explanatory orientations, not an exhaustive or exclusive taxonomy. Standard
+These are explanatory orientations, not an exhaustive or exclusive taxonomy. Non-system
 approaches can study interaction; distributed problem-solving need not assume nonlinear dynamics.
 
-### Standard — individual/component-centered
+### Non-system — member/component-centered explanations
 
 - **Collaborative intelligence:** eight teammate-behavior questions from *Measuring AI Agents
   as Teammates with Collaborative Intelligence*: unsafe pressure, misconduct reporting,
@@ -120,30 +120,41 @@ are not model evidence. Live synthetic results still belong to another protocol 
 automatically to this roster, task, topology or selected member. No aggregate team-capability
 score, automatic judge or evaluation is introduced.
 
-### Complexity — interaction/system-centered
+### System — interaction/configuration-centered explanations
 
 - **Distributed problem-solving:** inspect complementary inputs, members, representations,
   tools, expertise directories, transformations, work dependencies and handoffs across the system.
+- **Transactive memory:** differentiated/compilational expertise patterns, assigned holders and
+  retrieval scaffolds, not shared overlap or a validated system-effectiveness measure.
 - **Teams as dynamical systems:** inspect selected temporal activity, continuity, disturbance
   windows, return/maintenance, first attainment and censoring.
-- **Interactions & coordination:** inspect observed artifact exposure, handoff receipts and
+- **Interactive team cognition & coordination:** inspect observed artifact exposure, handoff receipts and
   cross-level descriptive records. Configured routes are never substituted for missing observations.
 
-Complexity science / complex adaptive systems is the wider umbrella, including the Santa Fe
+Complexity science / complex adaptive systems is a wider tradition for the dynamics view, not
+a synonym for all system explanations. It includes the Santa Fe
 tradition. Holland and Mitchell are representative broader references; Gorman et al. is one
 team-focused contribution. Santa Fe is not an endorsement, a separate formal team model or a
 validated score. Feedback, emergence, adaptation and history motivate questions, not automatic
 conclusions from a short execution log.
 
 ```bash
-teamknitt view --workspace ../my-team --group standard --section shared_models
-teamknitt view --workspace ../my-team --group complexity --section distributed_problem_solving
-teamknitt view --workspace ../my-team --group complexity --section team_dynamics
-teamknitt view --workspace ../my-team --group complexity --section interaction_coordination
+teamknitt view --workspace ../my-team --group non_system --section shared_models
+teamknitt view --workspace ../my-team --group system --section distributed_problem_solving
+teamknitt view --workspace ../my-team --group system --section team_dynamics
+teamknitt view --workspace ../my-team --group system --section interaction_coordination
 ```
 
 Switching groups/sections is presentation-only and works in private offline snapshots.
 It cannot start a model, write a configuration, change statistics or increase budgets.
+
+The companion [Background: Research and Theory on Human Teams](TEAM_RESEARCH.md),
+**9 Nov 2026 · @Goran**, distinguishes explanatory locus from compositional/compilational
+emergence and processes/states/outcomes. IPO/IMOI includes feedback and conditional relations.
+The Sources & scope page shows the three axes, configured phase annotations and explicitly
+unmeasured emergent states. Cohesion, trust, psychological safety, efficacy and potency are
+not inferred. Shared-plan comparisons and expertise directories are operational scaffolds.
+Historical `standard`/`complexity` view choices map read-only to `non_system`/`system`.
 
 ## Optional process observations
 
@@ -182,6 +193,72 @@ and cannot call workspace APIs. This is not an authenticated multi-user hosted s
 workspace and multi-lab functions. `teamknitt probes` provides explicitly chosen separate
 teammate experiments. Both are shipped in this product, not upstream CLI delegation.
 
+## Explicit intervention controls
+
+The **Intervene** desk is a research-informed command-preparation and receipt-inspection page,
+not a configuration-write or execution API. Run commands **from the chosen workspace**.
+Inputs/conditions, shared-knowledge guidance, adaptive-practice design and run safeguards target
+different mechanisms. Human findings do not establish effects for AI teams or across levels.
+
+```bash
+# Write private guidance in mission/feedback.md (UTF-8 .md/.txt, at most 12 KB).
+# All examples preview only. Add --apply after reviewing scope to queue a request.
+teamknitt intervene trials/RUN_ID --action feedback --message-file mission/feedback.md --actors member.1
+teamknitt intervene trials/RUN_ID --action pause
+teamknitt intervene trials/RUN_ID --action resume
+teamknitt intervene trials/RUN_ID --action stop
+# Read the queued/applied/exposure metadata, without message text:
+teamknitt report trials/RUN_ID
+```
+
+- **Feedback:** omit `--actors` to choose all configured main members; otherwise provide a
+  comma-separated list of configured IDs. Newest feedback takes priority within the existing
+  `cognition.memory.max_words_per_representation` cap; older text may be truncated or omitted.
+  Feedback is user task context, never authority to alter model/tool/source/statistical/budget
+  settings. Children get no new workspace grants. Existing delegated context rules still apply.
+- **Pause:** the already-approved current dependency wave may finish. Before the next wave,
+  the runtime acknowledges the request and waits, holding the same shared run lock. Heartbeat
+  monitoring continues. The original wall-time deadline **continues to elapse**.
+- **Resume:** releases a pause in the same process, run and configuration, with unchanged
+  counters and limits. It is not a restart, new approval, crash recovery or renewed budget.
+- **Stop:** no new dependency wave starts after boundary acknowledgement. Stops are terminal;
+  partial contributions/outputs are preserved for review, never marked completed/confirmed.
+  It is not an immediate cancellation of in-flight provider calls or current-wave tools.
+
+A request arriving after the last useful boundary is recorded as not applied. After a stop,
+subsequent queued commands cannot resume it. Terminal/legacy records cannot receive active
+controls. These controls belong to main `teamknitt run`/`demo` workflows, not implicitly to
+advanced `teamknitt engine` single-scientist or multi-lab execution.
+
+Each private request binds its run and configuration. Receipts distinguish preview, queued,
+boundary application/rejection and feedback context assembly. Text stays in private run files;
+metadata includes recipients, timestamps, hashes, boundary waves and assembly counts, not
+message bodies. Assemblies are not proof of provider delivery, understanding, agreement,
+correctness, a measured psychological state or a causal intervention effect. The file queue
+is bounded (256 requests/run; 64 pending), not a cryptographic or multi-user authorization
+system. Stale metadata is not proof of a live producer. No automatic retries/recovery occur.
+
+### Planned disturbances before a run
+
+```bash
+# Draft only. Add --apply after review to persist one schedule with a private backup.
+teamknitt schedule --workspace . --id member-gap --kind actor_unavailable --target member.1 --at-wave 4 --duration 1
+teamknitt schedule --workspace . --id context-gap --kind representation_unavailable --target context --at-wave 4 --duration 1
+teamknitt schedule --workspace . --id route-gap --kind link_dropout --target 'member.1->member.2' --at-wave 4 --duration 1
+```
+
+Targets and duration must fit the actual configured system and workflow. No kind, target or
+wave is chosen from performance automatically. Application preserves task text, role/work
+bindings and engine settings, uses a private backup and is blocked during active/paused runs.
+The changed identity applies to a future explicit run, not a historical record. Scheduled
+conditions are software disturbances, not model-weight training or validated human adaptive
+training. To remove/change a schedule, edit `team.yaml` between runs and check the plan.
+
+Review the private deliverable and your chosen outcome criteria separately. A recorded
+process change, a better input, reported alignment and an outcome improvement are different
+claims. Comparison conditions, independent outcome evidence and analysis choices are yours;
+chronology alone cannot identify a causal effect. See [the research background](TEAM_RESEARCH.md).
+
 ## Statistical methods and migration
 
 Bayesian/probabilistic analysis, prior elicitation and their package extra are removed from
@@ -195,7 +272,11 @@ New workspaces use teamknitt credential-variable names; existing explicit names 
 
 ## Research framework and observation sources
 
-These are representative references, not single-work definitions of entire fields:
+These are representative references, not single-work definitions of entire fields.
+`teamknitt theory` contains the expanded bibliography: McGrath, Hackman, Ilgen et al.,
+Marks et al., Kozlowski & Klein, Beal et al., Edmondson, Mathieu et al., Lewis,
+DeChurch & Mesmer-Magnus, Cooke et al., Kelso, Schmidt & Richardson, Gorman et al.
+and Salas et al. See [the integrated background](TEAM_RESEARCH.md).
 
 - Hutchins, E. (1995). *Cognition in the Wild*.
 - McNeese, M. D., Salas, E., & Endsley, M. R. (Eds.). (2021). *Foundations and Theoretical

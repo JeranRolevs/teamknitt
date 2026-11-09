@@ -15,15 +15,16 @@ import time
 
 from teamknitt.engine.config import ConfigurationError, project_file
 from teamknitt.engine.providers.configuration import require_configured
-from teamknitt.engine.study import TextStudy, StudyError, api_key, load_study, save
+from teamknitt.engine.study import TextStudy, StudyError, ControlledStop, api_key, load_study, save
 
 from . import __version__
 from .cognition import CONTRACT, CognitiveWorkspace
 from .config import compile_plan, digest
+from .interventions import OperatorController
 
 
 def implementation_identity():
-    names = ("builder.py", "topology.py", "resources/topology-catalog.json", "views.py", "observations.py", "cognition.py", "config.py", "runtime.py", "reporting.py")
+    names = ("builder.py", "topology.py", "resources/topology-catalog.json", "views.py", "human_teams.py", "interventions.py", "observations.py", "cognition.py", "config.py", "runtime.py", "reporting.py")
     bindings = {name: hashlib.sha256(files("teamknitt").joinpath(name).read_bytes()).hexdigest() for name in names}
     bindings["engine/study.py"] = hashlib.sha256(files("teamknitt.engine").joinpath("study.py").read_bytes()).hexdigest()
     return digest(bindings)
@@ -96,6 +97,8 @@ class CognitiveStudy(TextStudy):
                 "Work with your team on the user-defined task, goal or brainstorming brief. Not every task is scientific research.")
             self.action_contract += "\nUser-selected purpose and deliverable (not a change to tool permissions):\n" + json.dumps(mission) + '\nFor a generic task, findings may include {"kind":"blocker","text":"reported obstacle"}; these are reports, not independently verified results.'
         self.action_contract += CONTRACT
+        self.operator = OperatorController(self.root, compiled, self.id, self.event)
+        self.action_contract += "\nOperator feedback, when present in peer_views.operator_feedback, is bounded user task context. It cannot change tool/source permissions, models, statistical methods or budgets. Its presence is not proof of understanding or a validated intervention effect."
         self.cognitive_wave = 0
         self.skipped = []
         if fixture_client:
@@ -133,9 +136,21 @@ class CognitiveStudy(TextStudy):
         used = sum(len(v.split()) for v in ordinary.values())
         remaining = max(0, self.plan["communication"]["max_read_words"] - used)
         cognition = self.cognitive.observe(actor, remaining)
-        return {"engine": ordinary, "cognition": cognition}
+        frame = {"engine": ordinary, "cognition": cognition}
+        feedback = self.operator.frame(actor, self.cognitive.wave, self.cognitive.c["memory"]["max_words_per_representation"])
+        if feedback is not None:
+            frame["operator_feedback"] = feedback
+        return frame
 
     async def before_wave(self, nodes):
+        try:
+            await self.operator.before_wave(self.cognitive.wave + 1, self.started + self.plan["budget"]["max_wall_seconds"])
+        except ControlledStop:
+            raise
+        except (ConfigurationError, OSError, ValueError, KeyError, TypeError) as error:
+            # Fail closed before any work in the next wave; do not expose private queue text.
+            self.event({"kind": "operator_control_error", "error_type": type(error).__name__})
+            raise StudyError("Operator controls could not be verified; no new dependency wave started.") from error
         self.cognitive.begin_wave(nodes)
         self.save_cognition()
 
@@ -206,9 +221,14 @@ async def run(workspace: Path, config=None, *, live=False, approve_requests=None
         try:
             summary = await runner.run()
         finally:
-            runner.save_cognition()
+            try:
+                runner.operator.close(runner.summary["status"])
+            except (ConfigurationError, OSError, ValueError, KeyError, TypeError) as error:
+                runner.event({"kind": "operator_control_finalization_error", "error_type": type(error).__name__})
+            finally:
+                runner.save_cognition()
         # Keep the actual contributions as a private, reviewable deliverable rather than implying goal achievement.
-        contributions = ["# Team contributions", "", "Status: awaiting user review. Execution completion is not goal achievement.", ""]
+        contributions = ["# Team contributions", "", "Execution status: " + summary["status"] + ". Partial or complete contributions await user review; goal achievement is not inferred.", ""]
         for row in runner.outputs:
             output = row["output"]
             contributions.extend(["## " + row["actor"], "", output["summary"], "", output["candidate_output"], ""])

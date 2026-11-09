@@ -142,9 +142,9 @@ class ComplementaryLensTests(OverviewCase):
     def test_configuration_has_two_groups_and_focused_views_without_fake_observations(self):
         views = self.report['team_views']
         self.assertEqual(set(views), set(VIEWS))
-        self.assertEqual(set(self.report['view_groups']), {'standard', 'complexity'})
-        self.assertEqual(self.report['view_groups']['standard']['views'], ['collaborative_intelligence', 'shared_models'])
-        self.assertIn('distributed_problem_solving', self.report['view_groups']['complexity']['views'])
+        self.assertEqual(set(self.report['view_groups']), {'non_system', 'system'})
+        self.assertEqual(self.report['view_groups']['non_system']['views'], ['collaborative_intelligence', 'shared_models'])
+        self.assertIn('distributed_problem_solving', self.report['view_groups']['system']['views'])
         self.assertEqual(views['shared_models']['status'], 'configuration_only')
         self.assertIsNone(views['shared_models']['signals']['reported_plan_pair_agreement'])
         self.assertEqual(views['team_dynamics']['status'], 'not_observed')
@@ -161,7 +161,7 @@ class ComplementaryLensTests(OverviewCase):
         self.assertGreater(len(VIEWS['team_dynamics']['sources']), 1)
         self.assertIn('Santa Fe', VIEWS['team_dynamics']['scope'])
         self.assertIn('not an endorsement', VIEWS['team_dynamics']['boundary'])
-        self.assertEqual(VIEWS['shared_models']['group'], 'standard')
+        self.assertEqual(VIEWS['shared_models']['group'], 'non_system')
         notes['views']['shared_models']['label'] = 'Changed copy'
         self.assertNotEqual(notes['views']['shared_models']['label'], VIEWS['shared_models']['label'])
 
@@ -242,7 +242,7 @@ class ComplementaryLensTests(OverviewCase):
             self.assertEqual(json.loads(stream.getvalue())['api_calls'], 0)
         with redirect_stdout(io.StringIO()):
             self.assertEqual(main(['view', '--workspace', str(self.root), '--lens', 'complexity', '--output', str(output)]), 0)
-        self.assertIn('"initial_group": "complexity"', output.read_text())
+        self.assertIn('"initial_group": "system"', output.read_text())
         self.assertIn('"live": false', output.read_text())
         self.assertEqual(before, (self.root / 'team.yaml').read_bytes())
         self.assertFalse((self.root / 'trials').exists())

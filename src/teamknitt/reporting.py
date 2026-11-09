@@ -31,6 +31,7 @@ def plan_report(plan):
             "team_schema_version": plan["schema_version"], "mission": plan["configuration"].get("mission", {"purpose": "research", "brief_file": plan["mission_binding"]["path"], "deliverable": "Research contributions for review", "review": "user_review"}),
             "topology": topology, "topology_catalog": deepcopy(TOPOLOGY_CATALOG), "observation_settings": plan["observations"],
             "goal_achieved": None, "task_review": "not_started",
+            "operator_control": {"available": False, "mode": "not_started", "receipts": [], "pending": [], "feedback_exposures": []},
             "personas": base["personas"], "communication": base["communication"],
             "budget": base["budget"], "resources": base["resources"], "delegation": base["delegation"],
             "statistics": base["statistics"], "generation_provider": {
@@ -134,17 +135,24 @@ def build_report(run_directory: Path):
         report["versions"] = [{"representation": ref, **{k: deepcopy(v[k]) for k in ("version", "author", "wave", "uses")}}
                               for ref, versions in state["versions"].items() for v in versions]
         report["events"] = [{k: deepcopy(v) for k, v in e.items() if k not in {"content", "summary"}} for e in state["events"]]
+        from .interventions import metadata as operator_metadata
+        try:
+            report["operator_control"] = operator_metadata(root, summary["status"])
+        except (ConfigurationError, OSError, ValueError, KeyError, TypeError):
+            report["operator_control"] = {"available": False, "mode": "unavailable_invalid_records", "receipts": [],
+                "pending": [], "feedback_exposures": [], "notice": "Operator records cannot be verified; no control or exposure evidence is inferred."}
         from .observations import observe
         report["observations"] = observe(report)
         if report["observation_settings"]["enabled"] and "perturbation" in report["observation_settings"]["dimensions"]:
             report["coordination_stability"] = coordination_stability(state["snapshots"], report["dynamics"])
         report["limitations"] = [
-            "Standard and Complexity are explanatory orientations, not an exhaustive division of research. Distributed problem-solving and dynamical systems are related perspectives, not interchangeable scores.",
+            "Non-system and System locate explanations differently; compositional/compilational emergence is a separate axis. Distributed problem-solving and dynamical systems are related perspectives, not interchangeable scores.",
             "Configured roles/capabilities are assignments, not validated human-like expertise or diversity.",
             "Exposure, acknowledgement and citation do not establish comprehension, agreement or truth.",
             "Pairwise agreement compares explicit temporal reports, not latent mental models; matching each other differs from matching the reference.",
             "Perceived alignment is self-report, recorded separately from reported-plan agreement and task outcomes.",
             "Observed interaction and perturbation traces do not establish causal coupling, attractors, power laws or improved science.",
+            "Operator queue acceptance, boundary application, feedback exposure and human-reviewed outcomes are distinct; no causal intervention effect is inferred.",
             "No automated model choice, team redesign, statistical approach switch or budget increase is performed."]
         return with_views(report)
     except (KeyError, TypeError, ValueError) as error:

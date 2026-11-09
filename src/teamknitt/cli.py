@@ -19,7 +19,7 @@ from .reporting import build_report, plan_report
 from .runtime import run
 from .scaffold import init
 from .topology import TOPOLOGIES, TOPOLOGY_CATALOG
-from .views import VIEWS, GROUPS, resolve_view, catalogue, load_probe_summary, with_views, COMPLEXITY_TRADITION, COMPLEXITY_SOURCES, SOURCES
+from .views import VIEWS, GROUPS, GROUP_ALIASES, resolve_view, catalogue, load_probe_summary, with_views, COMPLEXITY_TRADITION, COMPLEXITY_SOURCES, SOURCES
 
 PROFILES = ("none", "low", "intermediate", "high", "wisdom_only")
 
@@ -39,7 +39,7 @@ def main(argv=None):
     if argv and argv[0] == "probes":
         from .probes.cli import main as probe_main
         return probe_main(argv[1:])
-    parser = argparse.ArgumentParser(prog="teamknitt", description="Configure and monitor teams for user tasks, brainstorming and goals. teamknitt is the engine.")
+    parser = argparse.ArgumentParser(prog="teamknitt", description="Configure teams, set tasks, follow work and intervene explicitly. teamknitt is the engine.")
     parser.add_argument("--version", action="version", version=__version__)
     commands = parser.add_subparsers(dest="command", required=True)
     start = commands.add_parser("init", help="Create a user-directed team workspace; no provider calls")
@@ -51,7 +51,8 @@ def main(argv=None):
     commands.add_parser("topologies", help="List user-selectable team communication topologies")
     commands.add_parser("perspectives", help="Inspect the distributed-problem-solving configuration framework")
     commands.add_parser("observations", help="Describe optional complexity/dynamics observations and their limits")
-    commands.add_parser("views", help="Inspect Standard and Complexity approach groups and their focused views")
+    commands.add_parser("views", help="Inspect Non-system/System explanations, emergence and observation boundaries")
+    commands.add_parser("theory", help="Inspect the human-team design basis, independent classification axes and intervention rationale")
     commands.add_parser("lenses", help="Compatibility alias for views")
     commands.add_parser("probes", help="Optional synthetic teammate evaluation; never launched by an overview")
     migration = commands.add_parser("migrate", help="Preview local legacy-name migration; apply explicitly with a private backup")
@@ -73,6 +74,20 @@ def main(argv=None):
         if name == "run":
             command.add_argument("--live", action="store_true", help="Authorize metered calls with your selected engine settings")
             command.add_argument("--approve-requests", type=int, help="Must equal the engine's resolved budget.max_llm_calls")
+    operator = commands.add_parser("intervene", help="Preview a run-bound operator request; --apply queues it for a safe boundary")
+    operator.add_argument("run", type=Path)
+    operator.add_argument("--action", choices=("pause", "resume", "stop", "feedback"), required=True)
+    operator.add_argument("--message-file", type=Path, help="Workspace-relative private feedback text; at most 12 KB")
+    operator.add_argument("--actors", help="Comma-separated main-member IDs for feedback; default: all configured main members")
+    operator.add_argument("--apply", action="store_true", help="Explicitly queue, not merely preview, this operator request")
+    disturbance = commands.add_parser("schedule", help="Preview one explicit bounded disturbance for a future run; --apply writes with backup and lock")
+    disturbance.add_argument("--workspace", type=Path, default=Path.cwd())
+    disturbance.add_argument("--id", required=True)
+    disturbance.add_argument("--kind", choices=("actor_unavailable", "representation_unavailable", "link_dropout"), required=True)
+    disturbance.add_argument("--target", required=True, help="Member ID, representation ID, or producer->consumer (quote the link)")
+    disturbance.add_argument("--at-wave", type=int, required=True)
+    disturbance.add_argument("--duration", type=int, required=True)
+    disturbance.add_argument("--apply", action="store_true")
     summary = commands.add_parser("report", help="Rebuild task-team process metadata and selected observations locally")
     summary.add_argument("run", type=Path)
     summary.add_argument("--probe-run", type=Path, help="Explicitly attach a separate saved probe record; never evaluate or attribute it to this team")
@@ -80,7 +95,7 @@ def main(argv=None):
     view.add_argument("run", type=Path, nargs="?")
     view.add_argument("--workspace", type=Path, default=Path.cwd())
     view.add_argument("--output", type=Path)
-    view.add_argument("--group", choices=tuple(GROUPS), help="Standard or Complexity; presentation only")
+    view.add_argument("--group", choices=tuple(GROUPS) + tuple(GROUP_ALIASES), help="Non-system or System; historical aliases remain display-only")
     view.add_argument("--section", choices=tuple(VIEWS), help="Focused view within its approach group")
     view.add_argument("--lens", help=argparse.SUPPRESS)
     view.add_argument("--probe-run", type=Path, help="Attach separate saved protocol evidence, without prompts or messages")
@@ -100,6 +115,23 @@ def main(argv=None):
             result = {"backbone": "Distributed problem-solving and related team-cognition traditions", "perspectives": PERSPECTIVES, "representative_sources": SOURCES, "api_calls": 0}
         elif args.command in {"views", "lenses"}:
             result = catalogue()
+        elif args.command == "theory":
+            result = catalogue()["research_background"]
+        elif args.command == "intervene":
+            from .interventions import submit
+            result = submit(args.run, action=args.action, message_file=args.message_file,
+                actors=args.actors.split(",") if args.actors is not None else None, apply=args.apply)
+        elif args.command == "schedule":
+            from .interventions import schedule
+            condition = {"id": args.id, "kind": args.kind, "at_wave": args.at_wave, "duration": args.duration}
+            if args.kind == "link_dropout":
+                pair = args.target.split("->")
+                if len(pair) != 2:
+                    raise ConfigurationError("A directed link uses 'producer->consumer'; quote it in the shell.")
+                condition.update(source=pair[0], target=pair[1])
+            else:
+                condition["actor" if args.kind == "actor_unavailable" else "representation"] = args.target
+            result = schedule(args.workspace, condition, apply=args.apply)
         elif args.command == "migrate":
             from .migration import migrate
             result = migrate(args.workspace, apply=args.apply)

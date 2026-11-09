@@ -18,7 +18,7 @@ def desired():
                 if folder == "configs" and source.name != "lab.yaml":
                     continue
                 output["project/" + source.relative_to(PROJECT).as_posix()] = source.read_bytes()
-    for name in ("SINGLE_SCIENTIST.md", "MULTI_LAB.md", "PROVIDERS.md", "DECISION_PROVIDERS.md", "MIGRATION.md", "TEAMKNITT.md"):
+    for name in ("SINGLE_SCIENTIST.md", "MULTI_LAB.md", "PROVIDERS.md", "DECISION_PROVIDERS.md", "MIGRATION.md", "TEAMKNITT.md", "TEAM_RESEARCH.md"):
         guide = PROJECT / "docs" / name
         if guide.is_file():
             output["project/docs/" + name] = guide.read_bytes()

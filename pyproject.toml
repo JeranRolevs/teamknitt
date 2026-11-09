@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "teamknitt"
-version = "0.5.0"
-description = "Standalone configurable agent teams for tasks, brainstorming, goals and research"
+version = "0.6.0"
+description = "Research-informed agent teams: configure, set tasks, follow work and intervene explicitly"
 authors = [{name = "Goran Mitevski"}]
 readme = "README.md"
 requires-python = ">=3.11"

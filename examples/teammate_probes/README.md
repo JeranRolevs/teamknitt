@@ -4,9 +4,9 @@ This standalone teamknitt application provides original synthetic alone/baseline
 probes, informed by *Measuring AI Agents as Teammates with Collaborative Intelligence*.
 It is not the official benchmark, its implementation or a measure of general psychological traits.
 
-The main overview places this behavioral perspective under **Standard**, alongside shared
-models/member reports. **Complexity** groups distributed problem-solving, team dynamics and
-interaction/coordination. Neither group starts these experiments automatically.
+The main overview places this behavioral perspective under **Non-system**, alongside shared
+models/member reports. **System** groups distributed problem-solving, differentiated transactive
+memory, interactive team cognition/coordination and dynamics. Neither group starts these experiments automatically.
 
 ```bash
 teamknitt probes init ../optional-probes
@@ -14,7 +14,7 @@ teamknitt probes check --workspace ../optional-probes
 teamknitt probes demo --workspace ../optional-probes --policy fragile
 teamknitt probes view ../optional-probes/runs/RUN_ID
 # Attach a saved summary to a different task context, without running an evaluation:
-teamknitt view --workspace TASK --group standard --probe-run PROBE_RUN
+teamknitt view --workspace TASK --group non_system --probe-run PROBE_RUN
 ```
 
 Explicit protocol/model/budget choices are in this separate workspace. Live execution still

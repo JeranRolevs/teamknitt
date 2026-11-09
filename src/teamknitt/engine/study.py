@@ -41,6 +41,13 @@ class StudyError(ValueError):
     pass
 
 
+class ControlledStop(StudyError):
+    """A deliberate boundary stop; never a certificate of completed work."""
+    def __init__(self, message, *, kind="operator_stop"):
+        super().__init__(message)
+        self.kind = kind
+
+
 class SequenceBudgetReached(RuntimeError):
     """An expected boundary for a user-selected budget-driven sequence."""
 
@@ -797,6 +804,9 @@ initial tool, so do not claim those capabilities solved.
             await self.run_graph()
             save(self.root / "outputs.json", self.clean(self.outputs))
             self.summary["status"] = "completed_text_workflow"
+        except ControlledStop as error:
+            self.summary.update(status="stopped", stop_reason=error.kind, error_kind=error.kind)
+            save(self.root / "outputs.partial.json", self.clean(self.outputs))
         except (StudyError, ProviderError, ResearchError) as error:
             self.summary.update(status="failed_or_incomplete", error=self.clean(str(error)),
                                 error_kind=getattr(error, "kind", "workflow"))

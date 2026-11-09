@@ -120,13 +120,18 @@ jobs:
           "${{ runner.temp }}/teamknitt-wheel-venv/bin/python" - <<'PY'
           import importlib.util, importlib.metadata
           from pathlib import Path
-          from teamknitt.views import GROUPS, VIEWS
+          from teamknitt.views import GROUPS, VIEWS, resolve_view, catalogue
           from teamknitt.engine.planning import STATISTICAL_APPROACHES
           from teamknitt import engine
           assert importlib.util.find_spec("labtune") is None
-          assert set(GROUPS) == {"standard", "complexity"}
-          assert VIEWS["collaborative_intelligence"]["group"] == "standard"
-          assert VIEWS["distributed_problem_solving"]["group"] == "complexity"
+          assert set(GROUPS) == {"non_system", "system"}
+          assert len(VIEWS) == 6
+          assert VIEWS["collaborative_intelligence"]["group"] == "non_system"
+          assert VIEWS["distributed_problem_solving"]["group"] == "system"
+          assert VIEWS["transactive_memory"]["group"] == "system"
+          assert resolve_view("standard")[0] == "non_system"
+          assert resolve_view("complexity")[0] == "system"
+          assert set(catalogue()["research_background"]["axes"]) == {"explanatory_locus", "form_of_emergence", "kind_of_record"}
           assert STATISTICAL_APPROACHES == ("frequentist",)
           assert "site-packages" in str(Path(engine.__file__))
           dist = importlib.metadata.distribution("teamknitt")

@@ -20,11 +20,30 @@ Preview with `teamknitt configure --workspace . --members 6 --topology grid`. Ap
 review with `--apply --reset-bindings`: it privately backs up and regenerates starter
 bindings while preserving brief text, models and budgets, and respects the run lock.
 
-**Standard** groups collaborative intelligence and shared-model/member reports. **Complexity**
-groups distributed problem-solving, team dynamics and interactions/coordination. Choose with
-`view --group standard|complexity --section NAME`; switching changes no configuration and
-starts no evaluation. `--probe-run PATH` optionally attaches a separate saved protocol,
-not capabilities attributed to this team or an official CIB score. Fixtures are not model evidence.
+**Non-system** groups collaborative intelligence and shared-model/member reports. **System**
+groups distributed problem-solving, differentiated transactive memory, interactive team
+cognition/coordination and dynamics. Choose with `view --group non_system|system --section NAME`;
+historical group aliases still work. Switching changes no configuration or evaluation.
+`--probe-run PATH` attaches separate saved evidence, not capabilities attributed to this team.
+Human-team theory informs design; emergence and psychological states are not inferred.
+See `docs/TEAM_RESEARCH.md` and offline `teamknitt theory`.
+
+Use the **Intervene** desk to prepare explicit commands and inspect receipts. From this workspace:
+
+```bash
+# Preview; only add --apply after review to queue each selected request.
+teamknitt intervene trials/RUN_ID --action feedback --message-file mission/feedback.md --actors member.1
+teamknitt intervene trials/RUN_ID --action pause
+teamknitt intervene trials/RUN_ID --action resume
+teamknitt intervene trials/RUN_ID --action stop
+# Future-run disturbance, also draft by default:
+teamknitt schedule --workspace . --id reviewed-gap --kind actor_unavailable --target member.1 --at-wave 4 --duration 1
+```
+
+Current-wave work may finish. Pause/resume keeps the same run, lock, counters and wall deadline;
+stop is terminal and preserves partial contributions. Feedback grants no new tool/source rights.
+A queue receipt or context assembly is not proof of understanding or an improvement effect.
+The browser does not apply these commands or start execution. See `docs/TEAMKNITT.md`.
 
 Optional observations remain descriptive; attractors, synchrony and fractals are not estimated.
 Set `observations.enabled: false` to disable derived tools. Source/generated text and the

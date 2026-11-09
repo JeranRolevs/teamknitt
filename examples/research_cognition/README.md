@@ -6,8 +6,9 @@ representative references, not the whole field. Shared mental models and transac
 ask related, distinct questions. Complexity science / complex adaptive systems informs the
 interaction-over-time view, with Gorman et al. as one team-focused contribution.
 
-The viewer groups Standard (collaborative intelligence; shared models/member reports) and
-Complexity (distributed problem-solving; team dynamics; interactions/coordination). View
+The viewer groups Non-system (collaborative intelligence; shared models/member reports) and
+System (distributed problem-solving; transactive memory; interactive cognition/coordination;
+dynamics). View
 switches do not change or evaluate the team. Optional saved probes remain a separate protocol
 context, never an official CIB score. Bayesian/probabilistic analyses are unsupported; selected
 legacy methods fail explicitly, not silently becoming another method.
@@ -83,3 +84,19 @@ must be unrestricted, without control or privileged research/IP rights. Other us
 separate written permission through Goran Mitevski, **goran@pioneertown.ai**, on behalf of
 Pioneertown B.V. Preserve LICENSE, LICENSING.md and these credits. Research outputs are not
 relicensed merely through use. The license texts control.
+
+## Research background and explicit intervention
+
+The research-informed UI separates Non-system/System explanations from compositional/
+compilational emergence and process/state/outcome evidence. Historical approach names remain
+readable; no saved configuration is rewritten. Transactive memory is differentiated, not
+shared overlap. Human-team constructs and intervention effects are not validated for AI teams.
+See `docs/TEAM_RESEARCH.md` and `teamknitt theory`.
+
+Main `teamknitt run` and `demo` workflows support `teamknitt intervene trials/ID --action
+pause|resume|stop|feedback`, preview-only unless `--apply` is explicitly supplied. Feedback
+needs `--message-file mission/feedback.md` and optional `--actors ID1,ID2`. Controls act before
+the next dependency wave; pause does not extend the deadline, and stop is terminal. The
+Intervene desk prepares commands, never executes them. `teamknitt schedule` previews an
+explicit future-run disturbance, not an active configuration edit or a validated training effect.
+These hooks do not implicitly control advanced `teamknitt engine` workflows.

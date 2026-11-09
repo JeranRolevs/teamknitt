@@ -1,0 +1,34 @@
+%% Generated from specs.py; 2026-11-09. Current runtime; gray nodes are planned.
+flowchart LR
+    configure["01 / Configure<br/>Members, roles, topology and sharing<br/>Explicit models, tools, delegation and bounds"]
+    tasks["02 / Set tasks<br/>Brief, sources and useful deliverable<br/>Success criteria and review boundary"]
+    follow["03 / Follow work<br/>Member reports + system organization<br/>Processes are not psychological states"]
+    intervene["04 / Intervene<br/>Human selects intended scope<br/>Preview first; explicit CLI --apply"]
+    conditions["Between runs / conditions<br/>Reviewed role/task/procedure changes<br/>Backup + shared run lock; no auto redesign"]
+    planned["Before run / planned gap<br/>Actor, representation or directed link<br/>Chosen wave + duration; not weight training"]
+    control["During run / safe boundary<br/>Private feedback; pause / resume / stop<br/>Current-wave work may finish"]
+    review["After / human outcome review<br/>Partial or complete contributions<br/>Input/process change is not improved outcome"]
+    basis["Research basis ≠ validated AI-team effect<br/>Hackman / shared knowledge / Gorman training / Salas synthesis<br/>Distinct mechanisms and levels; no inferred causal improvement"]
+    bounds["Limits and audit remain explicit<br/>Pause keeps deadline and counters; stop is terminal<br/>Queued ≠ applied ≠ context assembled ≠ understood ≠ improved"]
+    configure --> tasks
+    tasks --> follow
+    follow --> intervene
+    configure --> conditions
+    tasks --> planned
+    follow --> control
+    intervene --> review
+    conditions --> basis
+    planned --> basis
+    control --> bounds
+    review --> bounds
+    classDef artifact fill:#FCFAF4,stroke:#99876F,color:#342F28;
+    class configure,tasks,intervene artifact;
+    classDef llm fill:#E9EEEE,stroke:#5B7580,color:#342F28;
+    classDef code fill:#EDF0E6,stroke:#697957,color:#342F28;
+    class conditions,control,bounds code;
+    classDef evidence fill:#F1EADD,stroke:#93805D,color:#342F28;
+    class follow,review evidence;
+    classDef optional fill:#F6EDDC,stroke:#9A7440,color:#342F28;
+    class planned,basis optional;
+    classDef future fill:#EEEDE8,stroke:#999389,color:#342F28;
+    linkStyle default stroke:#887E6B,stroke-width:1.5px;

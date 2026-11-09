@@ -39,12 +39,23 @@ The user sets tasks, brainstorming, goals or research, and explicitly chooses to
 models, communication, tools, delegation and budgets. Keep all 14 routing presets and
 1–16-member bounds. Views never optimize, change or evaluate the team automatically.
 
-Group team views into Standard (collaborative intelligence; shared models/member reports)
-and Complexity (distributed problem-solving; teams as dynamical systems; interactions and
-coordination). This is explanatory emphasis, not an exclusive partition of team research.
-Use distributed problem-solving as the product term; retain original scholarly titles and
-read legacy serialization names without rewriting history. Shared-plan agreement, reference
-conformity, perceived alignment, understanding and task correctness remain distinct.
+Group team views by Non-system (collaborative intelligence; shared models/member reports) and
+System (distributed problem-solving; differentiated transactive memory; interactive team
+cognition/coordination; dynamics). Preserve historical Standard/Complexity presentation aliases.
+Explanatory locus is distinct from compositional/compilational emergence and processes/states/
+outcomes. Follow docs/TEAM_RESEARCH.md (9 Nov 2026 · @Goran). IPO/IMOI includes feedback and
+conditional relations; do not call all conventional models linear. Human-team theory and
+intervention findings are a design basis, not validated AI-team effects. Trust, psychological
+safety, cohesion, efficacy and potency remain unmeasured. Transactive memory is differentiated,
+not shared overlap. Shared-plan agreement, reference conformity, perceived alignment,
+understanding and task correctness remain distinct. Keep original scholarly titles.
+
+Operator requests are drafts by default, explicit --apply to queue, run/configuration-bound,
+private and acknowledged at a dependency-wave boundary. Current-wave work may finish. Pause
+keeps the shared lock and original wall deadline; resume resets no counters; stop is terminal
+and cannot confirm incomplete work. Feedback is bounded task context, not a permission grant.
+Receipts, context assembly, understanding and effects are distinct. Never add a browser write/
+execution API implicitly; planned disturbances require explicit backup/lock-protected apply.
 
 Complexity science is broader than Gorman et al. or one tradition; Santa Fe is not an
 endorsement or a validated team model. Never fabricate emergence, adaptation, causal,

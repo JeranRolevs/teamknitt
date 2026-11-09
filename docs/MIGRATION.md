@@ -1,4 +1,4 @@
-# Migration to standalone teamknitt 0.5
+# Migration to standalone teamknitt
 
 teamknitt now ships its own engine under `teamknitt.engine`. Only the `teamknitt` package
 namespace and command are installed. Based on Labtune; see [provenance](../PROVENANCE.md).
@@ -37,15 +37,27 @@ records rather than expecting them to join a new configuration's latest-run coho
 
 The previous flat views are reorganized:
 
-- Collaborative intelligence → **Standard / collaborative intelligence**.
-- Shared-plan comparisons → **Standard / shared models & member reports**.
-- Representations, work distribution and handoffs → **Complexity / distributed problem-solving**.
-- Dynamics → **Complexity / teams as dynamical systems**.
-- Recorded artifact exposure and cross-level records → **Complexity / interactions & coordination**.
+- Collaborative intelligence → **Non-system / collaborative intelligence**.
+- Shared-plan comparisons → **Non-system / shared models & member reports**.
+- Representations, work distribution and handoffs → **System / distributed problem-solving**.
+- Dynamics → **System / teams as dynamical systems**.
+- Recorded artifact exposure and cross-level records → **System / interactive team cognition & coordination**.
 
-Use `--group standard|complexity` and optionally `--section NAME`. The old `--lens` flag is
+Use `--group non_system|system` and optionally `--section NAME`. Historical
+`standard`/`complexity` group choices still map for presentation only. Transactive memory now
+has a differentiated/compilational System view; no historical expertise measure is invented. The old `--lens` flag is
 accepted with a mapping notice; the former cognition view was split, not declared identical
 to one new view. Offline old snapshots remain their original, self-contained presentations.
 
 Requalify any research adapter whose evaluator/worker source changed. No migration makes
 provider calls, raises budgets, selects models or certifies task success.
+
+## Human-team background and operator controls (0.6)
+
+The revised [background](TEAM_RESEARCH.md) separates explanatory locus, forms of emergence
+and process/state/outcome evidence. It does not convert old telemetry to psychological or
+causal measurements. Historical records without an operator controller remain immutable and
+cannot be resumed. Main runs created by 0.6 support draft-first `intervene` requests and
+explicit future-run `schedule` changes; see [the guide](TEAMKNITT.md#explicit-intervention-controls).
+Pause/resume keeps existing limits, stop is terminal, and advanced engine workflows do not
+acquire these hooks implicitly. No migration triggers an intervention, model call or restart.

@@ -12,8 +12,11 @@ from teamknitt.cli import main
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        raise SystemExit("Usage: python team.py check|plan|prepare|configure|demo|run [options]")
-    raise SystemExit(main([sys.argv[1], "--workspace", str(Path(__file__).resolve().parent), *sys.argv[2:]]))
+        raise SystemExit("Usage: python team.py check|plan|configure|view|demo|run|intervene|schedule [options]")
+    command, *args = sys.argv[1:]
+    if command in {"check", "plan", "prepare", "configure", "view", "demo", "run", "schedule", "migrate"}:
+        args = ["--workspace", str(Path(__file__).resolve().parent), *args]
+    raise SystemExit(main([command, *args]))
 '''
 
 

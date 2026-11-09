@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2160pt" height="1080pt" viewBox="0 0 2160 1080" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2160pt" height="1296pt" viewBox="0 0 2160 1296" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-09T07:48:24.509038</dc:date>
+    <dc:date>2026-11-09T09:01:42.559753</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -21,8 +21,8 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 1080
-L 2160 1080
+   <path d="M 0 1296
+L 2160 1296
 L 2160 0
 L 0 0
 z
@@ -34,97 +34,111 @@ z
 L 1080 331.2
 L 504 331.2
 L 504 367.211146
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
     <path d="M 507 361.211146
 L 504 367.211146
 L 501 361.211146
 z
-" clip-path="url(#p2abdcda6e9)" style="fill: #887e6b; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
+" clip-path="url(#pef804aaabe)" style="fill: #887e6b; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
    </g>
    <g id="patch_3">
     <path d="M 1080 271.8
 L 1080 331.2
 L 1620 331.2
 L 1620 367.211146
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
     <path d="M 1623 361.211146
 L 1620 367.211146
 L 1617 361.211146
 z
-" clip-path="url(#p2abdcda6e9)" style="fill: #887e6b; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
+" clip-path="url(#pef804aaabe)" style="fill: #887e6b; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
    </g>
    <g id="patch_4">
     <path d="M 504 495
 L 504 540
 L 288 540
 L 288 588.611146
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
     <path d="M 291 582.611146
 L 288 588.611146
 L 285 582.611146
 z
-" clip-path="url(#p2abdcda6e9)" style="fill: #887e6b; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
+" clip-path="url(#pef804aaabe)" style="fill: #887e6b; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
    </g>
    <g id="patch_5">
     <path d="M 504 495
 L 504 540
 L 720 540
 L 720 588.611146
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
     <path d="M 723 582.611146
 L 720 588.611146
 L 717 582.611146
 z
-" clip-path="url(#p2abdcda6e9)" style="fill: #887e6b; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
+" clip-path="url(#pef804aaabe)" style="fill: #887e6b; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
    </g>
    <g id="patch_6">
     <path d="M 1620 495
 L 1620 540
-L 1238.4 540
-L 1238.4 588.611146
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
-    <path d="M 1241.4 582.611146
-L 1238.4 588.611146
-L 1235.4 582.611146
+L 1368 540
+L 1368 588.611146
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 1371 582.611146
+L 1368 588.611146
+L 1365 582.611146
 z
-" clip-path="url(#p2abdcda6e9)" style="fill: #887e6b; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
+" clip-path="url(#pef804aaabe)" style="fill: #887e6b; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
    </g>
    <g id="patch_7">
     <path d="M 1620 495
-L 1620 588.611146
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
-    <path d="M 1623 582.611146
-L 1620 588.611146
-L 1617 582.611146
+L 1620 540
+L 1872 540
+L 1872 588.611146
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 1875 582.611146
+L 1872 588.611146
+L 1869 582.611146
 z
-" clip-path="url(#p2abdcda6e9)" style="fill: #887e6b; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
+" clip-path="url(#pef804aaabe)" style="fill: #887e6b; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
    </g>
    <g id="patch_8">
-    <path d="M 1620 495
-L 1620 540
-L 1965.6 540
-L 1965.6 588.611146
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
-    <path d="M 1968.6 582.611146
-L 1965.6 588.611146
-L 1962.6 582.611146
+    <path d="M 1143 432
+L 1087.2 432
+L 1087.2 885.6
+L 1137.611146 885.6
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 1131.611146 882.6
+L 1137.611146 885.6
+L 1131.611146 888.6
 z
-" clip-path="url(#p2abdcda6e9)" style="fill: #887e6b; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
+" clip-path="url(#pef804aaabe)" style="fill: #887e6b; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 2097 432
+L 2124 432
+L 2124 885.6
+L 2102.388854 885.6
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 2108.388854 888.6
+L 2102.388854 885.6
+L 2108.388854 882.6
+z
+" clip-path="url(#pef804aaabe)" style="fill: #887e6b; stroke: #887e6b; stroke-width: 1.6; stroke-linecap: round"/>
    </g>
    <g id="line2d_1">
     <path d="M 43.2 50.4
 L 2116.8 50.4
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #87744f; stroke-width: 0.5; stroke-linecap: square"/>
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #87744f; stroke-width: 0.5; stroke-linecap: square"/>
    </g>
    <g id="line2d_2">
     <path d="M 43.2 54
 L 2116.8 54
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #87744f; stroke-width: 0.5; stroke-linecap: square"/>
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #87744f; stroke-width: 0.5; stroke-linecap: square"/>
    </g>
    <g id="line2d_3">
-    <path d="M 43.2 1015.2
-L 2116.8 1015.2
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #d2c9bc; stroke-linecap: square"/>
+    <path d="M 43.2 1231.2
+L 2116.8 1231.2
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #d2c9bc; stroke-linecap: square"/>
    </g>
    <g id="text_1">
     <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Serif'; text-anchor: start; fill: #87744f" x="43.2" y="35.257422" transform="rotate(-0 43.2 35.257422)">TEAMKNITT / 15</text>
@@ -133,24 +147,24 @@ L 2116.8 1015.2
     <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #6b6255" x="2116.8" y="34.997656" transform="rotate(-0 2116.8 34.997656)">2026-11-09 · CURRENT BOUNDED RUNTIME</text>
    </g>
    <g id="text_3">
-    <text style="font-weight: 700; font-size: 24px; font-family: 'DejaVu Serif'; text-anchor: start; fill: #342f28" x="43.2" y="89.035312" transform="rotate(-0 43.2 89.035312)">Two approaches — one user-directed team</text>
+    <text style="font-weight: 700; font-size: 24px; font-family: 'DejaVu Serif'; text-anchor: start; fill: #342f28" x="43.2" y="89.035312" transform="rotate(-0 43.2 89.035312)">Different explanations — one user-directed team</text>
    </g>
    <g id="text_4">
-    <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #6b6255" x="43.2" y="129.117656" transform="rotate(-0 43.2 129.117656)">Explanatory orientations, not mutually exclusive scientific camps, model choices or statistical methods.</text>
-   </g>
-   <g id="patch_9">
-    <path d="M 618.48 162
-L 1541.52 162
-L 1548 168.48
-L 1548 263.52
-L 1541.52 270
-L 618.48 270
-L 612 263.52
-L 612 168.48
-z
-" clip-path="url(#p2abdcda6e9)" style="fill: #fcfaf4; stroke: #99876f; stroke-width: 1.5; stroke-linejoin: miter"/>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #6b6255" x="43.2" y="129.117656" transform="rotate(-0 43.2 129.117656)">Explanatory locus is not the same axis as compositional/compilational emergence or process/state/outcome evidence.</text>
    </g>
    <g id="patch_10">
+    <path d="M 258.48 162
+L 1901.52 162
+L 1908 168.48
+L 1908 263.52
+L 1901.52 270
+L 258.48 270
+L 252 263.52
+L 252 168.48
+z
+" clip-path="url(#pef804aaabe)" style="fill: #fcfaf4; stroke: #99876f; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
     <path d="M 53.28 370.8
 L 954.72 370.8
 L 961.2 377.28
@@ -160,9 +174,9 @@ L 53.28 493.2
 L 46.8 486.72
 L 46.8 377.28
 z
-" clip-path="url(#p2abdcda6e9)" style="fill: #fcfaf4; stroke: #99876f; stroke-width: 1.5; stroke-linejoin: miter"/>
+" clip-path="url(#pef804aaabe)" style="fill: #fcfaf4; stroke: #99876f; stroke-width: 1.5; stroke-linejoin: miter"/>
    </g>
-   <g id="patch_11">
+   <g id="patch_12">
     <path d="M 1151.28 370.8
 L 2088.72 370.8
 L 2095.2 377.28
@@ -172,9 +186,9 @@ L 1151.28 493.2
 L 1144.8 486.72
 L 1144.8 377.28
 z
-" clip-path="url(#p2abdcda6e9)" style="fill: #fcfaf4; stroke: #99876f; stroke-width: 1.5; stroke-linejoin: miter"/>
+" clip-path="url(#pef804aaabe)" style="fill: #fcfaf4; stroke: #99876f; stroke-width: 1.5; stroke-linejoin: miter"/>
    </g>
-   <g id="patch_12">
+   <g id="patch_13">
     <path d="M 96.48 592.2
 L 479.52 592.2
 L 486 598.68
@@ -184,9 +198,9 @@ L 96.48 732.6
 L 90 726.12
 L 90 598.68
 z
-" clip-path="url(#p2abdcda6e9)" style="fill: #f6eddc; stroke: #9a7440; stroke-width: 1.5; stroke-linejoin: miter"/>
+" clip-path="url(#pef804aaabe)" style="fill: #f6eddc; stroke: #9a7440; stroke-width: 1.5; stroke-linejoin: miter"/>
    </g>
-   <g id="patch_13">
+   <g id="patch_14">
     <path d="M 528.48 592.2
 L 911.52 592.2
 L 918 598.68
@@ -196,221 +210,251 @@ L 528.48 732.6
 L 522 726.12
 L 522 598.68
 z
-" clip-path="url(#p2abdcda6e9)" style="fill: #f1eadd; stroke: #93805d; stroke-width: 1.5; stroke-linejoin: miter"/>
-   </g>
-   <g id="patch_14">
-    <path d="M 1068.48 592.2
-L 1408.32 592.2
-L 1414.8 598.68
-L 1414.8 726.12
-L 1408.32 732.6
-L 1068.48 732.6
-L 1062 726.12
-L 1062 598.68
-z
-" clip-path="url(#p2abdcda6e9)" style="fill: #f1eadd; stroke: #93805d; stroke-width: 1.5; stroke-linejoin: miter"/>
+" clip-path="url(#pef804aaabe)" style="fill: #f1eadd; stroke: #93805d; stroke-width: 1.5; stroke-linejoin: miter"/>
    </g>
    <g id="patch_15">
-    <path d="M 1450.08 592.2
-L 1789.92 592.2
-L 1796.4 598.68
-L 1796.4 726.12
-L 1789.92 732.6
-L 1450.08 732.6
-L 1443.6 726.12
-L 1443.6 598.68
+    <path d="M 1147.68 592.2
+L 1588.32 592.2
+L 1594.8 598.68
+L 1594.8 726.12
+L 1588.32 732.6
+L 1147.68 732.6
+L 1141.2 726.12
+L 1141.2 598.68
 z
-" clip-path="url(#p2abdcda6e9)" style="fill: #f6eddc; stroke: #9a7440; stroke-width: 1.5; stroke-linejoin: miter"/>
+" clip-path="url(#pef804aaabe)" style="fill: #f1eadd; stroke: #93805d; stroke-width: 1.5; stroke-linejoin: miter"/>
    </g>
    <g id="patch_16">
-    <path d="M 1795.68 592.2
-L 2135.52 592.2
-L 2142 598.68
-L 2142 726.12
-L 2135.52 732.6
-L 1795.68 732.6
-L 1789.2 726.12
-L 1789.2 598.68
+    <path d="M 1651.68 592.2
+L 2092.32 592.2
+L 2098.8 598.68
+L 2098.8 726.12
+L 2092.32 732.6
+L 1651.68 732.6
+L 1645.2 726.12
+L 1645.2 598.68
 z
-" clip-path="url(#p2abdcda6e9)" style="fill: #f1eadd; stroke: #93805d; stroke-width: 1.5; stroke-linejoin: miter"/>
+" clip-path="url(#pef804aaabe)" style="fill: #f1eadd; stroke: #93805d; stroke-width: 1.5; stroke-linejoin: miter"/>
    </g>
    <g id="patch_17">
-    <path d="M 78.48 833.4
-L 2081.52 833.4
-L 2088 839.88
-L 2088 945.72
-L 2081.52 952.2
-L 78.48 952.2
-L 72 945.72
-L 72 839.88
+    <path d="M 1147.68 815.4
+L 1588.32 815.4
+L 1594.8 821.88
+L 1594.8 949.32
+L 1588.32 955.8
+L 1147.68 955.8
+L 1141.2 949.32
+L 1141.2 821.88
 z
-" clip-path="url(#p2abdcda6e9)" style="fill: #edf0e6; stroke: #697957; stroke-width: 1.5; stroke-linejoin: miter"/>
+" clip-path="url(#pef804aaabe)" style="fill: #f1eadd; stroke: #93805d; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 1651.68 815.4
+L 2092.32 815.4
+L 2098.8 821.88
+L 2098.8 949.32
+L 2092.32 955.8
+L 1651.68 955.8
+L 1645.2 949.32
+L 1645.2 821.88
+z
+" clip-path="url(#pef804aaabe)" style="fill: #f6eddc; stroke: #9a7440; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 78.48 1056.6
+L 2081.52 1056.6
+L 2088 1063.08
+L 2088 1168.92
+L 2081.52 1175.4
+L 78.48 1175.4
+L 72 1168.92
+L 72 1063.08
+z
+" clip-path="url(#pef804aaabe)" style="fill: #edf0e6; stroke: #697957; stroke-width: 1.5; stroke-linejoin: miter"/>
    </g>
    <g id="text_5">
-    <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #6b6255" x="43.2" y="1048.887949" transform="rotate(-0 43.2 1048.887949)">Based on Labtune by Goran Mitevski / Pioneertown B.V. Bayesian analysis is not an option; legacy methods are never silently converted.</text>
+    <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #6b6255" x="43.2" y="1264.887949" transform="rotate(-0 43.2 1264.887949)">Background: Research and Theory on Human Teams · 9 Nov 2026 · @Goran. Based on Labtune / Pioneertown B.V.; unchanged license.</text>
    </g>
    <g id="line2d_4">
-    <path d="M 623.52 167.76
-L 1536.48 167.76
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #99876f; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+    <path d="M 263.52 167.76
+L 1896.48 167.76
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #99876f; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="line2d_5">
-    <path d="M 623.52 264.24
-L 1536.48 264.24
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #99876f; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+    <path d="M 263.52 264.24
+L 1896.48 264.24
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #99876f; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="text_6">
     <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Serif'; text-anchor: middle; fill: #342f28" x="1080" y="189.597656" transform="rotate(-0 1080 189.597656)">Your task and chosen configuration</text>
    </g>
    <g id="text_7">
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #6b6255" x="1080" y="234.654562" transform="rotate(-0 1080 234.654562)">Explicit topology, membership, sharing, models and budgets</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #6b6255" x="1080" y="234.654562" transform="rotate(-0 1080 234.654562)">Explicit membership, roles, topology, sharing, models, tools and budgets</text>
    </g>
    <g id="line2d_6">
     <path d="M 58.32 376.56
 L 949.68 376.56
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #99876f; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #99876f; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="line2d_7">
     <path d="M 58.32 487.44
 L 949.68 487.44
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #99876f; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #99876f; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="text_8">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Serif'; text-anchor: middle; fill: #342f28" x="504" y="398.397656" transform="rotate(-0 504 398.397656)">STANDARD — individual / component-centered</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Serif'; text-anchor: middle; fill: #342f28" x="504" y="398.397656" transform="rotate(-0 504 398.397656)">NON-SYSTEM — member/component-centered</text>
    </g>
    <g id="text_9">
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(329.646141 443.769562)">Member attributes, behavior, reports and decomposed relationships</text>
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(327.445172 457.539562)">Interaction can still be studied; not a claim that every model is linear</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(359.117766 443.769562)">Attributes, behavior, knowledge, reports and aggregates</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(327.023625 458.007328)">IPO/IMOI also includes interaction, feedback and conditional relations</text>
    </g>
    <g id="line2d_8">
     <path d="M 1156.32 376.56
 L 2083.68 376.56
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #99876f; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #99876f; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="line2d_9">
     <path d="M 1156.32 487.44
 L 2083.68 487.44
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #99876f; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #99876f; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="text_10">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Serif'; text-anchor: middle; fill: #342f28" x="1620" y="398.397656" transform="rotate(-0 1620 398.397656)">COMPLEXITY — interaction / system-centered</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Serif'; text-anchor: middle; fill: #342f28" x="1620" y="398.397656" transform="rotate(-0 1620 398.397656)">SYSTEM — situated interaction/configuration</text>
    </g>
    <g id="text_11">
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1478.055047 443.769562)">Problem-solving across agents, artifacts, tools and time</text>
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1438.950797 457.539562)">Complex adaptive systems / Santa Fe tradition; no inferred emergence</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1499.118047 444.237328)">Work across members, artifacts, tools and time</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1439.436094 457.539562)">Not synonymous with complexity science or demonstrated emergence</text>
    </g>
    <g id="line2d_10">
     <path d="M 101.52 597.96
 L 474.48 597.96
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #9a7440; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #9a7440; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="line2d_11">
     <path d="M 101.52 726.84
 L 474.48 726.84
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #9a7440; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #9a7440; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="text_12">
     <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Serif'; text-anchor: middle; fill: #342f28" x="288" y="619.797656" transform="rotate(-0 288 619.797656)">Collaborative intelligence</text>
    </g>
    <g id="text_13">
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(198.453563 667.284562)">Wu et al.; alone/baseline/challenge</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(188.527688 668.272687)">Member-focused behavioral evaluation</text>
     <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(203.076234 681.054562)">Optional separate saved protocol</text>
     <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(227.140266 695.812688)">Not an official CIB score</text>
    </g>
    <g id="line2d_12">
     <path d="M 533.52 597.96
 L 906.48 597.96
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #93805d; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #93805d; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="line2d_13">
     <path d="M 533.52 726.84
 L 906.48 726.84
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #93805d; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #93805d; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="text_14">
     <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Serif'; text-anchor: middle; fill: #342f28" x="720" y="619.797656" transform="rotate(-0 720 619.797656)">Shared models + reports</text>
    </g>
    <g id="text_15">
     <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(620.840063 667.284562)">Explicit plans and perceived alignment</text>
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(649.057406 681.054562)">Similarity is not correctness</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(655.588594 681.054562)">Similarity is not accuracy</text>
     <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(633.810797 695.812688)">No latent mental-model inference</text>
    </g>
    <g id="line2d_14">
-    <path d="M 1073.52 597.96
-L 1403.28 597.96
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #93805d; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+    <path d="M 1152.72 597.96
+L 1583.28 597.96
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #93805d; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="line2d_15">
-    <path d="M 1073.52 726.84
-L 1403.28 726.84
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #93805d; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+    <path d="M 1152.72 726.84
+L 1583.28 726.84
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #93805d; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="text_16">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Serif'; text-anchor: middle; fill: #342f28" x="1238.4" y="619.797656" transform="rotate(-0 1238.4 619.797656)">Distributed problem-solving</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Serif'; text-anchor: middle; fill: #342f28" x="1368" y="619.797656" transform="rotate(-0 1368 619.797656)">Distributed problem-solving</text>
    </g>
    <g id="text_17">
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1146.12825 667.284562)">Complementary inputs and artifacts</text>
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1140.189937 681.054562)">Work dependencies + transformations</text>
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1160.405062 694.824562)">Expertise directory + handoffs</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1256.687719 667.284562)">Complementary inputs and representations</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1269.789937 681.054562)">Work dependencies + transformations</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1273.595016 694.824562)">Hutchins / McNeese, Salas &amp; Endsley</text>
    </g>
    <g id="line2d_16">
-    <path d="M 1455.12 597.96
-L 1784.88 597.96
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #9a7440; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+    <path d="M 1656.72 597.96
+L 2087.28 597.96
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #93805d; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="line2d_17">
-    <path d="M 1455.12 726.84
-L 1784.88 726.84
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #9a7440; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+    <path d="M 1656.72 726.84
+L 2087.28 726.84
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #93805d; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="text_18">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Serif'; text-anchor: middle; fill: #342f28" x="1620" y="619.797656" transform="rotate(-0 1620 619.797656)">Teams as dynamical systems</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Serif'; text-anchor: middle; fill: #342f28" x="1872" y="619.797656" transform="rotate(-0 1872 619.797656)">Transactive memory</text>
    </g>
    <g id="text_19">
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1514.909719 667.284562)">Temporal activity + disturbance windows</text>
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1542.273609 682.042688)">Gorman et al. is one reference</text>
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1508.674172 694.824562)">Attractors/synchrony/fractals not estimated</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1771.349109 667.284562)">Differentiated/compilational knowledge</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1761.950766 681.054562)">Configured directory: who is assigned what</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1777.537641 695.812688)">Not measured retrieval effectiveness</text>
    </g>
    <g id="line2d_18">
-    <path d="M 1800.72 597.96
-L 2130.48 597.96
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #93805d; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+    <path d="M 1152.72 821.16
+L 1583.28 821.16
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #93805d; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="line2d_19">
-    <path d="M 1800.72 726.84
-L 2130.48 726.84
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #93805d; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+    <path d="M 1152.72 950.04
+L 1583.28 950.04
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #93805d; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="text_20">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Serif'; text-anchor: middle; fill: #342f28" x="1965.6" y="619.797656" transform="rotate(-0 1965.6 619.797656)">Interactions + coordination</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Serif'; text-anchor: middle; fill: #342f28" x="1368" y="842.997656" transform="rotate(-0 1368 842.997656)">Interactive cognition + coordination</text>
    </g>
    <g id="text_21">
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1864.970625 667.284562)">Recorded exposure + receipt metadata</text>
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1873.2135 681.054562)">Permissions are not actual exposure</text>
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1864.044656 694.824562)">Counts do not establish causal coupling</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1257.603328 890.484563)">Situated interaction, not aggregated minds</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1268.024062 904.254563)">Exposure and version-specific handoffs</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1267.788188 918.024563)">Cooke et al.; no understanding inferred</text>
    </g>
    <g id="line2d_20">
-    <path d="M 83.52 839.16
-L 2076.48 839.16
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #697957; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+    <path d="M 1656.72 821.16
+L 2087.28 821.16
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #9a7440; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="line2d_21">
-    <path d="M 83.52 946.44
-L 2076.48 946.44
-" clip-path="url(#p2abdcda6e9)" style="fill: none; stroke: #697957; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+    <path d="M 1656.72 950.04
+L 2087.28 950.04
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #9a7440; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
    </g>
    <g id="text_22">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Serif'; text-anchor: middle; fill: #342f28" x="1080" y="860.997656" transform="rotate(-0 1080 860.997656)">teamknitt standalone engine</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Serif'; text-anchor: middle; fill: #342f28" x="1872" y="842.997656" transform="rotate(-0 1872 842.997656)">Teams as dynamical systems</text>
    </g>
    <g id="text_23">
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(847.330031 904.569563)">Own runtime, adapters, schemas and resources · No upstream package or CLI dependency</text>
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(840.611578 918.339563)">Changing groups/views never changes configuration, runs an evaluation or grants permission</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1779.423047 890.484563)">Local–global / substrate / cross-level</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1765.165359 904.254563)">Task-specific temporal research questions</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(1756.467469 918.024563)">Recurrence/entropy/synchrony not estimated</text>
+   </g>
+   <g id="line2d_22">
+    <path d="M 83.52 1062.36
+L 2076.48 1062.36
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #697957; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_23">
+    <path d="M 83.52 1169.64
+L 2076.48 1169.64
+" clip-path="url(#pef804aaabe)" style="fill: none; stroke: #697957; stroke-opacity: 0.35; stroke-width: 0.55; stroke-linecap: square"/>
+   </g>
+   <g id="text_24">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Serif'; text-anchor: middle; fill: #342f28" x="1080" y="1084.197656" transform="rotate(-0 1080 1084.197656)">Configure → set tasks → follow work → intervene</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(816.098109 1127.769563)">Standalone bounded engine; human-directed interventions, not automatic organizational improvement</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; fill: #6b6255" transform="translate(806.902969 1141.539563)">Human-team constructs and effects require validation for AI teams; psychological states are not measured</text>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p2abdcda6e9">
-   <rect x="0" y="0" width="2160" height="1080"/>
+  <clipPath id="pef804aaabe">
+   <rect x="0" y="0" width="2160" height="1296"/>
   </clipPath>
  </defs>
 </svg>

@@ -1,11 +1,11 @@
 # teamknitt
 
-### Configure the team. Set the task. Follow the work.
+### Configure the team. Set the task. Follow the work. Intervene.
 
 **teamknitt** is a standalone product and execution engine for agent teams working on
 user-defined **tasks, brainstorming, goals and research**. Choose the members, their
 connections, information sharing, models, tools and finite budgets; inspect the process
-without assuming that any topology is best or that execution proves success.
+and intervene explicitly without assuming that a topology is best or that execution proves success. Human-team research informs the design, not a validated AI-team improvement claim.
 
 Based on **Labtune**, Goran Mitevski's original work. **Author: Goran Mitevski. Copyright
 holder/licensor: Pioneertown B.V.** [Provenance](PROVENANCE.md). The runtime is shipped under
@@ -36,7 +36,8 @@ browser API for applying configurations, changing budgets or starting model exec
 | Routing | Fully connected · hub-and-spoke · two-way/one-way rings and chains · hierarchy · wheel · grid · clustered pods · bipartite · broadcast · gather · custom |
 | Sharing | None · low reported blockers · intermediate summaries · high detailed notes · conditional wisdom only |
 | Problem-solving structure | Complementary inputs, scoped representations, expertise directory, work dependencies, handoffs and action opportunities |
-| Team views | Standard or Complexity, with focused subviews; presentation-only |
+| Team views | Non-system or System; separate emergence and process/state distinctions |
+| Intervention | Private feedback; safe-boundary pause/resume/stop; explicit planned disturbances |
 | Execution | Explicit provider/model, domain tools, delegation, concurrency and budgets |
 
 Topology filters both peer views and generated-note exposure. Directed routes do not imply
@@ -48,44 +49,50 @@ previous exposure, and relay requires later permitted work rather than instant d
 teamknitt configure --workspace ../my-team --members 6 --topology clustered
 # After review, explicitly apply and acknowledge regenerated starter bindings:
 teamknitt configure --workspace ../my-team --members 6 --topology clustered \
-  --apply --reset-cognition
+  --apply --reset-bindings
 ```
 
 Application keeps a private backup and respects the shared run lock. For customized bindings,
 edit the configuration directly rather than resetting it. [Configuration guide](docs/TEAMKNITT.md).
 
-## Two approaches to viewing teams
+## Research-informed team views
 
-This is an organizing distinction, not an exhaustive or mutually exclusive taxonomy of research.
-The difference is explanatory emphasis—not whether an approach ever studies interactions.
+Goran's revised **“Background: Research and Theory on Human Teams” (9 Nov 2026)** supplies
+three separate distinctions: **non-system/system explanatory locus**, **compositional/
+compilational emergence**, and **processes/states/outcomes**. IPO/IMOI includes feedback and
+conditional relations—not just a linear pipeline. Transition/action phases are annotated;
+interpersonal processes and psychological states are not inferred from software traces.
+[Research background and references](docs/TEAM_RESEARCH.md).
 
 | Group | Focused views | Explanatory focus |
 |---|---|---|
-| **Standard** | Collaborative intelligence · shared models & member reports | Individual members, their behavior and reports, and decomposed relationships |
-| **Complexity** | Distributed problem-solving · teams as dynamical systems · interactions & coordination | Problem-solving across interacting agents, artifacts, tools and time |
+| **Non-system** | Collaborative intelligence · shared models & member reports | Member attributes, behavior, knowledge and aggregates |
+| **System** | Distributed problem-solving · transactive memory · interactive team cognition & coordination · team dynamics | Situated interaction, differentiated knowledge and organization across members, artifacts and time |
 
-*Measuring AI Agents as Teammates with Collaborative Intelligence* informs the **Standard**
-behavioral view. Its eight questions are **not evaluated** by ordinary task telemetry. Optional
-saved synthetic-probe summaries remain clearly labelled separate-context evidence—not an
-official CIB score or a capability claim about the current team. Missing cells remain unknown.
+These are explanatory orientations, not exhaustive, exclusive scientific camps or quality
+scores. System is not a synonym for complexity science. Compositional and compilational
+emergence are a related but different axis. Historical Standard/Complexity links still resolve.
 
-**Distributed problem-solving** is the product terminology for inspecting work across members
-and representations. Original scholarly titles retain their wording. Shared-model report
-comparisons are under Standard; representation transformations and handoffs are under Complexity.
-Agreement, reference conformity, perceived alignment, understanding and correctness stay distinct.
+*Measuring AI Agents as Teammates with Collaborative Intelligence* informs the member-focused
+behavioral view. Ordinary task telemetry does **not evaluate** its eight capabilities. Optional
+saved probe summaries remain separate-context evidence, not an official CIB score or capabilities
+attributed to this task team. **Transactive memory is differentiated/compilational**, not shared
+overlap; its configured directory is not a validated effectiveness measure.
 
-Complexity science and complex adaptive systems are the wider umbrella, including the Santa Fe
-tradition. Gorman et al. is one team-focused reference, alongside broader work such as Holland
-and Mitchell. Santa Fe is not an endorsement or a validated model. Attractors, synchronization,
-fractals, emergence and adaptation are **not inferred** from short uneven execution traces.
+**Distributed problem-solving** is the product term; original scholarly titles retain their
+wording. Agreement, reference conformity, perceived alignment, understanding and correctness
+remain distinct. Trust, psychological safety, cohesion, efficacy and potency are not measured.
+Local–global, substrate-independence and cross-level principles motivate research questions;
+recurrence, entropy, attractors, synchrony, fractals, emergence and adaptation are not estimated.
 
 ```bash
+teamknitt theory
 teamknitt views
-teamknitt view --workspace ../my-team --group standard --section collaborative_intelligence
-teamknitt view --workspace ../my-team --group complexity --section distributed_problem_solving
-teamknitt view --workspace ../my-team --group complexity --section team_dynamics
-# Optional, already-saved separate protocol; this starts no evaluation:
-teamknitt view --workspace ../my-team --group standard --probe-run PROBE_RUN
+teamknitt view --workspace ../my-team --group non_system --section shared_models
+teamknitt view --workspace ../my-team --group system --section transactive_memory
+teamknitt view --workspace ../my-team --group system --section interaction_coordination
+# Optional, already-saved separate protocol; starts no evaluation:
+teamknitt view --workspace ../my-team --group non_system --probe-run PROBE_RUN
 ```
 
 **Bayesian/probabilistic analysis is not an option in teamknitt.** Statistical methods are not
@@ -109,6 +116,35 @@ decisions, corrections and delegation share the same limits. Private contributio
 `trials/ID/deliverable.md` for your review. No overall team-quality score or automatic
 organizational improvement is produced. The default is bounded text work, not unrestricted
 shell or real-world action execution.
+
+## Intervene explicitly, then review the intended outcome
+
+The **Intervene** desk separates conditions/configuration, planned disturbances, active-run
+controls and human outcome review. The browser prepares commands only; it cannot apply them.
+From your workspace directory:
+
+```bash
+# Preview only; add --apply after review to queue each selected request.
+teamknitt intervene trials/RUN_ID --action feedback --message-file mission/feedback.md \
+  --actors member.1
+teamknitt intervene trials/RUN_ID --action pause
+teamknitt intervene trials/RUN_ID --action resume
+teamknitt intervene trials/RUN_ID --action stop
+
+# A future-run condition, not an active-run configuration edit:
+teamknitt schedule --workspace . --id reviewed-gap --kind actor_unavailable \
+  --target member.1 --at-wave 4 --duration 1
+```
+
+Requests are bound to one run/configuration and acknowledged before the **next dependency
+wave**; current-wave work may finish. Feedback is private, targeted and bounded. Pausing
+retains the same lock, model, request counters and original wall-time deadline. Stopping is
+terminal, preserves partial contributions and does not run completed-study confirmation.
+No active-run model, permission, statistical-method or budget changes are introduced.
+
+Queue acceptance, boundary application, context assembly, understanding and improvement are
+separate claims. Human cross-training or adaptive-training findings do not establish AI-team
+benefits. [Detailed controls and audit boundaries](docs/TEAMKNITT.md#explicit-intervention-controls).
 
 ## Standalone engine and compatibility
 

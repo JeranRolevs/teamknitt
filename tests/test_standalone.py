@@ -63,7 +63,7 @@ with tempfile.TemporaryDirectory() as d:
     assert r["provider_requests"] == 0
     assert "engine_variant" in r
     report=build_report(Path(r["run_directory"]))
-    assert set(report["view_groups"]) == {"standard", "complexity"}
+    assert set(report["view_groups"]) == {"non_system", "system"}
 print("independent engine exercised")
 '''], capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
@@ -97,11 +97,11 @@ print("independent engine exercised")
         self.assertEqual(caught.exception.code, 2)
 
     def test_two_explanatory_families_not_a_statistical_method_selector(self):
-        self.assertEqual(set(GROUPS), {'standard', 'complexity'})
-        self.assertEqual(VIEWS['collaborative_intelligence']['group'], 'standard')
-        self.assertEqual(VIEWS['shared_models']['group'], 'standard')
+        self.assertEqual(set(GROUPS), {'non_system', 'system'})
+        self.assertEqual(VIEWS['collaborative_intelligence']['group'], 'non_system')
+        self.assertEqual(VIEWS['shared_models']['group'], 'non_system')
         for key in ('distributed_problem_solving', 'team_dynamics', 'interaction_coordination'):
-            self.assertEqual(VIEWS[key]['group'], 'complexity')
+            self.assertEqual(VIEWS[key]['group'], 'system')
         self.assertNotIn('cognition', VIEWS)
         self.assertNotIn('bayesian', VIEWS)
         self.assertNotIn('probabilistic', VIEWS)
@@ -206,11 +206,14 @@ class LegacyWorkspaceTests(unittest.TestCase):
         identity = json.loads(identity_path.read_text())
         identity['configuration_sha256'] = h
         identity_path.write_text(json.dumps(identity))
+        # Historical pre-0.6 fixtures have no operator controller or new control binding.
+        import shutil
+        shutil.rmtree(folder / 'operator')
         before = {f.name: f.read_bytes() for f in folder.iterdir() if f.is_file()}
         report = build_report(folder)
         self.assertEqual(report['configuration_sha256'], h)
         self.assertTrue(report['compatibility']['legacy_names'])
-        self.assertEqual(set(report['view_groups']), {'standard', 'complexity'})
+        self.assertEqual(set(report['view_groups']), {'non_system', 'system'})
         self.assertEqual(before, {f.name: f.read_bytes() for f in folder.iterdir() if f.is_file()})
         p['labtune_plan']['configuration_snapshot']['cognition_binding']['labtune_sha256'] = 'tampered'
         plan_path.write_text(json.dumps(p))
