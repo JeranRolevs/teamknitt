@@ -19,8 +19,13 @@ The browser only previews configurations and metadata; use the CLI to apply or r
 
 Based on Labtune; research follow-up to Goran Mitevski’s 2022/2023 work. Author: Goran
 Mitevski. Copyright/licensor: Pioneertown B.V. Preserve PROVENANCE.md, LICENSE and
-LICENSING.md. The Labtune Academic Research License 2.0 is unchanged; multiple teams and
-coding tasks do not broaden eligibility or grant permission for commercial use.
+LICENSING.md in licensor-authorized distributions and new starters. The Teamknitt Noncommercial
+Licence 1.0 permits noncommercial purposes, the specified personal uses, and use by the listed
+organizations regardless of funding source or resulting obligations, without geographic limits.
+The copyright grant does not authorize redistribution, software changes or derivative works,
+even if noncommercial. Multiple teams and coding tasks add no permission; prior grants,
+upstream Labtune and third-party terms are not rewritten. For separate permission, contact
+Goran Mitevski, goran@pioneertown.ai, for Pioneertown B.V.
 
 Keep credentials, private style/feedback text, trials, results and backups out of Git.
 See `docs/MULTI_TEAM.md` and `docs/TEAMKNITT.md` for controls and boundaries.

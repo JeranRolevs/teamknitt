@@ -1,106 +1,109 @@
-# Labtune licensing
+# Teamknitt licensing
 
-Labtune uses the **Labtune Academic Research License 2.0**, a custom licence.
-The full terms in [LICENSE](LICENSE) govern; this page is a summary.
+teamknitt uses the **Teamknitt Noncommercial Licence 1.0**, a custom, source-available
+licence. It is **not an OSI open-source licence**. The full terms in [LICENSE](LICENSE)
+govern; this page explains them without adding permissions or conditions.
 
-**Copyright holder, licensor and owner of the licence text:** Pioneertown B.V.
-**Author of Labtune:** Goran Mitevski.
+**Copyright holder and licensor:** Pioneertown B.V.
 
-- **Eligible institutions:** legally recognized public or nonprofit universities, colleges
-  and comparable educational institutions with an education and academic-research or research-training
-  mission, legally established and genuinely headquartered in a qualifying economy, with their
-  principal educational and academic-research operations there. Their research centers must
-  genuinely belong to, or be owned and controlled by, the institution and remain under
-  independent academic governance.
-- **Eligible people:** current students, faculty, staff and formally appointed researchers,
-  acting for that institution's permitted research. An academic account or appointment does
-  not authorize work for a company, another employer or a client.
-- **Free activity:** use, study, run, modify and share Labtune for independent noncommercial
-  academic research, including research training, experiments and replication. Retain the
-  licence and notices, identify changes, and distribute changes under the same terms.
-- **Excluded:** company labs, commercial consultancies, startups and spinouts, including
-  university-owned commercial subsidiaries. Nonprofits, foundations, university-hosted labs
-  and joint centers also fail eligibility if commercially controlled or operated as company
-  research capacity. Publishing papers does not turn a company lab into an eligible institution.
+**Author:** Goran Mitevski.
 
-The project must serve the institution's academic mission under its own direction. It cannot
-be commissioned company work, commercial R&D, business operations, or a route to privileged
-commercial services or deliverables. Legal status and affiliation alone do not establish
-eligibility: actual governance, funding, research direction and beneficiary arrangements matter.
-Independent researchers without a qualifying academic affiliation and other ineligible users
-need separate written permission too.
+**Custom package identifier:** `LicenseRef-Teamknitt-Noncommercial-1.0`.
 
-## Country eligibility
+## Acceptance and permitted purposes
 
-Free permission is limited to institutions in **World Bank low-income or lower-middle-income
-economies**, using the official income classification in force at the time of use. See the
-[World Bank Country and Lending Groups](https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups).
-Upper-middle-income, high-income and unclassified economies are outside this free permission.
-Regional membership or lending eligibility does not substitute for the specified income group.
+To receive any licence under these terms, you must accept them as both strict obligations
+and conditions to all your licences.
 
-The institution's genuine headquarters and principal educational/research operations determine
-location. A postal address, registration, campus or affiliate in a qualifying economy does not
-extend free permission to an otherwise ineligible institution. Nationality, the location of an
-individual researcher, and the location of purchased computing services do not determine
-institutional eligibility. Partners and collaborators must qualify for their own use; an
-eligible institution cannot provide an exemption for another institution or a company.
+- **Noncommercial purposes:** any noncommercial purpose is a permitted purpose.
+- **Personal uses:** research, experiment and testing for the benefit of public knowledge,
+  personal study, private entertainment, hobby projects, amateur pursuits or religious
+  observance, **without any anticipated commercial application**, are permitted purposes.
+- **Listed organizations:** use by any charitable organization, educational institution,
+  public research organization, public safety or health organization, environmental
+  protection organization, or government institution is for a permitted purpose,
+  **regardless of the source of funding or obligations resulting from the funding**.
 
-If an economy's classification or an institution's circumstances change so it no longer
-qualifies, further use requires a separate written licence. Retain reasonable evidence of
-the applicable classification and institutional status. Contact Goran Mitevski for permission
-if eligibility is unclear or the institution is outside these categories.
+There is no country-income classification or academic-affiliation requirement. The previous
+academic-only eligibility, corporate-proxy exclusions and unrestricted-donation conditions
+are not conditions of this licence. The listed-organization permission must not be narrowed
+by importing those earlier rules.
 
-## Company donations and sponsorship
+## Copyright permission excludes redistribution and changes
 
-Genuinely unrestricted company donations are allowed only when the institution and project
-otherwise qualify. Cash or in-kind support must not buy research direction, staffing or budget
-control; commissioned work or dedicated research capacity; privileged or advance access to
-data, results or software changes; IP ownership, licensing options or first refusal; or a
-publication veto or commercial publication delay. Side agreements and pass-through foundations
-are subject to the same conditions. A donation cannot make a corporate research vehicle eligible.
+For permitted purposes, the copyright grant covers activities that would otherwise infringe
+the licensor's copyright, **other than distributing the software or making changes or new
+works based on the software**. In particular, this licence does **not** grant permission to:
 
-Ordinary donor acknowledgement is allowed. Ordinary academic salaries and public or independent
-charitable research grants do not alone make eligible research commercial. Purchasing general
-cloud computing, model APIs or technical services is also allowed for the institution's own
-research; the supplier gains no independent right to use Labtune as its research tool.
+- redistribute the software, including original copies;
+- modify the software or make derivative works, even for a noncommercial purpose;
+- sublicense or transfer any of your licences.
 
-| Example | Under this licence |
+Public source access does not broaden this licence's grants. Any independent statutory or
+platform rights remain separate.
+Development examples, build commands and contribution instructions do not create additional
+permissions. Independently authored task inputs and ordinary operation/configuration are
+not a general grant to change the software itself; whether a particular work copies or
+adapts protected software material depends on that work and applicable law.
+
+| Example | Effect of these terms |
 |---|---|
-| A qualifying public university in a low-income or lower-middle-income economy runs its own grant-funded replication study | Allowed if all academic conditions are met |
-| A public university in an upper-middle-income or high-income economy runs independent noncommercial research | Separate written permission required |
-| A company makes an unrestricted donation with no control or privileged rights | Allowed if the institution and project otherwise qualify |
-| A university project gives a sponsor first access to results or an IP licence option | Separate written permission required |
-| A company-controlled nonprofit operates a lab on a university campus | Excluded; separate written permission required |
-| A company lab publishes all its findings openly | Excluded; publication does not change institutional eligibility |
-| A university-owned commercial spinout uses Labtune | Excluded; separate written permission required |
+| An individual uses teamknitt for personal study or a hobby with no anticipated commercial application | A permitted purpose, subject to all terms |
+| An educational institution uses teamknitt, regardless of its country or source of funding | A permitted purpose under the listed-organization clause, subject to all terms |
+| A public research organization receives funding carrying sponsor obligations | The funding source or those obligations do not remove the listed-organization permission |
+| A user redistributes an unchanged copy or publishes a modified fork | Not granted by the copyright licence, even if noncommercial |
+| A for-profit business uses teamknitt for a commercial purpose outside the listed-organization permission | Not a permitted purpose under these terms; obtain separate permission |
 
-## Results, copies and continuing eligibility
+## Patent licence and patent defense
 
-Research findings and independently created outputs do not become subject to Labtune's
-licence merely because Labtune was used. Copies or adaptations of Labtune's own material
-retain its terms. The licence does not pay model-provider fees or change the terms of
-dependencies, datasets or external services. Third-party components retain their own licences.
+The patent grant covers patent claims the licensor can license, or becomes able to license,
+that you would infringe by using the software. It does not promise that the licensor controls
+every relevant patent.
 
-Sharing a copy does not give an ineligible recipient a right to use it. Institutions cannot
-lend their academic permissions to company partners or route company work through students
-or affiliates. Eligibility must continue during use and must be supportable with reasonable
-evidence if requested by the relevant copyright holders. Changes in country classification,
-location, governance, affiliation, funding or sponsor rights can end permission for further use.
+A written claim by you that the software infringes or contributes to infringement of any
+patent immediately ends your patent licence under these terms. If your company makes such
+a claim, your patent licence ends immediately for work on behalf of your company. The
+licence defines "your company" to include the organization you work for and organizations
+controlling, controlled by, or under common control with it, directly or indirectly.
 
-The licence is included in source distributions, wheels and newly initialized workspaces.
-Its package identifier, `LicenseRef-Labtune-Academic-Research-2.0`, identifies these custom
-academic and geographic eligibility terms. Version 2.0 applies to copies supplied under it;
-it does not purport to revoke or rewrite permissions granted for earlier copies. Earlier
-licences do not grant rights to new material supplied only under version 2.0.
+## Violations, fair use and liability
 
-## Request a separate licence
+On the **first written notice** of a violation or unlicensed activity, your licences can
+continue if you come into full compliance **and** take practical steps to correct past
+violations **within 32 days of receiving notice**. Otherwise, all your licences end
+immediately. This is not an unconditional or repeatable 32-day grace period.
 
-Institutions outside the qualifying income groups, company labs and all other ineligible
-users or activities must obtain separate written permission before use. Contact
-**Goran Mitevski, on behalf of Pioneertown B.V.**:
+Fair-use rights under the law are not limited. No other licences are implied; the licensor
+can license others separately. As far as the law allows, the software is provided as is,
+without any warranty or condition, and the licensor is not liable for damages under any kind
+of legal claim arising from the terms or the use or nature of the software.
 
-Email: [goran@pioneertown.ai](mailto:goran@pioneertown.ai).
+## Scope, provenance and earlier versions
 
-A request or acknowledgement does not itself grant a licence or promise any particular terms.
+**Based on Labtune**, the original work of Goran Mitevski / Pioneertown B.V. The new terms
+apply to teamknitt material offered by the licensor under this licence, starting with the
+0.8.0 development version. They do not purport to revoke or rewrite permissions already
+granted for earlier copies or to change the separate Labtune upstream project's licence.
+Earlier release notes describe the terms applicable when those releases were offered.
 
-Third-party components remain subject to their own licences; this licence grants only rights in Labtune material.
+The licensor can grant only rights it has authority to license. Separately licensed
+third-party components retain their own terms and required notices. Model-provider, service
+and data terms and fees remain separate. Independently authored inputs, data, findings and
+outputs are not relicensed solely because teamknitt was used; software material included in
+them still requires applicable permission.
+
+Source distributions, wheels and new starter workspaces include LICENSE and LICENSING.md,
+with the Pioneertown B.V. copyright/licensor notice and Goran Mitevski author credit. Keeping
+these documents in licensor-authorized distributions does not give recipients permission
+to redistribute. Existing workspaces and previously supplied copies are not rewritten.
+
+## Separate permissions and contact
+
+For redistribution, modification, derivative works, purposes outside the grants, or uncertain
+cases, request separate written permission from **Pioneertown B.V.**, through
+**Goran Mitevski**: [goran@pioneertown.ai](mailto:goran@pioneertown.ai).
+
+A request or acknowledgement is not permission. This guide does not resolve ownership or
+relicensing authority for material the licensor does not control. Qualified legal review
+before publication is recommended, particularly for the redistribution/modification
+exclusions and the breadth of the listed-organization permission.

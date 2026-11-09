@@ -21,10 +21,14 @@ their creative processes. It continues that work through configurable AI-agent t
 monitoring and human-directed intervention. This is research lineage, separate from the
 software source baseline above; it does not import thesis code, datasets or the full thesis.
 
-The **Labtune Academic Research License 2.0** and the legal texts **LICENSE** and **LICENSING.md**
-are unchanged. The product name and broader task capabilities do not expand eligibility or
-permit commercial use. Preserve both legal texts, the Pioneertown B.V. notice and Goran
-Mitevski's author credit. General-purpose dependencies retain their own notices/licenses.
+Starting with the 0.8.0 development version, teamknitt material offered by Pioneertown B.V.
+uses the **Teamknitt Noncommercial Licence 1.0**, based on the user's supplied terms. The
+copyright grant excludes redistribution, changes and new works based on the software.
+Preserve **LICENSE**, **LICENSING.md**, the Pioneertown B.V. notice and Goran Mitevski's author
+credit in licensor-authorized distributions and new starters. This change does not rewrite
+older grants or change the Labtune upstream project's licence. It grants no rights beyond
+the licensor's authority; general-purpose dependencies and other separately licensed material
+retain their own notices and licences.
 
 Historical serialized names can be read for compatibility; original saved bindings are
 verified before presentation normalization. This is provenance, not a claim that the

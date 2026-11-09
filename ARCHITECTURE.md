@@ -8,7 +8,7 @@ research tools, structural planning, schemas and engine resources. It imports no
 runtime and never delegates execution to another project's CLI or container.
 
 Based on Labtune by Goran Mitevski, Pioneertown B.V. See [provenance](PROVENANCE.md) and the
-unchanged LICENSE and LICENSING.md. Source lineage is acknowledged, not concealed by renaming.
+current LICENSE and LICENSING.md. Source lineage is acknowledged, not concealed by renaming.
 
 ## User-directed task execution
 

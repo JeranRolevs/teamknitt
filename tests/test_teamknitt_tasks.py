@@ -62,7 +62,7 @@ class TaskAndTopologyTests(TaskCase):
         self.assertEqual(p["name"], "teamknitt")
         self.assertEqual(p["scripts"]["teamknitt"], "teamknitt.cli:main")
         self.assertNotIn("teamthill", p["scripts"])
-        self.assertEqual(__version__, "0.7.0")
+        self.assertEqual(__version__, "0.8.0")
         self.assertTrue((self.root / "mission/task.md").is_file())
         self.assertNotIn("scientist", self.c["mission"]["deliverable"])
 
@@ -327,11 +327,12 @@ class ObserverHTTPAndPackagingTests(TaskCase):
             p=subprocess.run([node,'-e','new Function('+json.dumps(script)+');'],capture_output=True,text=True)
             self.assertEqual(p.returncode,0,p.stderr)
 
-    def test_license_terms_and_credits_remain_unchanged_despite_wider_task_scope(self):
+    def test_current_teamknitt_license_and_credits_are_copied_without_extra_permissions(self):
         for name in ('LICENSE','LICENSING.md'):
             self.assertEqual((self.root/name).read_bytes(),(ROOT/name).read_bytes())
         text=(self.root/'README.md').read_text()
-        self.assertIn('not',text);self.assertIn('permission for commercial use',text)
+        self.assertIn('Teamknitt Noncommercial Licence 1.0',text)
+        self.assertIn('does **not** grant redistribution, software changes or derivative works',text)
         self.assertIn('Goran Mitevski',text);self.assertIn('Pioneertown B.V.',text)
 
 

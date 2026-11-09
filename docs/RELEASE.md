@@ -1,3 +1,28 @@
+# teamknitt 0.8.0 — Teamknitt licence (unreleased)
+
+- Introduces **Teamknitt Noncommercial Licence 1.0**, using the user-supplied acceptance,
+  copyright, patent, permitted-purpose, fair-use, patent-defense, violation/cure, liability
+  and definition clauses. Pioneertown B.V. remains licensor; Goran Mitevski remains author.
+- Any noncommercial purpose and the specified personal uses are permitted. Use by the listed
+  organizations is permitted regardless of funding source or resulting obligations. Previous
+  geographic/academic-only eligibility and donor restrictions are not carried forward.
+- The copyright grant explicitly excludes redistribution, software changes and derivative
+  works, even if noncommercial. No sublicensing or transfer is granted. Fair-use rights remain.
+  The first-written-notice 32-day cure requires both compliance and practical correction.
+- Updates package metadata (`LicenseRef-Teamknitt-Noncommercial-1.0`), documentation,
+  contribution guidance, viewer notices, canonical diagrams and synchronized new starters.
+- Keeps Labtune lineage, earlier grants and separately licensed third-party terms distinct.
+  Existing workspaces and previously offered copies are not rewritten. Source access and
+  development instructions are not extra permissions; separate authorization may be needed.
+- No runtime capabilities, model choices, budgets or provider-call permissions are changed.
+  Setup, tests, planning, fixtures, views, diagrams and packaging remain free of paid calls.
+
+LICENSE is authoritative; LICENSING.md is an explanatory guide. Qualified legal review is
+recommended before publication. No commit, push, package publication or upstream licence
+change is implied. The historical release notes below describe their own release-time terms.
+
+---
+
 # teamknitt 0.7.0 — multiple native teams
 
 - 1–8 independent native teams for one shared task, with separate members (1–16), roles,

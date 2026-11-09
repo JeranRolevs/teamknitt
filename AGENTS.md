@@ -18,22 +18,29 @@ Keep starter resources synchronized with tools/sync_starter.py. All diagrams use
 diagrams/specs.py; regenerate with diagrams/render_flowcharts.py. Local archives, historical
 reviews and audit records are intentionally ignored and must not enter a public export.
 
-teamknitt uses the Labtune Academic Research License 2.0. Free use is limited to qualifying
-academic institutions in World Bank low-income or lower-middle-income economies and their
-authorized users for independent noncommercial research. Other use requires separate written
-permission through Goran Mitevski, goran@pioneertown.ai, on behalf of Pioneertown B.V.
-Company labs, corporate research proxies and commissioned company work are excluded.
-Company donations must be unrestricted, without control or privileged research/IP rights.
-Preserve LICENSE and LICENSING.md in distributions and starter workspaces, including the
-Pioneertown B.V. copyright/licensor notice and Goran Mitevski author credit. Do not change
-licensing terms, commit, push or publish without user authorization.
+teamknitt uses the Teamknitt Noncommercial Licence 1.0. LICENSE contains the authoritative,
+user-supplied terms; LICENSING.md is explanatory only. Permitted purposes include any
+noncommercial purpose, the specified personal uses without anticipated commercial application,
+and use by the listed charitable, educational, public-research, public-safety/health,
+environmental-protection and government organizations regardless of funding source or resulting
+obligations. Do not restore the previous geographic/academic-only or donor restrictions.
+The copyright grant excludes distributing the software and making changes or new works based
+on it, even for noncommercial purposes. No sublicensing or transfer is granted; fair-use rights
+remain. Preserve the patent-defense clause, first-written-notice 32-day cure conditions and
+as-is/no-liability terms. Source access or contribution instructions grant no extra rights.
+Development and redistribution require the licensor's authority or separate permission where
+not granted by these terms. Contact Goran Mitevski, goran@pioneertown.ai, for Pioneertown B.V.
+Keep LICENSE and LICENSING.md in licensor-authorized distributions and new starter workspaces,
+with Pioneertown B.V.'s copyright/licensor notice and Goran Mitevski's author credit. Existing
+copies, older grants, third-party terms and the Labtune upstream licence are not rewritten.
+Do not change licensing terms, commit, push or publish without user authorization.
 
 
 # Standalone teamknitt
 
 teamknitt is based on Labtune, with its own runtime under teamknitt.engine and one console
 command. No upstream package import, CLI delegation or parent checkout is allowed. Preserve
-PROVENANCE.md, Goran Mitevski's authorship, Pioneertown B.V. and the unchanged legal texts.
+PROVENANCE.md, Goran Mitevski's authorship, Pioneertown B.V. and the current legal texts.
 Preserve the brief research follow-up credit to Goran Mitevski’s 2022/2023 thesis work on
 distributed teams and creative processes. Do not reproduce the abstract, formal thesis
 citation or method details in product explanations. Use direct, descriptive headings,

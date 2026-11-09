@@ -1,240 +1,95 @@
-Labtune Academic Research License 2.0
-SPDX-License-Identifier: LicenseRef-Labtune-Academic-Research-2.0
+Teamknitt Noncommercial Licence 1.0
+SPDX-License-Identifier: LicenseRef-Teamknitt-Noncommercial-1.0
 
 Copyright (c) 2026 Pioneertown B.V.
+Licensor: Pioneertown B.V.
 Author: Goran Mitevski.
+Software: teamknitt.
 
-Pioneertown B.V. is the copyright holder and licensor of Labtune and the
-owner of this license text. Goran Mitevski is the author of Labtune.
+Acceptance
 
-1. Scope and definitions
+In order to get any license under these terms, you must agree to them as both
+strict obligations and conditions to all your licenses.
 
-This license applies to the Labtune code, documentation, examples, templates,
-and other copyrightable material made available under it (the "Software").
-Identified third-party material remains subject to its own license. Each
-copyright holder grants only the rights that holder has authority to grant.
+Copyright License
 
-"Qualifying Economy" means an economy classified as low-income or
-lower-middle-income in the World Bank's official Country and Lending
-Groups income classification in force at the time of use. Economies
-classified as upper-middle-income or high-income, and unclassified
-economies, do not qualify. The classification is published at:
-https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups
-The income group, rather than a regional, lending, or other grouping,
-determines eligibility. If the classification or an institution's location
-cannot be established, separate written permission is required.
+The licensor grants you a copyright license for the software to do everything
+you might do with the software that would otherwise infringe the licensor's
+copyright in it for any permitted purpose, other than distributing the software
+or making changes or new works based on the software.
 
-"Eligible Academic Institution" means a public or nonprofit university,
-college, or comparable educational institution legally recognized by the
-competent educational authority, whose primary mission is education and
-public-interest academic research or research training. Its departments and
-research centers qualify only while genuinely part of, or owned and
-controlled by, that institution and subject to its independent academic
-governance. The institution must be legally established and genuinely
-headquartered in a Qualifying Economy, with its principal educational
-and academic-research operations there. A local registration, postal
-address, campus, affiliate, or intermediary does not make an otherwise
-ineligible institution eligible. An organization or unit excluded by
-section 4 cannot qualify.
+Patent License
 
-"Authorized Academic User" means a currently enrolled student, faculty or
-staff member, or formally appointed researcher acting solely on behalf of
-an Eligible Academic Institution for its Permitted Academic Research.
-An appointment, enrollment, or university account grants no permission for
-work on behalf of another employer, client, or commercial beneficiary.
+The licensor grants you a patent license for the software that covers patent
+claims the licensor can license, or becomes able to license, that you would
+infringe by using the software.
 
-"Commercial Entity" means a for-profit business, commercial research
-organization, company, or an entity acting on behalf of one in connection
-with the Software or project. "Control"
-means the direct or indirect ability, alone or jointly with others, to
-direct or decisively influence governance, management, budgets, staffing,
-research priorities, publication, or intellectual-property arrangements.
-Control can arise from ownership, voting or appointment rights, contracts,
-funding dependency, or other arrangements, including control exercised
-through an intermediary. A donation satisfying section 5 does not by
-itself constitute Control.
+Noncommercial Purposes
 
-"Permitted Academic Research" means noncommercial academic or scientific
-investigation, research training, experimentation, reproduction of results,
-or validation of findings, conducted by an Eligible Academic Institution
-under its own independent academic direction and for its educational or
-public-interest research mission. The institution must retain control of
-the research agenda, conduct, and results and freedom to publish, subject
-to applicable law, research ethics, and privacy obligations. The work must
-not be performed on behalf of, commissioned by, or operated primarily as
-research capacity for a Commercial Entity. Section 5 also applies to its
-funding and sponsor arrangements.
+Any noncommercial purpose is a permitted purpose.
 
-"Commercial Use" includes use for commercial advantage, business operations,
-commercial deployment, or monetary compensation; internal or commissioned
-R&D intended to support a commercial product, service, or business; selling
-or commercially licensing the Software; or offering its functionality as
-a commercial hosted service. A use can be commercial even if access to the
-Software is free. Ordinary academic salaries, public or independent
-charitable research grants, and donations permitted by section 5 do not
-by themselves make otherwise Permitted Academic Research commercial.
+Personal Uses
 
-2. Free permission for eligible academic research
+Personal use for research, experiment, and testing for the benefit of public
+knowledge, personal study, private entertainment, hobby projects, amateur
+pursuits, or religious observance, without any anticipated commercial
+application, is use for a permitted purpose.
 
-Only an Eligible Academic Institution or an Authorized Academic User
-receives permission under this license. Subject to these terms, each
-copyright holder grants such a recipient a worldwide, nonexclusive,
-royalty-free copyright license to use, execute, copy, study, and modify
-the Software solely for Permitted Academic Research. No license fee is
-payable for these permitted uses. No institution-wide permission for
-other activities, partners, affiliates, or clients is granted.
+Noncommercial Organizations
 
-Eligibility follows the institution and the project, not a user's
-nationality or the location of a computer or general-purpose service.
-An institution outside a Qualifying Economy, and any other ineligible
-user or activity, requires a separate written license before use.
-Contact Goran Mitevski on behalf of Pioneertown B.V. using section 10.
+Use by any charitable organization, educational institution, public research
+organization, public safety or health organization, environmental protection
+organization, or government institution is use for a permitted purpose
+regardless of the source of funding or obligations resulting from the funding.
 
-3. Copies, changes, and redistribution
+Fair Use
 
-You may share original or modified copies for Permitted Academic Research,
-without charging a license fee for the Software. Every copy or substantial
-portion you share must include this license and retain applicable copyright,
-attribution, and third-party notices. Identify changes you make. Changes to
-the Software that you distribute must be offered under these same terms;
-you may not remove or weaken the institutional-eligibility, geographic,
-academic-research, noncommercial, or anti-circumvention restrictions.
-Recipients obtain rights to the original Software directly from its
-copyright holders only if they qualify under this license. Access to a
-publicly shared copy creates no
-permission for an ineligible recipient to use the Software.
+You may have "fair use" rights for the software under the law. These terms do
+not limit them.
 
-4. Excluded organizations, projects, and indirect use
+No Other Rights
 
-No rights are granted to the organizations or for the activities below:
+These terms do not allow you to sublicense or transfer any of your licenses to
+anyone else, or prevent the licensor from granting licenses to anyone else.
+These terms do not imply any other licenses.
 
-(a) a company research lab, startup, commercial consultancy, for-profit
-    educational institution, commercial joint venture, or commercial
-    subsidiary or spinout, including one owned by a university;
-(b) a lab, institute, foundation, nonprofit, center, or other unit that is
-    Controlled by a Commercial Entity, acts on its behalf, or operates
-    primarily as its research or development capacity, even if nominally
-    independent or hosted by an Eligible Academic Institution;
-(c) Commercial Use, commissioned company research, or research conducted
-    to provide dedicated services, proprietary deliverables, development
-    work, or other privileged commercial benefits to a Commercial Entity;
-(d) use through a university account, academic appointment, student,
-    contractor, intermediary, affiliate, or shared infrastructure to
-    obtain for an ineligible entity rights it could not obtain directly;
-(e) an institution that does not meet the geographic requirements in
-    section 1, including use on its behalf through an institution,
-    campus, affiliate, researcher, or intermediary in a Qualifying Economy.
+Patent Defense
 
-These exclusions apply according to the actual governance, funding, work,
-and beneficiary arrangements. An academic name, nonprofit or charitable
-registration, educational email address, university affiliation, public
-paper, or acknowledgement of Labtune does not by itself establish eligibility.
-General benefits a company obtains from research findings available to
-the public on equal terms do not by themselves constitute privileged
-commercial benefits or make the company an eligible user of the Software.
+If you make any written claim that the software infringes or contributes to
+infringement of any patent, your patent license for the software granted under
+these terms ends immediately. If your company makes such a claim, your patent
+license ends immediately for work on behalf of your company.
 
-Use outside this license requires a separate written license from the
-relevant copyright holders before it begins. Eligible institutions must
-not lend, transfer, or extend their permissions to excluded organizations.
+Violations
 
-5. Funding and unrestricted donations
+The first time you are notified in writing that you have violated any of these
+terms, or done anything with the software not covered by your licenses, your
+licenses can nonetheless continue if you come into full compliance with these
+terms, and take practical steps to correct past violations, within 32 days of
+receiving notice. Otherwise, all your licenses end immediately.
 
-Funding or in-kind support from a Commercial Entity is permitted only as
-a genuinely unrestricted donation to an Eligible Academic Institution.
-There must be no linked agreement, side arrangement, or indirect condition
-that gives the donor or another Commercial Entity:
+No Liability
 
-(a) Control or direction over the institution, lab, project, research
-    agenda, staff, or allocation of research resources;
-(b) commissioned research, dedicated research capacity, services,
-    proprietary deliverables, or work for its commercial R&D;
-(c) exclusive, preferential, or advance access to research data, findings,
-    Software changes, or other results, beyond what the public receives;
-(d) ownership, a license, an option, a first-refusal right, or any other
-    preferential right in research intellectual property or results; or
-(e) a publication veto, approval right, or a right to restrict or delay
-    publication for commercial advantage.
+As far as the law allows, the software comes as is, without any warranty or
+condition, and the licensor will not be liable to you for any damages arising
+out of these terms or the use or nature of the software, under any kind of
+legal claim.
 
-Passing support through a foundation, nonprofit, university affiliate, or
-other intermediary does not avoid these conditions. A permissible donation
-cannot make an otherwise excluded organization or project eligible.
-Ordinary donor acknowledgement, without any of the rights or benefits
-above, does not by itself make a donation restricted.
+Definitions
 
-Eligible institutions may purchase general-purpose computing, model APIs,
-equipment, and other ancillary technical services for their own research.
-Such purchases grant the supplier no independent right to use the Software
-or to operate the project as its own research capacity. External service
-and data terms still apply.
+The licensor is the individual or entity offering these terms, and the software
+is the software the licensor makes available under these terms.
 
-6. Continuing eligibility
+You refers to the individual or entity agreeing to these terms.
 
-Institutional and project eligibility must hold throughout each use.
-This includes the World Bank income classification and the institution's
-genuine headquarters and principal operations. If an economy ceases to
-qualify, free permission for further use ends; a separate written license
-is required to continue. If your affiliation, governance, funding, project,
-or beneficiary arrangements cease to meet these terms, permission for
-further use ends.
-You must be able, on a reasonable request from the relevant copyright
-holders, to substantiate eligibility through reasonable evidence of
-institutional status, geographic eligibility, academic affiliation,
-governance, and project funding and rights arrangements. No automatic
-permission for uncertain cases or exception based only on an institution's
-title is granted; obtain separate
-written permission if you cannot establish eligibility.
+Your company is any legal entity, sole proprietorship, or other kind of
+organization that you work for, plus all organizations that have control over,
+are under the control of, or are under common control with that organization.
+Control means ownership of substantially all the assets of an entity, or the
+power to direct its management and policies by vote, contract, or otherwise.
+Control can be direct or indirect.
 
-7. Research results and other terms
+Your licenses are all the licenses granted to you for the software under these
+terms.
 
-You may publish and share findings from Permitted Academic Research.
-This license does not claim rights in your research data, findings, or
-independently created outputs merely because you used the Software. Any
-copyrightable part of the Software included in an output remains subject
-to this license. Separate data, dependency, model-provider, and service terms
-continue to apply; this license does not grant rights in those materials or
-services and does not pay their fees.
-
-8. Reserved rights and termination
-
-Rights not expressly granted are reserved. No trademark rights are granted.
-Nothing in this license limits rights you have under applicable law that
-cannot be restricted by license. Your permissions under this license end
-automatically if you breach its terms; you must then stop activities that
-require those permissions. Reinstatement requires written permission from
-the relevant copyright holders. The eligibility, noncommercial, and
-anti-circumvention restrictions and the following warranty and liability
-terms continue to apply after termination.
-
-9. No warranty; limitation of liability
-
-To the fullest extent permitted by applicable law, the Software is provided
-"as is" and "as available", without warranties or conditions of any kind,
-including merchantability, fitness for a particular purpose, title, or
-noninfringement. You are responsible for assessing its suitability and for
-validating any research or other results. No copyright holder or contributor
-is liable for damages, losses, or claims arising from the Software or its
-use, whether in contract, tort, or otherwise, to the extent the law allows
-that liability to be excluded.
-
-10. Separate permissions and contact
-
-For use outside the free permission in this license, contact the licensor,
-Pioneertown B.V., through Goran Mitevski to request a separate written
-license. This includes institutions in upper-middle-income or high-income
-economies, institutions in unclassified economies, company research labs,
-and other users or activities that do not qualify under this license.
-
-Goran Mitevski
-Pioneertown B.V.
-Email: goran@pioneertown.ai
-
-Sending a request, receiving an acknowledgement, or discussing terms does
-not grant permission. Any separate license must be agreed in writing
-before the proposed use begins.
-
-11. License version
-
-These are version 2.0 terms for Software supplied under this version.
-This version does not purport to revoke or rewrite permissions already
-granted for copies received under an earlier license. An earlier license
-does not grant rights to new material supplied only under version 2.0.
+Use means anything you do with the software requiring one of your licenses.

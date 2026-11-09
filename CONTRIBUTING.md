@@ -1,5 +1,21 @@
 # Contributing
 
+## Permission before code or documentation changes
+
+The **Teamknitt Noncommercial Licence 1.0** does **not** grant permission to redistribute
+or modify the software or make derivative works, even for noncommercial purposes. Public
+source access, a fork/PR workflow and this guide do not add permissions. Before preparing or
+sharing software patches, modified copies or derivative contributions, obtain separate written
+permission from **Pioneertown B.V.**, through **Goran Mitevski** at
+[goran@pioneertown.ai](mailto:goran@pioneertown.ai), unless you have independent legal rights.
+An issue report or discussion is not permission. No copyright assignment or additional licence
+is implied by these instructions. See [LICENSE](LICENSE) and [LICENSING.md](LICENSING.md).
+
+The following development/release instructions are for the licensor and separately authorized
+contributors. Preserve existing copyright, author and dependency notices in authorized work.
+
+## Authorized development — offline
+
 Work from this repository root, the independent teamknitt Python package. Python 3.11+ is required.
 
 ```bash
@@ -21,11 +37,9 @@ tests, CI, package builds, init, prepare, check or plan. A local doctor checks c
 doctor --live and study run are explicit metered actions.
 
 Lab styles and communication remain user choices. Compare them with repeated matched-budget
-runs; one smoke trial cannot establish a winner. Contributions must be offered under the
-[Labtune Academic Research License 2.0](LICENSE); retain applicable notices and identify changes.
-Free permission requires an eligible academic institution in a World Bank low-income or
-lower-middle-income economy. For other use, request separate written permission through
-Goran Mitevski at [goran@pioneertown.ai](mailto:goran@pioneertown.ai); see [licensing](LICENSING.md).
+runs; one smoke trial cannot establish a winner. Any contribution/release permissions and
+terms must be agreed with the licensor separately; the public licence is not a modification
+or redistribution grant. Retain applicable notices and identify authorized changes.
 
 For a release, build wheels and a source distribution and run
 python3 tools/check_release.py --artifacts dist. Keep ignored local archives and audit/review

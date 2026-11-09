@@ -185,6 +185,10 @@ run path. [Migration](docs/MIGRATION.md) · [Architecture](ARCHITECTURE.md) · [
 
 ## Development and portability — offline
 
+The licence does not grant software-modification or redistribution rights. Development and
+contribution instructions are for the licensor and separately authorized contributors, not
+an additional permission; see [contributing](CONTRIBUTING.md).
+
 ```bash
 python -m pip install -e '.[memory,diagrams]'
 python tools/sync_starter.py --check
@@ -198,15 +202,24 @@ python tools/check_release.py --artifacts dist
 All diagrams/catalogs/layouts originate in `diagrams/specs.py`. Starters are synchronized;
 credentials, source books, Foundation notes, trials and results stay out of Git and packages.
 
-## License — unchanged; task scope does not widen permission
+## Licence
 
-teamknitt retains the **Labtune Academic Research License 2.0**, not an OSI open-source license.
-Free use remains limited to qualifying public/nonprofit academic institutions in World Bank
-low-income or lower-middle-income economies and authorized users for independent noncommercial
-research. The broader task/brainstorming capability does **not** authorize commercial use.
-Company labs, corporate proxies and commissioned company work remain excluded. Company
-donations must be unrestricted, without control or privileged research/IP rights. Other use
-requires separate written permission through **Goran Mitevski, [goran@pioneertown.ai](mailto:goran@pioneertown.ai),
-on behalf of Pioneertown B.V.** Preserve [LICENSE](LICENSE), [LICENSING.md](LICENSING.md) and
-both credits in distributions and starters. Research outputs are not relicensed merely
-through use. The license texts are authoritative.
+teamknitt uses the **Teamknitt Noncommercial Licence 1.0**, a custom source-available licence,
+not an OSI open-source licence. [LICENSE](LICENSE) is authoritative; [LICENSING.md](LICENSING.md)
+explains the terms.
+
+- Any noncommercial purpose is permitted. The specified personal uses must have no anticipated
+  commercial application.
+- Use by the listed charitable, educational, public-research, public-safety/health,
+  environmental-protection and government organizations is for a permitted purpose regardless
+  of funding source or resulting obligations. There is no geographic or academic-only test.
+- **The copyright licence does not grant redistribution, software changes or derivative works,
+  even for noncommercial purposes.** No sublicensing or transfer is granted. Fair-use rights remain.
+- A patent licence, patent-defense termination, a conditional 32-day cure on first written
+  notice, and as-is/no-liability terms apply as specified in LICENSE.
+
+**Author: Goran Mitevski. Copyright holder/licensor: Pioneertown B.V. Based on Labtune.**
+For permissions outside the grants, contact [goran@pioneertown.ai](mailto:goran@pioneertown.ai).
+Keep both legal documents and credits in licensor-authorized distributions and new starters;
+that does not grant recipients redistribution rights. Earlier copies/grants and the separate
+Labtune upstream licence are not rewritten. Third-party terms remain separate.

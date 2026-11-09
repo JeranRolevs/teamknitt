@@ -1,4 +1,4 @@
-"""Portable team workspace, using the shipped tools and unchanged legal terms."""
+"""Portable team workspace, using the shipped tools and bundled legal terms."""
 from __future__ import annotations
 
 from pathlib import Path

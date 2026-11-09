@@ -125,17 +125,18 @@ def init_workspace(destination: Path, template: str = "text", decision_backend: 
             "the process locally with two read-only agents; no model calls are made.\n"
             "Keep private seeds, credentials, generated trials and results out of Git.\n\n"
             "teamknitt copyright holder and licensor: Pioneertown B.V. Author: Goran Mitevski.\n"
-            "teamknitt material is licensed for independent noncommercial academic research\n"
-            "at qualifying public or nonprofit educational institutions in World Bank low-income\n"
-            "or lower-middle-income economies, and by their authorized users, under the\n"
-            "Labtune Academic Research License 2.0.\n"
-            "Company labs, corporate research proxies and commissioned company work are excluded.\n"
-            "Company donations must be unrestricted, without control or privileged results/IP rights.\n"
-            "Other use, including by institutions in upper-middle-income or high-income economies,\n"
-            "requires separate written permission before use. Contact Goran Mitevski:\n"
-            "goran@pioneertown.ai.\n"
-            "Read LICENSE and LICENSING.md;\n"
-            "your independent research data and outputs are not relicensed merely by using teamknitt.\n",
+            "Based on Labtune. The Teamknitt Noncommercial Licence 1.0 permits noncommercial\n"
+            "purposes, the specified personal uses without anticipated commercial application,\n"
+            "and use by the listed organizations regardless of funding source or resulting\n"
+            "obligations, without geographic or academic-only eligibility restrictions.\n"
+            "The copyright licence does not grant redistribution, software changes or\n"
+            "derivative works, even if noncommercial. No sublicensing or transfer is granted;\n"
+            "fair-use rights remain. Patent-defense termination, the conditional first-notice\n"
+            "32-day cure and as-is/no-liability terms apply. Read LICENSE and LICENSING.md.\n"
+            "Development instructions do not add permissions. Earlier grants, upstream Labtune\n"
+            "and third-party terms are not rewritten. For separate permission contact\n"
+            "Goran Mitevski, goran@pioneertown.ai, for Pioneertown B.V.\n"
+            "Keep the legal documents and credits in licensor-authorized distributions and new starters.\n",
             encoding="utf-8")
         # Exclusive destination creation: a concurrent creator cannot be overwritten.
         destination.mkdir()

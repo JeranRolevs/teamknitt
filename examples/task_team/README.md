@@ -59,13 +59,19 @@ teamknitt follows up Goran Mitevski’s **2022/2023 thesis research** on distrib
 their creative processes. The tool continues this work through team configuration,
 work monitoring and human-directed intervention. See `docs/TEAM_RESEARCH.md`.
 
-## Licensing notice — unchanged
+## Licensing notice
 
-Author: **Goran Mitevski**. Copyright holder/licensor: **Pioneertown B.V.** Read **LICENSE** and
-**LICENSING.md**. The Labtune Academic Research License 2.0 limits free use to qualifying
-public/nonprofit academic institutions in World Bank low-income or lower-middle-income
-economies and authorized users for independent noncommercial research. The wider task/goal
-scope is **not** permission for commercial use. Company labs, corporate proxies and commissioned
-company work remain excluded. Company donations must be unrestricted, without control or
-privileged research/IP rights. Other use requires written permission through Goran Mitevski,
-**goran@pioneertown.ai**, on behalf of Pioneertown B.V. Preserve both license texts and credits.
+Author: **Goran Mitevski**. Copyright holder/licensor: **Pioneertown B.V.** Based on Labtune.
+Read **LICENSE** and **LICENSING.md**. The **Teamknitt Noncommercial Licence 1.0** permits
+noncommercial purposes, the specified personal uses without anticipated commercial application,
+and use by the listed charitable, educational, public-research, public-safety/health,
+environmental-protection and government organizations regardless of funding source or resulting
+obligations. There is no geographic or academic-only eligibility test.
+
+The copyright licence does **not** grant redistribution, software changes or derivative works,
+even for noncommercial purposes. No sublicensing or transfer is granted; fair-use rights remain.
+The patent grant/defense, conditional first-written-notice 32-day cure and as-is/no-liability
+terms are in LICENSE. Workspace/development instructions do not add permission. Preserve both
+legal documents and credits in licensor-authorized distributions and new starters; earlier
+grants and third-party terms are not rewritten. For separate permission, contact Goran Mitevski,
+**goran@pioneertown.ai**, for Pioneertown B.V.

@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "teamknitt"
-version = "0.7.0"
+version = "0.8.0"
 description = "Research-informed agent teams: configure, set tasks, follow work and intervene explicitly"
 authors = [{name = "Goran Mitevski"}]
 readme = "README.md"
 requires-python = ">=3.11"
-license = "LicenseRef-Labtune-Academic-Research-2.0"
+license = "LicenseRef-Teamknitt-Noncommercial-1.0"
 license-files = ["LICENSE", "LICENSING.md"]
 dependencies = ["PyYAML>=6,<7", "jsonschema>=4,<5"]
 classifiers = [

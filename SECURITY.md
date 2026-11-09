@@ -45,8 +45,9 @@ Raw trials, deliverables, source/generated text, keys, config backups and resear
 private ignored data. Metadata itself can be sensitive. Polling shows saved checkpoints and
 producer heartbeat; stale telemetry is not proof of continued execution. No automatic recovery
 or cryptographic audit guarantee is claimed. Observation dimensions do not certify latent
-cognition, synchrony, fractals, attractors or goal achievement. The unchanged teamknitt license
-eligibility is not broadened by support for generic tasks or brainstorming.
+cognition, synchrony, fractals, attractors or goal achievement. Generic tasks and brainstorming
+remain subject to the Teamknitt Noncommercial Licence 1.0; functionality does not add
+redistribution, software-modification or derivative-work permissions.
 
 The six focused views in two explanatory groups are presentation-only. The optional CLI `--probe-run` reads one
 explicitly selected saved protocol and exports allowlisted summary metadata, never messages,

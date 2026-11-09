@@ -300,10 +300,18 @@ and Salas et al. See [the integrated background](TEAM_RESEARCH.md).
 Books/PDFs, extracts, benchmark implementations and local Foundations notes are not distributed.
 Starters use `tools/sync_starter.py`; all diagrams use `diagrams/specs.py`.
 
-## License and credit — unchanged
+## Licence and credit
 
-Author: **Goran Mitevski**. Copyright holder/licensor: **Pioneertown B.V.** teamknitt retains
-the **Labtune Academic Research License 2.0**, not an OSI open-source license. Broader task
-capability does not expand eligibility or permit commercial use. Preserve LICENSE and
-LICENSING.md in distributions and starters; their terms are authoritative. Other use requires
-written permission through Goran Mitevski, goran@pioneertown.ai, on behalf of Pioneertown B.V.
+Author: **Goran Mitevski**. Copyright holder/licensor: **Pioneertown B.V.** Based on Labtune.
+The **Teamknitt Noncommercial Licence 1.0** governs teamknitt, not an OSI open-source licence.
+Any noncommercial purpose and the specified personal uses are permitted; the listed
+organizations' use is permitted regardless of funding source or resulting obligations.
+There is no geographic or academic-only eligibility test. The copyright grant does not
+authorize redistribution, software changes or derivative works, even if noncommercial.
+No sublicensing or transfer is granted; fair-use rights remain. Patent-defense termination,
+the conditional first-notice 32-day cure and as-is/no-liability terms apply.
+
+Keep LICENSE, LICENSING.md and credits in licensor-authorized distributions and new starters.
+Their terms govern; instructions and broader task capability do not add permissions. Earlier
+grants and the Labtune upstream licence are not rewritten; third-party terms remain separate.
+For separate permission, contact Goran Mitevski, goran@pioneertown.ai, for Pioneertown B.V.

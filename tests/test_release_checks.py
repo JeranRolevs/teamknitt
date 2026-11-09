@@ -2,6 +2,9 @@
 import importlib.util
 from pathlib import Path
 import tempfile
+import io
+import tarfile
+import tomllib
 import subprocess
 import unittest
 import zipfile
@@ -19,9 +22,44 @@ class ReleaseArtifactTests(unittest.TestCase):
         self.addCleanup(directory.cleanup)
         path = Path(directory.name) / "teamknitt-fixture.whl"
         with zipfile.ZipFile(path, "w") as archive:
-            for name, content in {"LICENSE": "fixture", "LICENSING.md": "fixture", **files}.items():
+            defaults = {name: (ROOT / name).read_bytes() for name in ("LICENSE", "LICENSING.md")}
+            defaults["teamknitt-fixture.dist-info/METADATA"] = self.metadata()
+            for name, content in {**defaults, **files}.items():
                 archive.writestr(name, content)
         return path
+
+    def metadata(self):
+        project = tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]
+        return ("Metadata-Version: 2.4\nName: " + project["name"] + "\nVersion: " + project["version"]
+                + "\nLicense-Expression: " + project["license"] + "\n"
+                + "".join("License-File: " + name + "\n" for name in project["license-files"]) + "\n")
+
+    def test_stale_licence_or_guide_bytes_are_rejected(self):
+        for name in ("LICENSE", "LICENSING.md"):
+            with self.subTest(name=name):
+                path = self.wheel({name: b"stale legal text"})
+                self.assertIn(name + ": differs from current " + name, checks.check_artifact(path))
+
+    def test_stale_or_missing_license_metadata_is_rejected(self):
+        name = "teamknitt-fixture.dist-info/METADATA"
+        for body in (self.metadata().replace("LicenseRef-Teamknitt-Noncommercial-1.0", "MIT"), ""):
+            with self.subTest(body=body):
+                self.assertIn(name + ": incorrect License-Expression", checks.check_artifact(self.wheel({name: body})))
+
+    def test_sdist_legal_copies_and_metadata_match_current_terms(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "teamknitt-fixture.tar.gz"
+            for stale in (False, True):
+                files = {name: (ROOT / name).read_bytes() for name in ("LICENSE", "LICENSING.md")}
+                files["PKG-INFO"] = self.metadata().encode()
+                if stale: files["LICENSE"] = b"stale legal text"
+                with tarfile.open(path, "w:gz") as archive:
+                    for name, body in files.items():
+                        info = tarfile.TarInfo("teamknitt-fixture/" + name); info.size = len(body)
+                        archive.addfile(info, io.BytesIO(body))
+                errors = checks.check_artifact(path)
+                if stale: self.assertIn("teamknitt-fixture/LICENSE: differs from current LICENSE", errors)
+                else: self.assertEqual(errors, [])
 
     def test_foundations_material_is_private_at_any_depth(self):
         names = (

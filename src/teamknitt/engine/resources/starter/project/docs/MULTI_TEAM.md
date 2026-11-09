@@ -187,9 +187,14 @@ apply configurations, attach/read arbitrary files, fetch styles, start execution
 interventions. Private snapshots are new-file-only and do not access APIs. Metadata may still
 be sensitive; this is not an authenticated multi-user hosted service or cryptographic audit.
 
-## License and provenance
+## Licence and provenance
 
 Based on Labtune; research follow-up to Goran Mitevski’s 2022/2023 work. Author: **Goran
-Mitevski**. Copyright/licensor: **Pioneertown B.V.** Preserve PROVENANCE.md, LICENSE and
-LICENSING.md. The **Labtune Academic Research License 2.0** is unchanged. More teams, style
-references and coding tasks do not broaden eligibility or permit commercial use.
+Mitevski**. Copyright/licensor: **Pioneertown B.V.** The **Teamknitt Noncommercial Licence 1.0**
+permits noncommercial purposes, the specified personal uses, and use by the listed organizations
+regardless of funding source or resulting obligations, without a geographic eligibility test.
+The copyright grant excludes redistribution, software changes and derivative works, even for
+noncommercial purposes. More teams, references and coding tasks add no permissions. Preserve
+PROVENANCE.md, LICENSE, LICENSING.md and credits in licensor-authorized distributions and new
+starters. Prior grants/upstream Labtune and third-party terms are not rewritten. For separate
+permission, contact Goran Mitevski, goran@pioneertown.ai, for Pioneertown B.V.
