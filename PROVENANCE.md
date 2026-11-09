@@ -21,14 +21,20 @@ their creative processes. It continues that work through configurable AI-agent t
 monitoring and human-directed intervention. This is research lineage, separate from the
 software source baseline above; it does not import thesis code, datasets or the full thesis.
 
-Starting with the 0.8.0 development version, teamknitt material offered by Pioneertown B.V.
-uses the **Teamknitt Noncommercial Licence 1.0**, based on the user's supplied terms. The
-copyright grant excludes redistribution, changes and new works based on the software.
+Starting with the 0.9.0 development version, teamknitt material offered by Pioneertown B.V.
+uses the **Teamknitt Noncommercial and Research Licence 2.0**. General noncommercial,
+non-research use is free; commercial use needs separate written permission. The research
+exception retains Labtune's academic/geographic eligibility, independence, funding and
+anti-circumvention rules: noncommercial research outside qualifying low-income/lower-middle-
+income academic institutions requires separate permission. Modification and sharing are
+conditionally allowed for Permitted Uses with retained notices, identified changes and the
+same terms, not a blanket prohibition.
+
 Preserve **LICENSE**, **LICENSING.md**, the Pioneertown B.V. notice and Goran Mitevski's author
-credit in licensor-authorized distributions and new starters. This change does not rewrite
-older grants or change the Labtune upstream project's licence. It grants no rights beyond
-the licensor's authority; general-purpose dependencies and other separately licensed material
-retain their own notices and licences.
+credit. The tone example was not a substitute for the Labtune-based policy. Version 2.0 does
+not revoke or rewrite earlier grants, including those offered under version 1.0, change the
+Labtune upstream project's licence, or grant rights beyond the licensor's authority. Dependencies
+and other separately licensed material retain their own notices and terms.
 
 Historical serialized names can be read for compatibility; original saved bindings are
 verified before presentation normalization. This is provenance, not a claim that the

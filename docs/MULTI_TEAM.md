@@ -190,11 +190,14 @@ be sensitive; this is not an authenticated multi-user hosted service or cryptogr
 ## Licence and provenance
 
 Based on Labtune; research follow-up to Goran Mitevski’s 2022/2023 work. Author: **Goran
-Mitevski**. Copyright/licensor: **Pioneertown B.V.** The **Teamknitt Noncommercial Licence 1.0**
-permits noncommercial purposes, the specified personal uses, and use by the listed organizations
-regardless of funding source or resulting obligations, without a geographic eligibility test.
-The copyright grant excludes redistribution, software changes and derivative works, even for
-noncommercial purposes. More teams, references and coding tasks add no permissions. Preserve
-PROVENANCE.md, LICENSE, LICENSING.md and credits in licensor-authorized distributions and new
-starters. Prior grants/upstream Labtune and third-party terms are not rewritten. For separate
-permission, contact Goran Mitevski, goran@pioneertown.ai, for Pioneertown B.V.
+Mitevski**. Copyright/licensor: **Pioneertown B.V.** The **Teamknitt Noncommercial and Research
+Licence 2.0** permits free general noncommercial, non-research use. Research remains subject
+to Labtune's qualifying academic/geographic, independence, funding and anti-circumvention
+conditions. Noncommercial research outside qualifying low-income/lower-middle-income academic
+institutions requires separate permission, as does commercial use; contact Goran Mitevski,
+goran@pioneertown.ai, for Pioneertown B.V. Modification and sharing are allowed for Permitted
+Uses without a software licence fee, with retained legal/author/third-party notices, identified
+changes and the same terms. More teams, styles or task-mode labels do not waive eligibility.
+Preserve PROVENANCE.md, LICENSE and LICENSING.md in distributions and new starters. Earlier
+grants (including version 1.0), existing workspaces, upstream Labtune and third-party terms
+are not rewritten. No automatic licence entitlement or execution-policy change is added.

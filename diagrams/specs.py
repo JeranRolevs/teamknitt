@@ -323,7 +323,7 @@ def diagrams():
     for key,x in [("roles",3),("reps",10),("work",17)]:
         edge(g,key,"runtime","bottom","top",via=((x,8.6),(10,8.6)) if key!="reps" else ())
     edge(g,"authority","runtime");edge(g,"runtime","record")
-    g["footer"]="Based on Labtune; research follow-up to Goran Mitevski’s 2022/2023 work. Pioneertown B.V.; Teamknitt Noncommercial Licence 1.0; see LICENSE."
+    g["footer"]="Based on Labtune; research follow-up to Goran Mitevski’s 2022/2023 work. Pioneertown B.V.; Teamknitt Noncommercial and Research Licence 2.0; see LICENSE."
     result.append(g)
 
     g=graph("14-teamknitt-protocol", "From a user brief to observable team contributions", "Configure or draft explicitly; route information by topology and sharing; keep completion separate from user-goal achievement.",width=24,height=14)
@@ -368,7 +368,7 @@ def diagrams():
     for key,x in [("distributed",19),("transactive",26)]:edge(g,"system",key,"bottom","top",via=((22.5,7.5),(x,7.5)))
     edge(g,"system","coordination","left","left",via=((15.1,6),(15.1,12.3)))
     edge(g,"system","dynamics","right","right",via=((29.5,6),(29.5,12.3)))
-    g["footer"]="Background: Research and Theory on Human Teams · 9 Nov 2026 · @Goran. Based on Labtune / Pioneertown B.V.; Teamknitt Noncommercial Licence 1.0."
+    g["footer"]="Background: Research and Theory on Human Teams · 9 Nov 2026 · @Goran. Based on Labtune / Pioneertown B.V.; Teamknitt Noncommercial and Research Licence 2.0."
     result.append(g)
 
     g=graph("16-teamknitt-intervention", "Configuration, tasks, monitoring and interventions", "Human-team research informs the design; user choice, operational records and independently reviewed outcomes remain distinct.",width=28,height=14)

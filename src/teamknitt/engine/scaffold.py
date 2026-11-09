@@ -125,18 +125,18 @@ def init_workspace(destination: Path, template: str = "text", decision_backend: 
             "the process locally with two read-only agents; no model calls are made.\n"
             "Keep private seeds, credentials, generated trials and results out of Git.\n\n"
             "teamknitt copyright holder and licensor: Pioneertown B.V. Author: Goran Mitevski.\n"
-            "Based on Labtune. The Teamknitt Noncommercial Licence 1.0 permits noncommercial\n"
-            "purposes, the specified personal uses without anticipated commercial application,\n"
-            "and use by the listed organizations regardless of funding source or resulting\n"
-            "obligations, without geographic or academic-only eligibility restrictions.\n"
-            "The copyright licence does not grant redistribution, software changes or\n"
-            "derivative works, even if noncommercial. No sublicensing or transfer is granted;\n"
-            "fair-use rights remain. Patent-defense termination, the conditional first-notice\n"
-            "32-day cure and as-is/no-liability terms apply. Read LICENSE and LICENSING.md.\n"
-            "Development instructions do not add permissions. Earlier grants, upstream Labtune\n"
-            "and third-party terms are not rewritten. For separate permission contact\n"
-            "Goran Mitevski, goran@pioneertown.ai, for Pioneertown B.V.\n"
-            "Keep the legal documents and credits in licensor-authorized distributions and new starters.\n",
+            "Based on Labtune. Teamknitt Noncommercial and Research Licence 2.0: free general\n"
+            "noncommercial, non-research use. The research exception overrides that grant.\n"
+            "Noncommercial research outside qualifying low-income/lower-middle-income academic\n"
+            "institutions requires separate permission. Free research retains Labtune's academic/\n"
+            "geographic eligibility, independence, funding and anti-circumvention conditions.\n"
+            "Commercial use also requires separate written permission from Pioneertown B.V.\n"
+            "through Goran Mitevski, goran@pioneertown.ai. Read LICENSE and LICENSING.md.\n"
+            "Modification and sharing are allowed for Permitted Uses without a software licence\n"
+            "fee, with the same terms, identified changes and retained legal/author/dependency notices.\n"
+            "Sharing or a mode label does not waive research eligibility or commercial limits.\n"
+            "Earlier grants, existing copies/workspaces, upstream Labtune and third-party terms\n"
+            "are not rewritten. Fair-use, termination and warranty/liability terms apply.\n",
             encoding="utf-8")
         # Exclusive destination creation: a concurrent creator cannot be overwritten.
         destination.mkdir()

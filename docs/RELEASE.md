@@ -1,3 +1,31 @@
+# teamknitt 0.9.0 — clarified noncommercial/research policy (unreleased)
+
+- Introduces **Teamknitt Noncommercial and Research Licence 2.0**, based on the original
+  Labtune research policy, using a stricter, direct drafting style rather than substituting
+  the pasted tone example's substantive clauses.
+- Free general noncommercial, non-research use. Research is an explicit overriding exception:
+  **noncommercial research outside qualifying low-income/lower-middle-income academic
+  institutions requires separate written permission**. Retains Labtune's institutional,
+  current World Bank income, affiliation, academic-independence, unrestricted-donation,
+  corporate-proxy and continuing-eligibility/anti-circumvention conditions.
+- Commercial use requires a separate written licence through Goran Mitevski / Pioneertown B.V.
+- Restores conditional copying, study, modification and sharing for Permitted Uses without a
+  software licence fee, with the same terms, retained notices and identified changes.
+- Removes the literal example's blanket modification/sharing prohibition, broad funding-
+  independent organization exemption, patent grant/defense and automatic 32-day cure. Retains
+  Labtune-style reserved rights, fair use, termination/written reinstatement and liability limits.
+- Updates metadata (`LicenseRef-Teamknitt-Noncommercial-Research-2.0`), docs, contribution
+  guidance, viewer notices, canonical diagrams and synchronized new starter workspaces.
+- Does not retroactively withdraw earlier grants, including version 1.0, rewrite existing
+  workspaces, change upstream Labtune or third-party licences, or make legal eligibility an
+  automatic runtime decision. No models, budgets, capabilities or paid-call approvals change.
+
+LICENSE governs; LICENSING.md explains it. Legal review before publication is recommended.
+This local clarification does not imply a commit, push, tag or package publication. Historical
+notes below describe the terms offered with their own source versions, not current policy.
+
+---
+
 # teamknitt 0.8.0 — Teamknitt licence (unreleased)
 
 - Introduces **Teamknitt Noncommercial Licence 1.0**, using the user-supplied acceptance,

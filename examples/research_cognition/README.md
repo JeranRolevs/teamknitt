@@ -76,19 +76,21 @@ Read `docs/TEAMKNITT.md` for configuration boundaries and source references.
 ## Licensing notice
 
 Author: **Goran Mitevski**. Copyright holder/licensor: **Pioneertown B.V.** Based on Labtune.
-Read **LICENSE** and **LICENSING.md**. The **Teamknitt Noncommercial Licence 1.0** permits
-noncommercial purposes, the specified personal uses without anticipated commercial application,
-and use by the listed charitable, educational, public-research, public-safety/health,
-environmental-protection and government organizations regardless of funding source or resulting
-obligations. There is no geographic or academic-only eligibility test.
+Read **LICENSE** and **LICENSING.md**. The **Teamknitt Noncommercial and Research Licence 2.0**
+provides free general noncommercial, non-research use. The research exception overrides that
+grant: noncommercial research outside qualifying low-income/lower-middle-income academic
+institutions requires separate written permission. Free research retains Labtune's qualifying
+institution/affiliation, current World Bank income, independent-governance, funding and
+anti-circumvention conditions. Company research/proxies and privileged sponsor rights do not
+qualify; company research donations must be genuinely unrestricted. Commercial use also
+requires separate permission from Pioneertown B.V. through Goran Mitevski, **goran@pioneertown.ai**.
 
-The copyright licence does **not** grant redistribution, software changes or derivative works,
-even for noncommercial purposes. No sublicensing or transfer is granted; fair-use rights remain.
-The patent grant/defense, conditional first-written-notice 32-day cure and as-is/no-liability
-terms are in LICENSE. Workspace/development instructions do not add permission. Preserve both
-legal documents and credits in licensor-authorized distributions and new starters; earlier
-grants and third-party terms are not rewritten. For separate permission, contact Goran Mitevski,
-**goran@pioneertown.ai**, for Pioneertown B.V.
+Use, copying, study, modification and sharing are allowed for Permitted Uses without a software
+licence fee. Retain the legal, author/copyright and third-party notices, identify changes and
+distribute software changes under the same terms. Sharing does not transfer research eligibility.
+Fair use, reserved rights, automatic termination/written reinstatement and warranty/liability
+limits apply. Earlier grants (including version 1.0), existing copies/workspaces, upstream
+Labtune and third-party terms are not rewritten. Mode labels and instructions do not add rights.
 
 ## Research background and explicit intervention
 

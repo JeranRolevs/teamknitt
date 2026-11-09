@@ -18,22 +18,27 @@ Keep starter resources synchronized with tools/sync_starter.py. All diagrams use
 diagrams/specs.py; regenerate with diagrams/render_flowcharts.py. Local archives, historical
 reviews and audit records are intentionally ignored and must not enter a public export.
 
-teamknitt uses the Teamknitt Noncommercial Licence 1.0. LICENSE contains the authoritative,
-user-supplied terms; LICENSING.md is explanatory only. Permitted purposes include any
-noncommercial purpose, the specified personal uses without anticipated commercial application,
-and use by the listed charitable, educational, public-research, public-safety/health,
-environmental-protection and government organizations regardless of funding source or resulting
-obligations. Do not restore the previous geographic/academic-only or donor restrictions.
-The copyright grant excludes distributing the software and making changes or new works based
-on it, even for noncommercial purposes. No sublicensing or transfer is granted; fair-use rights
-remain. Preserve the patent-defense clause, first-written-notice 32-day cure conditions and
-as-is/no-liability terms. Source access or contribution instructions grant no extra rights.
-Development and redistribution require the licensor's authority or separate permission where
-not granted by these terms. Contact Goran Mitevski, goran@pioneertown.ai, for Pioneertown B.V.
-Keep LICENSE and LICENSING.md in licensor-authorized distributions and new starter workspaces,
-with Pioneertown B.V.'s copyright/licensor notice and Goran Mitevski's author credit. Existing
-copies, older grants, third-party terms and the Labtune upstream licence are not rewritten.
-Do not change licensing terms, commit, push or publish without user authorization.
+teamknitt uses the Teamknitt Noncommercial and Research Licence 2.0. LICENSE governs;
+LICENSING.md explains it. General noncommercial, non-research use is free. Commercial Use
+requires separate written permission from Pioneertown B.V. through Goran Mitevski,
+goran@pioneertown.ai. Research is an explicit exception: noncommercial research outside
+qualifying low-income/lower-middle-income academic institutions requires separate permission.
+Keep the Labtune-based research rules: recognized public/nonprofit institutions, genuine
+headquarters and principal operations in currently qualifying World Bank economies, authorized
+affiliation, independent academic direction/publication, no company research/proxies or
+commissioned work, unrestricted company donations without control or privileged research/IP
+rights, continuing eligibility and anti-circumvention. No general nonprofit/public-body,
+funding-independent or personal-research exemption overrides them. Actual use, not a mode label,
+determines the category. Do not automatically determine eligibility or alter execution controls.
+For Permitted Uses, copying, study, modification and sharing are allowed without a software
+licence fee, with the same licence, identified changes and retained legal/author/dependency
+notices. Do not restore the literal example's blanket modification/redistribution ban, patent
+grant/defense or automatic 32-day cure. Preserve reserved rights, fair use, automatic termination
+and written reinstatement, warranty/liability limits, Pioneertown B.V.'s copyright/licensor
+notice, Goran Mitevski's author credit and Labtune provenance. Keep LICENSE and LICENSING.md in
+distributions and new starters. Prior grants/copies, including version 1.0, existing workspaces,
+third-party terms and the separate Labtune upstream licence are not rewritten. Do not change
+licensing terms, commit, push or publish without user authorization.
 
 
 # Standalone teamknitt

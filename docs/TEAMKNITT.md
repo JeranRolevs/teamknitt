@@ -303,15 +303,19 @@ Starters use `tools/sync_starter.py`; all diagrams use `diagrams/specs.py`.
 ## Licence and credit
 
 Author: **Goran Mitevski**. Copyright holder/licensor: **Pioneertown B.V.** Based on Labtune.
-The **Teamknitt Noncommercial Licence 1.0** governs teamknitt, not an OSI open-source licence.
-Any noncommercial purpose and the specified personal uses are permitted; the listed
-organizations' use is permitted regardless of funding source or resulting obligations.
-There is no geographic or academic-only eligibility test. The copyright grant does not
-authorize redistribution, software changes or derivative works, even if noncommercial.
-No sublicensing or transfer is granted; fair-use rights remain. Patent-defense termination,
-the conditional first-notice 32-day cure and as-is/no-liability terms apply.
+The **Teamknitt Noncommercial and Research Licence 2.0** governs use, not an OSI open-source
+licence. General noncommercial, non-research use is free. Research is an exception: free only
+for qualifying public/nonprofit academic institutions genuinely based in currently qualifying
+World Bank low-income/lower-middle-income economies and authorized users under Labtune's
+independent-research, funding, continuing-eligibility and anti-circumvention conditions.
+**Noncommercial research outside those qualifying institutions requires separate permission.**
+Commercial use also requires a separate written licence from Pioneertown B.V., through
+Goran Mitevski, goran@pioneertown.ai.
 
-Keep LICENSE, LICENSING.md and credits in licensor-authorized distributions and new starters.
-Their terms govern; instructions and broader task capability do not add permissions. Earlier
-grants and the Labtune upstream licence are not rewritten; third-party terms remain separate.
-For separate permission, contact Goran Mitevski, goran@pioneertown.ai, for Pioneertown B.V.
+Use, copying, study, modification and sharing are permitted conditionally for Permitted Uses
+without a software licence fee. Retain LICENSE, LICENSING.md, author/copyright and third-party
+notices, identify changes and distribute software changes under the same terms. Recipients
+must qualify for their own intended uses; a copy, academic account or mode label is not an
+exemption. Fair use, reserved rights, automatic termination/written reinstatement and warranty/
+liability limits apply. Earlier grants (including version 1.0), existing workspaces, the separate
+Labtune upstream licence and third-party terms are not rewritten; see LICENSING.md.

@@ -185,9 +185,9 @@ run path. [Migration](docs/MIGRATION.md) · [Architecture](ARCHITECTURE.md) · [
 
 ## Development and portability — offline
 
-The licence does not grant software-modification or redistribution rights. Development and
-contribution instructions are for the licensor and separately authorized contributors, not
-an additional permission; see [contributing](CONTRIBUTING.md).
+Development and sharing are allowed for Permitted Uses, subject to the noncommercial and
+research-eligibility conditions, retained notices and same-terms distribution. Instructions
+do not waive those conditions; see [contributing](CONTRIBUTING.md).
 
 ```bash
 python -m pip install -e '.[memory,diagrams]'
@@ -204,22 +204,23 @@ credentials, source books, Foundation notes, trials and results stay out of Git 
 
 ## Licence
 
-teamknitt uses the **Teamknitt Noncommercial Licence 1.0**, a custom source-available licence,
-not an OSI open-source licence. [LICENSE](LICENSE) is authoritative; [LICENSING.md](LICENSING.md)
+teamknitt uses the **Teamknitt Noncommercial and Research Licence 2.0**, a custom source-available
+licence, not an OSI open-source licence. [LICENSE](LICENSE) governs; [LICENSING.md](LICENSING.md)
 explains the terms.
 
-- Any noncommercial purpose is permitted. The specified personal uses must have no anticipated
-  commercial application.
-- Use by the listed charitable, educational, public-research, public-safety/health,
-  environmental-protection and government organizations is for a permitted purpose regardless
-  of funding source or resulting obligations. There is no geographic or academic-only test.
-- **The copyright licence does not grant redistribution, software changes or derivative works,
-  even for noncommercial purposes.** No sublicensing or transfer is granted. Fair-use rights remain.
-- A patent licence, patent-defense termination, a conditional 32-day cure on first written
-  notice, and as-is/no-liability terms apply as specified in LICENSE.
+- **General noncommercial, non-research use is free.**
+- **Research is an exception:** free only for qualifying public/nonprofit academic institutions
+  genuinely based in World Bank low-income/lower-middle-income economies and authorized users,
+  under Labtune's independence, funding, continuing-eligibility and anti-circumvention rules.
+  **Noncommercial research outside those qualifying institutions requires separate permission.**
+- **Commercial use requires a separate written licence** from Pioneertown B.V., through
+  **Goran Mitevski**, [goran@pioneertown.ai](mailto:goran@pioneertown.ai).
+- Use, copying, study, modification and sharing are allowed for Permitted Uses without a software
+  licence fee. Retain legal/author/third-party notices, identify changes and distribute software
+  changes under the same terms; sharing does not transfer research eligibility or allow commercial use.
 
-**Author: Goran Mitevski. Copyright holder/licensor: Pioneertown B.V. Based on Labtune.**
-For permissions outside the grants, contact [goran@pioneertown.ai](mailto:goran@pioneertown.ai).
-Keep both legal documents and credits in licensor-authorized distributions and new starters;
-that does not grant recipients redistribution rights. Earlier copies/grants and the separate
-Labtune upstream licence are not rewritten. Third-party terms remain separate.
+**Based on Labtune. Author: Goran Mitevski. Copyright holder/licensor: Pioneertown B.V.**
+The research rules override the general noncommercial grant, even for unpaid, personal, nonprofit
+or openly published research. Keep LICENSE, LICENSING.md and credits in distributions and starters.
+Earlier copies/grants (including version 1.0), existing workspaces, upstream Labtune and third-party
+terms are not rewritten. No automatic entitlement check, model choice or budget change is added.

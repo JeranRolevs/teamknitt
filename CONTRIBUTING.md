@@ -1,18 +1,22 @@
 # Contributing
 
-## Permission before code or documentation changes
+## Permission and contribution conditions
 
-The **Teamknitt Noncommercial Licence 1.0** does **not** grant permission to redistribute
-or modify the software or make derivative works, even for noncommercial purposes. Public
-source access, a fork/PR workflow and this guide do not add permissions. Before preparing or
-sharing software patches, modified copies or derivative contributions, obtain separate written
-permission from **Pioneertown B.V.**, through **Goran Mitevski** at
-[goran@pioneertown.ai](mailto:goran@pioneertown.ai), unless you have independent legal rights.
-An issue report or discussion is not permission. No copyright assignment or additional licence
-is implied by these instructions. See [LICENSE](LICENSE) and [LICENSING.md](LICENSING.md).
+The **Teamknitt Noncommercial and Research Licence 2.0** permits use, study, copying,
+modification and sharing for Permitted Uses without a software licence fee. General
+noncommercial, non-research work is free. Research remains subject to Labtune's qualifying
+academic/geographic, independence and funding conditions, even if noncommercial; commercial
+use and research outside qualifying low-income/lower-middle-income academic institutions
+require separate written permission from **Pioneertown B.V.**, through **Goran Mitevski**,
+[goran@pioneertown.ai](mailto:goran@pioneertown.ai).
 
-The following development/release instructions are for the licensor and separately authorized
-contributors. Preserve existing copyright, author and dependency notices in authorized work.
+For permitted changes, retain LICENSE, LICENSING.md, copyright/author and dependency notices,
+identify your changes and distribute software changes under the same terms. Do not weaken
+the research exception, eligibility or funding safeguards. You must have authority to submit
+your contribution; no copyright assignment is implied. A public fork, issue report or these
+instructions do not waive restrictions or grant someone else's research eligibility. See
+[LICENSE](LICENSE) and [LICENSING.md](LICENSING.md). Separate permission is required only where
+the proposed use is outside the grants, not for every modification or redistribution.
 
 ## Authorized development — offline
 
@@ -37,9 +41,10 @@ tests, CI, package builds, init, prepare, check or plan. A local doctor checks c
 doctor --live and study run are explicit metered actions.
 
 Lab styles and communication remain user choices. Compare them with repeated matched-budget
-runs; one smoke trial cannot establish a winner. Any contribution/release permissions and
-terms must be agreed with the licensor separately; the public licence is not a modification
-or redistribution grant. Retain applicable notices and identify authorized changes.
+runs; one smoke trial cannot establish a winner. Contributions to the Software must be
+shared under the same licence with retained notices and identified changes. Commercial use
+or ineligible research needs a separate agreement before use; other development remains
+subject to the Permitted Uses and distribution conditions.
 
 For a release, build wheels and a source distribution and run
 python3 tools/check_release.py --artifacts dist. Keep ignored local archives and audit/review

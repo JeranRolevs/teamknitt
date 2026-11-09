@@ -5,9 +5,12 @@
 Product integration of Goran's revised background, not a verbatim reproduction or a
 validation study. Author: **Goran Mitevski**. teamknitt is based on Labtune and his
 2022/2023 thesis research on distributed teams and creative processes;
-**Pioneertown B.V.** remains the copyright holder/licensor. The Teamknitt Noncommercial
-Licence 1.0 in LICENSE governs use; LICENSING.md explains it. Research-informed functionality
-does not add permissions for redistribution, software changes or derivative works.
+**Pioneertown B.V.** remains the copyright holder/licensor. The Teamknitt Noncommercial and
+Research Licence 2.0 in LICENSE governs use; LICENSING.md explains it. General noncommercial,
+non-research use is free. Noncommercial research outside qualifying low-income/lower-middle-
+income academic institutions requires separate permission; Labtune's research independence,
+funding and anti-circumvention conditions remain. Commercial use needs separate permission.
+Conditional modification/sharing rights do not waive those research or commercial limits.
 
 ## Purpose: configure → set tasks → follow work → intervene
 

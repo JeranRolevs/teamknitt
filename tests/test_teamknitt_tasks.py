@@ -62,7 +62,7 @@ class TaskAndTopologyTests(TaskCase):
         self.assertEqual(p["name"], "teamknitt")
         self.assertEqual(p["scripts"]["teamknitt"], "teamknitt.cli:main")
         self.assertNotIn("teamthill", p["scripts"])
-        self.assertEqual(__version__, "0.8.0")
+        self.assertEqual(__version__, "0.9.0")
         self.assertTrue((self.root / "mission/task.md").is_file())
         self.assertNotIn("scientist", self.c["mission"]["deliverable"])
 
@@ -331,8 +331,10 @@ class ObserverHTTPAndPackagingTests(TaskCase):
         for name in ('LICENSE','LICENSING.md'):
             self.assertEqual((self.root/name).read_bytes(),(ROOT/name).read_bytes())
         text=(self.root/'README.md').read_text()
-        self.assertIn('Teamknitt Noncommercial Licence 1.0',text)
-        self.assertIn('does **not** grant redistribution, software changes or derivative works',text)
+        self.assertIn('Teamknitt Noncommercial and Research Licence 2.0',text)
+        self.assertIn('modification',text.lower())
+        self.assertIn('noncommercial research outside qualifying',text)
+        self.assertIn('requires separate written permission',text)
         self.assertIn('Goran Mitevski',text);self.assertIn('Pioneertown B.V.',text)
 
 

@@ -42,7 +42,7 @@ class ReleaseArtifactTests(unittest.TestCase):
 
     def test_stale_or_missing_license_metadata_is_rejected(self):
         name = "teamknitt-fixture.dist-info/METADATA"
-        for body in (self.metadata().replace("LicenseRef-Teamknitt-Noncommercial-1.0", "MIT"), ""):
+        for body in (self.metadata().replace(tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]["license"], "MIT"), ""):
             with self.subTest(body=body):
                 self.assertIn(name + ": incorrect License-Expression", checks.check_artifact(self.wheel({name: body})))
 
