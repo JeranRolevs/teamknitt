@@ -1,17 +1,22 @@
 # teamknitt
 
-### Configure the team. Set the task. Follow the work. Intervene.
+### Teamknitt is a tool for configuring AI agent team/s, where we can set the task, follow the work in different modes, and intervene.
 
 **teamknitt** is a standalone product and execution engine for agent teams working on
-user-defined **tasks, brainstorming, goals and research**. Choose the members, their
+user-defined **tasks, brainstorming and goals**. Choose the members, their
 connections, information sharing, models, tools and finite budgets; inspect the process
 and intervene explicitly without assuming that a topology is best or that execution proves success. Human-team research informs the design, not a validated AI-team improvement claim.
 
-Based on **Labtune**, Goran Mitevski's original work. **Author: Goran Mitevski. Copyright
+Based on **Labtune** and a follow-up to **Goran Mitevski’s 2022/2023 thesis research** on
+distributed teams and their creative processes. [Research background](docs/TEAM_RESEARCH.md#research-follow-up).
+**Author: Goran Mitevski. Copyright
 holder/licensor: Pioneertown B.V.** [Provenance](PROVENANCE.md). The runtime is shipped under
 `teamknitt.engine`: no separate Labtune installation, import namespace or CLI is required.
 
-## Start with your own direction
+Work can be followed through member-focused or system-focused views, the live metadata
+monitor, and saved/offline snapshots. Switching views does not reconfigure the team.
+
+## Getting started
 
 Python 3.11+:
 
@@ -27,7 +32,7 @@ Edit `mission/task.md` for your brief and `mission/context.md` for background. O
 viewer, previewing a draft, planning and observing make **no provider calls**. There is no
 browser API for applying configurations, changing budgets or starting model execution.
 
-## Your choices
+## Configuration options
 
 | Control | Options |
 |---|---|
@@ -100,7 +105,7 @@ a third theory of teams. Descriptive records and supported frequentist count/int
 remain available when applicable. Unsupported legacy choices are rejected, never silently
 converted. This does not change the original Labtune project.
 
-## Try the process offline, then choose whether to run models
+## Offline demonstration and execution
 
 ```bash
 teamknitt demo --workspace ../my-team --policy connected
@@ -117,7 +122,7 @@ decisions, corrections and delegation share the same limits. Private contributio
 organizational improvement is produced. The default is bounded text work, not unrestricted
 shell or real-world action execution.
 
-## Intervene explicitly, then review the intended outcome
+## Interventions and outcome review
 
 The **Intervene** desk separates conditions/configuration, planned disturbances, active-run
 controls and human outcome review. The browser prepares commands only; it cannot apply them.

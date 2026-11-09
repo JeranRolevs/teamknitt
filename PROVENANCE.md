@@ -14,6 +14,13 @@ workspaces and monitoring under `teamknitt.engine`. It does not import or requir
 Labtune package, delegate execution to its CLI, or depend on its development checkout.
 Only the `teamknitt` console command and package namespace are distributed.
 
+## Research follow-up
+
+teamknitt follows up **Goran Mitevski’s 2022/2023 thesis research** on distributed teams and
+their creative processes. It continues that work through configurable AI-agent teams, work
+monitoring and human-directed intervention. This is research lineage, separate from the
+software source baseline above; it does not import thesis code, datasets or the full thesis.
+
 The **Labtune Academic Research License 2.0** and the legal texts **LICENSE** and **LICENSING.md**
 are unchanged. The product name and broader task capabilities do not expand eligibility or
 permit commercial use. Preserve both legal texts, the Pioneertown B.V. notice and Goran

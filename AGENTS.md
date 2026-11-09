@@ -34,6 +34,13 @@ licensing terms, commit, push or publish without user authorization.
 teamknitt is based on Labtune, with its own runtime under teamknitt.engine and one console
 command. No upstream package import, CLI delegation or parent checkout is allowed. Preserve
 PROVENANCE.md, Goran Mitevski's authorship, Pioneertown B.V. and the unchanged legal texts.
+Preserve the brief research follow-up credit to Goran Mitevski’s 2022/2023 thesis work on
+distributed teams and creative processes. Do not reproduce the abstract, formal thesis
+citation or method details in product explanations. Use direct, descriptive headings,
+with the user’s product-definition sentence as the main title. The wordmark is yellow
+text with a brown text outline, not a filled rectangle. Research lineage does not imply
+validated AI-team measures or authorize automatic participation control. Keep full thesis
+files, student identifiers and organizational datasets outside exports.
 
 The user sets tasks, brainstorming, goals or research, and explicitly chooses topologies,
 models, communication, tools, delegation and budgets. Keep all 14 routing presets and

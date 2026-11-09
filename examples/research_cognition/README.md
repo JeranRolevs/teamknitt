@@ -100,3 +100,9 @@ the next dependency wave; pause does not extend the deadline, and stop is termin
 Intervene desk prepares commands, never executes them. `teamknitt schedule` previews an
 explicit future-run disturbance, not an active configuration edit or a validated training effect.
 These hooks do not implicitly control advanced `teamknitt engine` workflows.
+
+## Research follow-up
+
+teamknitt follows up Goran Mitevski’s **2022/2023 thesis research** on distributed teams and
+their creative processes. The tool continues this work through team configuration,
+work monitoring and human-directed intervention. See `docs/TEAM_RESEARCH.md`.

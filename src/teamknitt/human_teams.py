@@ -1,10 +1,18 @@
 """Human-team research as design rationale, not validation of AI-team constructs.
 
-Background supplied by Goran, 9 November 2026. The implementation separates explanatory
-locus, forms of emergence and process/state/outcome records rather than treating them as
+Background supplied by Goran, 9 November 2026; research lineage also includes his
+2022/2023 thesis research on distributed teams and creative processes.
+The implementation separates explanatory locus, forms of emergence and process/state/outcome records rather than treating them as
 one binary taxonomy or an automatic improvement recipe.
 """
 from copy import deepcopy
+
+AUTHOR_RESEARCH = {
+    "author": "Goran Mitevski", "research_period": "2022/2023", "relation": "research_follow_up",
+    "connection": "Teamknitt follows up Goran Mitevski’s 2022/2023 thesis research on distributed teams and their creative processes. It continues that work through configurable AI-agent teams, different ways to follow their work, and human-directed intervention.",
+    "focus": ["distributed teamwork", "creative processes", "AI-agent participation"],
+    "boundary": "This research background does not establish AI-team performance or intervention effects. Configuration and interventions remain user-directed.",
+}
 
 ADDITIONAL_SOURCES = {
     "mcgrath_1964": {"citation": "McGrath, J. E. (1964). Social Psychology: A Brief Introduction. Holt, Rinehart & Winston.", "tradition": "Input–process–output frameworks"},
@@ -74,7 +82,7 @@ INTERVENTION_RATIONALES = [
 def catalogue(sources):
     return {"title": "Background: Research and Theory on Human Teams", "background_credit": "Goran · 9 November 2026",
             "design_basis": "Human-team research informs configuration, task framing, observation and human-led intervention; transfer to AI-agent teams requires independent validation.",
-            "axes": deepcopy(AXES), "constructs": deepcopy(CONSTRUCTS), "interventions": deepcopy(INTERVENTION_RATIONALES),
+            "author_research": deepcopy(AUTHOR_RESEARCH), "axes": deepcopy(AXES), "constructs": deepcopy(CONSTRUCTS), "interventions": deepcopy(INTERVENTION_RATIONALES),
             "representative_sources": deepcopy(sources), "automatic_improvement": False, "api_calls": 0}
 
 
@@ -87,7 +95,7 @@ def project(report):
         rows.append({"wave": wave["wave"], "phases": phases,
                      "phase_type": next(iter(kinds)) if len(kinds) == 1 else "mixed" if kinds else "operational",
                      "annotation": "Conventional annotation of known task phases, not a new scheduler or measured interpersonal process."})
-    return {"background_credit": "Goran · 9 November 2026", "axes": deepcopy(AXES), "constructs": deepcopy(CONSTRUCTS),
+    return {"background_credit": "Goran · 9 November 2026", "author_research": deepcopy(AUTHOR_RESEARCH), "axes": deepcopy(AXES), "constructs": deepcopy(CONSTRUCTS),
             "episode_cycle": {
                 "model": "IPO / IMOI: inputs, process and state mediators, outcomes, feedback",
                 "inputs": {"configured_members": len(c["roles"]), "representations": len(c["representations"]), "topology": report["topology"]["kind"]},

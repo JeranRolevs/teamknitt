@@ -25,6 +25,12 @@ Attached results remain separate-context evidence, not a score for the selected 
 Based on Labtune; the engine is shipped under teamknitt.engine and no upstream package is
 required. Keep credentials, natural-language records, runs and results private and outside Git.
 
+## Research follow-up
+
+teamknitt follows up Goran Mitevski’s **2022/2023 thesis research** on distributed teams and
+their creative processes. The tool continues this work through team configuration,
+work monitoring and human-directed intervention. See `docs/TEAM_RESEARCH.md`.
+
 ## Licensing notice — unchanged
 
 Author: **Goran Mitevski**. Copyright holder/licensor: **Pioneertown B.V.** Preserve LICENSE,

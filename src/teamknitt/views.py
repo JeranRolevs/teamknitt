@@ -66,7 +66,7 @@ VIEWS = {
     },
     "team_dynamics": {
         "group": "system", "label": "Teams as dynamical systems", "question": "How do interaction and coordination change through time and around disturbances?",
-        "scope": "Complexity science and complex adaptive systems, including the Santa Fe tradition, motivate temporal trajectories, feedback, stability and adaptation questions. Gorman et al. is one team-focused reference, not the umbrella theory.",
+        "scope": "Complexity science and complex adaptive systems, including the Santa Fe tradition, motivate temporal trajectories, feedback, stability and adaptation questions. Gorman et al. is one team-focused reference, not the umbrella theory. Teamknitt also follows up Goran Mitevski’s 2022/2023 research on distributed teams and creative processes.",
         "sources": list(COMPLEXITY_SOURCES), "boundary": "Santa Fe is a research tradition, not an endorsement or a validated team model. Short, uneven traces do not establish emergence, adaptation, attractors, synchrony or fractals.",
     },
     "interaction_coordination": {
@@ -192,6 +192,7 @@ def build_views(report, probe_summary=None):
                          "note": "Activity counts supply context only; they do not score information sharing or other teammate capabilities."})
     result["team_dynamics"].update(status="disabled" if not report["observations"]["enabled"] else "descriptive_only" if last else "not_observed",
         observations=deepcopy(report["observations"]), conceptual_questions=[
+            {"concept": "Creative-process dynamics", "question": "The research follow-up concerns how AI agents participate in distributed creative processes. What interaction records and independent outcome evidence would be needed to study their contribution?", "status": "not_estimated"},
             {"concept": "Local–global stability", "question": "How do local contribution changes coexist with global handoff-state continuity? No general variability/performance or resilience diagnosis follows.", "status": "descriptive_only" if last else "not_observed"},
             {"concept": "Substrate independence", "question": "Which task-specific coupling variables might generalize across substrates? Similar software traces are not proof of human/AI equivalence.", "status": "design_hypothesis_not_tested"},
             {"concept": "Cross-level effects", "question": "What member, artifact and system records would a cross-level causal study require? Co-recorded events do not identify direction or causation.", "status": "descriptive_records_only" if last else "not_observed"},

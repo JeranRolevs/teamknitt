@@ -53,6 +53,12 @@ not converted. See `docs/TEAMKNITT.md` for controls, references and interpretati
 
 Keep credentials, trials, results, config backups, migration backups and snapshots out of Git.
 
+## Research follow-up
+
+teamknitt follows up Goran Mitevski’s **2022/2023 thesis research** on distributed teams and
+their creative processes. The tool continues this work through team configuration,
+work monitoring and human-directed intervention. See `docs/TEAM_RESEARCH.md`.
+
 ## Licensing notice — unchanged
 
 Author: **Goran Mitevski**. Copyright holder/licensor: **Pioneertown B.V.** Read **LICENSE** and

@@ -3,7 +3,8 @@
 **9 Nov 2026 · @Goran**
 
 Product integration of Goran's revised background, not a verbatim reproduction or a
-validation study. Author: **Goran Mitevski**. teamknitt is based on Labtune;
+validation study. Author: **Goran Mitevski**. teamknitt is based on Labtune and his
+2022/2023 thesis research on distributed teams and creative processes;
 **Pioneertown B.V.** remains the copyright holder/licensor. The unchanged LICENSE and
 LICENSING.md govern use. Research-informed functionality does not broaden eligibility.
 
@@ -17,6 +18,16 @@ can represent different teams. This is not an implemented cross-team optimizatio
 Human-team research supplies design hypotheses, not a warrant to attribute human psychology
 to agents or to expect the same intervention effects. No automatic team redesign, staffing,
 model selection, consensus forcing, statistical-method selection or budget increase occurs.
+
+## Research follow-up
+
+Teamknitt follows up **Goran Mitevski’s 2022/2023 thesis research** on distributed teams and
+their creative processes. It continues the interest in how teamwork develops over time and
+how machine participants can contribute to a shared process.
+
+The current tool applies that interest through explicit team configuration, different ways
+to follow work, and human-directed intervention. The research background is not a claim
+that AI-team performance or intervention effects have been validated.
 
 ## 1. Three related, separate distinctions
 

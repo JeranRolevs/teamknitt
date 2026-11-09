@@ -1,8 +1,15 @@
-# teamknitt: configure, run and inspect your team
+# teamknitt: configure teams, set tasks, follow work and intervene
 
-teamknitt is a standalone product and engine for tasks, brainstorming, goals and research.
-It is based on Labtune; [provenance](../PROVENANCE.md) preserves Goran Mitevski's original
-work and the Pioneertown B.V. notice. No external engine package or CLI is needed.
+Teamknitt is a tool for configuring AI agent team/s, where we can set the task, follow the work in different modes, and intervene.
+
+teamknitt is a standalone product and engine for tasks, brainstorming and goals. It is based
+on Labtune and follows up Goran Mitevski’s 2022/2023 thesis research on distributed teams and
+their creative processes. [Research background](TEAM_RESEARCH.md#research-follow-up) ·
+[Provenance](../PROVENANCE.md). Goran Mitevski’s author credit and the Pioneertown B.V.
+notice are preserved. No external engine package or CLI is needed.
+
+Member-focused and system-focused views, live metadata monitoring and saved/offline snapshots
+are different ways to follow the same work. Advanced research commands remain available separately.
 
 ## Workspace and explicit controls
 
