@@ -29,3 +29,10 @@ Mitevski's author credit. General-purpose dependencies retain their own notices/
 Historical serialized names can be read for compatibility; original saved bindings are
 verified before presentation normalization. This is provenance, not a claim that the
 underlying work was invented independently of Labtune.
+
+
+Multiple-team orchestration is implemented in this repository's `teamknitt.teams` and native
+engine. User-selected external style URLs are references only: no skills, prompts, templates,
+configuration code or CLIs from those projects are copied, adapted, imported or executed.
+Local style context is explicitly user-authored workspace input, not a claim of implementing
+a referenced protocol or automatic verification of its authorship.

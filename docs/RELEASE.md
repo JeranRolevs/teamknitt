@@ -1,3 +1,32 @@
+# teamknitt 0.7.0 — multiple native teams
+
+- 1–8 independent native teams for one shared task, with separate members (1–16), roles,
+  topology, sharing, provider/model settings and local budgets.
+- Explicit collection-wide request, wall-time and concurrency caps; no multiplication by
+  team count, automatic allocation, winner selection or merge.
+- Inter-team communication defaults to none. Configured directed links can carry bounded
+  designated-member summaries/contributions from completed prior waves. Separate connected
+  components progress independently; raw private artifacts/styles are not exported directly.
+- Draft-first configuration, route changes, explicit native cloning/removal and scheduled
+  disturbances, with private backups, shared run lock and concurrent-edit checks.
+- Native per-team feedback/pause/resume/stop controls retain the shared deadline and counters.
+  Feedback uses the verified collection workspace and selected member scope.
+- Collection overview and detailed per-team views, read-only metadata/draft APIs, portable
+  offline snapshots and direct headings. No browser execution, queue write or arbitrary-file API.
+- External style URLs are references only, not imported foreign skills, prompts, templates,
+  configurations, code or runtimes. Actual style context must be explicitly local user-authored
+  text. Repeated references can belong to distinct teams; no faithful-protocol claim is made.
+- Initial collection execution supports bounded text/code proposals, not delegated/scientific
+  workflows, unrestricted coding, verified tests or automatic repository merging. Unsupported
+  settings fail before requests rather than being silently changed. Existing single-team and
+  advanced engine workflows remain available.
+
+No paid provider calls for setup, plans, tests, demos, views, diagrams or packaging. Based on
+Labtune; author Goran Mitevski / copyright/licensor Pioneertown B.V. The unchanged Labtune
+Academic Research License 2.0 still governs all use; functionality does not broaden eligibility.
+
+---
+
 # teamknitt 0.6.0 — research-informed, human-directed intervention
 
 - Integrates **“Background: Research and Theory on Human Teams — 9 Nov 2026 · @Goran”**

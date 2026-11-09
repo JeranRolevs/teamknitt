@@ -81,9 +81,9 @@ def waves(graph):
     return result
 
 
-def engine_study(workspace, config):
+def engine_study(workspace, config, *, study_path="study.yaml"):
     """Translate explicit teamknitt task/count/sharing settings into the teamknitt engine; never alter models or budgets."""
-    study = load_study(workspace)
+    study = load_study(workspace, study_path)
     if config["schema_version"] == 2:
         return study, config["engine"]["variant"]
     selected = config["engine"]["variant"]
@@ -104,11 +104,11 @@ def engine_study(workspace, config):
     return study, selected
 
 
-def compile_plan(workspace: Path, config=None):
+def compile_plan(workspace: Path, config=None, *, study_path="study.yaml"):
     """Resolve explicit cognitive controls against—not alongside—a teamknitt plan."""
     root = workspace.resolve()
     c = validate(config) if config is not None else load(root)
-    study, selected = engine_study(root, c)
+    study, selected = engine_study(root, c, study_path=study_path)
     resolved = plans(root, study, workspace=root)
     if selected not in resolved:
         raise ConfigurationError("teamknitt.engine.variant must name a variant in study.yaml.")

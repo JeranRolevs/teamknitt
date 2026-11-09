@@ -36,6 +36,9 @@ def main(argv=None):
     if argv and argv[0] == "engine":
         from .engine.cli import main as engine_main
         return engine_main(argv[1:])
+    if argv and argv[0] == "teams":
+        from .teams.cli import main as teams_main
+        return teams_main(argv[1:])
     if argv and argv[0] == "probes":
         from .probes.cli import main as probe_main
         return probe_main(argv[1:])
@@ -47,6 +50,7 @@ def main(argv=None):
     start.add_argument("--template", choices=("task", "research"), default="task")
     start.add_argument("--goal", help="User-supplied brief to write to the task file; otherwise edit it locally")
     choices(start, optional=False)
+    commands.add_parser("teams", help="Configure multiple teams for one task, explicit communication and a shared request cap")
     commands.add_parser("engine", help="Advanced standalone execution, provider, domain and workspace commands")
     commands.add_parser("topologies", help="List user-selectable team communication topologies")
     commands.add_parser("perspectives", help="Inspect the distributed-problem-solving configuration framework")

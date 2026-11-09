@@ -28,6 +28,31 @@ workspaces; the product term is **distributed problem-solving**. Compatibility n
 legacy names in memory, never historical files. Raw saved configuration bindings are verified
 before display normalization. New identities are not conflated with old execution cohorts.
 
+## Native multi-team collections
+
+`teams/` compiles a `teams.yaml` collection with one task binding and 1–8 distinct native
+schema-3 task plans. Per-team settings files preserve models, budgets and roles. The core
+study loader accepts an explicit bounded settings filename; no parent runtime or foreign
+configuration adapter is involved. Explicit native cloning creates independent config files,
+adds no routes and never raises the total cap.
+
+The collection reuses the shipped shared request/time limits and combined semaphores. Main
+member episodes share an aggregate slot limit. Connected components rendezvous at explicit
+phase boundaries, freezing only validated designated-member output from earlier waves.
+Isolated components have no information exchange or barrier dependency. Export text is bounded;
+raw private artifacts/styles are not automatically exported. Native per-team operator controls
+retain the shared deadline and verified collection-root feedback scope.
+
+Style references are URL/provenance metadata only, never fetched or converted into prompts,
+skills, code or tools. Local style context is explicitly declared user-authored, hashed and
+attached as a native scoped source. The collection currently rejects non-text, delegated and
+incompatible connected-phase workflows before requests rather than silently changing settings.
+
+The collection server serves allowlisted metadata/drafts and scoped detailed team views only;
+no browser execution/write/import endpoint exists. Plan bindings are verified before saved
+records are projected. Setup, planning, fixtures and packaging require no provider calls.
+See [multiple teams](docs/MULTI_TEAM.md).
+
 ## Research-informed views
 
 `views.py` projects two approach families over the same configuration/record:

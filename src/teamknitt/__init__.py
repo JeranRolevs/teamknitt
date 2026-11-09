@@ -5,4 +5,4 @@ Copyright holder/licensor: Pioneertown B.V. See PROVENANCE.md and the unchanged
 LICENSE and LICENSING.md; the product name does not change their terms.
 """
 
-__version__ = "0.6.0"
+__version__ = "0.7.0"

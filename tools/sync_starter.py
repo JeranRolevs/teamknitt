@@ -18,7 +18,7 @@ def desired():
                 if folder == "configs" and source.name != "lab.yaml":
                     continue
                 output["project/" + source.relative_to(PROJECT).as_posix()] = source.read_bytes()
-    for name in ("SINGLE_SCIENTIST.md", "MULTI_LAB.md", "PROVIDERS.md", "DECISION_PROVIDERS.md", "MIGRATION.md", "TEAMKNITT.md", "TEAM_RESEARCH.md"):
+    for name in ("SINGLE_SCIENTIST.md", "MULTI_LAB.md", "PROVIDERS.md", "DECISION_PROVIDERS.md", "MIGRATION.md", "TEAMKNITT.md", "TEAM_RESEARCH.md", "MULTI_TEAM.md"):
         guide = PROJECT / "docs" / name
         if guide.is_file():
             output["project/docs/" + name] = guide.read_bytes()
@@ -83,6 +83,23 @@ def main():
     if not args.check:
         schema["properties"]["team"]["properties"]["topology"]["enum"] = kinds
         schema_path.write_text(json.dumps(schema, indent=2) + "\n")
+    # Collection exchange choices also originate in the canonical diagram specification.
+    profiles = (json.dumps(diagram_specs.TEAM_EXCHANGE_PROFILES, indent=2) + "\n").encode()
+    profiles_path = PROJECT / "src/teamknitt/resources/teams-profiles.json"
+    if args.check and (not profiles_path.is_file() or profiles_path.read_bytes() != profiles):
+        print("Team exchange profiles need synchronization from diagrams/specs.py", file=sys.stderr)
+        return 1
+    if not args.check:
+        profiles_path.write_bytes(profiles)
+    collection_schema_path = PROJECT / "src/teamknitt/resources/teams.schema.json"
+    collection_schema = json.loads(collection_schema_path.read_text())
+    choices = list(diagram_specs.TEAM_EXCHANGE_PROFILES)
+    if args.check and collection_schema["properties"]["communication"]["properties"]["profile"]["enum"] != choices:
+        print("Collection exchange schema needs synchronization", file=sys.stderr)
+        return 1
+    if not args.check:
+        collection_schema["properties"]["communication"]["properties"]["profile"]["enum"] = choices
+        collection_schema_path.write_text(json.dumps(collection_schema, indent=2) + "\n")
     # Teamknitt task and advanced research starters are authoritative public examples.
     team_target = PROJECT / "src/teamknitt/resources"
     team_sources = {"team.yaml": PROJECT / "examples/task_team/team.yaml",
@@ -90,7 +107,8 @@ def main():
                     "research-team.yaml": PROJECT / "examples/research_cognition/team.yaml",
                     "RESEARCH_WORKSPACE.md": PROJECT / "examples/research_cognition/README.md",
                     "probe.yaml": PROJECT / "examples/teammate_probes/team.yaml",
-                    "PROBES_WORKSPACE.md": PROJECT / "examples/teammate_probes/README.md"}
+                    "PROBES_WORKSPACE.md": PROJECT / "examples/teammate_probes/README.md",
+                    "MULTI_TEAM_WORKSPACE.md": PROJECT / "examples/multi_team/README.md"}
     for folder, example in (("task-starter", "task_team"), ("research-starter", "research_cognition")):
         for source in (PROJECT / "examples" / example).rglob("*"):
             if source.is_file() and source.name not in {"README.md", "team.yaml"} and source.suffix in {".md", ".yaml"}:

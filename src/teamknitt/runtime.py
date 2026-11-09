@@ -84,10 +84,10 @@ class FixtureClient:
 
 
 class CognitiveStudy(TextStudy):
-    def __init__(self, workspace, study, compiled, key, *, fixture_client=None):
+    def __init__(self, workspace, study, compiled, key, *, fixture_client=None, trial_root=None, shared_limits=None, event_sink=None):
         self.compiled = compiled
         super().__init__(workspace, workspace, study, compiled["engine_plan"], compiled["engine_variant"], key,
-                         generation_client=fixture_client)
+                         generation_client=fixture_client, trial_root=trial_root, shared_limits=shared_limits, event_sink=event_sink)
         self.root.chmod(0o700)
         self.cognitive = CognitiveWorkspace(workspace, compiled, self.event)
         if compiled["configuration"]["schema_version"] == 3:
@@ -144,7 +144,10 @@ class CognitiveStudy(TextStudy):
 
     async def before_wave(self, nodes):
         try:
-            await self.operator.before_wave(self.cognitive.wave + 1, self.started + self.plan["budget"]["max_wall_seconds"])
+            deadline = self.started + self.plan["budget"]["max_wall_seconds"]
+            if self.shared_limits is not None:
+                deadline = min(deadline, time.monotonic() + self.shared_limits.remaining_time())
+            await self.operator.before_wave(self.cognitive.wave + 1, deadline)
         except ControlledStop:
             raise
         except (ConfigurationError, OSError, ValueError, KeyError, TypeError) as error:

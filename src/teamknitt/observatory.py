@@ -28,7 +28,7 @@ def snapshot(report, path: Path):
     fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     with os.fdopen(fd, "w", encoding="utf-8") as stream:
         # No workspace API or source-text access survives in an offline snapshot.
-        stream.write(html({**report, "viewer": {"live": False, "draft_available": False, "selection": "snapshot", **{k: report.get("viewer", {}).get(k) for k in ("initial_group", "initial_section", "view_notice")}}}))
+        stream.write(html({**report, "viewer": {"live": False, "draft_available": False, "selection": "snapshot", **{k: report.get("viewer", {}).get(k) for k in ("initial_group", "initial_section", "view_notice", "multi_team")}}}))
     return {"status": "snapshot_saved", "output": str(path.absolute()), "api_calls": 0}
 
 

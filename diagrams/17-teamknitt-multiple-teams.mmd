@@ -1,0 +1,26 @@
+%% Generated from specs.py; 2026-11-09. Current runtime; gray nodes are planned.
+flowchart LR
+    task["Shared task and review criteria<br/>One authoritative brief and immutable task snapshot; goal achievement is not inferred"]
+    alpha["Team alpha<br/>Own members, roles, topology and sharing<br/>Own explicit model and local limits<br/>User-authored context; URL references only"]
+    beta["Team beta<br/>Own members, roles, topology and sharing<br/>Own explicit model and local limits<br/>User-authored context; URL references only"]
+    gamma["Team gamma<br/>Own members, roles, topology and sharing<br/>Own explicit model and local limits<br/>User-authored context; URL references only"]
+    limits["All-team limits and scoped controls<br/>One shared request counter, wall deadline and concurrency cap<br/>Per-team limits also apply; pause/resume resets no allowance<br/>No budget multiplication, model selection or automatic winner"]
+    exchange["Optional prior-wave exchange<br/>Designated-member summaries or contributions only<br/>Directed links; bounded text; no raw private-artifact export<br/>Disconnected components have no exchange/barrier dependency"]
+    task --> alpha
+    task --> beta
+    task --> gamma
+    alpha -.->|only if configured| beta
+    alpha --> limits
+    beta -.-> exchange
+    gamma --> limits
+    classDef artifact fill:#FCFAF4,stroke:#99876F,color:#342F28;
+    class task artifact;
+    classDef llm fill:#E9EEEE,stroke:#5B7580,color:#342F28;
+    class alpha,beta,gamma llm;
+    classDef code fill:#EDF0E6,stroke:#697957,color:#342F28;
+    class limits code;
+    classDef evidence fill:#F1EADD,stroke:#93805D,color:#342F28;
+    class exchange evidence;
+    classDef optional fill:#F6EDDC,stroke:#9A7440,color:#342F28;
+    classDef future fill:#EEEDE8,stroke:#999389,color:#342F28;
+    linkStyle default stroke:#887E6B,stroke-width:1.5px;

@@ -62,7 +62,7 @@ class TaskAndTopologyTests(TaskCase):
         self.assertEqual(p["name"], "teamknitt")
         self.assertEqual(p["scripts"]["teamknitt"], "teamknitt.cli:main")
         self.assertNotIn("teamthill", p["scripts"])
-        self.assertEqual(__version__, "0.6.0")
+        self.assertEqual(__version__, "0.7.0")
         self.assertTrue((self.root / "mission/task.md").is_file())
         self.assertNotIn("scientist", self.c["mission"]["deliverable"])
 

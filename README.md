@@ -60,6 +60,26 @@ teamknitt configure --workspace ../my-team --members 6 --topology clustered \
 Application keeps a private backup and respects the shared run lock. For customized bindings,
 edit the configuration directly rather than resetting it. [Configuration guide](docs/TEAMKNITT.md).
 
+## Multiple teams for one task
+
+```bash
+teamknitt teams init ../coding-teams --ids alpha,beta,gamma --members 2 \
+  --goal "Propose a CSV validation command-line tool." --request-cap 24
+teamknitt teams view --workspace ../coding-teams
+# Preview an optional directed communication route; add --apply after review:
+teamknitt teams connect --workspace ../coding-teams --profile summaries --source alpha --target beta
+```
+
+Each team has independent native configuration, models, styles and local limits. All share
+one task and a **single total request cap**, not a cap multiplied by team count. Communication
+is off by default. Designated-member summaries/contributions travel only on explicit routes
+at prior-wave boundaries. Teams can also remain isolated. No automatic merge or winner.
+
+User-selected external URLs (including ub-mode and ponytail) are **references only**, not
+imported skills, templates, prompts, code or runtimes. Actual style context must be explicitly
+user-authored local text. Repeating a reference for two teams does not merge their identities.
+[Multi-team setup, native cloning, routing, limits and intervention](docs/MULTI_TEAM.md).
+
 ## Research-informed team views
 
 Goran's revised **“Background: Research and Theory on Human Teams” (9 Nov 2026)** supplies

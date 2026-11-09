@@ -74,3 +74,20 @@ legacy selected methods, never silently convert them. Original upstream function
 modified. Preserve explicit credentials/model bindings and budgets during migration. Drafts
 and migrations require explicit application, private backups and the shared run lock.
 Keep resources and canonical diagrams synchronized. Publication needs user authorization.
+
+
+# Multiple native teams
+
+Collections under teamknitt.teams share one task and bounded total request/time/concurrency
+limits while retaining each team's explicit native models, roles, routes and local limits.
+Inter-team communication defaults to none. Only the designated main member's validated prior-
+wave output may enter configured directed links; no implicit whole-team/private-artifact export,
+automatic winner, merge, model choice or budget multiplication. Connected components freeze
+frames at explicit phase barriers; unrelated components remain independent.
+
+External style URLs are references only, not permission to copy/adapt/import foreign prompts,
+skills, templates, configurations, code or CLIs. Only explicitly local user-authored style text
+may become scoped context; a label or reference does not implement its source protocol. Keep
+metadata/content and queued/applied/understood/outcome distinctions. Collection controls remain
+native, run-bound and deadline-preserving. No browser write/execution/import endpoints. Preserve
+single-team history and use docs/MULTI_TEAM.md and the canonical diagram specifications.

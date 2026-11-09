@@ -137,3 +137,28 @@ jobs:
           dist = importlib.metadata.distribution("teamknitt")
           assert {e.name for e in dist.entry_points if e.group == "console_scripts"} == {"teamknitt"}
           PY
+
+      - name: Multiple native teams, optional routes and portable views (offline)
+        run: |
+          cd "${{ runner.temp }}"
+          "${{ runner.temp }}/teamknitt-wheel-venv/bin/python" -m teamknitt teams init portable-teams --members 1 --goal "Propose a bounded CSV validation CLI."
+          "${{ runner.temp }}/teamknitt-wheel-venv/bin/python" -m teamknitt teams check --workspace portable-teams
+          "${{ runner.temp }}/teamknitt-wheel-venv/bin/python" -m teamknitt teams prepare --workspace portable-teams
+          "${{ runner.temp }}/teamknitt-wheel-venv/bin/python" -m teamknitt teams view --workspace portable-teams --output portable-teams-config.html
+          "${{ runner.temp }}/teamknitt-wheel-venv/bin/python" -m teamknitt teams demo --workspace portable-teams
+          "${{ runner.temp }}/teamknitt-wheel-venv/bin/python" -m teamknitt teams connect --workspace portable-teams --profile summaries --source alpha --target beta --apply
+          "${{ runner.temp }}/teamknitt-wheel-venv/bin/python" -m teamknitt teams demo --workspace portable-teams
+          "${{ runner.temp }}/teamknitt-wheel-venv/bin/python" -m teamknitt teams view --workspace portable-teams --team beta --output portable-teams-beta.html
+          "${{ runner.temp }}/teamknitt-wheel-venv/bin/python" - <<'PY'
+          from pathlib import Path
+          from teamknitt.teams.reporting import report
+          records = [report(p) for p in sorted(Path("portable-teams/trials").iterdir())]
+          assert len(records) == 2
+          assert all(r["provider_requests"] == 0 and r["goal_achieved"] is None and r["automatic_winner"] is None for r in records)
+          disconnected = next(r for r in records if r["communication"]["profile"] == "none")
+          connected = next(r for r in records if r["communication"]["profile"] == "summaries")
+          assert disconnected["exchange"] == []
+          exposures = [e for e in connected["exchange"] if e["kind"] == "team_exchange_exposed"]
+          assert exposures and all(e["source_team"] == "alpha" and e["target_team"] == "beta" and e["from_wave"] < e["to_wave"] for e in exposures)
+          assert all(r["status"] == "completed_team_collection" for r in records)
+          PY

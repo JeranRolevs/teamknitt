@@ -393,6 +393,20 @@ def diagrams():
     edge(g,"review","bounds","bottom","top",via=((24.5,9.3),(21,9.3)))
     g["footer"]="Browser: read-only metadata + command preparation. No model, permission, statistics or budget changes; no automatic recovery or team improvement."
     result.append(g)
+    g=graph("17-teamknitt-multiple-teams", "Multiple teams and communication", "One shared task; explicit independent configurations, optional directed exchange and a finite all-team budget.",width=28,height=14)
+    g.update(brand="TEAMKNITT", date="2026-11-09")
+    node(g,"task",14,3,"Shared task and review criteria","One authoritative brief and immutable task snapshot; goal achievement is not inferred","artifact",24,1.5)
+    for key,x,title in [("alpha",4,"Team alpha"),("beta",14,"Team beta"),("gamma",24,"Team gamma")]:
+        node(g,key,x,6.5,title,"Own members, roles, topology and sharing\nOwn explicit model and local limits\nUser-authored context; URL references only","llm",7.6,2.0)
+        edge(g,"task",key,"bottom","top",via=((14,4.6),(x,4.6)) if key!="beta" else ())
+    edge(g,"alpha","beta",label="only if configured",at=(9,6.15),optional=True)
+    node(g,"limits",7.5,10.5,"All-team limits and scoped controls","One shared request counter, wall deadline and concurrency cap\nPer-team limits also apply; pause/resume resets no allowance\nNo budget multiplication, model selection or automatic winner","code",13,2.2)
+    node(g,"exchange",22,10.5,"Optional prior-wave exchange","Designated-member summaries or contributions only\nDirected links; bounded text; no raw private-artifact export\nDisconnected components have no exchange/barrier dependency","evidence",11,2.2)
+    edge(g,"alpha","limits","bottom","top",via=((4,8.3),(7.5,8.3)))
+    edge(g,"beta","exchange","bottom","top",via=((14,8.3),(22,8.3)),optional=True)
+    edge(g,"gamma","limits","bottom","right",via=((24,8.8),(15,8.8),(15,10.5)))
+    g["footer"]="External skills/prompts/configuration/code/CLIs are not imported. Default output is reviewable text/code proposals, not verified execution or merging."
+    result.append(g)
     return result
 
 
@@ -462,3 +476,11 @@ def team_topology_layout(kind, count):
             x, y = .5 + .36 * math.cos(angle), .5 + .36 * math.sin(angle)
         result.append({"id": f"member.{i+1}", "x": round(x, 6), "y": round(y, 6)})
     return result
+
+
+# Inter-team export choices used by schema, CLI and collection UI; not organization rankings.
+TEAM_EXCHANGE_PROFILES = {
+    "none": {"label": "No inter-team communication", "description": "No exports or inter-team context; native internal sharing remains separate."},
+    "summaries": {"label": "Designated-member summaries", "description": "Only a configured main member's validated summary from completed prior waves."},
+    "contributions": {"label": "Designated-member contributions", "description": "Only a configured main member's validated candidate contribution from completed prior waves."},
+}

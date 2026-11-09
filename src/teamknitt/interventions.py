@@ -121,14 +121,19 @@ def submit(run_directory: Path, *, action, message_file=None, actors=None, apply
     if message_file is not None:
         if action != "feedback":
             raise ConfigurationError("Message files belong only to feedback requests.")
-        if root.parent.name != "trials":
+        if identity.get("collection") is not None:
+            from .teams.reporting import feedback_workspace
+            input_root = feedback_workspace(root, identity)
+        elif root.parent.name == "trials":
+            input_root = root.parent.parent
+        else:
             raise ConfigurationError("Feedback files require the original workspace/trials run location.")
         relative = Path(message_file)
         if relative.suffix.lower() not in {".md", ".txt"} or relative.is_absolute() or any(p in {".git", ".venv", "trials", "runs", "setup", "results", "local-reference", "data"} for p in relative.parts) or relative.name.startswith(".env") or relative.name == "private_splits.json":
             raise ConfigurationError("Use bounded workspace-relative feedback text, not credential/runtime paths.")
-        if any(root.parent.parent.joinpath(*relative.parts[:i]).is_symlink() for i in range(1, len(relative.parts) + 1)):
+        if any(input_root.joinpath(*relative.parts[:i]).is_symlink() for i in range(1, len(relative.parts) + 1)):
             raise ConfigurationError("Feedback paths cannot use symlinks.")
-        path = project_file(root.parent.parent, str(relative))
+        path = project_file(input_root, str(relative))
         if path.stat().st_size > 12_000:
             raise ConfigurationError("Feedback file exceeds 12 KB.")
         message = path.read_text(encoding="utf-8")

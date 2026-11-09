@@ -69,9 +69,9 @@ def mapping(value, fields, label):
     return value
 
 
-def load_study(workspace):
+def load_study(workspace, filename="study.yaml"):
     workspace = workspace.resolve()
-    c = parse_yaml(project_file(workspace, "study.yaml").read_text())
+    c = parse_yaml(project_file(workspace, filename).read_text())
     fields = {"schema_version", "name", "problem_file", "provider", "runtime", "base_overrides", "variants"}
     if isinstance(c, dict) and "decision_providers" in c:
         fields.add("decision_providers")

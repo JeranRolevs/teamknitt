@@ -76,3 +76,25 @@ operator and OS filesystem permissions, not multi-user authorization or tamper-p
 A terminated/stale producer cannot acknowledge requests; no automatic retry/restart/recovery
 is implied. The HTTP API remains read-only and never queues an intervention or schedules a
 condition. Main-run controls do not implicitly govern advanced engine or multi-lab execution.
+
+## Multiple teams and external style references
+
+The collection compiler binds every team to one shared task, independent native config/model
+settings, explicit export member and a bounded common request/time allowance. Inter-team data
+is only designated-member output along configured directed routes from completed prior waves;
+peer text remains untrusted. No raw source/style file or private artifact export is automatic.
+Previously exposed information is not erased; model-generated relays are not end-to-end secrecy.
+
+External URLs are metadata references only: no network fetch, foreign prompt/configuration
+conversion, plugin load or CLI delegation occurs during setup, views or execution. Local style
+text requires an explicit user-authorship attestation, safe bounded workspace path and immutable
+source hash. This is not automatic provenance verification or permission to relabel copied
+foreign skills. Style text and peer messages grant no tools, sources, models or budgets.
+
+All-team limits and per-team limits apply simultaneously. Native pause/resume does not renew
+any allowance; connected-component barriers obey the original shared deadline. Stopped/failed
+teams produce no new export. Config application/cloning is draft-first, lock-protected, backed
+up privately and guarded against concurrent edits. Historical configs/results are not removed.
+Collection feedback resolves a fixed, verified parent-run/team directory chain, not a
+caller-supplied filesystem root. The HTTP layer remains metadata/draft-only, with no arbitrary
+file paths, remote-style loader, queue-write or execution route. Snapshots are offline/private.
