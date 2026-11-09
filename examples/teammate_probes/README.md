@@ -27,9 +27,8 @@ required. Keep credentials, natural-language records, runs and results private a
 
 ## Research follow-up
 
-teamknitt follows up Goran Mitevski’s **2022/2023 thesis research** on distributed teams and
-their creative processes. The tool continues this work through team configuration,
-work monitoring and human-directed intervention. See `docs/TEAM_RESEARCH.md`.
+Teamknitt follows my thesis research on distributed teams and their creative processes.
+See `docs/TEAM_RESEARCH.md`.
 
 ## Licensing notice
 

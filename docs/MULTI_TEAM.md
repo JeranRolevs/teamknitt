@@ -189,8 +189,9 @@ be sensitive; this is not an authenticated multi-user hosted service or cryptogr
 
 ## Licence and provenance
 
-Based on Labtune; research follow-up to Goran Mitevski’s 2022/2023 work. Author: **Goran
-Mitevski**. Copyright/licensor: **Pioneertown B.V.** The **Teamknitt Noncommercial and Research
+Teamknitt follows my thesis research on distributed teams and their creative processes.
+
+Based on Labtune. Author: **Goran Mitevski**. Copyright/licensor: **Pioneertown B.V.** The **Teamknitt Noncommercial and Research
 Licence 2.0** permits free general noncommercial, non-research use. Research remains subject
 to Labtune's qualifying academic/geographic, independence, funding and anti-circumvention
 conditions. Noncommercial research outside qualifying low-income/lower-middle-income academic

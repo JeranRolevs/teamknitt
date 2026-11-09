@@ -20,6 +20,8 @@ from teamknitt.views import SOURCES, catalogue
 
 ROOT = Path(__file__).resolve().parents[1]
 DESCRIPTION = 'Teamknitt is a tool for configuring AI agent team/s, where we can set the task, follow the work in different modes, and intervene.'
+FOLLOW_UP = 'Teamknitt follows my thesis research on distributed teams and their creative processes.'
+RESEARCH_NOTE_FOLLOW_UP = 'Teamknitt builds on my 2022/2023 thesis research on distributed teams, their creative processes, and new tools for configuring and refining collaboration in hybrid teams of people and machine-learning agents.'
 OLD_TITLES = ('A team for what you have in mind.', 'Where contributions connect.',
               'Different explanations. One team.', 'Intervene with intention.', 'Complexity, observed with care.')
 
@@ -48,11 +50,98 @@ class ResearchOriginsTests(unittest.TestCase):
         # Copy changes do not remove an explicitly supported advanced task purpose.
         self.assertIn('research', json.loads(resource('team.schema.json').read_text())['properties']['mission']['properties']['purpose']['enum'])
 
+    def test_readme_research_passages_use_the_authors_voice(self):
+        text = ' '.join((ROOT / 'README.md').read_text().split())
+        self.assertIn(FOLLOW_UP, text)
+        self.assertIn('I use **non-system and system explanations** to organize the team views.', text)
+        self.assertIn('**compositional and compilational emergence**', text)
+        self.assertIn('**processes, states and outcomes**', text)
+        self.assertIn('IPO and IMOI include feedback and conditional relationships', text)
+        self.assertIn('does not infer interpersonal processes or psychological states', text)
+        self.assertNotIn("Goran's revised", text)
+        self.assertNotIn('Statistical methods are not a third theory of teams.', text)
+        # Requested deletion is copy only, not a statistical-mode change.
+        self.assertIn('Bayesian/probabilistic analysis is not an option in teamknitt.', text)
+        self.assertIn('supported frequentist count/interval analysis remain available when applicable', text)
+        self.assertIn('Unsupported legacy choices are rejected, never silently converted.', text)
+        self.assertIn('This does not change the original Labtune project.', text)
+
+    def test_first_person_follow_up_is_consistent_in_public_guides_and_viewer(self):
+        for name in ('docs/TEAM_RESEARCH.md', 'docs/TEAMKNITT.md', 'docs/MULTI_TEAM.md',
+                     'PROVENANCE.md', 'examples/task_team/README.md', 'examples/research_cognition/README.md',
+                     'examples/teammate_probes/README.md', 'examples/multi_team/README.md'):
+            with self.subTest(path=name):
+                text = (ROOT / name).read_text()
+                expected = RESEARCH_NOTE_FOLLOW_UP if name.endswith('TEAM_RESEARCH.md') else FOLLOW_UP
+                self.assertIn(expected, ' '.join(text.split()))
+                self.assertNotIn('follows up Goran', text)
+                self.assertNotIn("Goran's revised", text)
+        page = html(plan_report(self.plan))
+        self.assertIn(FOLLOW_UP, page)
+        self.assertNotIn('follows up Goran Mitevski', page)
+        self.assertNotIn('It also follows up his', page)
+        self.assertNotIn('third theory of teams', page)
+        self.assertIn('Goran Mitevski', page)
+        self.assertIn('2022/2023', page)
+
+    def test_readme_matches_the_abstract_without_overstating_routing_or_evidence(self):
+        from teamknitt.topology import TOPOLOGIES
+        text = ' '.join((ROOT / 'README.md').read_text().split())
+        self.assertIn('framework and source-available reference implementation', text)
+        self.assertIn('**1–16 LLM agents**', text)
+        self.assertIn('advanced engine workflows also support research missions', text)
+        self.assertIn(f'{len(TOPOLOGIES) - 1} deterministic presets or a custom directed graph', text)
+        self.assertIn(f'{len(TOPOLOGIES)} routing options in total', text)
+        self.assertIn('without assuming that its findings transfer to LLM-agent teams', text)
+        self.assertIn('Sources, scoped representations, work dependencies, handoffs', text)
+        self.assertIn('shared understanding remain unmeasured', text)
+        self.assertIn('Agreement in those records does not establish shared understanding or correctness', text)
+        for stage in ('Between runs', 'Before a run', 'During a run'):
+            self.assertIn('**' + stage + ':**', text)
+        for claim in ('Queued', 'applied', 'assembled', 'understood', 'improved'):
+            self.assertIn('**' + claim + '**', text)
+
+    def test_research_guide_opens_with_research_and_keeps_licensing_separate(self):
+        text = (ROOT / 'docs/TEAM_RESEARCH.md').read_text()
+        opening = text.split('## Purpose:', 1)[0]
+        self.assertIn('**Goran Mitevski · 9 November 2026**', opening)
+        self.assertIn('human-team research to guide the configuration of LLM-agent teams', opening)
+        self.assertIn('dynamical systems theory as a lens for following their work and informing intervention', opening)
+        self.assertIn('without assuming that', opening)
+        self.assertIn('findings about human teams transfer to LLM-agent teams', opening)
+        self.assertNotIn('Licence', opening)
+        self.assertNotIn('permission', opening)
+        self.assertNotIn('copyright', opening)
+        self.assertNotIn('lower-middle-\nincome', text)
+        self.assertGreater(text.index('## Provenance and licence'), text.index('## Representative sources'))
+        footer = text.split('## Provenance and licence', 1)[1]
+        self.assertIn('Pioneertown B.V.', footer)
+        self.assertIn('Teamknitt Noncommercial and Research Licence 2.0', footer)
+        self.assertIn('Noncommercial research outside qualifying low-income/lower-middle-income academic institutions', footer)
+        self.assertIn('requires separate written permission', footer)
+        self.assertIn('[LICENSE](../LICENSE)', footer)
+        self.assertIn('[LICENSING.md](../LICENSING.md)', footer)
+
+    def test_research_note_follow_up_is_a_coherent_continuation_with_an_open_question(self):
+        text = (ROOT / 'docs/TEAM_RESEARCH.md').read_text()
+        section = text.split('## Research follow-up', 1)[1].split('## 1.', 1)[0]
+        normal = ' '.join(section.split())
+        self.assertIn(RESEARCH_NOTE_FOLLOW_UP, normal)
+        self.assertIn('new tools for configuring and refining collaboration', normal)
+        self.assertIn('hybrid teams of people and machine-learning agents', normal)
+        self.assertIn('I extend that work to LLM-agent teams', normal)
+        self.assertIn('how their work unfolds over time', normal)
+        self.assertIn('how people can intervene', normal)
+        self.assertIn('Whether findings from human teams carry over remains an open research question.', normal)
+        self.assertNotIn('Research period:', section)
+        self.assertNotIn('Here I work with AI-agent teams:', section)
+        self.assertNotIn('effects have been validated', section)
+
     def test_research_credit_is_a_follow_up_not_a_thesis_review(self):
         self.assertEqual(AUTHOR_RESEARCH['research_period'], '2022/2023')
         self.assertEqual(AUTHOR_RESEARCH['relation'], 'research_follow_up')
-        self.assertIn('Goran Mitevski', AUTHOR_RESEARCH['connection'])
-        self.assertIn('distributed teams', AUTHOR_RESEARCH['connection'])
+        self.assertEqual(AUTHOR_RESEARCH['author'], 'Goran Mitevski')
+        self.assertEqual(AUTHOR_RESEARCH['connection'], FOLLOW_UP)
         self.assertNotIn('mitevski_2023', SOURCES)
         self.assertEqual(set(AUTHOR_RESEARCH), {'author', 'research_period', 'relation', 'connection', 'focus', 'boundary'})
         public = json.dumps(AUTHOR_RESEARCH) + (ROOT / 'README.md').read_text() + (ROOT / 'docs/TEAM_RESEARCH.md').read_text()
@@ -105,10 +194,13 @@ class ResearchOriginsTests(unittest.TestCase):
             self.assertEqual((self.root / name).read_bytes(), (ROOT / name).read_bytes())
         for name in ('README.md', 'PROVENANCE.md', 'docs/TEAM_RESEARCH.md', 'docs/TEAMKNITT.md'):
             text = (self.root / name).read_text()
-            self.assertIn('2022/2023', text)
-            self.assertIn('follow', text)
+            expected = RESEARCH_NOTE_FOLLOW_UP if name.endswith('TEAM_RESEARCH.md') else FOLLOW_UP
+            self.assertIn(expected, ' '.join(text.split()))
+            self.assertNotIn('follows up Goran', text)
             self.assertNotIn('Detrended Fluctuation', text)
         provenance = (self.root / 'PROVENANCE.md').read_text()
+        self.assertIn('2022/2023', provenance)
+        self.assertIn('Goran Mitevski', provenance)
         self.assertIn('Labtune 0.5.0', provenance)
         self.assertIn('software source baseline', provenance)
         self.assertIn('Pioneertown B.V.', provenance)

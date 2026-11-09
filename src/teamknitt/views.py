@@ -66,7 +66,7 @@ VIEWS = {
     },
     "team_dynamics": {
         "group": "system", "label": "Teams as dynamical systems", "question": "How do interaction and coordination change through time and around disturbances?",
-        "scope": "Complexity science and complex adaptive systems, including the Santa Fe tradition, motivate temporal trajectories, feedback, stability and adaptation questions. Gorman et al. is one team-focused reference, not the umbrella theory. Teamknitt also follows up Goran Mitevski’s 2022/2023 research on distributed teams and creative processes.",
+        "scope": "Complexity science and complex adaptive systems, including the Santa Fe tradition, motivate temporal trajectories, feedback, stability and adaptation questions. Gorman et al. is one team-focused reference, not the umbrella theory. Teamknitt follows my thesis research on distributed teams and their creative processes.",
         "sources": list(COMPLEXITY_SOURCES), "boundary": "Santa Fe is a research tradition, not an endorsement or a validated team model. Short, uneven traces do not establish emergence, adaptation, attractors, synchrony or fractals.",
     },
     "interaction_coordination": {

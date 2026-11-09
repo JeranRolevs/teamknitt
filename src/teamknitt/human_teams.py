@@ -9,7 +9,7 @@ from copy import deepcopy
 
 AUTHOR_RESEARCH = {
     "author": "Goran Mitevski", "research_period": "2022/2023", "relation": "research_follow_up",
-    "connection": "Teamknitt follows up Goran Mitevski’s 2022/2023 thesis research on distributed teams and their creative processes. It continues that work through configurable AI-agent teams, different ways to follow their work, and human-directed intervention.",
+    "connection": "Teamknitt follows my thesis research on distributed teams and their creative processes.",
     "focus": ["distributed teamwork", "creative processes", "AI-agent participation"],
     "boundary": "This research background does not establish AI-team performance or intervention effects. Configuration and interventions remain user-directed.",
 }

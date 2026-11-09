@@ -1,16 +1,11 @@
 # Background: Research and Theory on Human Teams
 
-**9 Nov 2026 · @Goran**
+**Goran Mitevski · 9 November 2026**
 
-Product integration of Goran's revised background, not a verbatim reproduction or a
-validation study. Author: **Goran Mitevski**. teamknitt is based on Labtune and his
-2022/2023 thesis research on distributed teams and creative processes;
-**Pioneertown B.V.** remains the copyright holder/licensor. The Teamknitt Noncommercial and
-Research Licence 2.0 in LICENSE governs use; LICENSING.md explains it. General noncommercial,
-non-research use is free. Noncommercial research outside qualifying low-income/lower-middle-
-income academic institutions requires separate permission; Labtune's research independence,
-funding and anti-circumvention conditions remain. Commercial use needs separate permission.
-Conditional modification/sharing rights do not waive those research or commercial limits.
+This approach draws on human-team research to guide the configuration of LLM-agent teams,
+and on dynamical systems theory as a lens for following their work and informing intervention.
+This note connects these ideas to Teamknitt's views and controls, without assuming that
+findings about human teams transfer to LLM-agent teams.
 
 ## Purpose: configure → set tasks → follow work → intervene
 
@@ -25,13 +20,11 @@ model selection, consensus forcing, statistical-method selection or budget incre
 
 ## Research follow-up
 
-Teamknitt follows up **Goran Mitevski’s 2022/2023 thesis research** on distributed teams and
-their creative processes. It continues the interest in how teamwork develops over time and
-how machine participants can contribute to a shared process.
-
-The current tool applies that interest through explicit team configuration, different ways
-to follow work, and human-directed intervention. The research background is not a claim
-that AI-team performance or intervention effects have been validated.
+Teamknitt builds on my 2022/2023 thesis research on distributed teams, their creative processes,
+and new tools for configuring and refining collaboration in hybrid teams of people and
+machine-learning agents. I extend that work to LLM-agent teams, looking at how their structure
+shapes interaction, how their work unfolds over time, and how people can intervene. Whether
+findings from human teams carry over remains an open research question.
 
 ## 1. Three related, separate distinctions
 
@@ -169,3 +162,20 @@ The complete structured reference list is available offline with `teamknitt theo
 the viewer's Sources & scope section. Setup, planning, tests, diagrams, packaging and all
 metadata views make no paid provider calls. Books/PDFs, source extracts, private Foundation
 notes, credentials, trials, research results and backups stay outside Git and distributions.
+
+## Provenance and licence
+
+Teamknitt is based on **Labtune**. **Author: Goran Mitevski. Copyright holder/licensor:
+Pioneertown B.V.** See [provenance](../PROVENANCE.md).
+
+The **Teamknitt Noncommercial and Research Licence 2.0** governs use:
+
+- General noncommercial, non-research use is free.
+- Noncommercial research outside qualifying low-income/lower-middle-income academic institutions
+  requires separate written permission. Labtune's research independence, funding and
+  anti-circumvention conditions remain.
+- Commercial use requires separate written permission through Goran Mitevski, on behalf of
+  Pioneertown B.V., at [goran@pioneertown.ai](mailto:goran@pioneertown.ai).
+
+Modification and sharing remain conditional on the permitted uses and distribution terms.
+[LICENSE](../LICENSE) is authoritative; [LICENSING.md](../LICENSING.md) explains the conditions.

@@ -17,8 +17,9 @@ Live execution requires `--live --approve-requests N`, where N equals the collec
 The default is bounded text/code proposals, not unrestricted filesystem coding or merging.
 The browser only previews configurations and metadata; use the CLI to apply or run.
 
-Based on Labtune; research follow-up to Goran Mitevski’s 2022/2023 work. Author: **Goran
-Mitevski**. Copyright/licensor: **Pioneertown B.V.** The Teamknitt Noncommercial and Research
+Teamknitt follows my thesis research on distributed teams and their creative processes.
+
+Based on Labtune. Author: **Goran Mitevski**. Copyright/licensor: **Pioneertown B.V.** The Teamknitt Noncommercial and Research
 Licence 2.0 provides free general noncommercial, non-research use. Noncommercial research
 outside qualifying low-income/lower-middle-income academic institutions requires separate
 permission under the Labtune-based eligibility, independence, funding and anti-circumvention

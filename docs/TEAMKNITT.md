@@ -2,9 +2,9 @@
 
 Teamknitt is a tool for configuring AI agent team/s, where we can set the task, follow the work in different modes, and intervene.
 
-teamknitt is a standalone product and engine for tasks, brainstorming and goals. It is based
-on Labtune and follows up Goran Mitevski’s 2022/2023 thesis research on distributed teams and
-their creative processes. [Research background](TEAM_RESEARCH.md#research-follow-up) ·
+Teamknitt is a standalone product and engine for tasks, brainstorming and goals, based on Labtune.
+Teamknitt follows my thesis research on distributed teams and their creative processes.
+[Research background](TEAM_RESEARCH.md#research-follow-up) ·
 [Provenance](../PROVENANCE.md). Goran Mitevski’s author credit and the Pioneertown B.V.
 notice are preserved. No external engine package or CLI is needed.
 

@@ -2,19 +2,18 @@
 
 ### Teamknitt is a tool for configuring AI agent team/s, where we can set the task, follow the work in different modes, and intervene.
 
-**teamknitt** is a standalone product and execution engine for agent teams working on
-user-defined **tasks, brainstorming and goals**. Choose the members, their
-connections, information sharing, models, tools and finite budgets; inspect the process
-and intervene explicitly without assuming that a topology is best or that execution proves success. Human-team research informs the design, not a validated AI-team improvement claim.
+**teamknitt** is a framework and source-available reference implementation for configuring,
+observing and intervening in teams of **1–16 LLM agents**. Teams work on
+user-defined **tasks, brainstorming and goals**; advanced engine workflows also support research missions.
 
-Based on **Labtune** and a follow-up to **Goran Mitevski’s 2022/2023 thesis research** on
-distributed teams and their creative processes. [Research background](docs/TEAM_RESEARCH.md#research-follow-up).
-**Author: Goran Mitevski. Copyright
-holder/licensor: Pioneertown B.V.** [Provenance](PROVENANCE.md). The runtime is shipped under
-`teamknitt.engine`: no separate Labtune installation, import namespace or CLI is required.
+I use human-team research as the organizing lens, without assuming that its findings transfer
+to LLM-agent teams. Who talks to whom, what they share and how a human can intervene are
+explicit choices, alongside models, tools and finite budgets.
 
-Work can be followed through member-focused or system-focused views, the live metadata
-monitor, and saved/offline snapshots. Switching views does not reconfigure the team.
+Based on **Labtune**. Teamknitt follows my thesis research on distributed teams and their creative processes.
+[Research background](docs/TEAM_RESEARCH.md#research-follow-up).
+**Author: Goran Mitevski. Copyright holder/licensor: Pioneertown B.V.** [Provenance](PROVENANCE.md).
+Teamknitt ships its own runtime under `teamknitt.engine`; no separate Labtune installation or CLI is required.
 
 ## Getting started
 
@@ -38,16 +37,17 @@ browser API for applying configurations, changing budgets or starting model exec
 |---|---|
 | Purpose | Task · brainstorm · goal · research |
 | Members | 1–16, with explicit responsibilities and perspectives |
-| Routing | Fully connected · hub-and-spoke · two-way/one-way rings and chains · hierarchy · wheel · grid · clustered pods · bipartite · broadcast · gather · custom |
+| Routing | 13 deterministic presets or a custom directed graph — 14 routing options in total |
 | Sharing | None · low reported blockers · intermediate summaries · high detailed notes · conditional wisdom only |
-| Problem-solving structure | Complementary inputs, scoped representations, expertise directory, work dependencies, handoffs and action opportunities |
-| Team views | Non-system or System; separate emergence and process/state distinctions |
+| Sources and work | Sources, scoped representations, work dependencies, handoffs, an assigned expertise directory and action opportunities |
+| Observation | Non-system and System views, live metadata monitoring and saved/offline snapshots |
 | Intervention | Private feedback; safe-boundary pause/resume/stop; explicit planned disturbances |
 | Execution | Explicit provider/model, domain tools, delegation, concurrency and budgets |
 
-Topology filters both peer views and generated-note exposure. Directed routes do not imply
-replies. Hubs and hierarchies do not grant decision authority. Changing a route does not erase
-previous exposure, and relay requires later permitted work rather than instant delivery.
+Routing determines who may receive information; the sharing profile limits what may travel
+along those routes. Directed links do not imply replies, and hubs or hierarchies do not grant
+decision authority. Changing a route does not erase earlier exposure. Relaying information
+requires later permitted work, not instant delivery. Use `teamknitt topologies` for the full catalogue.
 
 ```bash
 # Draft only: no files, model choices or budgets change.
@@ -70,10 +70,11 @@ teamknitt teams view --workspace ../coding-teams
 teamknitt teams connect --workspace ../coding-teams --profile summaries --source alpha --target beta
 ```
 
-Each team has independent native configuration, models, styles and local limits. All share
-one task and a **single total request cap**, not a cap multiplied by team count. Communication
-is off by default. Designated-member summaries/contributions travel only on explicit routes
-at prior-wave boundaries. Teams can also remain isolated. No automatic merge or winner.
+A collection contains **1–8 separately configured teams** working on the same task. Each keeps
+its own models, roles, styles and local limits, within a **single total request cap**. Adding
+teams does not raise that cap. Inter-team communication is off by default; when enabled,
+bounded designated-member summaries or contributions travel on explicit routes from completed
+prior waves. Teams can remain isolated. There is no automatic merge or winning-team selection.
 
 User-selected external URLs (including ub-mode and ponytail) are **references only**, not
 imported skills, templates, prompts, code or runtimes. Actual style context must be explicitly
@@ -82,11 +83,12 @@ user-authored local text. Repeating a reference for two teams does not merge the
 
 ## Research-informed team views
 
-Goran's revised **“Background: Research and Theory on Human Teams” (9 Nov 2026)** supplies
-three separate distinctions: **non-system/system explanatory locus**, **compositional/
-compilational emergence**, and **processes/states/outcomes**. IPO/IMOI includes feedback and
-conditional relations—not just a linear pipeline. Transition/action phases are annotated;
-interpersonal processes and psychological states are not inferred from software traces.
+I use **non-system and system explanations** to organize the team views. I keep this separate
+from **compositional and compilational emergence**, and from **processes, states and outcomes**.
+
+IPO and IMOI include feedback and conditional relationships, not just a one-way sequence.
+Teamknitt marks transition and action phases, but does not infer interpersonal processes or
+psychological states from software traces.
 [Research background and references](docs/TEAM_RESEARCH.md).
 
 | Group | Focused views | Explanatory focus |
@@ -94,21 +96,25 @@ interpersonal processes and psychological states are not inferred from software 
 | **Non-system** | Collaborative intelligence · shared models & member reports | Member attributes, behavior, knowledge and aggregates |
 | **System** | Distributed problem-solving · transactive memory · interactive team cognition & coordination · team dynamics | Situated interaction, differentiated knowledge and organization across members, artifacts and time |
 
-These are explanatory orientations, not exhaustive, exclusive scientific camps or quality
-scores. System is not a synonym for complexity science. Compositional and compilational
-emergence are a related but different axis. Historical Standard/Complexity links still resolve.
+Both groups show the same recorded process; switching views does not reconfigure the team.
+They are explanatory orientations, not quality scores or exclusive scientific camps. System
+is not a synonym for complexity science. Historical Standard/Complexity links still resolve.
+
+The records show contributions, permitted information flow, member reports and version-specific
+handoffs. Agreement in those records does not establish shared understanding or correctness. **Trust,
+psychological safety, cohesion, efficacy, potency and shared understanding remain unmeasured.**
+**Transactive memory is differentiated/compilational**, not shared overlap; an assigned expertise
+directory is a scaffold, not evidence of retrieval effectiveness.
 
 *Measuring AI Agents as Teammates with Collaborative Intelligence* informs the member-focused
 behavioral view. Ordinary task telemetry does **not evaluate** its eight capabilities. Optional
-saved probe summaries remain separate-context evidence, not an official CIB score or capabilities
-attributed to this task team. **Transactive memory is differentiated/compilational**, not shared
-overlap; its configured directory is not a validated effectiveness measure.
+saved probe summaries are separate-context evidence, not an official CIB score or a capability
+claim about the current team. I use **distributed problem-solving** as the product term while
+retaining original scholarly titles in references.
 
-**Distributed problem-solving** is the product term; original scholarly titles retain their
-wording. Agreement, reference conformity, perceived alignment, understanding and correctness
-remain distinct. Trust, psychological safety, cohesion, efficacy and potency are not measured.
-Local–global, substrate-independence and cross-level principles motivate research questions;
-recurrence, entropy, attractors, synchrony, fractals, emergence and adaptation are not estimated.
+The dynamics view supports questions about change over time, not estimates of recurrence,
+entropy, attractors, synchrony, fractals, emergence or adaptation. Configured routes, observed
+exposure, member agreement and task success remain different claims.
 
 ```bash
 teamknitt theory
@@ -120,10 +126,10 @@ teamknitt view --workspace ../my-team --group system --section interaction_coord
 teamknitt view --workspace ../my-team --group non_system --probe-run PROBE_RUN
 ```
 
-**Bayesian/probabilistic analysis is not an option in teamknitt.** Statistical methods are not
-a third theory of teams. Descriptive records and supported frequentist count/interval analysis
-remain available when applicable. Unsupported legacy choices are rejected, never silently
-converted. This does not change the original Labtune project.
+**Bayesian/probabilistic analysis is not an option in teamknitt.** Descriptive records and
+supported frequentist count/interval analysis remain available when applicable. Unsupported
+legacy choices are rejected, never silently converted. This does not change the original
+Labtune project.
 
 ## Offline demonstration and execution
 
@@ -144,8 +150,13 @@ shell or real-world action execution.
 
 ## Interventions and outcome review
 
-The **Intervene** desk separates conditions/configuration, planned disturbances, active-run
-controls and human outcome review. The browser prepares commands only; it cannot apply them.
+Interventions are explicit and human-led:
+
+- **Between runs:** review and apply a configuration change, with a private backup.
+- **Before a run:** schedule a disturbance to member, representation or link availability.
+- **During a run:** queue private feedback, pause, resume or stop for the next dependency-wave boundary.
+
+The **Intervene** desk prepares commands; the browser does not execute or queue them.
 From your workspace directory:
 
 ```bash
@@ -167,9 +178,10 @@ retains the same lock, model, request counters and original wall-time deadline. 
 terminal, preserves partial contributions and does not run completed-study confirmation.
 No active-run model, permission, statistical-method or budget changes are introduced.
 
-Queue acceptance, boundary application, context assembly, understanding and improvement are
-separate claims. Human cross-training or adaptive-training findings do not establish AI-team
-benefits. [Detailed controls and audit boundaries](docs/TEAMKNITT.md#explicit-intervention-controls).
+**Queued**, **applied**, **assembled**, **understood** and **improved** are separate claims.
+A receipt or assembled context does not establish understanding or an intervention effect.
+Human-team training findings do not validate benefits for LLM-agent teams.
+[Detailed controls and audit boundaries](docs/TEAMKNITT.md#explicit-intervention-controls).
 
 ## Standalone engine and compatibility
 

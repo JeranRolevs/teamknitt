@@ -16,10 +16,11 @@ Only the `teamknitt` console command and package namespace are distributed.
 
 ## Research follow-up
 
-teamknitt follows up **Goran Mitevski’s 2022/2023 thesis research** on distributed teams and
-their creative processes. It continues that work through configurable AI-agent teams, work
-monitoring and human-directed intervention. This is research lineage, separate from the
-software source baseline above; it does not import thesis code, datasets or the full thesis.
+Teamknitt follows my thesis research on distributed teams and their creative processes.
+Research period: **2022/2023**.
+
+This is a research follow-up, separate from the software source baseline above. It does not
+import thesis code, datasets or the full thesis.
 
 Starting with the 0.9.0 development version, teamknitt material offered by Pioneertown B.V.
 uses the **Teamknitt Noncommercial and Research Licence 2.0**. General noncommercial,
