@@ -1,0 +1,197 @@
+Teamknitt Skill Licence 1.0
+SPDX-License-Identifier: LicenseRef-Teamknitt-Skill-1.0
+
+Copyright (c) 2026 Pioneertown B.V.
+Licensor: Pioneertown B.V.
+Author: Goran Mitevski.
+Material: the teamknitt skill for Claude, based on teamknitt and Labtune.
+
+1. Purpose and relationship to the main licence
+
+The teamknitt software is offered under the Teamknitt Noncommercial and Research
+Licence 2.0 (the "Main Licence"), in the LICENSE file at the root of the
+teamknitt repository. The Main Licence limits free use to noncommercial use and
+to qualifying academic research.
+
+This Skill Licence is a separate, additional permission from the licensor. It
+lets anyone use the unmodified teamknitt skill in Claude, for any purpose,
+without meeting the noncommercial, research, institutional or geographic
+conditions of the Main Licence. It applies only to Skill Use as defined below.
+It does not amend, replace or weaken the Main Licence, which continues to govern
+every other use of the teamknitt software.
+
+By exercising a permission under this Skill Licence, you accept its terms as
+binding obligations and conditions of that permission. Rights you have
+independently under applicable law are unaffected.
+
+2. Definitions
+
+"Skill" means the material in the skills/teamknitt directory of the teamknitt
+repository as offered by the licensor under this Skill Licence: the skill
+instructions (SKILL.md), reference documents, helper scripts and any other files
+in that directory, together with the Bundled Runtime.
+
+"Bundled Runtime" means the copy of the teamknitt software that the Skill
+contains, or that the Skill's instructions install from the licensor's teamknitt
+repository or from an official teamknitt package published by the licensor.
+
+"Anthropic" means Anthropic, PBC and its affiliates.
+
+"Claude" means the AI models and assistant products that Anthropic offers under
+the Claude name, including the Claude apps, Claude Code, and Claude models
+accessed through Anthropic's API or through a platform that Anthropic has
+authorized to offer Claude. No other assistant, agent, model or product is
+Claude for this Skill Licence, even if it can load skills in the same format.
+
+"Skill Use" means:
+(a) installing or enabling the unmodified Skill in Claude;
+(b) having Claude read the Skill and, at a person's direction, install and run
+    the Bundled Runtime to configure, check, plan, view, demonstrate, run,
+    observe and intervene in agent teams; and
+(c) using the Bundled Runtime's own commands directly on workspaces that were
+    created or are being worked on through (a) and (b).
+
+Skill Use concerns the assistant that loads and operates the Skill. This Skill
+Licence does not restrict which model service you choose for the agent teams
+that the Bundled Runtime runs.
+
+"You" means any individual or organization exercising permissions under this
+Skill Licence, including a company, a research institution, a public body or a
+nonprofit, anywhere in the world.
+
+3. Grant: anyone may use the Skill in Claude
+
+Subject to this Skill Licence, the licensor grants you a worldwide, nonexclusive,
+royalty-free copyright licence to use, execute, copy and install the unmodified
+Skill for Skill Use, for any purpose. This includes Commercial Use and Research
+Use as the Main Licence defines them. No eligibility test, registration, request
+or licence fee applies to Skill Use.
+
+4. Sharing the Skill
+
+You may share complete, unmodified copies of the Skill with others for their own
+Skill Use, including by sending the packaged skill, sharing it inside an
+organization through Claude's skill-sharing features, or publishing it in a
+skill directory operated by Anthropic, provided that:
+(a) each copy includes this Skill Licence and the Main Licence (LICENSE and
+    LICENSING.md) and retains the copyright, author, attribution and third-party
+    notices; and
+(b) you do not charge a licence fee for the Skill itself.
+
+Anthropic may host, store, display and transmit the unmodified Skill as needed
+to operate those features for its users.
+
+Each recipient receives permission for Skill Use directly from the licensor under
+this Skill Licence.
+
+5. No changes to the Skill
+
+The Skill is offered for use as published by the licensor. Without the
+licensor's prior written permission, you may not:
+(a) modify, adapt, translate, shorten, extend or rewrite the Skill, including
+    its instructions, reference documents and helper scripts;
+(b) create another skill, prompt, plugin or instruction set derived from the
+    Skill; or
+(c) share or publish a changed copy of the Skill, or present any changed copy as
+    the teamknitt skill.
+
+Creating and editing your own workspaces is not a change to the Skill. You remain
+free to choose and edit your own briefs, team configurations, budgets and other
+workspace files that the Bundled Runtime creates for you.
+
+You may propose changes to the licensor through the teamknitt repository. A
+proposal, or its acknowledgement, gives no right to use or share a changed
+Skill.
+
+6. What this Skill Licence does not cover
+
+Everything outside Skill Use remains governed by the Main Licence, or needs a
+separate written licence from the licensor. In particular, this Skill Licence
+does not permit you to:
+(a) install, use, adapt or port the Skill in or for any assistant, agent, model
+    or product other than Claude;
+(b) modify the Bundled Runtime, or share a modified Bundled Runtime, except as
+    the Main Licence allows;
+(c) take the Bundled Runtime or any other teamknitt code out of the Skill to use
+    it apart from Skill Use, or to include it in another product, package,
+    service or skill;
+(d) sell or commercially license the Skill or the teamknitt software, or offer
+    the functionality of the teamknitt software to third parties as a hosted or
+    managed service; or
+(e) use any other material in the teamknitt repository that is not part of the
+    Skill.
+
+Using the Skill in Claude in the course of your own work, including paid,
+business or research work, is Skill Use and is permitted. A wrapper, label or
+installation method chosen mainly to obtain rights for a use described in (a) to
+(e) is not Skill Use.
+
+7. Results and other terms
+
+This Skill Licence does not claim rights in independently created inputs, data,
+team configurations, findings or outputs merely because you used the Skill.
+Teamknitt material included in an output remains subject to the applicable
+licence.
+
+Anthropic's products, model providers, platforms, dependencies and data have
+their own terms and fees. This Skill Licence grants no rights in them and does
+not pay their fees. You are responsible for your own credentials, budgets and
+provider usage.
+
+The Skill is an independent work of the licensor. It is not made, endorsed or
+supported by Anthropic. "Claude" and "Anthropic" are used only to describe where
+the Skill may be used; no trademark rights are granted or claimed.
+
+The licensor grants only rights it has authority to grant. Identified
+third-party material remains subject to its own terms. This Skill Licence does
+not change the separate Labtune upstream licence.
+
+Rights not expressly granted are reserved. No other licences are implied.
+Nothing here limits fair use or other rights under applicable law that cannot be
+restricted by licence.
+
+8. Violations and termination
+
+Your permissions under this Skill Licence end automatically if you breach its
+terms. You must then stop all activities requiring those permissions.
+Reinstatement requires written permission from the licensor; no automatic notice,
+cure period or reinstatement is promised. Sections 5, 6, 7 and 9 continue to
+apply as relevant after termination.
+
+9. No warranty; limitation of liability
+
+To the fullest extent permitted by applicable law, the Skill is provided "as is"
+and "as available", without warranties or conditions of any kind, including
+merchantability, fitness for a particular purpose, title or noninfringement. You
+must assess its suitability and validate research and other results. No copyright
+holder or contributor is liable for damages, losses or claims arising from the
+Skill or its use, in contract, tort or otherwise, to the extent the law allows
+that liability to be excluded.
+
+10. Contact
+
+For permission to change the Skill, to use it with an assistant other than
+Claude, or for any other use outside Skill Use that the Main Licence does not
+permit, request a separate written licence before use from the author
+Goran Mitevski through:
+
+Email: rolevski.mk@icloud.com
+
+If you wish to collaborate on this problem, the configuration, observation and
+refinement of teams of AI agents, you are welcome to contact the author at the
+same email address or on LinkedIn: https://www.linkedin.com/in/goran-ptbv
+
+Sending a request, receiving an acknowledgement or discussing terms or a
+collaboration is not permission.
+
+11. Version and current stage
+
+These are version 1.0 terms for the Skill as offered under this version. At this
+stage the Skill is offered for Claude only and without permission to change it.
+The licensor may extend it to other assistants, or allow changes, in a later
+version or by separate written permission; until then no such permission exists.
+
+These terms do not revoke or rewrite permissions granted under the Main Licence
+or any earlier licence. The licensor may offer later versions of the Skill under
+different terms; that does not withdraw permissions already granted for copies
+offered under this version.
