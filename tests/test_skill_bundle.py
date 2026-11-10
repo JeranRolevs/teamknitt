@@ -39,7 +39,11 @@ class SkillBundleTests(unittest.TestCase):
         self.assertLessEqual(len(files), 512)
         for path in files:
             self.assertFalse(path.is_symlink(), path)
-            self.assertLess(path.stat().st_size, 256 * 1024, path)
+            if path.suffix != ".png":
+                self.assertLess(path.stat().st_size, 256 * 1024, path)
+        icon = PLUGIN / ".claude-plugin/icon.png"
+        self.assertTrue(icon.read_bytes().startswith(b"\x89PNG"))
+        self.assertLess(icon.stat().st_size, 2 * 1024 * 1024)
 
     def test_skill_installs_only_the_bundled_runtime(self):
         text = (SKILL / "SKILL.md").read_text()
