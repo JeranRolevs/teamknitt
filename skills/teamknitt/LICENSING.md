@@ -13,7 +13,7 @@ Any person or organization may install the unmodified skill in **Claude** (Anthr
 apps, Claude Code, and Claude models through Anthropic's API or an Anthropic-authorized platform)
 and use it **for any purpose, including commercial work and research**. No eligibility test,
 request or licence fee applies. The permission covers the skill's instructions and the copy of
-the teamknitt runtime that the skill installs from the licensor's repository.
+the teamknitt runtime that the skill installs from the licensor's official package.
 
 ## Two limits at this stage
 

@@ -6,6 +6,8 @@ import subprocess
 import sys
 import unittest
 
+from teamknitt import __version__
+
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN = ROOT / "skills/teamknitt"
 SKILL = PLUGIN / "skills/teamknitt"
@@ -53,12 +55,13 @@ class SkillBundleTests(unittest.TestCase):
             self.assertFalse(data.startswith(b"#!"), path)
             data.decode("utf-8")
 
-    def test_skill_installs_only_the_pinned_repository_commit(self):
+    def test_skill_installs_only_the_pinned_published_version(self):
         text = (SKILL / "SKILL.md").read_text()
-        pins = set(re.findall(r"github\.com/JeranRolevs/teamknitt(?:/archive/|@)([0-9a-f]{40})", text))
-        self.assertEqual(len(pins), 1, pins)
-        self.assertNotIn("git clone", text)
-        self.assertIn(next(iter(pins)), (PLUGIN / "README.md").read_text())
+        pins = set(re.findall(r'pip"? install "teamknitt==([0-9.]+)"', text))
+        self.assertEqual(pins, {__version__})
+        for forbidden in ("git clone", "git+https", "/archive/"):
+            self.assertNotIn(forbidden, text)
+        self.assertIn("pypi.org/project/teamknitt/" + __version__, (PLUGIN / "README.md").read_text())
 
 
 if __name__ == "__main__":

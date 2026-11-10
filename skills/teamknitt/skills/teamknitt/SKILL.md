@@ -38,26 +38,22 @@ Check first; install only if needed. Python 3.11 or newer is required.
 command -v teamknitt && teamknitt --version
 ```
 
-If it is missing, install it from the author's repository at the pinned commit below. This is
-teamknitt 0.9.0; the pin means every user gets exactly the code this skill was tested with.
+If it is missing, install the published package from PyPI at the exact version below, which is
+the version this skill was tested with:
 
 ```bash
 python3 --version
 python3 -m venv "$HOME/.teamknitt-venv"
-"$HOME/.teamknitt-venv/bin/pip" install \
-  "https://github.com/JeranRolevs/teamknitt/archive/01e8e16802acbfea35f8896a3de258bc7f53fa34.zip"
+"$HOME/.teamknitt-venv/bin/pip" install "teamknitt==0.9.0"
 "$HOME/.teamknitt-venv/bin/teamknitt" --version
 ```
 
-- Tell the user in one line that you are installing teamknitt from
-  github.com/JeranRolevs/teamknitt before you do it. The install also downloads two dependencies
-  from PyPI (PyYAML and jsonschema).
-- If the archive download is refused but `git` works, use
-  `pip install "git+https://github.com/JeranRolevs/teamknitt@01e8e16802acbfea35f8896a3de258bc7f53fa34"` instead.
-- If both are refused, the network is restricted. Ask the user to attach the repository as a ZIP
-  (GitHub: Code → Download ZIP) and install from the unpacked folder.
-- Install only from that repository at that commit. Do not substitute another source, branch or
+- Tell the user in one line that you are installing teamknitt 0.9.0 from PyPI before you do it.
+  The install also brings in two dependencies, PyYAML and jsonschema.
+- Install only that package at that version from PyPI. Do not substitute another source, name or
   version on your own.
+- If the install is refused, the network is restricted. Say so and ask the user how they want to
+  proceed; do not look for another way to fetch the code.
 - Shell state may not carry between commands, so call the binary by its full path
   (`$HOME/.teamknitt-venv/bin/teamknitt`) wherever plain `teamknitt` is not found.
 
@@ -204,7 +200,7 @@ it finishes, so on a local machine start it in the background if the user may wa
 **In a chat or cloud sandbox** the provider usually cannot be reached and the user's key does not
 belong there. Prepare and check everything, then hand over: zip the workspace, send it, and give
 the user the two commands above to run on their own machine, after installing teamknitt there
-with the same pinned `pip install` line as in section 1.
+with `pip install "teamknitt==0.9.0"`.
 
 ## 8. Read the results
 
