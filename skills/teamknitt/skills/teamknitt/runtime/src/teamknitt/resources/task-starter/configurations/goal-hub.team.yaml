@@ -1,0 +1,286 @@
+# Explicit example, not an optimal or automatically selected arrangement.
+schema_version: 3
+name: A team for your next idea
+engine:
+  variant: team
+  design_file: designs/task-team.md
+mission:
+  purpose: goal
+  brief_file: mission/task.md
+  deliverable: A reviewable response to the user's task, ideas or goal, with open questions and next steps.
+  success_criteria:
+  - Address the user's brief rather than a benchmark task.
+  - Keep sources, alternatives and unresolved items inspectable.
+  review: user_review
+team:
+  topology: hub_and_spoke
+  members: 5
+  links: []
+communication:
+  profile: intermediate
+  wisdom: false
+  max_read_words: 700
+cognition:
+  perspectives:
+  - distributed_problem_solving
+  - information_processing
+  - transactive_memory
+  - shared_mental_models
+  - coaction
+  - interactive_dynamics
+  context:
+    setting: A user-directed team working on a task, brainstorming ideas or pursuing a chosen goal.
+    tools:
+    - versioned_notes
+    - scoped_information_sharing
+    - explicit_handoffs
+    constraints:
+    - A role emphasis is not proof of expertise.
+    - A contribution or acknowledgement is not proof that the user's goal has been achieved.
+  task:
+    structure: divisible
+    interaction: limited_exchange
+    goal: Explore routes toward the user's goal and propose bounded next steps and review criteria.
+    success_criteria:
+    - Retain traceable contributions and unresolved items for user review.
+  roles:
+  - actor: member.1
+    responsibilities:
+    - Connect and synthesize
+    - Explore routes toward the user's goal and propose bounded next steps and review criteria.
+    expertise: []
+    perspective: Connect contributions and make assumptions explicit; do not force agreement.
+    capabilities:
+    - contribute
+    - acknowledge
+  - actor: member.2
+    responsibilities:
+    - Explore alternatives
+    - Explore routes toward the user's goal and propose bounded next steps and review criteria.
+    expertise: []
+    perspective: Seek diverse approaches and possibilities rather than merely echoing the first idea.
+    capabilities:
+    - contribute
+    - acknowledge
+  - actor: member.3
+    responsibilities:
+    - Challenge and make practical
+    - Explore routes toward the user's goal and propose bounded next steps and review criteria.
+    expertise: []
+    perspective: Explore constraints, counterexamples and workable next steps without prematurely closing
+      ideas.
+    capabilities:
+    - contribute
+    - acknowledge
+  - actor: member.4
+    responsibilities:
+    - Connect and synthesize
+    - Explore routes toward the user's goal and propose bounded next steps and review criteria.
+    expertise: []
+    perspective: Connect contributions and make assumptions explicit; do not force agreement.
+    capabilities:
+    - contribute
+    - acknowledge
+  - actor: member.5
+    responsibilities:
+    - Explore alternatives
+    - Explore routes toward the user's goal and propose bounded next steps and review criteria.
+    expertise: []
+    perspective: Seek diverse approaches and possibilities rather than merely echoing the first idea.
+    capabilities:
+    - contribute
+    - acknowledge
+  representations:
+  - id: context
+    kind: source
+    purpose: User-supplied context for this task or goal.
+    format: markdown
+    path: mission/context.md
+    readers:
+    - member.1
+    - member.2
+    - member.3
+    - member.4
+    - member.5
+    writers: []
+  - id: notes-1
+    kind: workspace
+    purpose: Externalized contribution from member.1 for the user's goal.
+    format: structured_note
+    readers:
+    - member.1
+    writers:
+    - member.1
+  - id: notes-2
+    kind: workspace
+    purpose: Externalized contribution from member.2 for the user's goal.
+    format: structured_note
+    readers:
+    - member.2
+    writers:
+    - member.2
+  - id: notes-3
+    kind: workspace
+    purpose: Externalized contribution from member.3 for the user's goal.
+    format: structured_note
+    readers:
+    - member.3
+    writers:
+    - member.3
+  - id: notes-4
+    kind: workspace
+    purpose: Externalized contribution from member.4 for the user's goal.
+    format: structured_note
+    readers:
+    - member.4
+    writers:
+    - member.4
+  - id: notes-5
+    kind: workspace
+    purpose: Externalized contribution from member.5 for the user's goal.
+    format: structured_note
+    readers:
+    - member.5
+    writers:
+    - member.5
+  work:
+  - id: frame-1
+    phase: independent_proposals
+    actors:
+    - member.1
+    goal: Explore routes toward the user's goal and propose bounded next steps and review criteria.
+    inputs:
+    - context
+    outputs:
+    - notes-1
+    depends_on: []
+  - id: frame-2
+    phase: independent_proposals
+    actors:
+    - member.2
+    goal: Explore routes toward the user's goal and propose bounded next steps and review criteria.
+    inputs:
+    - context
+    outputs:
+    - notes-2
+    depends_on: []
+  - id: frame-3
+    phase: independent_proposals
+    actors:
+    - member.3
+    goal: Explore routes toward the user's goal and propose bounded next steps and review criteria.
+    inputs:
+    - context
+    outputs:
+    - notes-3
+    depends_on: []
+  - id: frame-4
+    phase: independent_proposals
+    actors:
+    - member.4
+    goal: Explore routes toward the user's goal and propose bounded next steps and review criteria.
+    inputs:
+    - context
+    outputs:
+    - notes-4
+    depends_on: []
+  - id: frame-5
+    phase: independent_proposals
+    actors:
+    - member.5
+    goal: Explore routes toward the user's goal and propose bounded next steps and review criteria.
+    inputs:
+    - context
+    outputs:
+    - notes-5
+    depends_on: []
+  handoffs: []
+  expertise_directory:
+  - topic: Connect and synthesize
+    holders:
+    - member.1
+    basis: User-editable role emphasis, not verified expertise or a model ranking.
+  - topic: Explore alternatives
+    holders:
+    - member.2
+    basis: User-editable role emphasis, not verified expertise or a model ranking.
+  - topic: Challenge and make practical
+    holders:
+    - member.3
+    basis: User-editable role emphasis, not verified expertise or a model ranking.
+  - topic: Connect and synthesize
+    holders:
+    - member.4
+    basis: User-editable role emphasis, not verified expertise or a model ranking.
+  - topic: Explore alternatives
+    holders:
+    - member.5
+    basis: User-editable role emphasis, not verified expertise or a model ranking.
+  temporal_reference:
+    order:
+    - independent_proposals
+    - task_adoption
+    - parallel_episodes
+    - evidence_review
+    deadline_wave: 5
+  affordances:
+  - id: contribute-1
+    actors:
+    - member.1
+    capability: contribute
+    requires:
+    - context
+    operation: publish
+    target: notes-1
+    purpose: Externalize a task contribution with input provenance.
+  - id: contribute-2
+    actors:
+    - member.2
+    capability: contribute
+    requires:
+    - context
+    operation: publish
+    target: notes-2
+    purpose: Externalize a task contribution with input provenance.
+  - id: contribute-3
+    actors:
+    - member.3
+    capability: contribute
+    requires:
+    - context
+    operation: publish
+    target: notes-3
+    purpose: Externalize a task contribution with input provenance.
+  - id: contribute-4
+    actors:
+    - member.4
+    capability: contribute
+    requires:
+    - context
+    operation: publish
+    target: notes-4
+    purpose: Externalize a task contribution with input provenance.
+  - id: contribute-5
+    actors:
+    - member.5
+    capability: contribute
+    requires:
+    - context
+    operation: publish
+    target: notes-5
+    purpose: Externalize a task contribution with input provenance.
+  memory:
+    max_words_per_representation: 160
+dynamics:
+  stable_waves: 2
+  perturbations: []
+observations:
+  enabled: true
+  dimensions:
+  - local_global
+  - perturbation
+  - coupling
+  - cross_level
+  - attractors
+  - synchronization
+  - fractals

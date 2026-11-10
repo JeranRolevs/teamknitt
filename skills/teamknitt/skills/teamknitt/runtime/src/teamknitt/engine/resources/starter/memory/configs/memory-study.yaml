@@ -1,0 +1,88 @@
+schema_version: 1
+name: memory-retention-smoke
+problem_file: mission/memory/problem.md
+provider:
+  adapter: chat_completions
+  base_url: https://provider.example.invalid/v1
+  endpoint: /chat/completions
+  models_endpoint: null
+  model: YOUR_MODEL_ID
+  api_key_env: TEAMKNITT_API_KEY
+  env_file: .env
+  timeout_seconds: 90
+  max_output_tokens: 8192
+  max_parallel_requests: 3
+  request_options: {}
+runtime:
+  mode: research
+  domain_config: mission/memory/evaluation-smoke.yaml
+  max_actions_per_episode: 6
+  max_findings: 6
+  comparison_metrics:
+  - confirmation_run_false_alarm_rate
+  - confirmation_fault_recall
+  - confirmation_calibration_error
+  - confirmation_peak_memory_bytes
+  - confirmation_benign_recurrence_alarm_rate
+base_overrides:
+  budget:
+    max_llm_calls: 32
+    max_evaluations: 5
+    confirmation_evaluations_reserved: 1
+    max_wall_seconds: 900
+  resources:
+    max_active_agents: 4
+    max_llm_requests: 3
+    max_experiments: 2
+  teams:
+    max_depth: 1
+    max_children_per_agent: 1
+    max_active_descendants: 1
+  statistics:
+    approach: frequentist
+  communication:
+    profile: high
+    wisdom: true
+    max_read_words: 700
+  decisions:
+    mode: llm_only
+    specialist: null
+    allowed_specs:
+    - semantic_choice.v1
+    agent_access: true
+    max_calls_per_episode: 2
+  domain:
+    adapter: memory_policy
+variants:
+- id: memory-a-high-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/A-multidisciplinary-silos.md
+    teams:
+      role_instances:
+        formal_specialist: 1
+        empirical_specialist: 1
+        implementation_specialist: 0
+- id: memory-c-high-wisdom
+  overrides:
+    lab:
+      design_file: lab_designs/C-complementary-co-leaders.md
+- id: memory-single
+  overrides:
+    lab:
+      design_file: lab_designs/A-multidisciplinary-silos.md
+    teams:
+      role_instances:
+        formal_specialist: 0
+        empirical_specialist: 1
+        implementation_specialist: 0
+      max_depth: 0
+      max_children_per_agent: 0
+      max_active_descendants: 0
+    communication:
+      profile: none
+      wisdom: false
+    resources:
+      max_active_agents: 1
+      max_llm_requests: 1
+      max_experiments: 1

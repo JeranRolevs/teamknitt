@@ -1,0 +1,14 @@
+{
+  "name": "teamknitt-skills",
+  "description": "The teamknitt plugin for Claude: configure, observe and intervene in teams of LLM agents.",
+  "owner": {
+    "name": "Goran Mitevski"
+  },
+  "plugins": [
+    {
+      "name": "teamknitt",
+      "source": "./skills/teamknitt",
+      "description": "Configure, check, preview, run and intervene in teams of 1-16 LLM agents with the teamknitt CLI."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "teamknitt",
+  "displayName": "Teamknitt",
+  "version": "0.9.0",
+  "description": "Configure, check, preview, run and intervene in teams of 1-16 LLM agents: choose who talks to whom, how much they share and what budget they get, then follow the work.",
+  "author": { "name": "Goran Mitevski", "url": "https://github.com/JeranRolevs/teamknitt" },
+  "homepage": "https://github.com/JeranRolevs/teamknitt",
+  "repository": "https://github.com/JeranRolevs/teamknitt",
+  "license": "LicenseRef-Teamknitt-Skill-1.0",
+  "keywords": ["agent-teams", "multi-agent", "team-configuration", "research"]
+}

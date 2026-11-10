@@ -1,0 +1,47 @@
+schema_version: 1
+name: distributed-problem-solving-lab
+problem_file: mission/problem.md
+provider:
+  adapter: chat_completions
+  base_url: https://provider.example.invalid/v1
+  endpoint: /chat/completions
+  models_endpoint: null
+  model: YOUR_MODEL_ID
+  api_key_env: TEAMKNITT_API_KEY
+  env_file: .env
+  timeout_seconds: 30
+  max_output_tokens: 2048
+  max_parallel_requests: 2
+  request_options: {}
+runtime:
+  mode: text_only
+  max_actions_per_episode: 2
+  max_findings: 4
+  comparison_metrics: []
+base_overrides:
+  budget:
+    max_llm_calls: 16
+    max_wall_seconds: 600
+  teams:
+    max_depth: 0
+    max_children_per_agent: 0
+    max_active_descendants: 0
+  decisions:
+    mode: llm_only
+    specialist: null
+    allowed_specs: [semantic_choice.v1]
+variants:
+  - id: team
+    overrides:
+      lab:
+        design_file: lab_designs/C-complementary-co-leaders.md
+      communication:
+        profile: high  # Explicitly selected to allow detailed shared research artifacts.
+        wisdom: false
+  - id: independent
+    overrides:
+      lab:
+        design_file: lab_designs/C-complementary-co-leaders.md
+      communication:
+        profile: none
+        wisdom: false

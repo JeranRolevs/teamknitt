@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "template": true,
+  "record_type": "decision_request",
+  "id": "template:decision_request",
+  "actor_id": "<runtime-assigned-actor-id>",
+  "created_at": "2026-10-26T00:00:00Z",
+  "source_refs": [],
+  "visibility": {
+    "scope": "team",
+    "team_ids": []
+  },
+  "payload": {
+    "spec_id": "<registered-spec-version>",
+    "purpose": "<bounded question>",
+    "context_refs": [],
+    "answer_space": {},
+    "budget_ref": "<inherited-budget-id>"
+  },
+  "configuration_snapshot_id": "<configuration-snapshot-id>"
+}
