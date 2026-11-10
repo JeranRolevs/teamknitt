@@ -1,6 +1,7 @@
-"""Guards for the teamknitt skill plugin: layout, licence files and the bundled runtime copy."""
+"""Guards for the teamknitt skill plugin: layout, licence files, shipped file types and the install pin."""
 from pathlib import Path
 import json
+import re
 import subprocess
 import sys
 import unittest
@@ -28,27 +29,36 @@ class SkillBundleTests(unittest.TestCase):
         for phrase in ("SPDX-License-Identifier: LicenseRef-Teamknitt-Skill-1.0",
                        "Copyright (c) 2026 Pioneertown B.V.", "Author: Goran Mitevski."):
             self.assertIn(phrase, text)
-        for name in ("LICENSE", "LICENSING.md", "PROVENANCE.md"):
-            self.assertEqual((SKILL / "runtime" / name).read_bytes(), (ROOT / name).read_bytes())
+        for copy, source in (("TEAMKNITT-NONCOMMERCIAL-RESEARCH-LICENCE-2.0.txt", "LICENSE"),
+                             ("LICENSING.md", "LICENSING.md"), ("PROVENANCE.md", "PROVENANCE.md")):
+            self.assertEqual((PLUGIN / "licenses" / copy).read_bytes(), (ROOT / source).read_bytes())
 
-    def test_bundled_runtime_is_synchronized_and_within_directory_limits(self):
+    def test_documents_are_synchronized_and_only_directory_file_types_ship(self):
         result = subprocess.run([sys.executable, str(ROOT / "tools/sync_skill.py"), "--check"],
                                 capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
-        files = [p for p in PLUGIN.rglob("*") if p.is_file() and "__pycache__" not in p.parts]
+        files = [p for p in PLUGIN.rglob("*") if p.is_file()]
         self.assertLessEqual(len(files), 512)
         for path in files:
             self.assertFalse(path.is_symlink(), path)
-            if path.suffix != ".png":
-                self.assertLess(path.stat().st_size, 256 * 1024, path)
-        icon = PLUGIN / ".claude-plugin/icon.png"
-        self.assertTrue(icon.read_bytes().startswith(b"\x89PNG"))
-        self.assertLess(icon.stat().st_size, 2 * 1024 * 1024)
+            data = path.read_bytes()
+            if path.suffix == ".png":
+                self.assertTrue(data.startswith(b"\x89PNG"), path)
+                self.assertLess(len(data), 2 * 1024 * 1024, path)
+                continue
+            # The directory accepts only documents and data from organizations that are not Verified.
+            self.assertTrue(path.suffix in {".md", ".txt", ".json", ".yaml", ".yml"} or path.name == "LICENSE", path)
+            self.assertLess(len(data), 256 * 1024, path)
+            self.assertNotIn(b"\x00", data, path)
+            self.assertFalse(data.startswith(b"#!"), path)
+            data.decode("utf-8")
 
-    def test_skill_installs_only_the_bundled_runtime(self):
+    def test_skill_installs_only_the_pinned_repository_commit(self):
         text = (SKILL / "SKILL.md").read_text()
-        self.assertIn('"${CLAUDE_SKILL_DIR}/runtime"', text)
+        pins = set(re.findall(r"github\.com/JeranRolevs/teamknitt(?:/archive/|@)([0-9a-f]{40})", text))
+        self.assertEqual(len(pins), 1, pins)
         self.assertNotIn("git clone", text)
+        self.assertIn(next(iter(pins)), (PLUGIN / "README.md").read_text())
 
 
 if __name__ == "__main__":
