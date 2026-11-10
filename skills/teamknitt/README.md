@@ -3,7 +3,7 @@
 Configure teams of 1–16 LLM agents from a conversation with Claude: set the task, choose who
 talks to whom, decide how much they share and what budget they get, then follow the work and
 intervene. The plugin contains one skill, `teamknitt`, which installs the teamknitt command-line
-tool from its author's public repository and operates it for you.
+tool from PyPI and operates it for you.
 
 teamknitt is built around explicit human choices. Claude drafts and previews; you decide. Nothing
 is applied, and no model is called, without your say-so. There is no automatic team redesign,
@@ -46,12 +46,12 @@ Customize > Plugins, then install Teamknitt from it.
 
 - **Contains:** instructions and documents only: the skill, three reference guides, the licence
   texts and an icon. The plugin ships no scripts or programs.
-- **Fetches and runs:** when first used, the skill installs the `teamknitt` Python package from
-  its author's public repository, <https://github.com/JeranRolevs/teamknitt>, pinned to commit
-  `01e8e16802acbfea35f8896a3de258bc7f53fa34` (version 0.9.0), into a private virtual environment in
-  your home folder. `pip` also downloads two dependencies from PyPI, PyYAML and jsonschema.
-  Nothing else is fetched, and the skill's instructions all come from this plugin, not from the
-  network.
+- **Fetches and runs:** when first used, the skill installs the published `teamknitt` package
+  from PyPI at the exact version 0.9.0 (<https://pypi.org/project/teamknitt/0.9.0/>) into a
+  private virtual environment in your home folder, after telling you. `pip` also installs its
+  two dependencies, PyYAML and jsonschema. Nothing else is fetched, and the skill's instructions
+  all come from this plugin, not from the network. The package source is public at
+  <https://github.com/JeranRolevs/teamknitt>.
 - **Sends:** nothing by default. Setup, checking, planning, viewing, previews and demonstrations
   are fully offline. Only a live run (`teamknitt run --live`), which you must explicitly approve
   with the request cap, sends your brief, context and the agents' messages to the model service
