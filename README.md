@@ -1,18 +1,13 @@
 # teamknitt
 
-### Teamknitt is a tool for configuring AI agent team/s, where we can set the task, follow the work in different modes, and intervene.
+### Configure AI agent team/s, set the task or goal, observe and follow the work in different modes, intervene.
 
-**teamknitt** is a framework and source-available reference implementation for configuring,
-observing and intervening in teams of **1–16 LLM agents**. Teams work on
-user-defined **tasks, brainstorming and goals**; advanced engine workflows also support research missions.
+Teamknitt is a framework and source-available reference implementation for configuring, observing and intervening in teams of 1–16 LLM agents. Teams work on user-defined tasks, brainstorming and goals; advanced engine workflows also support research missions.
 
-I use human-team research as the organizing lens, without assuming that its findings transfer
-to LLM-agent teams. Who talks to whom, what they share and how a human can intervene are
-explicit choices, alongside models, tools and finite budgets.
+I use human-team research as the organizing lens, without assuming that its findings transfer to LLM-agent teams. Who talks to whom, what they share and how a human can intervene are explicit choices, alongside models, tools and finite budgets.
 
-Based on **Labtune**. Teamknitt follows my thesis research on distributed teams and their creative processes.
-[Research background](docs/TEAM_RESEARCH.md#research-follow-up).
-**Author: Goran Mitevski. Copyright holder/licensor: Pioneertown B.V.** [Provenance](PROVENANCE.md).
+Based on the approach I developed for Labtune. Teamknitt follows my thesis research on distributed teams and new tools for configuring and refining collaboration in hybrid teams of people and machine-learning agents. [Research background](docs/TEAM_RESEARCH.md#research-follow-up).
+
 Teamknitt ships its own runtime under `teamknitt.engine`; no separate Labtune installation or CLI is required.
 
 ## Getting started

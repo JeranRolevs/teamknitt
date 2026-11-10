@@ -20,6 +20,8 @@ from teamknitt.views import SOURCES, catalogue
 
 ROOT = Path(__file__).resolve().parents[1]
 DESCRIPTION = 'Teamknitt is a tool for configuring AI agent team/s, where we can set the task, follow the work in different modes, and intervene.'
+README_DESCRIPTION = 'Configure AI agent team/s, set the task or goal, observe and follow the work in different modes, intervene.'
+README_FOLLOW_UP = 'Teamknitt follows my thesis research on distributed teams and new tools for configuring and refining collaboration in hybrid teams of people and machine-learning agents.'
 FOLLOW_UP = 'Teamknitt follows my thesis research on distributed teams and their creative processes.'
 RESEARCH_NOTE_FOLLOW_UP = 'Teamknitt builds on my 2022/2023 thesis research on distributed teams, their creative processes, and new tools for configuring and refining collaboration in hybrid teams of people and machine-learning agents.'
 OLD_TITLES = ('A team for what you have in mind.', 'Where contributions connect.',
@@ -40,9 +42,14 @@ class ResearchOriginsTests(unittest.TestCase):
 
     def test_requested_title_and_task_description(self):
         text = (ROOT / 'README.md').read_text()
-        self.assertIn(DESCRIPTION, text)
-        self.assertIn('user-defined **tasks, brainstorming and goals**', text)
-        self.assertNotIn('user-defined **tasks, brainstorming, goals and research**', text)
+        self.assertTrue(text.startswith('# teamknitt\n\n### ' + README_DESCRIPTION + '\n'))
+        self.assertIn('user-defined tasks, brainstorming and goals', text)
+        self.assertIn('Based on the approach I developed for Labtune.', text)
+        self.assertIn(README_FOLLOW_UP, text)
+        self.assertIn('[Research background](docs/TEAM_RESEARCH.md#research-follow-up)', text)
+        self.assertIn('Teamknitt ships its own runtime under `teamknitt.engine`;', text)
+        self.assertIn('Goran Mitevski', text)
+        self.assertIn('Pioneertown B.V.', text)
         page = html(plan_report(self.plan))
         self.assertIn('<h1 id="page-title" class="product-title">' + DESCRIPTION + '</h1>', page)
         for title in OLD_TITLES:
@@ -52,7 +59,7 @@ class ResearchOriginsTests(unittest.TestCase):
 
     def test_readme_research_passages_use_the_authors_voice(self):
         text = ' '.join((ROOT / 'README.md').read_text().split())
-        self.assertIn(FOLLOW_UP, text)
+        self.assertIn(README_FOLLOW_UP, text)
         self.assertIn('I use **non-system and system explanations** to organize the team views.', text)
         self.assertIn('**compositional and compilational emergence**', text)
         self.assertIn('**processes, states and outcomes**', text)
@@ -88,7 +95,7 @@ class ResearchOriginsTests(unittest.TestCase):
         from teamknitt.topology import TOPOLOGIES
         text = ' '.join((ROOT / 'README.md').read_text().split())
         self.assertIn('framework and source-available reference implementation', text)
-        self.assertIn('**1–16 LLM agents**', text)
+        self.assertIn('teams of 1–16 LLM agents', text)
         self.assertIn('advanced engine workflows also support research missions', text)
         self.assertIn(f'{len(TOPOLOGIES) - 1} deterministic presets or a custom directed graph', text)
         self.assertIn(f'{len(TOPOLOGIES)} routing options in total', text)
