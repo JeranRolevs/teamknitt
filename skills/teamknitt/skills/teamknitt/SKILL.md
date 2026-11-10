@@ -38,31 +38,33 @@ Check first; install only if needed. Python 3.11 or newer is required.
 command -v teamknitt && teamknitt --version
 ```
 
-If it is missing, install the copy bundled with this skill. It is in the `runtime/` folder next
-to this SKILL.md:
+If it is missing, install it from the author's repository at the pinned commit below. This is
+teamknitt 0.9.0; the pin means every user gets exactly the code this skill was tested with.
 
 ```bash
 python3 --version
-rm -rf "$HOME/.teamknitt-src" && cp -r "${CLAUDE_SKILL_DIR}/runtime" "$HOME/.teamknitt-src"
 python3 -m venv "$HOME/.teamknitt-venv"
-"$HOME/.teamknitt-venv/bin/pip" install "$HOME/.teamknitt-src"
+"$HOME/.teamknitt-venv/bin/pip" install \
+  "https://github.com/JeranRolevs/teamknitt/archive/01e8e16802acbfea35f8896a3de258bc7f53fa34.zip"
 "$HOME/.teamknitt-venv/bin/teamknitt" --version
 ```
 
-- `${CLAUDE_SKILL_DIR}` is this skill's folder. If the variable is empty, use the real path of the
-  folder that holds this SKILL.md. The copy step matters because the skill folder may be
-  read-only and the install needs a writable source folder.
-- The install downloads two dependencies from PyPI (PyYAML and jsonschema). Nothing else is
-  fetched, and no code or instructions should be pulled from anywhere else.
+- Tell the user in one line that you are installing teamknitt from
+  github.com/JeranRolevs/teamknitt before you do it. The install also downloads two dependencies
+  from PyPI (PyYAML and jsonschema).
+- If the archive download is refused but `git` works, use
+  `pip install "git+https://github.com/JeranRolevs/teamknitt@01e8e16802acbfea35f8896a3de258bc7f53fa34"` instead.
+- If both are refused, the network is restricted. Ask the user to attach the repository as a ZIP
+  (GitHub: Code → Download ZIP) and install from the unpacked folder.
+- Install only from that repository at that commit. Do not substitute another source, branch or
+  version on your own.
 - Shell state may not carry between commands, so call the binary by its full path
   (`$HOME/.teamknitt-venv/bin/teamknitt`) wherever plain `teamknitt` is not found.
-- If there is no `runtime/` folder, this copy of the skill is incomplete. Tell the user to
-  install the teamknitt plugin, or to get the complete skill folder from
-  https://github.com/JeranRolevs/teamknitt, rather than improvising an install.
 
-Every workspace gets its own copy of the guides in `docs/`. Read them when you need detail the
-sections below do not cover: `docs/TEAMKNITT.md` (configuration, views, interventions),
-`docs/MULTI_TEAM.md` (several teams), `docs/PROVIDERS.md` (connecting a model service).
+This skill's `references/` folder holds the guides. Read one when you need detail the sections
+below do not cover: `references/TEAMKNITT.md` (configuration, views, interventions),
+`references/MULTI_TEAM.md` (several teams), `references/PROVIDERS.md` (connecting a model
+service).
 
 ## 2. Agree the team with the user
 
@@ -201,9 +203,8 @@ it finishes, so on a local machine start it in the background if the user may wa
 
 **In a chat or cloud sandbox** the provider usually cannot be reached and the user's key does not
 belong there. Prepare and check everything, then hand over: zip the workspace, send it, and give
-the user the two commands above to run on their own machine, where they can install teamknitt
-with `pip install` from the `.teamknitt-src` folder you include in the hand-over or from the
-teamknitt repository.
+the user the two commands above to run on their own machine, after installing teamknitt there
+with the same pinned `pip install` line as in section 1.
 
 ## 8. Read the results
 
@@ -263,7 +264,7 @@ The cap is for all teams together, not per team. `teams configure` and `teams co
 until `--apply` (`configure` also needs `--reset-bindings`). The shared brief is the collection's
 `mission/task.md`; per-team settings live in `teams/ID/team.yaml` and `teams/ID/study.yaml`.
 `teams demo`, `teams run`, `teams report` and `teams intervene` mirror the single-team commands.
-Read the workspace's `docs/MULTI_TEAM.md` before using style references, cloning or exporters.
+Read `references/MULTI_TEAM.md` before using style references, cloning or exporters.
 
 ## When something fails
 

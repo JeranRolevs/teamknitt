@@ -13,7 +13,7 @@ Any person or organization may install the unmodified skill in **Claude** (Anthr
 apps, Claude Code, and Claude models through Anthropic's API or an Anthropic-authorized platform)
 and use it **for any purpose, including commercial work and research**. No eligibility test,
 request or licence fee applies. The permission covers the skill's instructions and the copy of
-the teamknitt runtime the skill runs.
+the teamknitt runtime that the skill installs from the licensor's repository.
 
 ## Two limits at this stage
 
@@ -35,17 +35,17 @@ The licensor may relax either limit in a later version or by separate written pe
 | Using teamknitt through the unmodified skill in Claude, for any purpose | Teamknitt Skill Licence 1.0 (this directory) |
 | Sharing the complete, unmodified skill for use in Claude, with both licences and notices kept, without a licence fee | Teamknitt Skill Licence 1.0 |
 | Changing the skill, or using it with an assistant other than Claude | Separate written permission from Pioneertown B.V. |
-| Using, modifying or redistributing the teamknitt software apart from the skill | [Teamknitt Noncommercial and Research Licence 2.0](../../LICENSE) |
+| Using, modifying or redistributing the teamknitt software apart from the skill | [Teamknitt Noncommercial and Research Licence 2.0](licenses/TEAMKNITT-NONCOMMERCIAL-RESEARCH-LICENCE-2.0.txt) |
 | Building teamknitt code into another product, selling it or offering it as a hosted service | Separate written licence from Pioneertown B.V. |
 
 The skill licence is an additional permission. It does not change the main licence, which still
 governs the rest of this repository: general noncommercial, non-research use is free, research is
 free only under the Labtune-based academic conditions, and commercial use needs a separate
-written licence. See [LICENSING.md](../../LICENSING.md) at the repository root.
+written licence. See [licenses/LICENSING.md](licenses/LICENSING.md).
 
 ## Keep with every copy
 
-Copies of the skill must include this directory's LICENSE, the main LICENSE and LICENSING.md,
+Copies of the skill must include this directory's LICENSE, the main licence texts in `licenses/`,
 the Pioneertown B.V. notice and Goran Mitevski's author credit.
 
 ## Other terms

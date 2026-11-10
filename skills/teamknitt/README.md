@@ -2,8 +2,8 @@
 
 Configure teams of 1–16 LLM agents from a conversation with Claude: set the task, choose who
 talks to whom, decide how much they share and what budget they get, then follow the work and
-intervene. The plugin contains one skill, `teamknitt`, and a copy of the teamknitt command-line
-tool that the skill installs and operates for you.
+intervene. The plugin contains one skill, `teamknitt`, which installs the teamknitt command-line
+tool from its author's public repository and operates it for you.
 
 teamknitt is built around explicit human choices. Claude drafts and previews; you decide. Nothing
 is applied, and no model is called, without your say-so. There is no automatic team redesign,
@@ -21,7 +21,7 @@ Ask Claude in plain words, for example:
 
 Claude will then:
 
-1. Install the bundled teamknitt tool in the session (Python 3.11 or newer).
+1. Install the teamknitt tool in the session (Python 3.11 or newer), after telling you.
 2. Agree the purpose, team size, topology and sharing level with you. There are 13 routing
    presets (ring, hub and spoke, chain, grid, clusters and more) plus custom links.
 3. Create a workspace, check it and report the plan, including the cap on model requests.
@@ -44,11 +44,14 @@ Customize > Plugins, then install Teamknitt from it.
 
 ## What it runs, fetches and sends
 
-- **Runs:** the bundled `teamknitt` Python package, copied from the skill's `runtime` folder in
-  this plugin and installed into a private virtual environment in your home folder. All source
-  is included here in readable form.
-- **Fetches:** when installing, `pip` downloads two dependencies from PyPI, PyYAML and
-  jsonschema. The plugin fetches nothing else and loads no instructions from the network.
+- **Contains:** instructions and documents only: the skill, three reference guides, the licence
+  texts and an icon. The plugin ships no scripts or programs.
+- **Fetches and runs:** when first used, the skill installs the `teamknitt` Python package from
+  its author's public repository, <https://github.com/JeranRolevs/teamknitt>, pinned to commit
+  `01e8e16802acbfea35f8896a3de258bc7f53fa34` (version 0.9.0), into a private virtual environment in
+  your home folder. `pip` also downloads two dependencies from PyPI, PyYAML and jsonschema.
+  Nothing else is fetched, and the skill's instructions all come from this plugin, not from the
+  network.
 - **Sends:** nothing by default. Setup, checking, planning, viewing, previews and demonstrations
   are fully offline. Only a live run (`teamknitt run --live`), which you must explicitly approve
   with the request cap, sends your brief, context and the agents' messages to the model service
@@ -78,7 +81,7 @@ This plugin is offered under the **Teamknitt Skill Licence 1.0** ([LICENSE](LICE
 [guide](LICENSING.md)). Anyone may use the unmodified skill in Claude for any purpose, including
 commercial work and research. At this stage it covers Claude only and does not allow changing
 the skill. Use of the teamknitt code apart from the skill stays under the Teamknitt Noncommercial
-and Research Licence 2.0, a copy of which is included with the bundled runtime.
+and Research Licence 2.0, a copy of which is in the `licenses` folder.
 
 Copyright holder and licensor: Pioneertown B.V. Author: Goran Mitevski. Based on Labtune. This
 is an independent work; it is not made, endorsed or supported by Anthropic.
