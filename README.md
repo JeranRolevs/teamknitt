@@ -226,6 +226,12 @@ explains the terms.
   licence fee. Retain legal/author/third-party notices, identify changes and distribute software
   changes under the same terms; sharing does not transfer research eligibility or allow commercial use.
 
+**The teamknitt skill has a separate licence.** Anyone may use the unmodified skill in
+`skills/teamknitt` with Claude, for any purpose, under the **Teamknitt Skill Licence 1.0**
+([licence](skills/teamknitt/LICENSE), [guide](skills/teamknitt/LICENSING.md)). At this stage it
+covers Claude only and does not allow changing the skill. It is an additional permission for use
+through the skill; the terms above still govern all other use.
+
 **Based on Labtune. Author: Goran Mitevski. Copyright holder/licensor: Pioneertown B.V.**
 The research rules override the general noncommercial grant, even for unpaid, personal, nonprofit
 or openly published research. Keep LICENSE, LICENSING.md and credits in distributions and starters.
