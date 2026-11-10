@@ -13,7 +13,7 @@ const titles={
  observations:['OBSERVATIONS','Process observations','Inspect selected interaction and change records. No team ranking or automatic configuration changes.'],
  views:['TEAM VIEWS','Team views','Member-focused and system-focused views of the same team and work.'],
  interventions:['INTERVENTIONS','Interventions','Review configuration changes, scheduled disturbances, operator controls and outcome evidence.'],
- foundations:['BACKGROUND','Background and sources','Teamknitt is based on Labtune. Teamknitt follows my thesis research on distributed teams and their creative processes.']
+ foundations:['RESEARCH BACKGROUND','Human-team research','Human-team research guides the configuration of LLM-agent teams. Dynamical systems theory provides a lens for following their work and informing intervention, without assuming that findings from human teams transfer.']
 };
 function show(name){page=name;for(const s of document.querySelectorAll('.panel'))s.hidden=s.id!==name;for(const b of document.querySelectorAll('[data-page]')){if(b.dataset.page===name)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');}const t=titles[name];$('page-eyebrow').textContent=t[0];$('page-title').textContent=t[1];$('page-title').classList.toggle('product-title',name==='system');$('page-description').textContent=t[2];}
 const startParts=location.hash.slice(1).split('/');

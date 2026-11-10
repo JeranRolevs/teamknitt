@@ -155,8 +155,8 @@ teamknitt view --workspace ../my-team --group system --section interaction_coord
 Switching groups/sections is presentation-only and works in private offline snapshots.
 It cannot start a model, write a configuration, change statistics or increase budgets.
 
-The companion [Background: Research and Theory on Human Teams](TEAM_RESEARCH.md),
-**9 Nov 2026 · @Goran**, distinguishes explanatory locus from compositional/compilational
+The companion [Human-Team Research in Teamknitt](TEAM_RESEARCH.md),
+**Goran Mitevski · 10 November 2026**, distinguishes explanatory locus from compositional/compilational
 emergence and processes/states/outcomes. IPO/IMOI includes feedback and conditional relations.
 The Sources & scope page shows the three axes, configured phase annotations and explicitly
 unmeasured emergent states. Cohesion, trust, psychological safety, efficacy and potency are

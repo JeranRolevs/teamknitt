@@ -1,6 +1,6 @@
 # teamknitt
 
-### Configure AI agent team/s, set the task or goal, observe and follow the work in different modes, intervene.
+### Teamknitt supports human-led improvement of AI-agent team/s. Configure AI agent team/s, set the task or goal, observe and follow the work in different modes, intervene.
 
 Teamknitt is a framework and source-available reference implementation for configuring, observing and intervening in teams of 1–16 LLM agents. Teams work on user-defined tasks, brainstorming and goals; advanced engine workflows also support research missions.
 

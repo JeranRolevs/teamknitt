@@ -1,15 +1,18 @@
 """Human-team research as design rationale, not validation of AI-team constructs.
 
-Background supplied by Goran, 9 November 2026; research lineage also includes his
+Research note supplied by Goran, 10 November 2026; research lineage also includes his
 2022/2023 thesis research on distributed teams and creative processes.
 The implementation separates explanatory locus, forms of emergence and process/state/outcome records rather than treating them as
 one binary taxonomy or an automatic improvement recipe.
 """
 from copy import deepcopy
 
+BACKGROUND_TITLE = "Human-Team Research in Teamknitt"
+BACKGROUND_CREDIT = "Goran Mitevski · 10 November 2026"
+
 AUTHOR_RESEARCH = {
     "author": "Goran Mitevski", "research_period": "2022/2023", "relation": "research_follow_up",
-    "connection": "Teamknitt follows my thesis research on distributed teams and their creative processes.",
+    "connection": "Teamknitt follows my thesis research on distributed teams and new tools for configuring and refining collaboration in hybrid teams of people and machine-learning agents. I extend that work to LLM-agent teams: how their structure shapes interaction, how work unfolds over time, and how people can intervene. Human-team research and dynamical systems theory guide the approach; what carries over remains an open question.",
     "focus": ["distributed teamwork", "creative processes", "AI-agent participation"],
     "boundary": "This research background does not establish AI-team performance or intervention effects. Configuration and interventions remain user-directed.",
 }
@@ -80,8 +83,8 @@ INTERVENTION_RATIONALES = [
 
 
 def catalogue(sources):
-    return {"title": "Background: Research and Theory on Human Teams", "background_credit": "Goran · 9 November 2026",
-            "design_basis": "Human-team research informs configuration, task framing, observation and human-led intervention; transfer to AI-agent teams requires independent validation.",
+    return {"title": BACKGROUND_TITLE, "background_credit": BACKGROUND_CREDIT,
+            "design_basis": "Human-team research guides configuration; dynamical systems theory provides a lens for observation and human-led intervention. Transfer to AI-agent teams requires independent validation.",
             "author_research": deepcopy(AUTHOR_RESEARCH), "axes": deepcopy(AXES), "constructs": deepcopy(CONSTRUCTS), "interventions": deepcopy(INTERVENTION_RATIONALES),
             "representative_sources": deepcopy(sources), "automatic_improvement": False, "api_calls": 0}
 
@@ -95,7 +98,7 @@ def project(report):
         rows.append({"wave": wave["wave"], "phases": phases,
                      "phase_type": next(iter(kinds)) if len(kinds) == 1 else "mixed" if kinds else "operational",
                      "annotation": "Conventional annotation of known task phases, not a new scheduler or measured interpersonal process."})
-    return {"background_credit": "Goran · 9 November 2026", "author_research": deepcopy(AUTHOR_RESEARCH), "axes": deepcopy(AXES), "constructs": deepcopy(CONSTRUCTS),
+    return {"title": BACKGROUND_TITLE, "background_credit": BACKGROUND_CREDIT, "author_research": deepcopy(AUTHOR_RESEARCH), "axes": deepcopy(AXES), "constructs": deepcopy(CONSTRUCTS),
             "episode_cycle": {
                 "model": "IPO / IMOI: inputs, process and state mediators, outcomes, feedback",
                 "inputs": {"configured_members": len(c["roles"]), "representations": len(c["representations"]), "topology": report["topology"]["kind"]},

@@ -3,6 +3,7 @@ import asyncio
 from contextlib import redirect_stdout
 from copy import deepcopy
 import io
+import hashlib
 import json
 from pathlib import Path
 import tempfile
@@ -20,10 +21,10 @@ from teamknitt.views import SOURCES, catalogue
 
 ROOT = Path(__file__).resolve().parents[1]
 DESCRIPTION = 'Teamknitt is a tool for configuring AI agent team/s, where we can set the task, follow the work in different modes, and intervene.'
-README_DESCRIPTION = 'Configure AI agent team/s, set the task or goal, observe and follow the work in different modes, intervene.'
+README_DESCRIPTION = 'Teamknitt supports human-led improvement of AI-agent team/s. Configure AI agent team/s, set the task or goal, observe and follow the work in different modes, intervene.'
 README_FOLLOW_UP = 'Teamknitt follows my thesis research on distributed teams and new tools for configuring and refining collaboration in hybrid teams of people and machine-learning agents.'
 FOLLOW_UP = 'Teamknitt follows my thesis research on distributed teams and their creative processes.'
-RESEARCH_NOTE_FOLLOW_UP = 'Teamknitt builds on my 2022/2023 thesis research on distributed teams, their creative processes, and new tools for configuring and refining collaboration in hybrid teams of people and machine-learning agents.'
+RESEARCH_NOTE_SHA256 = '799e9084393921df4870405a49b53e9a87132956e3d9cacb051683b1739f3b8e'
 OLD_TITLES = ('A team for what you have in mind.', 'Where contributions connect.',
               'Different explanations. One team.', 'Intervene with intention.', 'Complexity, observed with care.')
 
@@ -74,13 +75,12 @@ class ResearchOriginsTests(unittest.TestCase):
         self.assertIn('This does not change the original Labtune project.', text)
 
     def test_first_person_follow_up_is_consistent_in_public_guides_and_viewer(self):
-        for name in ('docs/TEAM_RESEARCH.md', 'docs/TEAMKNITT.md', 'docs/MULTI_TEAM.md',
+        for name in ('docs/TEAMKNITT.md', 'docs/MULTI_TEAM.md',
                      'PROVENANCE.md', 'examples/task_team/README.md', 'examples/research_cognition/README.md',
                      'examples/teammate_probes/README.md', 'examples/multi_team/README.md'):
             with self.subTest(path=name):
                 text = (ROOT / name).read_text()
-                expected = RESEARCH_NOTE_FOLLOW_UP if name.endswith('TEAM_RESEARCH.md') else FOLLOW_UP
-                self.assertIn(expected, ' '.join(text.split()))
+                self.assertIn(FOLLOW_UP, ' '.join(text.split()))
                 self.assertNotIn('follows up Goran', text)
                 self.assertNotIn("Goran's revised", text)
         page = html(plan_report(self.plan))
@@ -110,17 +110,16 @@ class ResearchOriginsTests(unittest.TestCase):
 
     def test_research_guide_opens_with_research_and_keeps_licensing_separate(self):
         text = (ROOT / 'docs/TEAM_RESEARCH.md').read_text()
-        opening = text.split('## Purpose:', 1)[0]
-        self.assertIn('**Goran Mitevski · 9 November 2026**', opening)
-        self.assertIn('human-team research to guide the configuration of LLM-agent teams', opening)
-        self.assertIn('dynamical systems theory as a lens for following their work and informing intervention', opening)
-        self.assertIn('without assuming that', opening)
-        self.assertIn('findings about human teams transfer to LLM-agent teams', opening)
-        self.assertNotIn('Licence', opening)
-        self.assertNotIn('permission', opening)
-        self.assertNotIn('copyright', opening)
-        self.assertNotIn('lower-middle-\nincome', text)
-        self.assertGreater(text.index('## Provenance and licence'), text.index('## Representative sources'))
+        opening = text.split('## What Teamknitt is for', 1)[0]
+        normal = ' '.join(opening.split())
+        self.assertTrue(opening.startswith('# Human-Team Research in Teamknitt\n'))
+        self.assertIn('**Goran Mitevski · 10 November 2026**', opening)
+        self.assertIn('human teams to guide how LLM-agent teams are configured', normal)
+        self.assertIn('dynamical systems theory as a lens for following their work', normal)
+        self.assertIn('It does not assume that findings about human teams transfer to LLM-agent teams', normal)
+        for word in ('Licence', 'permission', 'copyright'):
+            self.assertNotIn(word, opening)
+        self.assertGreater(text.index('## Provenance and licence'), text.index('## Sources cited in this note'))
         footer = text.split('## Provenance and licence', 1)[1]
         self.assertIn('Pioneertown B.V.', footer)
         self.assertIn('Teamknitt Noncommercial and Research Licence 2.0', footer)
@@ -129,31 +128,39 @@ class ResearchOriginsTests(unittest.TestCase):
         self.assertIn('[LICENSE](../LICENSE)', footer)
         self.assertIn('[LICENSING.md](../LICENSING.md)', footer)
 
-    def test_research_note_follow_up_is_a_coherent_continuation_with_an_open_question(self):
+    def test_research_note_retains_author_supplied_detail_as_proposals_not_estimators(self):
         text = (ROOT / 'docs/TEAM_RESEARCH.md').read_text()
         section = text.split('## Research follow-up', 1)[1].split('## 1.', 1)[0]
         normal = ' '.join(section.split())
-        self.assertIn(RESEARCH_NOTE_FOLLOW_UP, normal)
-        self.assertIn('new tools for configuring and refining collaboration', normal)
-        self.assertIn('hybrid teams of people and machine-learning agents', normal)
+        self.assertIn('Teamknitt builds on my 2022/2023 thesis research at Tilburg University', normal)
+        self.assertIn('tools for configuring and refining collaboration in hybrid teams', normal)
         self.assertIn('I extend that work to LLM-agent teams', normal)
-        self.assertIn('how their work unfolds over time', normal)
-        self.assertIn('how people can intervene', normal)
-        self.assertIn('Whether findings from human teams carry over remains an open research question.', normal)
-        self.assertNotIn('Research period:', section)
-        self.assertNotIn('Here I work with AI-agent teams:', section)
-        self.assertNotIn('effects have been validated', section)
+        self.assertIn('The next research step is to test whether methods from complexity science', normal)
+        self.assertIn('Whether any of this holds for LLM-agent teams', normal)
+        self.assertIn('are both open questions', normal)
+        self.assertIn('When these estimators are added', normal)
+        self.assertIn('Teamknitt assigns no automatic quality score', normal)
+        self.assertIn('*Not yet implemented.* Continuous time-series analysis', text)
+        self.assertIn('fractal methods are research methods, not estimators present in the', text)
+        self.assertIn('Attractors, synchrony, fractal scaling, emergence and adaptation are not estimated.', text)
 
-    def test_research_credit_is_a_follow_up_not_a_thesis_review(self):
+    def test_product_research_credit_stays_brief_beside_the_detailed_research_note(self):
         self.assertEqual(AUTHOR_RESEARCH['research_period'], '2022/2023')
         self.assertEqual(AUTHOR_RESEARCH['relation'], 'research_follow_up')
         self.assertEqual(AUTHOR_RESEARCH['author'], 'Goran Mitevski')
-        self.assertEqual(AUTHOR_RESEARCH['connection'], FOLLOW_UP)
+        self.assertTrue(AUTHOR_RESEARCH['connection'].startswith(README_FOLLOW_UP))
+        self.assertIn('collaboration in hybrid teams of people and machine-learning agents', AUTHOR_RESEARCH['connection'])
+        self.assertIn('how work unfolds over time', AUTHOR_RESEARCH['connection'])
+        self.assertIn('how people can intervene', AUTHOR_RESEARCH['connection'])
+        self.assertIn('dynamical systems theory', AUTHOR_RESEARCH['connection'])
+        self.assertIn('what carries over remains an open question', AUTHOR_RESEARCH['connection'])
+        self.assertLess(len(AUTHOR_RESEARCH['connection']), 450)
         self.assertNotIn('mitevski_2023', SOURCES)
         self.assertEqual(set(AUTHOR_RESEARCH), {'author', 'research_period', 'relation', 'connection', 'focus', 'boundary'})
-        public = json.dumps(AUTHOR_RESEARCH) + (ROOT / 'README.md').read_text() + (ROOT / 'docs/TEAM_RESEARCH.md').read_text()
+        # The explicit exception is for the authored technical note, not product summaries.
+        product = json.dumps(AUTHOR_RESEARCH) + (ROOT / 'README.md').read_text() + html(plan_report(self.plan))
         for detail in ('Detrended Fluctuation', 'Lyapunov', 'QuTeC', 'GRU', 'ARIMA', '12 January 2023', 'Mitevski, G. (2023).'):
-            self.assertNotIn(detail, public)
+            self.assertNotIn(detail, product)
         self.assertNotRegex(json.dumps(AUTHOR_RESEARCH), r'(?i)student.?number|student.?id')
 
     def test_research_follow_up_does_not_infer_measurements_or_change_settings(self):
@@ -199,18 +206,50 @@ class ResearchOriginsTests(unittest.TestCase):
     def test_starters_preserve_source_and_research_lineage_and_legal_texts(self):
         for name in ('LICENSE', 'LICENSING.md', 'PROVENANCE.md'):
             self.assertEqual((self.root / name).read_bytes(), (ROOT / name).read_bytes())
-        for name in ('README.md', 'PROVENANCE.md', 'docs/TEAM_RESEARCH.md', 'docs/TEAMKNITT.md'):
+        for name in ('README.md', 'PROVENANCE.md', 'docs/TEAMKNITT.md'):
             text = (self.root / name).read_text()
-            expected = RESEARCH_NOTE_FOLLOW_UP if name.endswith('TEAM_RESEARCH.md') else FOLLOW_UP
-            self.assertIn(expected, ' '.join(text.split()))
+            self.assertIn(FOLLOW_UP, text)
             self.assertNotIn('follows up Goran', text)
             self.assertNotIn('Detrended Fluctuation', text)
+        self.assertEqual((self.root / 'docs/TEAM_RESEARCH.md').read_bytes(), (ROOT / 'docs/TEAM_RESEARCH.md').read_bytes())
         provenance = (self.root / 'PROVENANCE.md').read_text()
         self.assertIn('2022/2023', provenance)
         self.assertIn('Goran Mitevski', provenance)
         self.assertIn('Labtune 0.5.0', provenance)
         self.assertIn('software source baseline', provenance)
         self.assertIn('Pioneertown B.V.', provenance)
+
+    def test_author_approved_research_note_is_preserved_verbatim_in_source_and_starter(self):
+        note = (ROOT / 'docs/TEAM_RESEARCH.md').read_bytes()
+        self.assertEqual(hashlib.sha256(note).hexdigest(), RESEARCH_NOTE_SHA256)
+        bundled = ROOT / 'src/teamknitt/engine/resources/starter/project/docs/TEAM_RESEARCH.md'
+        self.assertEqual(note, bundled.read_bytes())
+        text = note.decode('utf-8')
+        self.assertIn('Mitevski, G. (2023).', text)
+        self.assertIn('Detrended Fluctuation Analysis', text)
+        self.assertIn('α ≈ 0.70', text)
+        guidance = (ROOT / 'AGENTS.md').read_text()
+        self.assertIn('Exception explicitly approved by the user', guidance)
+        self.assertIn('This exception does not extend to README/UI/report summaries', guidance)
+
+    def test_research_page_title_overview_and_credit_match_the_rewritten_note(self):
+        page = html(plan_report(self.plan))
+        self.assertIn("foundations:['RESEARCH BACKGROUND','Human-team research'", page)
+        self.assertIn('Human-Team Research in Teamknitt', page)
+        self.assertIn('RESEARCH NOTE / 10 NOVEMBER 2026 · GORAN MITEVSKI', page)
+        self.assertIn('dynamical systems theory', page.lower())
+        self.assertIn('maps those ideas to Teamknitt’s records and controls', page)
+        self.assertIn('Dynamical analyses remain research proposals, not implemented estimators.', page)
+        self.assertIn('Detailed research note: <code>docs/TEAM_RESEARCH.md</code>', page)
+        self.assertNotIn("'Background and sources'", page)
+        self.assertNotIn('BACKGROUND / 9 NOVEMBER 2026', page)
+        notes = catalogue()['research_background']
+        report = plan_report(self.plan)['research_background']
+        for record in (notes, report):
+            self.assertEqual(record['title'], 'Human-Team Research in Teamknitt')
+            self.assertEqual(record['background_credit'], 'Goran Mitevski · 10 November 2026')
+        self.assertFalse(notes['automatic_improvement'])
+        self.assertEqual(notes['api_calls'], 0)
 
     def test_viewer_uses_a_short_follow_up_note(self):
         text = html(plan_report(self.plan))

@@ -48,7 +48,13 @@ command. No upstream package import, CLI delegation or parent checkout is allowe
 PROVENANCE.md, Goran Mitevski's authorship, Pioneertown B.V. and the current legal texts.
 Preserve the brief research follow-up credit to Goran Mitevski’s 2022/2023 thesis work on
 distributed teams and creative processes. Do not reproduce the abstract, formal thesis
-citation or method details in product explanations. Use direct, descriptive headings,
+citation or method details in product explanations. Exception explicitly approved by the user:
+the author-supplied technical research note docs/TEAM_RESEARCH.md (10 November 2026) and its
+generated starter copy may retain the supplied thesis/paper citations and method/result
+summaries. This exception does not extend to README/UI/report summaries, raw papers, the full
+thesis, private datasets, seed panels or trial/result records. Proposals in the note are not
+implemented estimators, automatic intervention or authorization for paid calls.
+Use direct, descriptive headings,
 with the user’s product-definition sentence as the main title. The wordmark is yellow
 text with a brown text outline, not a filled rectangle. Research lineage does not imply
 validated AI-team measures or authorize automatic participation control. Keep full thesis
@@ -62,7 +68,7 @@ Group team views by Non-system (collaborative intelligence; shared models/member
 System (distributed problem-solving; differentiated transactive memory; interactive team
 cognition/coordination; dynamics). Preserve historical Standard/Complexity presentation aliases.
 Explanatory locus is distinct from compositional/compilational emergence and processes/states/
-outcomes. Follow docs/TEAM_RESEARCH.md (9 Nov 2026 · @Goran). IPO/IMOI includes feedback and
+outcomes. Follow docs/TEAM_RESEARCH.md (10 November 2026 · Goran Mitevski). IPO/IMOI includes feedback and
 conditional relations; do not call all conventional models linear. Human-team theory and
 intervention findings are a design basis, not validated AI-team effects. Trust, psychological
 safety, cohesion, efficacy and potency remain unmeasured. Transactive memory is differentiated,

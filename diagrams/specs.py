@@ -351,7 +351,7 @@ def diagrams():
     g["footer"]="Availability is not comprehension. Acknowledgement is not agreement. Similarity is not accuracy. Human-team constructs require validation."
     result.append(g)
     g=graph("15-teamknitt-views", "Team views: non-system and system explanations", "Explanatory locus is not the same axis as compositional/compilational emergence or process/state/outcome evidence.",width=30,height=18)
-    g.update(brand="TEAMKNITT", date="2026-11-09")
+    g.update(brand="TEAMKNITT", date="2026-11-10")
     node(g,"user",15,3,"Your task and chosen configuration","Explicit membership, roles, topology, sharing, models, tools and budgets","artifact",23,1.5)
     node(g,"non_system",7,6,"NON-SYSTEM — member/component-centered","Attributes, behavior, knowledge, reports and aggregates\nIPO/IMOI also includes interaction, feedback and conditional relations","artifact",12.7,1.7)
     node(g,"system",22.5,6,"SYSTEM — situated interaction/configuration","Work across members, artifacts, tools and time\nNot synonymous with complexity science or demonstrated emergence","artifact",13.2,1.7)
@@ -368,7 +368,7 @@ def diagrams():
     for key,x in [("distributed",19),("transactive",26)]:edge(g,"system",key,"bottom","top",via=((22.5,7.5),(x,7.5)))
     edge(g,"system","coordination","left","left",via=((15.1,6),(15.1,12.3)))
     edge(g,"system","dynamics","right","right",via=((29.5,6),(29.5,12.3)))
-    g["footer"]="Background: Research and Theory on Human Teams · 9 Nov 2026 · @Goran. Based on Labtune / Pioneertown B.V.; Teamknitt Noncommercial and Research Licence 2.0."
+    g["footer"]="Human-Team Research in Teamknitt · 10 Nov 2026 · Goran Mitevski. Based on Labtune / Pioneertown B.V.; Teamknitt Noncommercial and Research Licence 2.0."
     result.append(g)
 
     g=graph("16-teamknitt-intervention", "Configuration, tasks, monitoring and interventions", "Human-team research informs the design; user choice, operational records and independently reviewed outcomes remain distinct.",width=28,height=14)
