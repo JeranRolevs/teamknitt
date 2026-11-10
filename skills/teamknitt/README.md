@@ -53,6 +53,11 @@ Customize > Plugins, then install Teamknitt from it.
   are fully offline. Only a live run (`teamknitt run --live`), which you must explicitly approve
   with the request cap, sends your brief, context and the agents' messages to the model service
   that you chose and configured in the workspace, using your own key.
+- **Credential:** for a live run the tool reads one API key, from the environment variable named
+  in the workspace's `study.yaml` (by default `TEAMKNITT_API_KEY`) or from the workspace's `.env`
+  file. The key is sent only as the `Authorization` header to the model service address you set
+  as `base_url` in that workspace. Redirects are not followed with the key, and the key's value is
+  redacted from run records.
 - **Stores:** workspaces and run records are ordinary files in the folder you choose. Your key
   stays in the workspace's `.env` file, which you fill in yourself. The plugin collects no data,
   has no telemetry and contacts no server of its author.
