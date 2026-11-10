@@ -199,6 +199,7 @@ do not waive those conditions; see [contributing](CONTRIBUTING.md).
 ```bash
 python -m pip install -e '.[memory,diagrams]'
 python tools/sync_starter.py --check
+python tools/sync_skill.py --check
 python -m unittest discover -s tests -v
 python -m unittest discover -s examples/memory_retention/tests -v
 python diagrams/render_flowcharts.py

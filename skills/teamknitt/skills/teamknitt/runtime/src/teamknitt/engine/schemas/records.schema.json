@@ -1,0 +1,1627 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "teamknitt research records v1",
+  "$defs": {
+    "mission": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "template": {
+          "type": "boolean"
+        },
+        "record_type": {
+          "const": "mission"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "visibility": {
+          "type": "object",
+          "properties": {
+            "scope": {
+              "enum": [
+                "episode",
+                "team",
+                "mission",
+                "lab"
+              ]
+            },
+            "team_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "scope",
+            "team_ids"
+          ],
+          "additionalProperties": false
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "objective": {
+              "type": "string",
+              "minLength": 1
+            },
+            "comparator_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "constraints": {
+              "type": "object"
+            },
+            "qualification_ref": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "confirmation_protocol_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "asset_kind": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "objective",
+            "comparator_refs",
+            "constraints",
+            "qualification_ref",
+            "confirmation_protocol_ref",
+            "asset_kind"
+          ],
+          "additionalProperties": false
+        },
+        "configuration_snapshot_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "record_type",
+        "id",
+        "configuration_snapshot_id",
+        "actor_id",
+        "created_at",
+        "source_refs",
+        "visibility",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "research_event": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "template": {
+          "type": "boolean"
+        },
+        "record_type": {
+          "const": "research_event"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "visibility": {
+          "type": "object",
+          "properties": {
+            "scope": {
+              "enum": [
+                "episode",
+                "team",
+                "mission",
+                "lab"
+              ]
+            },
+            "team_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "scope",
+            "team_ids"
+          ],
+          "additionalProperties": false
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "question",
+                "plan",
+                "prediction",
+                "tool_requested",
+                "tool_completed",
+                "observation",
+                "hypothesis_revised",
+                "claim",
+                "sharing_read"
+              ]
+            },
+            "prior_event_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "output_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "note": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "prior_event_refs",
+            "output_refs",
+            "note"
+          ],
+          "additionalProperties": false
+        },
+        "configuration_snapshot_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "record_type",
+        "id",
+        "configuration_snapshot_id",
+        "actor_id",
+        "created_at",
+        "source_refs",
+        "visibility",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "experiment": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "template": {
+          "type": "boolean"
+        },
+        "record_type": {
+          "const": "experiment"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "visibility": {
+          "type": "object",
+          "properties": {
+            "scope": {
+              "enum": [
+                "episode",
+                "team",
+                "mission",
+                "lab"
+              ]
+            },
+            "team_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "scope",
+            "team_ids"
+          ],
+          "additionalProperties": false
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "hypothesis_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "comparison_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "prediction_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidate_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "evaluator_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "budget_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "status": {
+              "enum": [
+                "planned",
+                "queued",
+                "leased",
+                "running",
+                "completed",
+                "failed",
+                "unresolved"
+              ]
+            }
+          },
+          "required": [
+            "hypothesis_ref",
+            "comparison_ref",
+            "prediction_ref",
+            "candidate_ref",
+            "evaluator_ref",
+            "budget_ref",
+            "status"
+          ],
+          "additionalProperties": false
+        },
+        "configuration_snapshot_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "record_type",
+        "id",
+        "configuration_snapshot_id",
+        "actor_id",
+        "created_at",
+        "source_refs",
+        "visibility",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "evaluation_receipt": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "template": {
+          "type": "boolean"
+        },
+        "record_type": {
+          "const": "evaluation_receipt"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "visibility": {
+          "type": "object",
+          "properties": {
+            "scope": {
+              "enum": [
+                "episode",
+                "team",
+                "mission",
+                "lab"
+              ]
+            },
+            "team_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "scope",
+            "team_ids"
+          ],
+          "additionalProperties": false
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "experiment_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidate_hash": {
+              "type": "string",
+              "minLength": 1
+            },
+            "evaluator_hash": {
+              "type": "string",
+              "minLength": 1
+            },
+            "status": {
+              "enum": [
+                "valid",
+                "invalid",
+                "inconclusive",
+                "environment_failure",
+                "contract_failure"
+              ]
+            },
+            "metrics": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number"
+              }
+            },
+            "evidence_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "resource_use": {
+              "type": "object"
+            },
+            "statistics": {
+              "$ref": "#/$defs/statistical_assessment"
+            }
+          },
+          "required": [
+            "experiment_ref",
+            "candidate_hash",
+            "evaluator_hash",
+            "status",
+            "metrics",
+            "evidence_refs",
+            "resource_use",
+            "statistics"
+          ],
+          "additionalProperties": false
+        },
+        "configuration_snapshot_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "record_type",
+        "id",
+        "configuration_snapshot_id",
+        "actor_id",
+        "created_at",
+        "source_refs",
+        "visibility",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "memory_entry": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "template": {
+          "type": "boolean"
+        },
+        "record_type": {
+          "const": "memory_entry"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "visibility": {
+          "type": "object",
+          "properties": {
+            "scope": {
+              "enum": [
+                "episode",
+                "team",
+                "mission",
+                "lab"
+              ]
+            },
+            "team_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "scope",
+            "team_ids"
+          ],
+          "additionalProperties": false
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "enum": [
+                "observation",
+                "method",
+                "pitfall",
+                "principle"
+              ]
+            },
+            "status": {
+              "enum": [
+                "tentative",
+                "observed",
+                "reproduced",
+                "contradicted",
+                "superseded"
+              ]
+            },
+            "statement": {
+              "type": "string",
+              "minLength": 1
+            },
+            "conditions": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "supporting_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "contradicting_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "exposure_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "predecessor": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "category",
+            "status",
+            "statement",
+            "conditions",
+            "supporting_refs",
+            "contradicting_refs",
+            "exposure_refs",
+            "predecessor"
+          ],
+          "additionalProperties": false
+        },
+        "configuration_snapshot_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "record_type",
+        "id",
+        "configuration_snapshot_id",
+        "actor_id",
+        "created_at",
+        "source_refs",
+        "visibility",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "decision_request": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "template": {
+          "type": "boolean"
+        },
+        "record_type": {
+          "const": "decision_request"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "visibility": {
+          "type": "object",
+          "properties": {
+            "scope": {
+              "enum": [
+                "episode",
+                "team",
+                "mission",
+                "lab"
+              ]
+            },
+            "team_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "scope",
+            "team_ids"
+          ],
+          "additionalProperties": false
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "spec_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "purpose": {
+              "type": "string",
+              "minLength": 1
+            },
+            "context_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "answer_space": {
+              "type": "object"
+            },
+            "budget_ref": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "spec_id",
+            "purpose",
+            "context_refs",
+            "answer_space",
+            "budget_ref"
+          ],
+          "additionalProperties": false
+        },
+        "configuration_snapshot_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "record_type",
+        "id",
+        "configuration_snapshot_id",
+        "actor_id",
+        "created_at",
+        "source_refs",
+        "visibility",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "decision_result": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "template": {
+          "type": "boolean"
+        },
+        "record_type": {
+          "const": "decision_result"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "visibility": {
+          "type": "object",
+          "properties": {
+            "scope": {
+              "enum": [
+                "episode",
+                "team",
+                "mission",
+                "lab"
+              ]
+            },
+            "team_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "scope",
+            "team_ids"
+          ],
+          "additionalProperties": false
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "request_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "status": {
+              "enum": [
+                "answered",
+                "abstained",
+                "unsupported",
+                "unavailable",
+                "invalid",
+                "budget_exhausted"
+              ]
+            },
+            "answer": {},
+            "backend_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "probability_origin": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "fallback_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "usage": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "request_ref",
+            "status",
+            "answer",
+            "backend_id",
+            "probability_origin",
+            "fallback_refs",
+            "usage"
+          ],
+          "additionalProperties": false
+        },
+        "configuration_snapshot_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "record_type",
+        "id",
+        "configuration_snapshot_id",
+        "actor_id",
+        "created_at",
+        "source_refs",
+        "visibility",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "sharing_view": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "template": {
+          "type": "boolean"
+        },
+        "record_type": {
+          "const": "sharing_view"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "visibility": {
+          "type": "object",
+          "properties": {
+            "scope": {
+              "enum": [
+                "episode",
+                "team",
+                "mission",
+                "lab"
+              ]
+            },
+            "team_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "scope",
+            "team_ids"
+          ],
+          "additionalProperties": false
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "recipient_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "knowledge_snapshot_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "profile": {
+              "enum": [
+                "none",
+                "low",
+                "intermediate",
+                "high",
+                "wisdom_only",
+                "low+wisdom",
+                "intermediate+wisdom",
+                "high+wisdom"
+              ]
+            },
+            "files": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "content_hash": {
+              "type": "string",
+              "minLength": 1
+            },
+            "actual_read_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "recipient_id",
+            "knowledge_snapshot_ref",
+            "profile",
+            "files",
+            "content_hash",
+            "actual_read_refs"
+          ],
+          "additionalProperties": false
+        },
+        "configuration_snapshot_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "record_type",
+        "id",
+        "configuration_snapshot_id",
+        "actor_id",
+        "created_at",
+        "source_refs",
+        "visibility",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "asset": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "template": {
+          "type": "boolean"
+        },
+        "record_type": {
+          "const": "asset"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "visibility": {
+          "type": "object",
+          "properties": {
+            "scope": {
+              "enum": [
+                "episode",
+                "team",
+                "mission",
+                "lab"
+              ]
+            },
+            "team_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "scope",
+            "team_ids"
+          ],
+          "additionalProperties": false
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "candidate",
+                "verified",
+                "integrated",
+                "retired"
+              ]
+            },
+            "artifact_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "evidence_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1
+            },
+            "limitations": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "reproduction_ref": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "recheck_conditions": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "status",
+            "artifact_refs",
+            "evidence_refs",
+            "scope",
+            "limitations",
+            "reproduction_ref",
+            "recheck_conditions"
+          ],
+          "additionalProperties": false
+        },
+        "configuration_snapshot_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "record_type",
+        "id",
+        "configuration_snapshot_id",
+        "actor_id",
+        "created_at",
+        "source_refs",
+        "visibility",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "knowledge_snapshot": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "template": {
+          "type": "boolean"
+        },
+        "record_type": {
+          "const": "knowledge_snapshot"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "visibility": {
+          "type": "object",
+          "properties": {
+            "scope": {
+              "enum": [
+                "episode",
+                "team",
+                "mission",
+                "lab"
+              ]
+            },
+            "team_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "scope",
+            "team_ids"
+          ],
+          "additionalProperties": false
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "content_hash": {
+              "type": "string",
+              "minLength": 1
+            },
+            "entry_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "source_access_policy_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "exposure_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "content_hash",
+            "entry_refs",
+            "source_access_policy_ref",
+            "exposure_refs"
+          ],
+          "additionalProperties": false
+        },
+        "configuration_snapshot_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "record_type",
+        "id",
+        "configuration_snapshot_id",
+        "actor_id",
+        "created_at",
+        "source_refs",
+        "visibility",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "configuration_snapshot": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "template": {
+          "type": "boolean"
+        },
+        "record_type": {
+          "const": "configuration_snapshot"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "visibility": {
+          "type": "object",
+          "properties": {
+            "scope": {
+              "enum": [
+                "episode",
+                "team",
+                "mission",
+                "lab"
+              ]
+            },
+            "team_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "scope",
+            "team_ids"
+          ],
+          "additionalProperties": false
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "purpose": {
+              "const": "audit_only"
+            },
+            "design_hash": {
+              "type": "string",
+              "minLength": 1
+            },
+            "config_hash": {
+              "type": "string",
+              "minLength": 1
+            },
+            "bindings": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "selected_by": {
+              "const": "user"
+            }
+          },
+          "required": [
+            "purpose",
+            "design_hash",
+            "config_hash",
+            "bindings",
+            "selected_by"
+          ],
+          "additionalProperties": false
+        },
+        "configuration_snapshot_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "record_type",
+        "id",
+        "configuration_snapshot_id",
+        "actor_id",
+        "created_at",
+        "source_refs",
+        "visibility",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "configuration_change": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "template": {
+          "type": "boolean"
+        },
+        "record_type": {
+          "const": "configuration_change"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "visibility": {
+          "type": "object",
+          "properties": {
+            "scope": {
+              "enum": [
+                "episode",
+                "team",
+                "mission",
+                "lab"
+              ]
+            },
+            "team_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "scope",
+            "team_ids"
+          ],
+          "additionalProperties": false
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "authority": {
+              "const": "user"
+            },
+            "requested_by": {
+              "type": "string",
+              "minLength": 1
+            },
+            "previous_snapshot_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "new_snapshot_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "effective_at": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            },
+            "exposure_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "authority",
+            "requested_by",
+            "previous_snapshot_ref",
+            "new_snapshot_ref",
+            "effective_at",
+            "reason",
+            "exposure_refs"
+          ],
+          "additionalProperties": false
+        },
+        "configuration_snapshot_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "record_type",
+        "id",
+        "configuration_snapshot_id",
+        "actor_id",
+        "created_at",
+        "source_refs",
+        "visibility",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "statistical_assessment": {
+      "type": "object",
+      "properties": {
+        "approach": {
+          "enum": [
+            "frequentist"
+          ]
+        },
+        "status": {
+          "enum": [
+            "not_required",
+            "not_run",
+            "completed",
+            "inconclusive",
+            "unsupported"
+          ]
+        },
+        "protocol_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "result_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "approach",
+        "status",
+        "protocol_ref",
+        "result_refs",
+        "reason"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "completed",
+                  "inconclusive"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "protocol_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "result_refs": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "not_required",
+                  "not_run",
+                  "unsupported"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/mission"
+    },
+    {
+      "$ref": "#/$defs/research_event"
+    },
+    {
+      "$ref": "#/$defs/experiment"
+    },
+    {
+      "$ref": "#/$defs/evaluation_receipt"
+    },
+    {
+      "$ref": "#/$defs/memory_entry"
+    },
+    {
+      "$ref": "#/$defs/decision_request"
+    },
+    {
+      "$ref": "#/$defs/decision_result"
+    },
+    {
+      "$ref": "#/$defs/sharing_view"
+    },
+    {
+      "$ref": "#/$defs/asset"
+    },
+    {
+      "$ref": "#/$defs/knowledge_snapshot"
+    },
+    {
+      "$ref": "#/$defs/configuration_snapshot"
+    },
+    {
+      "$ref": "#/$defs/configuration_change"
+    }
+  ]
+}

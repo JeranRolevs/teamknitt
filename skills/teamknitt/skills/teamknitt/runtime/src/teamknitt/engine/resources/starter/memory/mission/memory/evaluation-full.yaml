@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "adapter_kind": "memory_policy.v1",
+  "supervisor_script": "scripts/memory_evaluator.py",
+  "private_seed_file": "mission/memory/private_splits.json",
+  "timeout_seconds": 600,
+  "protocol": {
+    "capacity": 24,
+    "dimension": 16,
+    "steps": 384,
+    "warmup": 64,
+    "calibration_runs": 200,
+    "null_runs": 100,
+    "fault_runs": 100,
+    "alpha_targets": [
+      0.1,
+      0.03,
+      0.01
+    ],
+    "difficulty": "research"
+  }
+}

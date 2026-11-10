@@ -1,0 +1,370 @@
+# Explicit example, not an optimal or automatically selected arrangement.
+schema_version: 3
+name: A team for your next idea
+engine:
+  variant: team
+  design_file: designs/task-team.md
+mission:
+  purpose: brainstorm
+  brief_file: mission/task.md
+  deliverable: A reviewable response to the user's task, ideas or goal, with open questions and next steps.
+  success_criteria:
+  - Address the user's brief rather than a benchmark task.
+  - Keep sources, alternatives and unresolved items inspectable.
+  review: user_review
+team:
+  topology: ring
+  members: 4
+  links: []
+communication:
+  profile: high
+  wisdom: false
+  max_read_words: 700
+cognition:
+  perspectives:
+  - distributed_problem_solving
+  - information_processing
+  - transactive_memory
+  - shared_mental_models
+  - coaction
+  - interactive_dynamics
+  context:
+    setting: A user-directed team working on a task, brainstorming ideas or pursuing a chosen goal.
+    tools:
+    - versioned_notes
+    - scoped_information_sharing
+    - explicit_handoffs
+    constraints:
+    - A role emphasis is not proof of expertise.
+    - A contribution or acknowledgement is not proof that the user's goal has been achieved.
+  task:
+    structure: divisible
+    interaction: deliberative
+    goal: Generate distinct ideas, connect promising alternatives and preserve useful disagreement before
+      converging.
+    success_criteria:
+    - Retain traceable contributions and unresolved items for user review.
+  roles:
+  - actor: member.1
+    responsibilities:
+    - Connect and synthesize
+    - Generate distinct ideas, connect promising alternatives and preserve useful disagreement before
+      converging.
+    expertise: []
+    perspective: Connect contributions and make assumptions explicit; do not force agreement.
+    capabilities:
+    - contribute
+    - acknowledge
+  - actor: member.2
+    responsibilities:
+    - Explore alternatives
+    - Generate distinct ideas, connect promising alternatives and preserve useful disagreement before
+      converging.
+    expertise: []
+    perspective: Seek diverse approaches and possibilities rather than merely echoing the first idea.
+    capabilities:
+    - contribute
+    - acknowledge
+  - actor: member.3
+    responsibilities:
+    - Challenge and make practical
+    - Generate distinct ideas, connect promising alternatives and preserve useful disagreement before
+      converging.
+    expertise: []
+    perspective: Explore constraints, counterexamples and workable next steps without prematurely closing
+      ideas.
+    capabilities:
+    - contribute
+    - acknowledge
+  - actor: member.4
+    responsibilities:
+    - Connect and synthesize
+    - Generate distinct ideas, connect promising alternatives and preserve useful disagreement before
+      converging.
+    expertise: []
+    perspective: Connect contributions and make assumptions explicit; do not force agreement.
+    capabilities:
+    - contribute
+    - acknowledge
+  representations:
+  - id: context
+    kind: source
+    purpose: User-supplied context for this task or goal.
+    format: markdown
+    path: mission/context.md
+    readers: &id001
+    - member.1
+    - member.2
+    - member.3
+    - member.4
+    writers: []
+  - id: notes-1
+    kind: workspace
+    purpose: Externalized contribution from member.1 for the user's brainstorm.
+    format: structured_note
+    readers: *id001
+    writers:
+    - member.1
+  - id: notes-2
+    kind: workspace
+    purpose: Externalized contribution from member.2 for the user's brainstorm.
+    format: structured_note
+    readers: *id001
+    writers:
+    - member.2
+  - id: notes-3
+    kind: workspace
+    purpose: Externalized contribution from member.3 for the user's brainstorm.
+    format: structured_note
+    readers: *id001
+    writers:
+    - member.3
+  - id: notes-4
+    kind: workspace
+    purpose: Externalized contribution from member.4 for the user's brainstorm.
+    format: structured_note
+    readers: *id001
+    writers:
+    - member.4
+  work:
+  - id: frame-1
+    phase: independent_proposals
+    actors:
+    - member.1
+    goal: Generate distinct ideas, connect promising alternatives and preserve useful disagreement before
+      converging.
+    inputs:
+    - context
+    outputs:
+    - notes-1
+    depends_on: []
+  - id: frame-2
+    phase: independent_proposals
+    actors:
+    - member.2
+    goal: Generate distinct ideas, connect promising alternatives and preserve useful disagreement before
+      converging.
+    inputs:
+    - context
+    outputs:
+    - notes-2
+    depends_on: []
+  - id: frame-3
+    phase: independent_proposals
+    actors:
+    - member.3
+    goal: Generate distinct ideas, connect promising alternatives and preserve useful disagreement before
+      converging.
+    inputs:
+    - context
+    outputs:
+    - notes-3
+    depends_on: []
+  - id: frame-4
+    phase: independent_proposals
+    actors:
+    - member.4
+    goal: Generate distinct ideas, connect promising alternatives and preserve useful disagreement before
+      converging.
+    inputs:
+    - context
+    outputs:
+    - notes-4
+    depends_on: []
+  handoffs:
+  - id: handoff-member-1-to-member-2
+    representation: notes-1
+    producer: member.1
+    consumer: member.2
+    due_phase: parallel_episodes
+    ack_required: true
+  - id: handoff-member-1-to-member-4
+    representation: notes-1
+    producer: member.1
+    consumer: member.4
+    due_phase: parallel_episodes
+    ack_required: true
+  - id: handoff-member-2-to-member-1
+    representation: notes-2
+    producer: member.2
+    consumer: member.1
+    due_phase: parallel_episodes
+    ack_required: true
+  - id: handoff-member-2-to-member-3
+    representation: notes-2
+    producer: member.2
+    consumer: member.3
+    due_phase: parallel_episodes
+    ack_required: true
+  - id: handoff-member-3-to-member-2
+    representation: notes-3
+    producer: member.3
+    consumer: member.2
+    due_phase: parallel_episodes
+    ack_required: true
+  - id: handoff-member-3-to-member-4
+    representation: notes-3
+    producer: member.3
+    consumer: member.4
+    due_phase: parallel_episodes
+    ack_required: true
+  - id: handoff-member-4-to-member-1
+    representation: notes-4
+    producer: member.4
+    consumer: member.1
+    due_phase: parallel_episodes
+    ack_required: true
+  - id: handoff-member-4-to-member-3
+    representation: notes-4
+    producer: member.4
+    consumer: member.3
+    due_phase: parallel_episodes
+    ack_required: true
+  expertise_directory:
+  - topic: Connect and synthesize
+    holders:
+    - member.1
+    basis: User-editable role emphasis, not verified expertise or a model ranking.
+  - topic: Explore alternatives
+    holders:
+    - member.2
+    basis: User-editable role emphasis, not verified expertise or a model ranking.
+  - topic: Challenge and make practical
+    holders:
+    - member.3
+    basis: User-editable role emphasis, not verified expertise or a model ranking.
+  - topic: Connect and synthesize
+    holders:
+    - member.4
+    basis: User-editable role emphasis, not verified expertise or a model ranking.
+  temporal_reference:
+    order:
+    - independent_proposals
+    - task_adoption
+    - parallel_episodes
+    - evidence_review
+    deadline_wave: 5
+  affordances:
+  - id: contribute-1
+    actors:
+    - member.1
+    capability: contribute
+    requires:
+    - context
+    operation: publish
+    target: notes-1
+    purpose: Externalize a task contribution with input provenance.
+  - id: contribute-2
+    actors:
+    - member.2
+    capability: contribute
+    requires:
+    - context
+    operation: publish
+    target: notes-2
+    purpose: Externalize a task contribution with input provenance.
+  - id: contribute-3
+    actors:
+    - member.3
+    capability: contribute
+    requires:
+    - context
+    operation: publish
+    target: notes-3
+    purpose: Externalize a task contribution with input provenance.
+  - id: contribute-4
+    actors:
+    - member.4
+    capability: contribute
+    requires:
+    - context
+    operation: publish
+    target: notes-4
+    purpose: Externalize a task contribution with input provenance.
+  - id: ack-member-1-to-member-2
+    actors:
+    - member.2
+    capability: acknowledge
+    requires:
+    - notes-1
+    operation: acknowledge
+    target: handoff-member-1-to-member-2
+    purpose: Acknowledge the specific contribution encountered, without implying agreement.
+  - id: ack-member-1-to-member-4
+    actors:
+    - member.4
+    capability: acknowledge
+    requires:
+    - notes-1
+    operation: acknowledge
+    target: handoff-member-1-to-member-4
+    purpose: Acknowledge the specific contribution encountered, without implying agreement.
+  - id: ack-member-2-to-member-1
+    actors:
+    - member.1
+    capability: acknowledge
+    requires:
+    - notes-2
+    operation: acknowledge
+    target: handoff-member-2-to-member-1
+    purpose: Acknowledge the specific contribution encountered, without implying agreement.
+  - id: ack-member-2-to-member-3
+    actors:
+    - member.3
+    capability: acknowledge
+    requires:
+    - notes-2
+    operation: acknowledge
+    target: handoff-member-2-to-member-3
+    purpose: Acknowledge the specific contribution encountered, without implying agreement.
+  - id: ack-member-3-to-member-2
+    actors:
+    - member.2
+    capability: acknowledge
+    requires:
+    - notes-3
+    operation: acknowledge
+    target: handoff-member-3-to-member-2
+    purpose: Acknowledge the specific contribution encountered, without implying agreement.
+  - id: ack-member-3-to-member-4
+    actors:
+    - member.4
+    capability: acknowledge
+    requires:
+    - notes-3
+    operation: acknowledge
+    target: handoff-member-3-to-member-4
+    purpose: Acknowledge the specific contribution encountered, without implying agreement.
+  - id: ack-member-4-to-member-1
+    actors:
+    - member.1
+    capability: acknowledge
+    requires:
+    - notes-4
+    operation: acknowledge
+    target: handoff-member-4-to-member-1
+    purpose: Acknowledge the specific contribution encountered, without implying agreement.
+  - id: ack-member-4-to-member-3
+    actors:
+    - member.3
+    capability: acknowledge
+    requires:
+    - notes-4
+    operation: acknowledge
+    target: handoff-member-4-to-member-3
+    purpose: Acknowledge the specific contribution encountered, without implying agreement.
+  memory:
+    max_words_per_representation: 160
+dynamics:
+  stable_waves: 2
+  perturbations: []
+observations:
+  enabled: true
+  dimensions:
+  - local_global
+  - perturbation
+  - coupling
+  - cross_level
+  - attractors
+  - synchronization
+  - fractals

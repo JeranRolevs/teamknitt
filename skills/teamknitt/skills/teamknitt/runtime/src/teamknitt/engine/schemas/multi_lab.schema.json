@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["labs", "sequences", "context_policy", "communication", "meeting", "budget", "resources"],
+  "properties": {
+    "labs": {
+      "type": "array", "minItems": 2, "maxItems": 32,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["id", "variant"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]{0,47}$"},
+          "variant": {"type": "string", "pattern": "^[a-z][a-z0-9_-]*$"},
+          "representative": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]*$"}
+        }
+      }
+    },
+    "sequences": {"type": "integer", "minimum": 1, "maximum": 1000},
+    "context_policy": {"enum": ["continue", "fresh_sequence"]},
+    "communication": {
+      "type": "object", "additionalProperties": false,
+      "required": ["profile", "wisdom", "max_read_words"],
+      "properties": {
+        "profile": {"enum": ["none", "low", "intermediate", "high", "wisdom_only"]},
+        "wisdom": {"type": "boolean"},
+        "max_read_words": {"type": "integer", "minimum": 1, "maximum": 50000}
+      }
+    },
+    "meeting": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "discussion_rounds"],
+      "properties": {
+        "kind": {"enum": ["none", "conference", "symposium"]},
+        "discussion_rounds": {"type": "integer", "minimum": 0, "maximum": 20}
+      },
+      "allOf": [
+        {"if": {"properties": {"kind": {"const": "symposium"}}}, "then": {"properties": {"discussion_rounds": {"minimum": 1}}},
+         "else": {"properties": {"discussion_rounds": {"const": 0}}}}
+      ]
+    },
+    "budget": {
+      "type": "object", "additionalProperties": false, "required": ["max_llm_calls", "max_wall_seconds"],
+      "properties": {
+        "max_llm_calls": {"type": "integer", "minimum": 1},
+        "max_wall_seconds": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "resources": {
+      "type": "object", "additionalProperties": false,
+      "required": ["max_active_labs", "max_llm_requests", "max_experiments"],
+      "properties": {
+        "max_active_labs": {"type": "integer", "minimum": 1, "maximum": 32},
+        "max_llm_requests": {"type": "integer", "minimum": 1},
+        "max_experiments": {"type": "integer", "minimum": 1}
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+# Multiple teams
+
+Use `teamknitt teams check|plan|view|demo|run --workspace .` (or `python team.py COMMAND`).
+
+All teams read the same `mission/task.md`. Each has its own `teams/ID/team.yaml` and
+`teams/ID/study.yaml`: roles, member topology/sharing, providers/models and local limits.
+`teams.yaml` sets the total request/wall caps, aggregate concurrency and explicit directed
+inter-team routes. The total cap is not multiplied by the number of teams. No communication
+is enabled by default; the designated exporter is visible and editable for each team.
+
+External style URLs are references only. No skill, prompt, configuration, code or CLI is
+imported from those projects. A local style file must be explicitly user-authored and
+attached as bounded task context. Do not paste unrelated projects' skills into it.
+Neither style context nor peer text grants new tools, permissions, models or budgets.
+
+Live execution requires `--live --approve-requests N`, where N equals the collection cap.
+The default is bounded text/code proposals, not unrestricted filesystem coding or merging.
+The browser only previews configurations and metadata; use the CLI to apply or run.
+
+Teamknitt follows my thesis research on distributed teams and their creative processes.
+
+Based on Labtune. Author: **Goran Mitevski**. Copyright/licensor: **Pioneertown B.V.** The Teamknitt Noncommercial and Research
+Licence 2.0 provides free general noncommercial, non-research use. Noncommercial research
+outside qualifying low-income/lower-middle-income academic institutions requires separate
+permission under the Labtune-based eligibility, independence, funding and anti-circumvention
+rules. Commercial use also needs separate written permission: Goran Mitevski, goran@pioneertown.ai,
+for Pioneertown B.V. Modification and sharing are conditionally allowed for Permitted Uses
+without a software licence fee, with the same terms, identified changes and retained legal,
+author/copyright and third-party notices. Keep PROVENANCE.md, LICENSE and LICENSING.md in
+distributions and new starters. Earlier grants (including version 1.0), existing workspaces,
+upstream Labtune and third-party terms are not rewritten. More teams or mode labels add no rights.
+
+Keep credentials, private style/feedback text, trials, results and backups out of Git.
+See `docs/MULTI_TEAM.md` and `docs/TEAMKNITT.md` for controls and boundaries.

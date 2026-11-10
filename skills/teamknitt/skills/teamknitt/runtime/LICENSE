@@ -1,0 +1,256 @@
+Teamknitt Noncommercial and Research Licence 2.0
+SPDX-License-Identifier: LicenseRef-Teamknitt-Noncommercial-Research-2.0
+
+Copyright (c) 2026 Pioneertown B.V.
+Licensor: Pioneertown B.V.
+Author: Goran Mitevski.
+Software: teamknitt, based on Labtune.
+
+1. Acceptance and scope
+
+Every permission under this licence is conditional on compliance with all its
+terms. By exercising a permission, you accept these terms as binding obligations
+and conditions of that permission. If you do not accept them, this licence grants
+you no rights. Rights you have independently under applicable law are unaffected.
+
+This licence covers the teamknitt code, documentation, examples, templates and
+other copyrightable material offered under it (the "Software"). Each copyright
+holder grants only rights that holder has authority to grant. Identified
+third-party material remains subject to its own terms.
+
+2. Free noncommercial use and the research exception
+
+Subject to this licence, each copyright holder grants you a worldwide,
+nonexclusive, royalty-free copyright licence to use, execute, copy, study, modify
+and share original or modified copies of the Software solely for Permitted Uses.
+The conditions for copies, changes and sharing in section 5 also apply. No licence
+fee is payable for Permitted Uses.
+
+"Permitted Uses" means:
+(a) noncommercial use that is not Research Use; or
+(b) Permitted Academic Research by an Eligible Academic Institution or an
+    Authorized Academic User, meeting sections 3, 4, 6 and 7.
+
+The research conditions override the general noncommercial permission. Research
+Use outside those conditions requires separate written permission even if it is
+noncommercial, unpaid, personal, charitable, publicly funded or openly published.
+No organization receives a research exemption merely because it is educational,
+charitable, nonprofit, public or governmental. Research cannot be reclassified
+as ordinary noncommercial use to avoid these conditions. Where an activity
+includes Research Use, these research conditions apply to that use.
+
+Commercial Use requires a separate written licence before it begins. Software
+access, a public repository, a donation, a request for permission or an
+acknowledgement is not a commercial licence or an exception to the research rules.
+Contact the licensor under section 11.
+
+3. Use and eligibility definitions
+
+"Research Use" means use for academic or scientific investigation, research
+training, research experimentation, reproduction of results or validation of
+findings. It includes such work whether formal or informal, published or private,
+and whether undertaken by an individual or an organization. Ordinary learning,
+hobby activity or software testing that is not part of academic or scientific
+research is not made Research Use solely because the user studies or tests the
+Software. Actual purpose and conduct determine the category, not a task label,
+software mode, affiliation or description chosen to avoid this licence.
+
+"Commercial Use" includes use for commercial advantage, business operations,
+commercial deployment or monetary compensation; internal or commissioned R&D
+intended to support a commercial product, service or business; selling or
+commercially licensing the Software; or offering its functionality as a commercial
+hosted service. A use can be commercial even if access is free. Ordinary academic
+salaries, public or independent charitable research grants, and donations meeting
+section 6 do not by themselves make otherwise Permitted Academic Research
+commercial. Ordinary pay for genuinely noncommercial, non-research work also
+does not by itself make that work commercial; actual purpose and beneficiary
+arrangements control.
+
+"Qualifying Economy" means an economy classified as low-income or
+lower-middle-income in the World Bank's official Country and Lending Groups
+income classification in force at the time of use:
+https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups
+Upper-middle-income, high-income and unclassified economies do not qualify.
+The income group, not a regional, lending or other grouping, controls. If the
+classification or an institution's location cannot be established, separate
+written permission is required for Research Use.
+
+"Eligible Academic Institution" means a public or nonprofit university, college
+or comparable educational institution legally recognized by the competent
+educational authority, whose primary mission is education and public-interest
+academic research or research training. It must be legally established and
+genuinely headquartered in a Qualifying Economy, with its principal educational
+and academic-research operations there. Its departments and research centers
+qualify only while genuinely part of, or owned and controlled by, that institution
+and under its independent academic governance. A local registration, postal
+address, campus, affiliate or intermediary does not make an otherwise ineligible
+institution eligible. An organization or unit excluded by section 4 cannot qualify.
+
+"Authorized Academic User" means a currently enrolled student, faculty or staff
+member, or formally appointed researcher acting solely on behalf of an Eligible
+Academic Institution for its Permitted Academic Research. An appointment,
+enrollment or university account gives no permission for work on behalf of
+another employer, client or commercial beneficiary.
+
+"Commercial Entity" means a for-profit business, commercial research organization,
+company, or an entity acting on behalf of one in connection with the Software or
+project. "Control" means the direct or indirect ability, alone or jointly with
+others, to direct or decisively influence governance, management, budgets,
+staffing, research priorities, publication or intellectual-property arrangements.
+Control can arise from ownership, voting or appointment rights, contracts,
+funding dependency or other arrangements, including through an intermediary.
+A donation meeting section 6 does not by itself constitute Control.
+
+"Permitted Academic Research" means noncommercial Research Use conducted by an
+Eligible Academic Institution under its own independent academic direction and
+for its educational or public-interest research mission. The institution must
+retain control of the research agenda, conduct and results and freedom to
+publish, subject to applicable law, research ethics and privacy obligations.
+The work must not be performed on behalf of, commissioned by, or operated
+primarily as research capacity for a Commercial Entity. Sections 4 and 6 apply
+to its governance, funding, sponsor and beneficiary arrangements.
+
+4. Research exclusions and indirect use
+
+The free research permission does not cover:
+(a) a company research lab, startup, commercial consultancy, for-profit
+    educational institution, commercial joint venture, or commercial subsidiary
+    or spinout, including one owned by a university;
+(b) a lab, institute, foundation, nonprofit, center or other unit Controlled by a
+    Commercial Entity, acting on its behalf, or operating primarily as its R&D
+    capacity, even if nominally independent or hosted by an eligible institution;
+(c) Commercial Use, commissioned company research, or research providing dedicated
+    services, proprietary deliverables, development work or other privileged
+    commercial benefits to a Commercial Entity;
+(d) use through an academic account, appointment, student, contractor, affiliate,
+    intermediary or shared infrastructure to obtain for an ineligible entity
+    rights it could not obtain directly; or
+(e) Research Use by or for an institution outside the geographic requirements,
+    including through a campus, affiliate, researcher or intermediary in a
+    Qualifying Economy.
+
+Actual governance, funding, work and beneficiary arrangements control. Academic
+names, nonprofit registration, educational email addresses, affiliations, public
+papers or acknowledgement of the Software do not establish research eligibility.
+Benefits from findings available to the public on equal terms are not by
+themselves privileged commercial benefits or a grant of research eligibility.
+Eligible institutions must not lend or extend their permission to others.
+These research exclusions do not replace the separate test for genuinely
+noncommercial, non-research use under section 2(a).
+
+5. Copies, modifications and redistribution
+
+You may copy, modify and share the Software for Permitted Uses without charging
+a licence fee for the Software. Every copy or substantial portion you share must
+include this licence and LICENSING.md and retain applicable copyright, author,
+attribution and third-party notices. Identify your changes.
+
+Changes to the Software that you distribute must be offered under these same
+terms. You must not remove or weaken the noncommercial restriction, research
+exception, institutional or geographic eligibility, academic independence,
+funding safeguards or anti-circumvention conditions. Permission to modify or
+share is not permission for Commercial Use or ineligible Research Use.
+
+Recipients obtain rights to the original Software directly from its copyright
+holders only for their own Permitted Uses and compliance. Receiving a copy,
+including a modified copy, does not create permission for an otherwise
+unlicensed use. You may not transfer your permissions to an ineligible user or
+sublicense the original Software under different terms.
+
+6. Research funding and unrestricted company donations
+
+For free research permission, funding or in-kind support from a Commercial Entity
+is allowed only as a genuinely unrestricted donation to an Eligible Academic
+Institution. No linked agreement, side arrangement or indirect condition may
+give the donor or another Commercial Entity:
+(a) Control or direction over the institution, lab, project, research agenda,
+    staff or allocation of research resources;
+(b) commissioned research, dedicated research capacity, services, proprietary
+    deliverables or work for its commercial R&D;
+(c) exclusive, preferential or advance access to data, findings, Software
+    changes or other results beyond what the public receives;
+(d) ownership, a licence, an option, first refusal or any other preferential
+    right in research intellectual property or results; or
+(e) a publication veto, approval right, or a right to restrict or delay
+    publication for commercial advantage.
+
+Passing support through a foundation, nonprofit, affiliate or intermediary does
+not avoid these conditions. A donation cannot make an otherwise excluded project
+or organization eligible. Ordinary donor acknowledgement without those rights
+or benefits does not by itself make a donation restricted.
+
+Eligible institutions may purchase general-purpose computing, model APIs,
+equipment and ancillary technical services for their own research. A purchase
+gives the supplier no independent right to use the Software or operate the
+project as its research capacity. External service and data terms still apply.
+
+7. Continuing research eligibility
+
+Research eligibility must hold throughout each use, including the current
+World Bank income classification, genuine headquarters and principal operations,
+affiliation, academic independence, funding and beneficiary arrangements. If an
+economy or institution ceases to qualify, free permission for further Research
+Use ends. Separate written permission is required to continue that research;
+the general noncommercial grant is not a fallback research licence.
+
+On reasonable request from the relevant copyright holders, you must substantiate
+research eligibility with reasonable evidence of institutional status, geographic
+eligibility, academic affiliation, governance, funding and rights arrangements.
+If you cannot establish eligibility, obtain separate permission before research.
+Nationality, a computer's location, a purchased cloud service or an academic title
+alone does not establish the institution's or project's eligibility.
+
+8. Results, other terms and reserved rights
+
+You may publish and share findings from Permitted Academic Research. This licence
+does not claim rights in independently created inputs, data, findings or outputs
+merely because you used the Software. Software material included in an output
+remains subject to this licence. Dependency, data, provider and service terms
+remain separate; this licence grants no rights in them and does not pay their fees.
+
+Rights not expressly granted are reserved. No trademark rights or other licences
+are implied. Nothing here limits fair use or other rights under applicable law
+that cannot be restricted by licence. A separate written agreement grants only
+the rights stated in that agreement; this licence does not expand them.
+
+9. Violations and termination
+
+Your permissions under this licence end automatically if you breach its terms.
+You must then stop all activities requiring those permissions. Reinstatement
+requires written permission from the relevant copyright holders; no automatic
+notice, cure period or reinstatement is promised. Conditions concerning research
+eligibility, noncommercial use, anti-circumvention, reserved rights, warranty and
+liability continue to apply as relevant after termination.
+
+10. No warranty; limitation of liability
+
+To the fullest extent permitted by applicable law, the Software is provided
+"as is" and "as available", without warranties or conditions of any kind,
+including merchantability, fitness for a particular purpose, title or
+noninfringement. You must assess its suitability and validate research and other
+results. No copyright holder or contributor is liable for damages, losses or
+claims arising from the Software or its use, in contract, tort or otherwise,
+to the extent the law allows that liability to be excluded.
+
+11. Separate permissions and contact
+
+For Commercial Use, noncommercial Research Use outside the qualifying academic
+and geographic conditions, company research, uncertain research eligibility or
+any other use outside these grants, request a separate written licence before
+use from Pioneertown B.V. through:
+
+Goran Mitevski
+Pioneertown B.V.
+Email: goran@pioneertown.ai
+
+Sending a request, receiving an acknowledgement or discussing terms is not
+permission. Any separate licence must be agreed in writing before the proposed
+use begins.
+
+12. Version and earlier grants
+
+These are version 2.0 terms for Software offered under this version. They do not
+purport to revoke or rewrite permissions already granted for copies offered
+under an earlier licence, including Teamknitt Noncommercial Licence 1.0. An
+earlier licence does not grant rights to new material offered only under this
+version. This licence does not change the separate Labtune upstream licence.

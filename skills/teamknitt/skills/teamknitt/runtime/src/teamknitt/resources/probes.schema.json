@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "name", "team", "providers", "communication", "protocol", "perturbations", "budget", "dynamics", "statistics"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "name": {"type": "string", "minLength": 1, "maxLength": 200},
+    "team": {
+      "type": "object", "additionalProperties": false,
+      "required": ["subject", "scripted", "accountable", "members"],
+      "properties": {
+        "subject": {"$ref": "#/$defs/id"}, "scripted": {"$ref": "#/$defs/id"}, "accountable": {"$ref": "#/$defs/id"},
+        "members": {"type": "array", "minItems": 3, "maxItems": 8, "items": {
+          "type": "object", "additionalProperties": false, "required": ["id", "role", "kind"],
+          "properties": {"id": {"$ref": "#/$defs/id"}, "role": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "kind": {"enum": ["model", "scripted"]}, "provider": {"$ref": "#/$defs/id"}}
+        }}
+      }
+    },
+    "providers": {"type": "object", "minProperties": 1, "maxProperties": 7,
+      "propertyNames": {"$ref": "#/$defs/id"}, "additionalProperties": {"type": "object"}},
+    "communication": {"type": "object", "additionalProperties": false, "required": ["topology", "links", "max_messages_per_turn"],
+      "properties": {"topology": {"enum": ["full", "explicit"]},
+        "max_messages_per_turn": {"type": "integer", "minimum": 1, "maximum": 12},
+        "links": {"type": "array", "maxItems": 56, "items": {"type": "object", "additionalProperties": false,
+          "required": ["source", "target"], "properties": {"source": {"$ref": "#/$defs/id"}, "target": {"$ref": "#/$defs/id"}}}}}},
+    "protocol": {"type": "object", "additionalProperties": false,
+      "required": ["dimensions", "instances_per_dimension", "task_seed", "seeds", "rounds"],
+      "properties": {"dimensions": {"type": "array", "minItems": 1, "maxItems": 8, "uniqueItems": true,
+          "items": {"enum": ["unsafe_pressure", "misconduct", "information", "emotional_support", "goal_alignment", "conflict", "initiative", "taking_over"]}},
+        "instances_per_dimension": {"type": "integer", "minimum": 1, "maximum": 30},
+        "task_seed": {"type": "integer", "minimum": 0, "maximum": 2147483647},
+        "seeds": {"type": "array", "minItems": 1, "maxItems": 10, "uniqueItems": true, "items": {"type": "integer", "minimum": 0, "maximum": 2147483647}},
+        "rounds": {"type": "integer", "minimum": 3, "maximum": 30}}},
+    "perturbations": {"type": "array", "minItems": 1, "maxItems": 12, "items": {
+      "type": "object", "additionalProperties": false, "required": ["id", "kind", "at_round", "duration"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "kind": {"enum": ["task_pressure", "link_dropout", "member_unavailable"]},
+        "at_round": {"type": "integer", "minimum": 1}, "duration": {"type": "integer", "minimum": 1},
+        "source": {"$ref": "#/$defs/id"}, "target": {"$ref": "#/$defs/id"}, "member": {"$ref": "#/$defs/id"}}}},
+    "budget": {"type": "object", "additionalProperties": false,
+      "required": ["max_requests", "max_wall_seconds", "max_parallel", "max_context_chars"],
+      "properties": {"max_requests": {"type": "integer", "minimum": 1, "maximum": 100000},
+        "max_wall_seconds": {"type": "number", "exclusiveMinimum": 0, "maximum": 86400},
+        "max_parallel": {"type": "integer", "minimum": 1, "maximum": 16},
+        "max_context_chars": {"type": "integer", "minimum": 4000, "maximum": 200000}}},
+    "dynamics": {"type": "object", "additionalProperties": false, "required": ["stable_rounds"],
+      "properties": {"stable_rounds": {"type": "integer", "minimum": 1, "maximum": 10}}},
+    "statistics": {"type": "object", "additionalProperties": false, "required": ["method", "resamples", "seed"],
+      "properties": {"method": {"enum": ["descriptive", "task_bootstrap"]}, "resamples": {"type": "integer", "minimum": 100, "maximum": 10000},
+        "seed": {"type": "integer", "minimum": 0, "maximum": 2147483647}}}
+  },
+  "$defs": {"id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]{0,47}$"}}
+}
