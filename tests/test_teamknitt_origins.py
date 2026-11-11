@@ -24,7 +24,7 @@ DESCRIPTION = 'Teamknitt is a tool for configuring AI agent team/s, where we can
 README_DESCRIPTION = 'Teamknitt supports human-led improvement of AI-agent team/s. Configure AI agent team/s, set the task or goal, observe and follow the work in different modes, intervene.'
 README_FOLLOW_UP = 'Teamknitt follows my thesis research on distributed teams and new tools for configuring and refining collaboration in hybrid teams of people and machine-learning agents.'
 FOLLOW_UP = 'Teamknitt follows my thesis research on distributed teams and their creative processes.'
-RESEARCH_NOTE_SHA256 = '799e9084393921df4870405a49b53e9a87132956e3d9cacb051683b1739f3b8e'
+RESEARCH_NOTE_SHA256 = '1986c98d50464e902e84e5ae51461e68f3b5249c4adceb968eb3de3a240b6e15'
 OLD_TITLES = ('A team for what you have in mind.', 'Where contributions connect.',
               'Different explanations. One team.', 'Intervene with intention.', 'Complexity, observed with care.')
 

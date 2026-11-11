@@ -58,14 +58,7 @@ code-addition series on GitHub and maximal Lyapunov exponents to the daily densi
 discussion, for two periods of the same organization, one that produced a stable product
 and one that produced an unstable one. The stable period showed greater long-range
 correlation (DFA α ≈ 0.70 against ≈ 0.57, both above a shuffled-surrogate baseline of
-≈ 0.50) and more flexible discussion dynamics. The DFA result is extended in **Mitevski
-(2026)**, which proposes α computed on unaggregated lines-added-per-commit as a
-process-level indicator of product stability, notes that the unstable period had about three
-times as many commits, and argues that the temporal organization of development activity
-matters more than its volume. Both studies carry the same limits: one organization, two
-periods, stability labelled by a single rater from crash analytics, and DFA's assumption of
-a single scaling exponent, which the thesis flags as a reason to add multifractal DFA and
-wavelet methods when more than one scale is in play.
+≈ 0.50) and more flexible discussion dynamics.
 
 The human-team literature supports the direction while narrowing the expectation. Gorman
 et al. (2017) report that the structure of coordination, including its scaling properties,
@@ -195,9 +188,7 @@ handoff receipts.
 ## 4. Dynamics: questions the records can support, estimators they do not yet include
 
 **Kelso (1995)**, **Schmidt & Richardson (2008)** and **Gorman et al. (2017)** motivate
-treating team coordination as a dynamical process measured continuously rather than through
-snapshots. Complexity science and complex adaptive systems are wider traditions; Holland,
-Mitchell and the Santa Fe school are context, not an endorsement.
+treating team coordination as a dynamical process measured continuously rather than relying solely on static measures of team behaviour. The broader theoretical context comes from complexity science and complex adaptive systems, including the work of Holland, Mitchell and the Santa Fe school.
 
 Gorman et al. (2017) organize the approach around three principles. Each suggests a question
 the records can be asked, with a caution attached.
