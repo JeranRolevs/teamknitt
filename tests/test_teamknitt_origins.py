@@ -22,10 +22,10 @@ from teamknitt.views import SOURCES, catalogue
 ROOT = Path(__file__).resolve().parents[1]
 DESCRIPTION = 'Teamknitt is a tool for configuring AI agent team/s, where we can set the task, follow the work in different modes, and intervene.'
 README_DESCRIPTION = 'Teamknitt supports human-led improvement of AI-agent team/s. Configure AI agent team/s, set the task or goal, observe and follow the work in different modes, intervene.'
-README_FOLLOW_UP = 'Teamknitt follows my thesis research on distributed teams and new tools for configuring and refining collaboration in hybrid teams of people and AI agents (Mitevski, 2023).'
+README_FOLLOW_UP = 'Teamknitt follows my thesis research on distributed teams and new tools for configuring and refining collaboration in hybrid teams of humans and AI agents (Mitevski, 2023).'
 UI_FOLLOW_UP = 'Teamknitt follows my thesis research on distributed teams and new tools for configuring and refining collaboration in hybrid teams of people and machine-learning agents.'
 FOLLOW_UP = 'Teamknitt follows my thesis research on distributed teams and their creative processes.'
-RESEARCH_NOTE_SHA256 = 'd7b380387bf90f681db7569647d0f12ad331aa62fb98ff3284ba9a78112fc013'
+RESEARCH_NOTE_SHA256 = 'fad2673971884acd50de3460cc4559f4ac925c02e9e7359c6d14d47c7e7a8ddd'
 OLD_TITLES = ('A team for what you have in mind.', 'Where contributions connect.',
               'Different explanations. One team.', 'Intervene with intention.', 'Complexity, observed with care.')
 

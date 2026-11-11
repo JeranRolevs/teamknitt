@@ -42,7 +42,7 @@ The boundaries below apply throughout and are not repeated in every section.
 
 Teamknitt builds on my 2022/2023 thesis research at Tilburg University, supervised by
 T. J. Wiltshire (**Mitevski, 2023**), on distributed software teams, their creative
-processes, and creation of new tools for configuring and refining collaboration in hybrid teams of people
+processes, and creation of new tools for configuring and refining collaboration in hybrid teams of humans
 and AI agents. I extend that work to LLM-agent teams, treating a team as having
 a structural layer that is configured, a relational layer that develops between members
 during work, and a dynamical layer visible only in the interaction itself over time.
