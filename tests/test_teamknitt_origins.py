@@ -22,9 +22,10 @@ from teamknitt.views import SOURCES, catalogue
 ROOT = Path(__file__).resolve().parents[1]
 DESCRIPTION = 'Teamknitt is a tool for configuring AI agent team/s, where we can set the task, follow the work in different modes, and intervene.'
 README_DESCRIPTION = 'Teamknitt supports human-led improvement of AI-agent team/s. Configure AI agent team/s, set the task or goal, observe and follow the work in different modes, intervene.'
-README_FOLLOW_UP = 'Teamknitt follows my thesis research on distributed teams and new tools for configuring and refining collaboration in hybrid teams of people and machine-learning agents.'
+README_FOLLOW_UP = 'Teamknitt follows my thesis research on distributed teams and new tools for configuring and refining collaboration in hybrid teams of people and AI agents (Mitevski, 2023).'
+UI_FOLLOW_UP = 'Teamknitt follows my thesis research on distributed teams and new tools for configuring and refining collaboration in hybrid teams of people and machine-learning agents.'
 FOLLOW_UP = 'Teamknitt follows my thesis research on distributed teams and their creative processes.'
-RESEARCH_NOTE_SHA256 = '1986c98d50464e902e84e5ae51461e68f3b5249c4adceb968eb3de3a240b6e15'
+RESEARCH_NOTE_SHA256 = 'd7b380387bf90f681db7569647d0f12ad331aa62fb98ff3284ba9a78112fc013'
 OLD_TITLES = ('A team for what you have in mind.', 'Where contributions connect.',
               'Different explanations. One team.', 'Intervene with intention.', 'Complexity, observed with care.')
 
@@ -45,7 +46,7 @@ class ResearchOriginsTests(unittest.TestCase):
         text = (ROOT / 'README.md').read_text()
         self.assertTrue(text.startswith('# teamknitt\n\n### ' + README_DESCRIPTION + '\n'))
         self.assertIn('user-defined tasks, brainstorming and goals', text)
-        self.assertIn('Based on the approach I developed for Labtune.', text)
+        self.assertIn('Building on the approach I developed for Labtune, ' + README_FOLLOW_UP, text)
         self.assertIn(README_FOLLOW_UP, text)
         self.assertIn('[Research background](docs/TEAM_RESEARCH.md#research-follow-up)', text)
         self.assertIn('Teamknitt ships its own runtime under `teamknitt.engine`;', text)
@@ -113,7 +114,7 @@ class ResearchOriginsTests(unittest.TestCase):
         opening = text.split('## What Teamknitt is for', 1)[0]
         normal = ' '.join(opening.split())
         self.assertTrue(opening.startswith('# Human-Team Research in Teamknitt\n'))
-        self.assertIn('**Goran Mitevski · 10 November 2026**', opening)
+        self.assertIn('**Goran Mitevski · 09 November 2026 · rolevski.mk@icloud.com**', opening)
         self.assertIn('human teams to guide how LLM-agent teams are configured', normal)
         self.assertIn('dynamical systems theory as a lens for following their work', normal)
         self.assertIn('It does not assume that findings about human teams transfer to LLM-agent teams', normal)
@@ -148,7 +149,7 @@ class ResearchOriginsTests(unittest.TestCase):
         self.assertEqual(AUTHOR_RESEARCH['research_period'], '2022/2023')
         self.assertEqual(AUTHOR_RESEARCH['relation'], 'research_follow_up')
         self.assertEqual(AUTHOR_RESEARCH['author'], 'Goran Mitevski')
-        self.assertTrue(AUTHOR_RESEARCH['connection'].startswith(README_FOLLOW_UP))
+        self.assertTrue(AUTHOR_RESEARCH['connection'].startswith(UI_FOLLOW_UP))
         self.assertIn('collaboration in hybrid teams of people and machine-learning agents', AUTHOR_RESEARCH['connection'])
         self.assertIn('how work unfolds over time', AUTHOR_RESEARCH['connection'])
         self.assertIn('how people can intervene', AUTHOR_RESEARCH['connection'])

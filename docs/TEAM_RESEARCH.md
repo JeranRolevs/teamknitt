@@ -1,6 +1,6 @@
 # Human-Team Research in Teamknitt
 
-**Goran Mitevski · 10 November 2026**
+**Goran Mitevski · 09 November 2026 · rolevski.mk@icloud.com**
 
 Teamknitt draws on research into human teams to guide how LLM-agent teams are configured,
 and on dynamical systems theory as a lens for following their work and deciding when to
@@ -42,8 +42,8 @@ The boundaries below apply throughout and are not repeated in every section.
 
 Teamknitt builds on my 2022/2023 thesis research at Tilburg University, supervised by
 T. J. Wiltshire (**Mitevski, 2023**), on distributed software teams, their creative
-processes, and tools for configuring and refining collaboration in hybrid teams of people
-and machine-learning agents. I extend that work to LLM-agent teams, treating a team as having
+processes, and creation of new tools for configuring and refining collaboration in hybrid teams of people
+and AI agents. I extend that work to LLM-agent teams, treating a team as having
 a structural layer that is configured, a relational layer that develops between members
 during work, and a dynamical layer visible only in the interaction itself over time.
 Teamknitt records what each layer would require for observation and gives people explicit

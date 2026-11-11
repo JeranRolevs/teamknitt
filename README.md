@@ -6,7 +6,8 @@ Teamknitt is a framework and source-available reference implementation for confi
 
 I use human-team research as the organizing lens, without assuming that its findings transfer to LLM-agent teams. Who talks to whom, what they share and how a human can intervene are explicit choices, alongside models, tools and finite budgets.
 
-Based on the approach I developed for Labtune. Teamknitt follows my thesis research on distributed teams and new tools for configuring and refining collaboration in hybrid teams of people and machine-learning agents. [Research background](docs/TEAM_RESEARCH.md#research-follow-up).
+
+Building on the approach I developed for Labtune, Teamknitt follows my thesis research on distributed teams and new tools for configuring and refining collaboration in hybrid teams of people and AI agents (Mitevski, 2023). [Research background](docs/TEAM_RESEARCH.md#research-follow-up).
 
 Teamknitt ships its own runtime under `teamknitt.engine`; no separate Labtune installation or CLI is required.
 
