@@ -35,7 +35,7 @@ class TeamknittLicensingTests(unittest.TestCase):
         self.assertEqual(project["license"], IDENTIFIER)
         self.assertEqual(project["license-files"], ["LICENSE", "LICENSING.md"])
         self.assertEqual(project["version"], __version__)
-        self.assertEqual(__version__, "0.9.0")
+        self.assertEqual(__version__, "0.9.1")
 
     def test_research_exception_overrides_free_general_noncommercial_use(self):
         text = self.licence()
