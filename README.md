@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="assets/teamknitt_logo.png" width="160" alt="TeamKnitt logo">
+</p>
 # teamknitt
 
 ### Teamknitt supports human-led improvement of AI-agent team/s. Configure AI agent team/s, set the task or goal, observe and follow the work in different modes, intervene.
