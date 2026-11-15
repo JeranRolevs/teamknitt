@@ -1,4 +1,14 @@
-# teamknitt 0.9.0 — clarified noncommercial/research policy (unreleased)
+# teamknitt 0.9.1 — README links for the package index
+
+- README links are absolute, so they resolve on the PyPI project page as well as on GitHub.
+- Getting started installs the published package (`python -m pip install teamknitt`); the
+  editable install remains under development.
+- Includes the README and research-background wording updates made since 0.9.0.
+- No licence, runtime, model, budget or provider-call changes.
+
+---
+
+# teamknitt 0.9.0 — clarified noncommercial/research policy (published to PyPI 2026-11-10)
 
 - Introduces **Teamknitt Noncommercial and Research Licence 2.0**, based on the original
   Labtune research policy, using a stricter, direct drafting style rather than substituting

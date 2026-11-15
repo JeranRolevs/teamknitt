@@ -48,7 +48,7 @@ class ResearchOriginsTests(unittest.TestCase):
         self.assertIn('user-defined tasks, brainstorming and goals', text)
         self.assertIn('Building on the approach I developed for Labtune, ' + README_FOLLOW_UP, text)
         self.assertIn(README_FOLLOW_UP, text)
-        self.assertIn('[Research background](docs/TEAM_RESEARCH.md#research-follow-up)', text)
+        self.assertIn('[Research background](https://github.com/JeranRolevs/teamknitt/blob/main/docs/TEAM_RESEARCH.md#research-follow-up)', text)
         self.assertIn('Teamknitt ships its own runtime under `teamknitt.engine`;', text)
         self.assertIn('Goran Mitevski', text)
         self.assertIn('Pioneertown B.V.', text)
