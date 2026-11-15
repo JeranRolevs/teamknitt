@@ -47,7 +47,7 @@ Customize > Plugins, then install Teamknitt from it.
 - **Contains:** instructions and documents only: the skill, three reference guides, the licence
   texts and an icon. The plugin ships no scripts or programs.
 - **Fetches and runs:** when first used, the skill installs the published `teamknitt` package
-  from PyPI at the exact version 0.9.0 (<https://pypi.org/project/teamknitt/0.9.0/>) into a
+  from PyPI at the exact version 0.9.1 (<https://pypi.org/project/teamknitt/0.9.1/>) into a
   private virtual environment in your home folder, after telling you. `pip` also installs its
   two dependencies, PyYAML and jsonschema. Nothing else is fetched, and the skill's instructions
   all come from this plugin, not from the network. The package source is public at

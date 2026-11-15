@@ -44,11 +44,11 @@ the version this skill was tested with:
 ```bash
 python3 --version
 python3 -m venv "$HOME/.teamknitt-venv"
-"$HOME/.teamknitt-venv/bin/pip" install "teamknitt==0.9.0"
+"$HOME/.teamknitt-venv/bin/pip" install "teamknitt==0.9.1"
 "$HOME/.teamknitt-venv/bin/teamknitt" --version
 ```
 
-- Tell the user in one line that you are installing teamknitt 0.9.0 from PyPI before you do it.
+- Tell the user in one line that you are installing teamknitt 0.9.1 from PyPI before you do it.
   The install also brings in two dependencies, PyYAML and jsonschema.
 - Install only that package at that version from PyPI. Do not substitute another source, name or
   version on your own.
@@ -200,7 +200,7 @@ it finishes, so on a local machine start it in the background if the user may wa
 **In a chat or cloud sandbox** the provider usually cannot be reached and the user's key does not
 belong there. Prepare and check everything, then hand over: zip the workspace, send it, and give
 the user the two commands above to run on their own machine, after installing teamknitt there
-with `pip install "teamknitt==0.9.0"`.
+with `pip install "teamknitt==0.9.1"`.
 
 ## 8. Read the results
 
