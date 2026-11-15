@@ -6,7 +6,8 @@ Teamknitt is a framework and source-available reference implementation for confi
 
 I use human-team research as the organizing lens, without assuming that its findings transfer to LLM-agent teams. Who talks to whom, what they share and how a human can intervene are explicit choices, alongside models, tools and finite budgets.
 
-Based on the approach I developed for Labtune. Teamknitt follows my thesis research on distributed teams and new tools for configuring and refining collaboration in hybrid teams of people and machine-learning agents. [Research background](docs/TEAM_RESEARCH.md#research-follow-up).
+
+Building on the approach I developed for Labtune, Teamknitt follows my thesis research on distributed teams and new tools for configuring and refining collaboration in hybrid teams of humans and AI agents (Mitevski, 2023). [Research background](https://github.com/JeranRolevs/teamknitt/blob/main/docs/TEAM_RESEARCH.md#research-follow-up).
 
 Teamknitt ships its own runtime under `teamknitt.engine`; no separate Labtune installation or CLI is required.
 
@@ -15,7 +16,7 @@ Teamknitt ships its own runtime under `teamknitt.engine`; no separate Labtune in
 Python 3.11+:
 
 ```bash
-python -m pip install -e .
+python -m pip install teamknitt
 teamknitt init ../my-team --purpose brainstorm --members 4 --topology ring \
   --communication high --goal "Brainstorm welcoming workshop formats."
 teamknitt check --workspace ../my-team
@@ -53,7 +54,7 @@ teamknitt configure --workspace ../my-team --members 6 --topology clustered \
 ```
 
 Application keeps a private backup and respects the shared run lock. For customized bindings,
-edit the configuration directly rather than resetting it. [Configuration guide](docs/TEAMKNITT.md).
+edit the configuration directly rather than resetting it. [Configuration guide](https://github.com/JeranRolevs/teamknitt/blob/main/docs/TEAMKNITT.md).
 
 ## Multiple teams for one task
 
@@ -74,7 +75,7 @@ prior waves. Teams can remain isolated. There is no automatic merge or winning-t
 User-selected external URLs (including ub-mode and ponytail) are **references only**, not
 imported skills, templates, prompts, code or runtimes. Actual style context must be explicitly
 user-authored local text. Repeating a reference for two teams does not merge their identities.
-[Multi-team setup, native cloning, routing, limits and intervention](docs/MULTI_TEAM.md).
+[Multi-team setup, native cloning, routing, limits and intervention](https://github.com/JeranRolevs/teamknitt/blob/main/docs/MULTI_TEAM.md).
 
 ## Research-informed team views
 
@@ -84,7 +85,7 @@ from **compositional and compilational emergence**, and from **processes, states
 IPO and IMOI include feedback and conditional relationships, not just a one-way sequence.
 Teamknitt marks transition and action phases, but does not infer interpersonal processes or
 psychological states from software traces.
-[Research background and references](docs/TEAM_RESEARCH.md).
+[Research background and references](https://github.com/JeranRolevs/teamknitt/blob/main/docs/TEAM_RESEARCH.md).
 
 | Group | Focused views | Explanatory focus |
 |---|---|---|
@@ -176,7 +177,7 @@ No active-run model, permission, statistical-method or budget changes are introd
 **Queued**, **applied**, **assembled**, **understood** and **improved** are separate claims.
 A receipt or assembled context does not establish understanding or an intervention effect.
 Human-team training findings do not validate benefits for LLM-agent teams.
-[Detailed controls and audit boundaries](docs/TEAMKNITT.md#explicit-intervention-controls).
+[Detailed controls and audit boundaries](https://github.com/JeranRolevs/teamknitt/blob/main/docs/TEAMKNITT.md#explicit-intervention-controls).
 
 ## Standalone engine and compatibility
 
@@ -188,13 +189,13 @@ Existing workspace model bindings and environment-variable names remain explicit
 workspaces use `TEAMKNITT_API_KEY` and, if selected, `TEAMKNITT_DECISION_API_KEY`. Preview a
 legacy-name migration with `teamknitt migrate --workspace PATH`; only `--apply` writes changes
 and creates a private backup. Historical records remain immutable and can be viewed by explicit
-run path. [Migration](docs/MIGRATION.md) · [Architecture](ARCHITECTURE.md) · [Security](SECURITY.md).
+run path. [Migration](https://github.com/JeranRolevs/teamknitt/blob/main/docs/MIGRATION.md) · [Architecture](https://github.com/JeranRolevs/teamknitt/blob/main/ARCHITECTURE.md) · [Security](https://github.com/JeranRolevs/teamknitt/blob/main/SECURITY.md).
 
 ## Development and portability — offline
 
 Development and sharing are allowed for Permitted Uses, subject to the noncommercial and
 research-eligibility conditions, retained notices and same-terms distribution. Instructions
-do not waive those conditions; see [contributing](CONTRIBUTING.md).
+do not waive those conditions; see [contributing](https://github.com/JeranRolevs/teamknitt/blob/main/CONTRIBUTING.md).
 
 ```bash
 python -m pip install -e '.[memory,diagrams]'
@@ -213,7 +214,7 @@ credentials, source books, Foundation notes, trials and results stay out of Git 
 ## Licence
 
 teamknitt uses the **Teamknitt Noncommercial and Research Licence 2.0**, a custom source-available
-licence, not an OSI open-source licence. [LICENSE](LICENSE) governs; [LICENSING.md](LICENSING.md)
+licence, not an OSI open-source licence. [LICENSE](https://github.com/JeranRolevs/teamknitt/blob/main/LICENSE) governs; [LICENSING.md](https://github.com/JeranRolevs/teamknitt/blob/main/LICENSING.md)
 explains the terms.
 
 - **General noncommercial, non-research use is free.**
